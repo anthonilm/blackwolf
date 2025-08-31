@@ -110,10 +110,10 @@ export default function Page() {
     };
   }, []);
 
-  const terracotta = "#A4573D";
   const taupe = "#7A6C61";
   const umber = "#4A2C2A";
-  const footballGrey = "#566573";
+  const yvesBlue = "#0018A8";
+  const carmine = "#960018";
   const line = "rgba(0,0,0,0.08)";
 
   return (
@@ -122,9 +122,9 @@ export default function Page() {
       style={{
         height: "100vh",
         display: "grid",
-        gridTemplateRows: "auto 1fr auto",
+        gridTemplateRows: "auto 1fr",
         background:
-          "linear-gradient(to bottom, #FAF8F2 0%, #F2EDF9 35%, #E6E0F6 70%, #DCD6EB 85%, #CFCBE6 95%, #0018A8 100%)",
+          "linear-gradient(to bottom, #FAF8F2 0%, #F2EDF9 35%, #E6E0F6 70%, #DCD6EB 85%, #CFCBE6 95%, #FFFFFF 100%)",
         backgroundAttachment: "fixed",
         backgroundSize: "cover",
         fontFamily: `"Georgia", "Times New Roman", serif`,
@@ -137,8 +137,8 @@ export default function Page() {
         style={{
           position: "fixed",
           inset: 0,
-          background: `radial-gradient(circle at 20% 20%, #FFF5CC40, transparent 70%),
-                       radial-gradient(circle at 80% 40%, #E6E0F640, transparent 70%),
+          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
+                       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
           backgroundSize: "200% 200%",
           animation: "liquidMove 20s ease-in-out infinite alternate",
@@ -183,30 +183,28 @@ export default function Page() {
             style={{
               width: "100%",
               height: "0%",
-              background: "#A4573D",
+              background: yvesBlue,
               transition: "height 0.4s ease",
             }}
           />
         </div>
 
         <section className="panel">
-          <Hero terracotta={terracotta} umber={umber} taupe={taupe} />
+          <Hero umber={umber} taupe={taupe} carmine={carmine} />
         </section>
 
         <section className="panel">
-          <WhoWeAre taupe={taupe} />
+          <WhoWeAre carmine={carmine} />
         </section>
 
         <section className="panel">
-          <AboutMe terracotta={terracotta} taupe={taupe} />
+          <AboutMe taupe={taupe} />
         </section>
 
         <section className="panel">
-          <BookNow footballGrey={footballGrey} terracotta={terracotta} />
+          <BookNow carmine={carmine} />
         </section>
       </main>
-
-      <Footer footballGrey={footballGrey} />
     </div>
   );
 }
@@ -275,38 +273,62 @@ function nav(color: string): React.CSSProperties {
   };
 }
 
-function Hero({ terracotta, umber, taupe }: any) {
+function Hero({ umber, taupe, carmine }: any) {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (titleRef.current && subtitleRef.current) {
+      gsap.to([titleRef.current, subtitleRef.current], {
+        y: -10,
+        duration: 4,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+    }
+  }, []);
+
   return (
     <div
       style={{
         flex: 1,
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
+        alignItems: "center",
         justifyContent: "center",
         padding: "2rem 4rem",
         color: umber,
         position: "relative",
         height: "100vh",
+        textAlign: "center",
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", marginBottom: "2rem" }}>
         <div style={{ display: "flex", gap: "0.4rem" }}>
-          <div style={{ width: "15px", height: "140px", backgroundColor: terracotta }} />
-          <div style={{ width: "15px", height: "140px", backgroundColor: terracotta }} />
+          <div style={{ width: "15px", height: "140px", backgroundColor: carmine }} />
+          <div style={{ width: "15px", height: "140px", backgroundColor: carmine }} />
         </div>
-        <h1 style={{ fontSize: "3.2rem", fontWeight: 700, letterSpacing: "0.08em", whiteSpace: "nowrap" }}>
+        <h1
+          ref={titleRef}
+          style={{
+            fontSize: "3.2rem",
+            fontWeight: 700,
+            letterSpacing: "0.08em",
+            whiteSpace: "nowrap",
+          }}
+        >
           NOESIS MENTAL HEALTH CARE
         </h1>
       </div>
       <p
+        ref={subtitleRef}
         style={{
           fontSize: "1.4rem",
           textTransform: "uppercase",
           letterSpacing: "0.2em",
           lineHeight: 1.6,
           maxWidth: "700px",
-          marginLeft: "3.2rem",
           color: taupe,
         }}
       >
@@ -316,7 +338,7 @@ function Hero({ terracotta, umber, taupe }: any) {
   );
 }
 
-function WhoWeAre({ taupe }: any) {
+function WhoWeAre({ carmine }: any) {
   return (
     <div
       style={{
@@ -334,7 +356,7 @@ function WhoWeAre({ taupe }: any) {
           fontSize: "3.2rem",
           marginBottom: "3rem",
           fontWeight: 800,
-          color: "#333",
+          color: carmine,
         }}
       >
         Mental health shapes every part of your quality of life.
@@ -343,7 +365,7 @@ function WhoWeAre({ taupe }: any) {
   );
 }
 
-function AboutMe({ terracotta, taupe }: any) {
+function AboutMe({ taupe }: any) {
   return (
     <div
       style={{
@@ -391,7 +413,7 @@ function AboutMe({ terracotta, taupe }: any) {
   );
 }
 
-function BookNow({ terracotta }: any) {
+function BookNow({ carmine }: any) {
   return (
     <div
       style={{
@@ -415,7 +437,7 @@ function BookNow({ terracotta }: any) {
             padding: "1rem 2rem",
             borderRadius: "8px",
             border: "none",
-            background: terracotta,
+            background: carmine,
             color: "#fff",
             fontWeight: 700,
             cursor: "pointer",
@@ -428,9 +450,9 @@ function BookNow({ terracotta }: any) {
           style={{
             padding: "1rem 2rem",
             borderRadius: "8px",
-            border: "2px solid #333",
+            border: `2px solid ${carmine}`,
             background: "transparent",
-            color: "#333",
+            color: carmine,
             fontWeight: 700,
             cursor: "pointer",
             fontFamily: `"Georgia", "Times New Roman", serif`,
@@ -440,85 +462,5 @@ function BookNow({ terracotta }: any) {
         </button>
       </div>
     </div>
-  );
-}
-
-function Footer({ footballGrey }: any) {
-  return (
-    <footer
-      style={{
-        background: "linear-gradient(to bottom, transparent, #0018A8)",
-        color: "#fff",
-        padding: "16px 24px",
-        fontFamily: `"Georgia", "Times New Roman", serif`,
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-     <h3 style={{ fontSize: 16, fontWeight: 900, marginBottom: "1rem", color: "#000" }}>
-  WEEKLY INSIGHTS STRAIGHT TO YOUR INBOX.
-      </h3>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr auto",
-            gap: 12,
-            marginBottom: 8,
-            alignItems: "end",
-          }}
-        >
-          <input
-            name="name"
-            type="text"
-            placeholder="NAME"
-            style={{
-              height: 36,
-              border: "1px solid #ccc",
-              background: "#fff",
-              color: "#000",
-              padding: "0 12px",
-              fontFamily: `"Georgia", "Times New Roman", serif`,
-            }}
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="EMAIL"
-            style={{
-              height: 36,
-              border: "1px solid #ccc",
-              background: "#fff",
-              color: "#000",
-              padding: "0 12px",
-              fontFamily: `"Georgia", "Times New Roman", serif`,
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              height: 40,
-              padding: "0 16px",
-              border: `1px solid #fff`,
-              background: "transparent",
-              fontWeight: 800,
-              cursor: "pointer",
-              color: "#fff",
-              transition: "all 0.3s ease",
-              fontFamily: `"Georgia", "Times New Roman", serif`,
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "#fff";
-              (e.currentTarget as HTMLElement).style.color = footballGrey;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.background = "transparent";
-              (e.currentTarget as HTMLElement).style.color = "#fff";
-            }}
-          >
-            SUBSCRIBE
-          </button>
-        </form>
-      </div>
-    </footer>
   );
 }
