@@ -141,7 +141,7 @@ function Menu({ yvesBlue, ivory }: any) {
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
-            { href: "/newsletter", label: "Insights" },
+
             { href: "/noesis-methods", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
