@@ -12,7 +12,7 @@ export default function AboutPage() {
   const [showCalendly, setShowCalendly] = useState(false);
 
   const longVersion = [
-    `There was a point in my life when I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth. I consumed knowledge obsessively, believing it would deliver a path to a better life. Yet despite all that study, I carried the weight of depression, anxiety, and years of instability. Awareness alone did not move me out of emotional and mental stagnation.`,
+    `There was a point in my life when I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth, alongside courses, certifications, and degrees that deepened this pursuit. I consumed knowledge obsessively, believing it would deliver a path to a better life. Yet despite all that study, I carried the weight of depression, anxiety, and years of instability. Awareness alone did not move me out of emotional and mental stagnation.`,
     `What shifted my path was recognizing that history’s most enlightened figures were not defined only by their ideas but by how they lived them. Their wisdom became real through behavior—how they occupied space, how they created conditions for the reality they built, and how they translated inner awareness into outward action. We remember them because their knowledge was embodied, generative, and sustained against the world. They lived deeply and whole. They got the most from life. And that is what we all want. We want to live free from the emotional and mental burdens limiting our realities.`,
     `That realization reshaped my life. I came to see that a quality life requires alignment: emotional intelligence paired with deliberate behaviors that convert reflection into forward motion. This means building structures that steady the mind, regulate emotions, and allow the body to carry us with purpose. It is not only mental health—it is the cultivation of energies that protect against instability and sustain growth over time.`,
     `This practice is the translation of that understanding. I help people stabilize themselves within unstable social, political, and environmental conditions, and develop habits that channel their depth—insight, reflection, even anxiety—into steady momentum and creative capacity. It is from this grounding that the mission of my work becomes clear.`,
@@ -40,6 +40,34 @@ export default function AboutPage() {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
+
+        /* === Responsive Fixes === */
+        @media (max-width: 768px) {
+          .about-hero {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+            text-align: center !important;
+          }
+          .about-hero img {
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 12px;
+          }
+          .about-hero h1 {
+            font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+          }
+          .about-hero h2 {
+            font-size: clamp(1rem, 4vw, 1.25rem) !important;
+          }
+          .about-hero h3 {
+            font-size: clamp(1.1rem, 4vw, 1.3rem) !important;
+          }
+          .about-hero p {
+            font-size: clamp(1rem, 3.5vw, 1.2rem) !important;
+            line-height: 1.6 !important;
+          }
+        }
       `}</style>
 
       {/* Menu */}
@@ -47,7 +75,7 @@ export default function AboutPage() {
 
       <div style={styles.container}>
         {/* === HERO SECTION === */}
-        <section style={styles.hero}>
+        <section style={styles.hero} className="about-hero">
           <div style={styles.heroImage}>
             <img
               src="/about-headshot.jpg"
@@ -67,7 +95,10 @@ export default function AboutPage() {
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
             <p style={styles.heroDescription}>
-              I help people transform instability, uncertainty, and emotional demands into steady, creative, and generative energy. My approach blends psychology, behavioral science, and integrative mental health practices—grounded in respect for identity and lived reality, and especially attuned to the anxious, the overwhelmed, and the marginalized.
+              I help people transform instability, uncertainty, and emotional demands into steady,
+              creative, and generative energy. My approach blends psychology, behavioral science,
+              and integrative mental health practices—grounded in respect for identity and lived
+              reality, and especially attuned to the anxious, the overwhelmed, and the marginalized.
             </p>
           </div>
         </section>
@@ -103,37 +134,35 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>WHAT I DO</h2>
           <p style={styles.p}>
-            Many people with strong insight and emotional depth find themselves
-            stalled and anxious—unhealthily circling reflection and falling out of
-            rhythm by allowing emotion to deplete motivation and energy.
+            Many people with strong insight and emotional depth find themselves stalled and anxious—
+            unhealthily circling reflection and falling out of rhythm by allowing emotion to deplete
+            motivation and energy.
           </p>
           <p style={styles.p}>
-            My work is to help people transform their emotional depth into clarity,
-            structure, and forward momentum that sustains creative and generative
-            energy.
+            My work is to help people transform their emotional depth into clarity, structure, and
+            forward momentum that sustains creative and generative energy.
           </p>
           <p style={styles.p}>
-            Each client develops an Individual Engagement Plan (IEP) grounded in
-            three foundations:
+            Each client develops an Individual Engagement Plan (IEP) grounded in three foundations:
           </p>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Organizational Skills:</strong> shaping tasks, planning,
-              and execution into clear, steady rhythms
+              <strong>Organizational Skills:</strong> shaping tasks, planning, and execution into
+              clear, steady rhythms
             </li>
             <li style={styles.li}>
-              <strong>Emotional Regulation:</strong> directing feeling into balanced
-              response rather than depletion
+              <strong>Emotional Regulation:</strong> directing feeling into balanced response rather
+              than depletion
             </li>
             <li style={styles.li}>
-              <strong>Cognitive Load Management:</strong> creating spaciousness
-              for focus by clearing internal and external clutter
+              <strong>Cognitive Load Management:</strong> creating spaciousness for focus by clearing
+              internal and external clutter
             </li>
           </ul>
           <p style={styles.p}>
-            The purpose is to stabilize motivation, expand capacity, and sustain
-            creative energy in service of life’s larger whole. These foundations are
-            held together by two guiding anchors.
+            The purpose is to stabilize motivation, expand capacity, and sustain creative energy in
+            service of life’s larger whole. These foundations are held together by two guiding
+            anchors.
           </p>
         </section>
 
@@ -142,20 +171,19 @@ export default function AboutPage() {
           <h2 style={styles.h2}>ANCHORS OF THE WORK</h2>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Clarity:</strong> the ability to see and organize behavior
-              with precision—understanding what drives action, what creates
-              friction, and what conditions allow energy to move freely.
+              <strong>Clarity:</strong> the ability to see and organize behavior with precision—
+              understanding what drives action, what creates friction, and what conditions allow
+              energy to move freely.
             </li>
             <li style={styles.li}>
-              <strong>Momentum:</strong> the capacity to carry that clarity forward
-              through steady habits and deliberate repetition—turning awareness
-              into action that holds over time.
+              <strong>Momentum:</strong> the capacity to carry that clarity forward through steady
+              habits and deliberate repetition—turning awareness into action that holds over time.
             </li>
           </ul>
           <p style={styles.p}>
-            Together, clarity and momentum form a framework where emotional depth is
-            not depleted but directed, creating stability in daily life and sustaining
-            creative and generative energy in alignment with life’s larger whole.
+            Together, clarity and momentum form a framework where emotional depth is not depleted but
+            directed, creating stability in daily life and sustaining creative and generative energy
+            in alignment with life’s larger whole.
           </p>
         </section>
 
@@ -163,17 +191,15 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>MISSION</h2>
           <p style={styles.p}>
-            I walk the way of the bodhisattva. This work is my way of reducing
-            suffering in the world. My goal is to help those I encounter see
-            freedom in the deepest truths of their own lives and live aligned with
-            their fullest capabilities. The aim is not only personal healing but the
-            cultivation of a prosocial world—where individual stability and creativity
-            ripple outward into stronger families, healthier communities, and more
+            I walk the way of the bodhisattva. This work is my way of reducing suffering in the
+            world. My goal is to help those I encounter see freedom in the deepest truths of their
+            own lives and live aligned with their fullest capabilities. The aim is not only personal
+            healing but the cultivation of a prosocial world—where individual stability and
+            creativity ripple outward into stronger families, healthier communities, and more
             integrated institutions.
           </p>
           <p style={styles.p}>
-            This mission comes alive through the concrete work I do with clients
-            every day.
+            This mission comes alive through the concrete work I do with clients every day.
           </p>
         </section>
 
@@ -181,10 +207,10 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-            I hold an MA in Psychology from the University of Massachusetts (2024)
-            and am a Licensed Integrative Mental Health Coach. I am also pursuing an
-            interdisciplinary PhD in the humanities, where my research deepens the
-            connection between individual identity and environmental consciousness.
+            I hold an MA in Psychology from the University of Massachusetts (2024) and am a Licensed
+            Integrative Mental Health Coach. I am also pursuing an interdisciplinary PhD in the
+            humanities, where my research deepens the connection between individual identity and
+            environmental consciousness.
           </p>
         </section>
 

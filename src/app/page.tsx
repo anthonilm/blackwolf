@@ -48,6 +48,38 @@ export default function Page() {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
+
+        /* === MOBILE ONLY (desktop stays untouched) === */
+        @media (max-width: 768px) {
+          .hero-wrapper {
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            margin-bottom: 1rem !important;
+          }
+          .hero-title {
+            font-size: clamp(1rem, 4.2vw, 1.8rem) !important;
+            letter-spacing: 0.06em !important;
+            white-space: nowrap !important;
+          }
+          .hero-lines div {
+            height: clamp(60px, 14vw, 90px) !important;
+            width: clamp(5px, 1vw, 7px) !important;
+          }
+          .hero-subtitle {
+            font-size: clamp(0.7rem, 3vw, 0.9rem) !important;
+            letter-spacing: 0.12em !important;
+            line-height: 1.3 !important;
+            max-width: 90% !important;
+            margin-top: 0.5rem !important;
+            white-space: normal !important;
+          }
+          .cta-button {
+            margin-top: 1rem !important;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+            padding: 0.8rem 1.4rem !important;
+          }
+        }
       `}</style>
 
       <Menu yvesBlue={yvesBlue} ivory={ivory} />
@@ -264,20 +296,23 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
     >
       {/* Hero content */}
       <div
+        className="hero-wrapper"
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "1.5rem",
+          gap: "0.8rem",
           marginBottom: "2rem",
           marginTop: "80px",
         }}
       >
-        <div style={{ display: "flex", gap: "0.4rem" }}>
-          <div style={{ width: "15px", height: "140px", backgroundColor: yvesBlue }} />
-          <div style={{ width: "15px", height: "140px", backgroundColor: yvesBlue }} />
+        {/* Lines fixed size on desktop, shrink only on mobile via CSS */}
+        <div className="hero-lines" style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}>
+          <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
+          <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
         </div>
         <h1
           ref={titleRef}
+          className="hero-title"
           style={{
             fontSize: "3.2rem",
             fontWeight: 700,
@@ -290,6 +325,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
       </div>
       <p
         ref={subtitleRef}
+        className="hero-subtitle"
         style={{
           fontSize: "1.4rem",
           textTransform: "uppercase",
@@ -306,6 +342,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
       <div style={{ marginTop: "1.5rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
+          className="cta-button"
           style={{
             display: "inline-block",
             padding: "1.2rem 2.4rem",

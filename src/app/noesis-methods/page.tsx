@@ -2,21 +2,39 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 
 export const HEADER_HEIGHT = 80;
 
 export default function NoesisMethodsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+  const [mounted, setMounted] = useState(false);
 
   const taupe = "#7A6C61";
   const yvesBlue = "#0018A8";
   const carmine = "#960018";
   const ivory = "#F5F0FA"; // soft lavender
 
+// Redirect mobile users to the stacked mobile page
+useEffect(() => {
+  setMounted(true);
+
+  const ua = navigator.userAgent || navigator.vendor || "";
+  const isMobile = /android|iphone|ipad|mobile/i.test(ua);
+
+  if (isMobile) {
+    router.replace("/noesis-methods-mobile");
+  }
+}, [router]);
+
+  if (!mounted) return null; // prevents hydration mismatch flicker
+
   return (
     <div
       ref={containerRef}
+      className="noesis-methods-page"
       style={{
         height: "100vh",
         display: "grid",
@@ -145,6 +163,62 @@ export default function NoesisMethodsPage() {
           top: 0.05em;
           font-size: 1em;
           color: ${yvesBlue};
+        }
+
+        /* === PRINT OVERRIDES FOR PDF EXPORT === */
+        @media print {
+          .noesis-methods-page {
+            overflow: visible !important;
+            height: auto !important;
+          }
+
+          .noesis-methods-page .railTrack {
+            display: block !important;
+            width: 100% !important;
+            overflow: visible !important;
+          }
+
+          .noesis-methods-page .panel {
+            display: block !important;
+            width: 100% !important;
+            min-height: auto !important;
+            page-break-inside: avoid !important;
+            padding: 2rem 1.5rem !important;
+            break-inside: avoid !important;
+          }
+
+          .noesis-methods-page .panelRight {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            transform: none !important;
+            text-align: center !important;
+            margin-top: 1rem !important;
+          }
+
+          .noesis-methods-page .phaseBig {
+            font-size: 2rem !important;
+            opacity: 0.5 !important;
+            display: block !important;
+            text-align: center !important;
+            margin-bottom: 1rem !important;
+          }
+
+          .noesis-methods-page .progress {
+            display: none !important;
+          }
+
+          .noesis-methods-page section {
+            max-width: 100% !important;
+            margin: 0 auto !important;
+          }
+
+          .noesis-methods-page p,
+          .noesis-methods-page h1,
+          .noesis-methods-page h2,
+          .noesis-methods-page h4 {
+            text-align: left !important;
+          }
         }
       `}</style>
 
@@ -468,27 +542,60 @@ export default function NoesisMethodsPage() {
   );
 }
 
-/* Menu */
+//* Menu */
 function Menu({ yvesBlue, ivory }: any) {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // detect mobile
+  useEffect(() => {
+    setMounted(true);
+    const ua = navigator.userAgent || navigator.vendor || "";
+    const isMobileDevice = /android|iphone|ipad|mobile/i.test(ua);
+    setIsMobile(isMobileDevice);
+  }, []);
 
   useEffect(() => {
     if (menuRef.current) {
       if (open) {
-        gsap.fromTo(menuRef.current, { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 });
+        gsap.fromTo(
+          menuRef.current,
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
+        );
       } else {
-        gsap.to(menuRef.current, { y: -10, opacity: 0, duration: 0.3 });
+        gsap.to(menuRef.current, {
+          y: -10,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
       }
     }
   }, [open]);
 
+  if (!mounted) return null; // prevent hydration mismatch
+
   return (
     <>
+      {/* Hamburger Button */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
+          className="menu-button"
           onClick={() => setOpen(!open)}
-          style={{ background: "transparent", border: "none", cursor: "pointer" }}
+          style={{
+            width: 40,
+            height: 40,
+            background: "transparent",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            border: "none",
+            padding: 0,
+          }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             <span style={{ width: 24, height: 2, background: yvesBlue }} />
@@ -497,6 +604,8 @@ function Menu({ yvesBlue, ivory }: any) {
           </div>
         </button>
       </div>
+
+      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -505,39 +614,63 @@ function Menu({ yvesBlue, ivory }: any) {
             top: 70,
             left: 20,
             minWidth: "240px",
-            background: "rgba(223, 245, 225, 0.25)",
+            background: "rgba(223, 245, 225, 0.25)", // soft transparent green
             backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             padding: "1.5rem 2rem",
             borderRadius: "14px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+            zIndex: 1000,
             display: "flex",
             flexDirection: "column",
             gap: "1.2rem",
-            zIndex: 1000,
           }}
         >
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
+            {
+              href: isMobile ? "/api/export-methods-pdf" : "/noesis-methods",
+              label: "How I Work",
+              external: isMobile,
+            },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              style={{
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-                letterSpacing: "0.05em",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          ].map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                style={{
+                  color: yvesBlue,
+                  fontWeight: 500,
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  color: yvesBlue,
+                  fontWeight: 500,
+                  fontSize: "1.1rem",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
       )}
     </>

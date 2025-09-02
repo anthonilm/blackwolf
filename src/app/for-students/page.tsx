@@ -73,7 +73,7 @@ export default function ResourcesPage() {
             color: "#111",
           }}
         >
-          Resources & Newsletters
+          Research
         </h1>
 
         {/* Tile grid */}

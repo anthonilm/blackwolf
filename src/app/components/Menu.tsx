@@ -8,6 +8,8 @@ import gsap from "gsap";
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -16,6 +18,14 @@ export default function Menu() {
 
   // hamburger color: ivory only on homepage ("/"), Yves blue elsewhere
   const hamburgerColor = pathname === "/" ? ivory : yvesBlue;
+
+  // detect mobile reliably
+  useEffect(() => {
+    setMounted(true);
+    const ua = navigator.userAgent || navigator.vendor || "";
+    const isMobileDevice = /android|iphone|ipad|mobile/i.test(ua);
+    setIsMobile(isMobileDevice);
+  }, []);
 
   useEffect(() => {
     if (menuRef.current) {
@@ -35,6 +45,8 @@ export default function Menu() {
       }
     }
   }, [open]);
+
+  if (!mounted) return null; // wait until client-side
 
   return (
     <>
@@ -87,7 +99,10 @@ export default function Menu() {
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
+            {
+              href: isMobile ? "/noesis-methods-mobile" : "/noesis-methods",
+              label: "How I Work",
+            },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/for-students", label: "Resources" },
