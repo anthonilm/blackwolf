@@ -9,6 +9,7 @@ export const HEADER_HEIGHT = 80;
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [showCalendly, setShowCalendly] = useState(false);
 
   const taupe = "#7A6C61";
   const yvesBlue = "#0018A8";
@@ -29,19 +30,19 @@ export default function Page() {
     >
       {/* Liquid overlay */}
       <div
-  className="liquid-overlay"
-  style={{
-    position: "absolute",   // instead of fixed
-    inset: 0,
-    background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-                 radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
-                 radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
-    backgroundSize: "200% 200%",
-    animation: "liquidMove 4s ease-in-out infinite alternate",
-    zIndex: 0,
-    pointerEvents: "none",
-  }}
-/>
+        className="liquid-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
+                       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
+                       radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
+          backgroundSize: "200% 200%",
+          animation: "liquidMove 4s ease-in-out infinite alternate",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
@@ -60,8 +61,71 @@ export default function Page() {
           overflow: "hidden",
         }}
       >
-        <Hero taupe={taupe} carmine={carmine} yvesBlue={yvesBlue} ivory={ivory} />
+        <Hero
+          taupe={taupe}
+          carmine={carmine}
+          yvesBlue={yvesBlue}
+          ivory={ivory}
+          setShowCalendly={setShowCalendly}
+        />
       </main>
+
+      {/* Calendly Embed */}
+      {showCalendly && (
+        <section
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.65)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 2000,
+          }}
+        >
+          <div
+            style={{
+              width: "90%",
+              maxWidth: "960px",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
+              background: "#fff",
+              position: "relative",
+            }}
+          >
+            <iframe
+              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              scrolling="no"
+              style={{ border: "none" }}
+            />
+            <button
+              onClick={() => setShowCalendly(false)}
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                padding: "0.6rem 1.2rem",
+                fontSize: "1rem",
+                fontWeight: 600,
+                background: yvesBlue,
+                color: "#fff",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }
@@ -125,8 +189,8 @@ function Menu({ yvesBlue, ivory }: any) {
             position: "fixed",
             top: 70,
             left: 20,
-            minWidth: "240px", // wider menu
-            background: "rgba(223, 245, 225, 0.25)", // soft transparent green
+            minWidth: "240px",
+            background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
             padding: "1.5rem 2rem",
@@ -135,13 +199,12 @@ function Menu({ yvesBlue, ivory }: any) {
             zIndex: 1000,
             display: "flex",
             flexDirection: "column",
-            gap: "1.2rem", // more breathing space
+            gap: "1.2rem",
           }}
         >
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
-
             { href: "/noesis-methods", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
@@ -154,8 +217,8 @@ function Menu({ yvesBlue, ivory }: any) {
               onClick={() => setOpen(false)}
               style={{
                 color: yvesBlue,
-                fontWeight: 500, // softer
-                fontSize: "1.1rem", // slightly larger
+                fontWeight: 500,
+                fontSize: "1.1rem",
                 letterSpacing: "0.05em",
               }}
             >
@@ -168,7 +231,7 @@ function Menu({ yvesBlue, ivory }: any) {
   );
 }
 
-function Hero({ taupe, carmine, yvesBlue, ivory }: any) {
+function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
 
@@ -200,7 +263,15 @@ function Hero({ taupe, carmine, yvesBlue, ivory }: any) {
       }}
     >
       {/* Hero content */}
-      <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", marginBottom: "2rem", marginTop: "80px" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "1.5rem",
+          marginBottom: "2rem",
+          marginTop: "80px",
+        }}
+      >
         <div style={{ display: "flex", gap: "0.4rem" }}>
           <div style={{ width: "15px", height: "140px", backgroundColor: yvesBlue }} />
           <div style={{ width: "15px", height: "140px", backgroundColor: yvesBlue }} />
@@ -228,11 +299,50 @@ function Hero({ taupe, carmine, yvesBlue, ivory }: any) {
           color: taupe,
         }}
       >
-        Transforming anxities into clarity, momentum, and creative flow.
+        Transforming anxieties into clarity, momentum, and creative flow.
       </p>
 
+      {/* Frosted CTA Button */}
+      <div style={{ marginTop: "1.5rem" }}>
+        <button
+          onClick={() => setShowCalendly(true)}
+          style={{
+            display: "inline-block",
+            padding: "1.2rem 2.4rem",
+            borderRadius: "14px",
+            background: "rgba(255, 255, 255, 0.25)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            color: "#000",
+            fontSize: "1.3rem",
+            fontFamily: "Georgia, serif",
+            fontWeight: 600,
+            letterSpacing: "0.05em",
+            border: "none",
+            cursor: "pointer",
+            transition: "all 0.3s ease",
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
+          }
+        >
+          Book Free First 1:1 Session
+        </button>
+      </div>
+
       {/* Social icons bottom-right */}
-      <div style={{ position: "absolute", bottom: 20, right: 20, display: "flex", gap: "1rem" }}>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 20,
+          right: 20,
+          display: "flex",
+          gap: "1rem",
+        }}
+      >
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
           <FaInstagram size={28} color={ivory} />
         </a>

@@ -31,8 +31,8 @@ export default function NoesisMethodsPage() {
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}20, transparent 70%),
-                       radial-gradient(circle at 80% 40%, ${carmine}20, transparent 70%),
+          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
+                       radial-gradient(circle at 80% 40%, ${ivory}20, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF20, transparent 70%)`,
           backgroundSize: "200% 200%",
           animation: "liquidMove 6s ease-in-out infinite alternate",

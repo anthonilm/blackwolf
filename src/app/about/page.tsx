@@ -9,9 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function AboutPage() {
   const [showLong, setShowLong] = useState(false);
-
-  const lead =
-    "Anthoni McElrath is a founder and consultant delivering integrative, psychology-informed, behavior-focused mental health care.";
+  const [showCalendly, setShowCalendly] = useState(false);
 
   const longVersion = [
     `There was a point in my life when I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth. I consumed knowledge obsessively, believing it would deliver a path to a better life. Yet despite all that study, I carried the weight of depression, anxiety, and years of instability. Awareness alone did not move me out of emotional and mental stagnation.`,
@@ -22,17 +20,60 @@ export default function AboutPage() {
 
   return (
     <main className={inter.className} style={styles.page}>
+      {/* Animated Background Overlay */}
+      <div
+        className="liquid-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `radial-gradient(circle at 20% 20%, #26619C40, transparent 70%),
+                       radial-gradient(circle at 80% 40%, #C7C9D540, transparent 70%),
+                       radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
+          backgroundSize: "200% 200%",
+          animation: "liquidMove 4s ease-in-out infinite alternate",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <style>{`
+        @keyframes liquidMove {
+          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
+          100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
+        }
+      `}</style>
+
       {/* Menu */}
       <Menu />
 
       <div style={styles.container}>
-        {/* Lead */}
-        <div style={styles.leadBox}>
-          <p style={styles.lead}>{lead}</p>
-        </div>
+        {/* === HERO SECTION === */}
+        <section style={styles.hero}>
+          <div style={styles.heroImage}>
+            <img
+              src="/about-headshot.jpg"
+              alt="Anthoni McElrath headshot"
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "8px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
+          <div style={styles.heroText}>
+            <h1 style={styles.heroName}>Anthoni McElrath</h1>
+            <h2 style={styles.heroTitle}>
+              M.A., Licensed Integrative Mental Health Coach
+            </h2>
+            <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
+            <p style={styles.heroDescription}>
+              I help people transform instability, uncertainty, and emotional demands into steady, creative, and generative energy. My approach blends psychology, behavioral science, and integrative mental health practices—grounded in respect for identity and lived reality, and especially attuned to the anxious, the overwhelmed, and the marginalized.
+            </p>
+          </div>
+        </section>
 
         {/* Long Version Toggle */}
-        <div style={{ margin: "16px 0 24px", textAlign: "center" }}>
+        <div style={{ margin: "32px 0 24px", textAlign: "center" }}>
           <button
             onClick={() => setShowLong((v) => !v)}
             aria-expanded={showLong}
@@ -42,7 +83,7 @@ export default function AboutPage() {
           </button>
         </div>
 
-        {/* Collapsible Long Version (ABOUT text) */}
+        {/* Collapsible Long Version */}
         <div
           style={{
             overflow: "hidden",
@@ -147,6 +188,61 @@ export default function AboutPage() {
           </p>
         </section>
 
+        {/* === BOOKING BUTTON === */}
+        <div style={{ textAlign: "center", marginTop: "3rem" }}>
+          <button
+            onClick={() => setShowCalendly(true)}
+            style={{
+              display: "inline-block",
+              padding: "1.2rem 2.4rem",
+              borderRadius: "14px",
+              background: "rgba(255, 255, 255, 0.25)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
+              color: "#000",
+              fontSize: "1.2rem",
+              fontFamily: "Georgia, serif",
+              fontWeight: 600,
+              letterSpacing: "0.05em",
+              border: "none",
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
+            }
+          >
+            Book Free First Session
+          </button>
+        </div>
+
+        {/* Calendly Embed */}
+        {showCalendly && (
+          <section
+            style={{
+              width: "100%",
+              maxWidth: "960px",
+              margin: "2rem auto",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.08)",
+              background: "#fff",
+            }}
+          >
+            <iframe
+              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              scrolling="no"
+              style={{ border: "none" }}
+            />
+          </section>
+        )}
+
         <footer style={styles.footer}>© 2025 Anthoni McElrath</footer>
       </div>
     </main>
@@ -165,7 +261,6 @@ function Menu() {
 
   return (
     <>
-      {/* Hamburger */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
@@ -189,7 +284,6 @@ function Menu() {
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -243,26 +337,52 @@ function Menu() {
 /* ===== Styles ===== */
 const styles: Record<string, React.CSSProperties> = {
   page: {
-    background: "rgba(122, 108, 97, 0.08)", // near-clear taupe
+    position: "relative",
     color: "#333",
     padding: "60px 20px 80px",
     display: "flex",
     justifyContent: "center",
+    overflow: "hidden",
   },
   container: {
-    maxWidth: 860,
+    maxWidth: 1100,
+    width: "100%",
+    position: "relative",
+    zIndex: 1,
+  },
+  hero: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "2rem",
+    alignItems: "center",
+    marginBottom: "4rem",
+  },
+  heroImage: {
     width: "100%",
   },
-  leadBox: {
-    borderLeft: "4px solid #0018A8",
-    paddingLeft: 16,
-    margin: "20px 0 32px",
+  heroText: {
+    textAlign: "left",
   },
-  lead: {
-    fontSize: 20,
-    fontStyle: "italic",
-    lineHeight: 1.7,
+  heroName: {
+    fontSize: "2.5rem",
+    fontWeight: 700,
+    marginBottom: "0.5rem",
     color: "#0018A8",
+  },
+  heroTitle: {
+    fontSize: "1rem",
+    marginBottom: "0.25rem",
+  },
+  heroSubtitle: {
+    fontSize: "1.2rem",
+    fontStyle: "italic",
+    marginBottom: "1rem",
+  },
+  heroDescription: {
+    fontSize: "1.1rem",
+    lineHeight: 1.6,
+    color: "#333",
+    maxWidth: "50ch",
   },
   longBtn: {
     appearance: "none",
