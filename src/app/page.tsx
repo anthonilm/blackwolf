@@ -22,7 +22,7 @@ export default function Page() {
       style={{
         height: "100vh",
         display: "grid",
-        gridTemplateRows: "auto 1fr",
+        gridTemplateRows: "auto 1fr auto",
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflow: "hidden",
@@ -78,6 +78,10 @@ export default function Page() {
             margin-top: 1rem !important;
             font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
             padding: 0.8rem 1.4rem !important;
+          }
+          .copyright {
+            font-size: 0.7rem !important;
+            padding: 0.6rem !important;
           }
         }
       `}</style>
@@ -158,6 +162,23 @@ export default function Page() {
           </div>
         </section>
       )}
+
+      {/* Copyright Footer */}
+      <footer
+        className="copyright"
+        style={{
+          background: "rgba(0,0,0,0.6)",
+          color: ivory,
+          textAlign: "center",
+          padding: "0.8rem",
+          fontSize: "0.8rem",
+          letterSpacing: "0.05em",
+          zIndex: 1500,
+          position: "relative",
+        }}
+      >
+        © {new Date().getFullYear()} Noesis Mental Health Care. All rights reserved.
+      </footer>
     </div>
   );
 }

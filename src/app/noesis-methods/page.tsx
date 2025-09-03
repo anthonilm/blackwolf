@@ -17,17 +17,17 @@ export default function NoesisMethodsPage() {
   const carmine = "#960018";
   const ivory = "#F5F0FA"; // soft lavender
 
-// Redirect mobile users to the stacked mobile page
-useEffect(() => {
-  setMounted(true);
+  // Redirect mobile users straight to the PDF
+  useEffect(() => {
+    setMounted(true);
 
-  const ua = navigator.userAgent || navigator.vendor || "";
-  const isMobile = /android|iphone|ipad|mobile/i.test(ua);
+    const ua = navigator.userAgent || navigator.vendor || "";
+    const isMobile = /android|iphone|ipad|mobile/i.test(ua);
 
-  if (isMobile) {
-    router.replace("/noesis-methods-mobile");
-  }
-}, [router]);
+    if (isMobile) {
+      router.replace("/api/export-methods-pdf");
+    }
+  }, [router]);
 
   if (!mounted) return null; // prevents hydration mismatch flicker
 

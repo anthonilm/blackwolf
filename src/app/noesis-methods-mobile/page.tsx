@@ -10,6 +10,7 @@ export default function NoesisMethodsMobilePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [showPhases, setShowPhases] = useState(false);
+  const [showApproach, setShowApproach] = useState(false);
 
   const taupe = "#7A6C61";
   const yvesBlue = "#0018A8";
@@ -29,9 +30,11 @@ export default function NoesisMethodsMobilePage() {
       style={{
         minHeight: "100vh",
         display: "grid",
-        gridTemplateRows: "auto 1fr",
+        gridTemplateRows: "auto 1fr auto",
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
+        overflowX: "hidden",
+        overflowY: "auto",
       }}
     >
       {/* Liquid overlay */}
@@ -53,254 +56,212 @@ export default function NoesisMethodsMobilePage() {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
-        .panel {
-          padding: 1.5rem 1rem;
-          background: linear-gradient(180deg, #fff, #fff0);
-        }
-        .phaseTag {
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-size: 0.75rem;
-          color: ${taupe};
-        }
-        .panelKicker {
-          font-weight: 600;
-          font-size: 1.15rem;
-          margin: 4px 0 8px 0;
-          color: ${yvesBlue};
-        }
-        .panelBody {
-          font-size: 1rem;
-          line-height: 1.6;
-          color: #0F1C2E;
-        }
-        .getList {
-          list-style: none;
-          margin: 8px 0 0 0;
-          padding: 0;
-          display: grid;
-          gap: 6px;
-        }
-        .getList li {
-          position: relative;
-          padding-left: 20px;
-          line-height: 1.5;
-          font-size: 1rem;
-          color: #0F1C2E;
-        }
-        .getList li::before {
-          content: "✔";
-          position: absolute;
-          left: 0;
-          top: 0.05em;
-          font-size: 0.9em;
-          color: ${yvesBlue};
-        }
+        .panel { padding: 2rem 1rem; background: linear-gradient(180deg, #fff, #fff0); }
+        .phaseTag { letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.75rem; color: ${taupe}; }
+        .panelKicker { font-weight: 600; font-size: 1.15rem; margin: 4px 0 8px 0; color: ${yvesBlue}; }
+        .panelBody { font-size: 1rem; line-height: 1.5; color: #0F1C2E; }
+        .getTitle { margin-top: 10px; font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; color: ${taupe}; }
+        .getList { list-style: none; margin: 8px 0 0 0; padding: 0; display: grid; gap: 6px; }
+        .getList li { position: relative; padding-left: 20px; line-height: 1.4; font-size: 1rem; color: #0F1C2E; }
+        .getList li::before { content: "✔"; position: absolute; left: 0; top: 0.05em; font-size: 0.9em; color: ${yvesBlue}; }
       `}</style>
 
       <Menu yvesBlue={yvesBlue} ivory={ivory} />
 
-      <main
-        style={{
-          position: "relative",
-          zIndex: 1,
-          overflowY: "auto",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
+      <main style={{ position: "relative", zIndex: 1, width: "100%", overflowX: "hidden", overflowY: "auto" }}>
         {/* HERO */}
-        <section
-          style={{
-            padding: "2.5rem 1rem 1.5rem 1rem",
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-            <div style={{ display: "flex", gap: "0.3rem" }}>
-              <div style={{ width: "6px", height: "40px", backgroundColor: yvesBlue }} />
-              <div style={{ width: "6px", height: "40px", backgroundColor: yvesBlue }} />
-            </div>
-            <h1 style={{ fontSize: "2rem", fontWeight: 700, letterSpacing: "0.08em" }}>
-              THE NOESIS APPROACH
-            </h1>
-          </div>
+        <section style={{ height: "25vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+          <h1 style={{ fontSize: "2rem", fontWeight: 700, letterSpacing: "0.08em" }}>
+            THE NOESIS APPROACH
+          </h1>
         </section>
 
         {/* ABOUT */}
-        <section
-          style={{
-            padding: "1.5rem 1rem",
-            background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)",
-            fontSize: "1rem",
-            lineHeight: 1.6,
-            color: "#0F1C2E",
-          }}
-        >
-          <p style={{ marginBottom: "1.2rem" }}>
-            Mental health is deeply affected by today’s shifting political, social, and
-            environmental realities. I provide structured behavioral and cognitive support
-            that helps people strengthen clarity, regulation, and execution even when
-            external conditions feel unstable.
-          </p>
+        <section style={{ minHeight: "60vh", padding: "2rem 1rem", background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)", fontSize: "1rem", lineHeight: 1.5, color: "#0F1C2E" }}>
           <p>
-            Care begins with understanding. Through short, reliable measures and weekly
-            observations, we track how instability shows up in your life and how it impacts
-            anxiety, depression, or diminished support. From there, I guide you in building
-            personalized strategies that transform emotional strain into creative and
-            generative energy.
+            Mental health is deeply affected by today’s shifting political, social, and environmental realities. I provide structured behavioral and cognitive support that helps people strengthen clarity, regulation, and execution even when external conditions feel unstable.
+          </p>
+          <br />
+          <p>
+            Care begins with understanding. Through short, reliable measures and weekly observations, we track how instability shows up in your life and how it impacts anxiety, depression, or diminished support. From there, I guide you in building personalized strategies that transform emotional strain into creative and generative energy.
           </p>
         </section>
 
         {/* INTRO */}
-        <section
-          style={{
-            padding: "1.5rem 1rem",
-            background: "linear-gradient(to bottom, #FFFFFF, #F5F0FA)",
-            color: "#0F1C2E",
-          }}
-        >
-          <h2 style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>
+        <section style={{ minHeight: "30vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem", background: "linear-gradient(to bottom, #FFFFFF, #F5F0FA)", color: "#0F1C2E", textAlign: "left" }}>
+          <h2 style={{ fontSize: "1.75rem" }}>
             Create the conditions where your challenges become energy for growth.
           </h2>
-          <p style={{ fontSize: "1rem", lineHeight: 1.6, marginBottom: "1rem" }}>
-            We start by understanding the patterns shaping your thoughts, emotions, and
-            daily rhythms. From there, we create a plan that brings stability, resilience,
-            and a greater sense of balance.
-          </p>
-          <p style={{ fontSize: "1rem", lineHeight: 1.6 }}>
-            Our work focuses on building routines that calm the nervous system, strengthen
-            regulation, and create reliable structure in your day.
-          </p>
         </section>
 
-        {/* METHODS SECTION */}
-        <section
-          style={{
-            padding: "1.5rem 1rem",
-            background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)",
-            fontSize: "1rem",
-            lineHeight: 1.6,
-          }}
-        >
+        {/* METHODS SECTION with TOGGLE */}
+        <section style={{ padding: "2rem 1rem", background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)", fontSize: "1rem", lineHeight: 1.5 }}>
           <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>The Approach</h2>
-          <ul style={{ paddingLeft: "1.2rem", marginBottom: "1rem" }}>
-            <li>Performance Readiness — confidence under pressure</li>
-            <li>Targeted Assessment — clarity on mental factors</li>
-            <li>Evidence-Based Skills — stability strategies</li>
-            <li>Personalized Plan — coping systems</li>
-            <li>Ongoing Support — weekly refinements</li>
-            <li>Habit Fortification — protect well-being</li>
-          </ul>
-          <p>
-            Clients leave with reliable systems and habits that improve performance, protect
-            health, and raise quality of life.
-          </p>
-        </section>
 
-        {/* PHASES TOGGLE + CONTENT */}
-        <section
-          style={{
-            padding: "1.5rem 1rem",
-            textAlign: "center",
-          }}
-        >
-          <h2 style={{ fontSize: "1.75rem", marginBottom: "1.5rem" }}>
-            THERE ARE 4 CORE PHASES WE WILL TRACK
-          </h2>
-          <button
-            onClick={() => setShowPhases(!showPhases)}
-            style={{
-              fontSize: "1.2rem",
-              fontWeight: 500,
-              color: yvesBlue,
-              border: `2px solid ${yvesBlue}`,
-              borderRadius: "6px",
-              padding: "0.8rem 1.4rem",
-              background: "transparent",
-              cursor: "pointer",
-            }}
-          >
-            {showPhases ? "Hide Phases" : "See the 4 Phases"}
-          </button>
+          {/* Left side tiles always visible */}
+          <div style={{ display: "grid", gap: "1rem" }}>
+            {[
+              { num: 1, title: "Readiness", desc: "Confidence and steadiness under pressure" },
+              { num: 2, title: "Assessment", desc: "Clarity on the mental and emotional drivers of performance" },
+              { num: 3, title: "Skills", desc: "Practices that stabilize, regulate, and sustain energy" },
+              { num: 4, title: "Plan", desc: "A framework tailored to personal rhythms and needs" },
+              { num: 5, title: "Support", desc: "Ongoing refinements that strengthen alignment over time" },
+              { num: 6, title: "Habits", desc: "Structures that protect well-being and extend creative momentum" },
+            ].map((item) => (
+              <div key={item.num} style={{ background: "#fff", padding: "1rem", borderRadius: "6px", boxShadow: "0 2px 6px rgba(0,0,0,0.08)", display: "flex", gap: "0.8rem", alignItems: "flex-start" }}>
+                <div style={{ flexShrink: 0, background: yvesBlue, color: "#fff", fontWeight: 600, borderRadius: "50%", width: "28px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.9rem" }}>
+                  {item.num}
+                </div>
+                <div>
+                  <p style={{ fontWeight: 600, marginBottom: "0.2rem" }}>{item.title}</p>
+                  <p style={{ fontSize: "0.95rem", margin: 0 }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-          {showPhases && (
-            <div style={{ marginTop: "2rem", display: "grid", gap: "1.5rem" }}>
-              {/* === FULL ORIGINAL PHASES KEPT INTACT === */}
-              <article className="panel">
-                <p className="phaseTag">PHASE 1</p>
-                <h4 className="panelKicker">Diagnostic &amp; Map</h4>
-                <p className="panelBody">
-                  In our first step, you’ll get a clear snapshot of where you are right now. A short COM-B intake highlights what’s supporting you and what’s draining you, so we can see the patterns shaping your stress, focus, and follow-through. This session is interactive—you’ll have space to reflect, ask questions, and explore how your thoughts and emotions connect, leaving with language for what’s happening inside and insights to prepare you for the next steps.
-                </p>
-                <p className="getTitle">What you’ll get</p>
-                <ul className="getList">
-                  <li>A clear picture of what’s helping and what’s draining you</li>
-                  <li>Priority areas to lighten the mental load</li>
-                  <li>A calm, structured starting point</li>
-                </ul>
-              </article>
+          {/* Toggle button */}
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <button
+              onClick={() => setShowApproach(!showApproach)}
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: 500,
+                color: yvesBlue,
+                border: `2px solid ${yvesBlue}`,
+                borderRadius: "6px",
+                padding: "0.6rem 1.2rem",
+                background: "transparent",
+                cursor: "pointer",
+              }}
+            >
+              {showApproach ? "Hide Full Approach" : "See Full Approach"}
+            </button>
+          </div>
 
-              <article className="panel">
-                <p className="phaseTag">PHASE 1.5</p>
-                <h4 className="panelKicker">Audit Week</h4>
-                <p className="panelBody">
-                  After the first session, you’ll track real-life patterns—sleep, energy, mood, actions, and disruptions—so we can see how your daily rhythms connect to your mental load. In this step, we review your COM-B results, talk through your goals, and decide which IEP track feels right for you. This is the moment you choose what habits and actions you want to change in order to find clarity, relief, and forward momentum. By the end of the week, you’ll have a clear view of what drives your effectiveness and a decision-ready plan for what comes next.
-                </p>
-                <p className="getTitle">What you’ll get</p>
-                <ul className="getList">
-                  <li>A snapshot of your current rhythms</li>
-                  <li>Clarity on what’s fueling fatigue or calm</li>
-                  <li>Simple cues for where to focus first</li>
-                </ul>
-              </article>
-
-              <article className="panel">
-                <p className="phaseTag">PHASE 2</p>
-                <h4 className="panelKicker">IEP &amp; Track</h4>
-                <p className="panelBody">
-                  The IEP provides a structured plan based on your assessment results and goals. Six tracks are available: Stabilization First restores daily routines and reduces overwhelm. Emotional Processing focuses on how environment and stressors affect mood, helping you identify triggers and build healthier responses. Motivation Rebuild reconnects you with values and direction when drive feels low. Capability Expansion develops attention, memory, and executive function. Environmental Alignment ensures your surroundings reinforce progress. Identity Integration reduces inner conflict by aligning roles and behavior. Each track offers targeted tools that support mental health and establish consistent patterns for steady function and sustainable performance.
-                </p>
-                <p className="getTitle">What you’ll get</p>
-                <ul className="getList">
-                  <li>A tailored, low-friction plan that feels doable</li>
-                  <li>Environmental tweaks that make life feel lighter</li>
-                  <li>A realistic pace to rebuild confidence and control</li>
-                </ul>
-              </article>
-
-              <article className="panel">
-                <p className="phaseTag">PHASE 3</p>
-                <h4 className="panelKicker">Activation</h4>
-                <p className="panelBody">
-                  Weekly cycles introduce small, focused changes to habits, time use, and daily patterns. Each adjustment is designed to support emotional regulation, lighten mental load, and make progress feel manageable. We track a few key signals that confirm stability, build reliability, and keep momentum visible.
-                </p>
-                <p className="getTitle">What you’ll get</p>
-                <ul className="getList">
-                  <li>Gentle weekly steps that fit your capacity</li>
-                  <li>Quick wins to boost confidence and stability</li>
-                  <li>Tracking that shows progress, even on hard days</li>
-                </ul>
-              </article>
-
-              <article className="panel">
-                <p className="phaseTag">PHASE 4</p>
-                <h4 className="panelKicker">Outcomes</h4>
-                <p className="panelBody">
-                  By this stage, the process has reoriented your mind and routines toward your most effective mental and cognitive functioning. You’ll have patterns, behaviors, and tools that are tailored to your identity, context, and conditions.
-                </p>
-                <p className="getTitle">What you’ll get</p>
-                <ul className="getList">
-                  <li>A clear sense of what’s working and why</li>
-                  <li>Tools and systems designed around you that protect mental and emotional energy while supporting optimal function</li>
-                  <li>A forward plan that feels safe and achievable</li>
-                </ul>
-              </article>
+          {/* Right side narrative revealed when expanded */}
+          {showApproach && (
+            <div style={{ marginTop: "2rem", fontSize: "1rem", lineHeight: 1.6 }}>
+              <p>
+                The Noesis Approach blends psychology and behavioral science to support mental health and strengthen daily function. My approach centers on practical tools that improve clarity, stabilize regulation, and sustain steady execution—so you can move through demands with greater consistency and confidence.
+              </p>
+              <p>
+                Through structured assessments and weekly check-ins, we look at how stress, motivation, and performance patterns show up in your life. From there, we shape clear, manageable strategies that support emotional balance, restore structure, and make follow-through easier.
+              </p>
+              <p>We focus on three essentials:</p>
+              <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
+                <li><strong>Organizational systems</strong> – practical routines that lighten mental load.</li>
+                <li><strong>Emotional regulation</strong> – composure and focus under pressure.</li>
+                <li><strong>Cognitive load management</strong> – preventing overwhelm and sustaining clarity.</li>
+              </ul>
+              <p>
+                Clients leave with reliable systems and habits that improve performance, protect health, and raise quality of life.
+              </p>
             </div>
           )}
         </section>
+
+        {/* === PHASES TOGGLE === */}
+        <section style={{ minHeight: "30vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "2rem 1rem", textAlign: "center" }}>
+          <h2 style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>THERE ARE 4 CORE PHASES WE WILL TRACK</h2>
+          <button
+            onClick={() => setShowPhases(!showPhases)}
+            style={{ fontSize: "1.25rem", fontWeight: 500, color: yvesBlue, border: `2px solid ${yvesBlue}`, borderRadius: "6px", padding: "0.8rem 1.4rem", background: "transparent", cursor: "pointer" }}
+          >
+            {showPhases ? "Hide Phases" : "See the 4 Phases"}
+          </button>
+        </section>
+
+        {/* === FULL PHASES CONTENT === */}
+        {showPhases && (
+          <section style={{ display: "grid", gap: "1.5rem", padding: "1rem" }}>
+            <article className="panel">
+              <p className="phaseTag">PHASE 1</p>
+              <h4 className="panelKicker">Diagnostic &amp; Map</h4>
+              <p className="panelBody">
+                In our first step, you’ll get a clear snapshot of where you are right now. A short COM-B intake highlights what’s supporting you and what’s draining you, so we can see the patterns shaping your stress, focus, and follow-through. This session is interactive—you’ll have space to reflect, ask questions, and explore how your thoughts and emotions connect, leaving with language for what’s happening inside and insights to prepare you for the next steps.
+              </p>
+              <p className="getTitle">What you’ll get</p>
+              <ul className="getList">
+                <li>A clear picture of what’s helping and what’s draining you</li>
+                <li>Priority areas to lighten the mental load</li>
+                <li>A calm, structured starting point</li>
+              </ul>
+            </article>
+
+            <article className="panel">
+              <p className="phaseTag">PHASE 1.5</p>
+              <h4 className="panelKicker">Audit Week</h4>
+              <p className="panelBody">
+                After the first session, you’ll track real-life patterns—sleep, energy, mood, actions, and disruptions—so we can see how your daily rhythms connect to your mental load. In this step, we review your COM-B results, talk through your goals, and decide which IEP track feels right for you. This is the moment you choose what habits and actions you want to change in order to find clarity, relief, and forward momentum. By the end of the week, you’ll have a clear view of what drives your effectiveness and a decision-ready plan for what comes next.
+              </p>
+              <p className="getTitle">What you’ll get</p>
+              <ul className="getList">
+                <li>A snapshot of your current rhythms</li>
+                <li>Clarity on what’s fueling fatigue or calm</li>
+                <li>Simple cues for where to focus first</li>
+              </ul>
+            </article>
+
+            <article className="panel">
+              <p className="phaseTag">PHASE 2</p>
+              <h4 className="panelKicker">IEP &amp; Track</h4>
+              <p className="panelBody">
+                The IEP provides a structured plan based on your assessment results and goals. Six tracks are available: Stabilization First restores daily routines and reduces overwhelm. Emotional Processing focuses on how environment and stressors affect mood, helping you identify triggers and build healthier responses. Motivation Rebuild reconnects you with values and direction when drive feels low. Capability Expansion develops attention, memory, and executive function. Environmental Alignment ensures your surroundings reinforce progress. Identity Integration reduces inner conflict by aligning roles and behavior. Each track offers targeted tools that support mental health and establish consistent patterns for steady function and sustainable performance.
+              </p>
+              <p className="getTitle">What you’ll get</p>
+              <ul className="getList">
+                <li>A tailored, low-friction plan that feels doable</li>
+                <li>Environmental tweaks that make life feel lighter</li>
+                <li>A realistic pace to rebuild confidence and control</li>
+              </ul>
+            </article>
+
+            <article className="panel">
+              <p className="phaseTag">PHASE 3</p>
+              <h4 className="panelKicker">Activation</h4>
+              <p className="panelBody">
+                Weekly cycles introduce small, focused changes to habits, time use, and daily patterns. Each adjustment is designed to support emotional regulation, lighten mental load, and make progress feel manageable. We track a few key signals that confirm stability, build reliability, and keep momentum visible.
+              </p>
+              <p className="getTitle">What you’ll get</p>
+              <ul className="getList">
+                <li>Gentle weekly steps that fit your capacity</li>
+                <li>Quick wins to boost confidence and stability</li>
+                <li>Tracking that shows progress, even on hard days</li>
+              </ul>
+            </article>
+
+            <article className="panel">
+              <p className="phaseTag">PHASE 4</p>
+              <h4 className="panelKicker">Outcomes</h4>
+              <p className="panelBody">
+                By this stage, the process has reoriented your mind and routines toward your most effective mental and cognitive functioning. You’ll have patterns, behaviors, and tools that are tailored to your identity, context, and conditions.
+              </p>
+              <p className="getTitle">What you’ll get</p>
+              <ul className="getList">
+                <li>A clear sense of what’s working and why</li>
+                <li>Tools and systems designed around you that protect mental and emotional energy while supporting optimal function</li>
+                <li>A forward plan that feels safe and achievable</li>
+              </ul>
+            </article>
+          </section>
+        )}
       </main>
+
+      {/* COPYRIGHT FOOTER */}
+      <footer
+        style={{
+          padding: "1rem",
+          textAlign: "center",
+          fontSize: "0.85rem",
+          color: taupe,
+          borderTop: `1px solid ${taupe}40`,
+          background: "#fff",
+          zIndex: 5,
+        }}
+      >
+        © {new Date().getFullYear()} Noesis Systems. All rights reserved.
+      </footer>
     </div>
   );
 }
@@ -325,16 +286,7 @@ function Menu({ yvesBlue, ivory }: any) {
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
-          style={{
-            width: 40,
-            height: 40,
-            background: "transparent",
-            display: "flex",
-            flexDirection: "column",
-            gap: 6,
-            border: "none",
-            cursor: "pointer",
-          }}
+          style={{ width: 40, height: 40, background: "transparent", display: "flex", flexDirection: "column", gap: 6, border: "none", cursor: "pointer" }}
         >
           <span style={{ width: 24, height: 2, background: yvesBlue }} />
           <span style={{ width: 24, height: 2, background: yvesBlue }} />
@@ -342,23 +294,7 @@ function Menu({ yvesBlue, ivory }: any) {
         </button>
       </div>
       {open && (
-        <div
-          ref={menuRef}
-          style={{
-            position: "fixed",
-            top: 70,
-            left: 20,
-            minWidth: "240px",
-            background: "rgba(223, 245, 225, 0.25)",
-            backdropFilter: "blur(10px)",
-            padding: "1.5rem 2rem",
-            borderRadius: "14px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.2rem",
-            zIndex: 1000,
-          }}
-        >
+        <div ref={menuRef} style={{ position: "fixed", top: 70, left: 20, minWidth: "240px", background: "rgba(223, 245, 225, 0.25)", backdropFilter: "blur(10px)", padding: "1.5rem 2rem", borderRadius: "14px", display: "flex", flexDirection: "column", gap: "1.2rem", zIndex: 1000 }}>
           {[
             { href: "/", label: "Home" },
             { href: "/about", label: "About" },
@@ -368,17 +304,7 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              style={{
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1rem",
-                letterSpacing: "0.05em",
-              }}
-            >
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1rem", letterSpacing: "0.05em" }}>
               {link.label}
             </Link>
           ))}
