@@ -271,10 +271,9 @@ export default function NoesisMethodsPage() {
               Create the conditions where your challenges become energy for growth.
             </h2>
             <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
-              We start by understanding the patterns shaping your thoughts, emotions, and daily rhythms. From there, we create a plan that brings stability, resilience, and a greater sense of balance. Together, we look at how you manage stress, regulate emotions, stay organized, and connect with others—highlighting both strengths and the places that feel stuck.
-            </p>
+Until our minds are healthy, and our bodies and behaviors reflect that same balance, what does it matter what the world has to offer? Opportunities can pass by unnoticed if we’re unprepared or unable to see them clearly. My role is to help people create the conditions—inside and out—that make those opportunities visible, and to build the confidence to step toward them when they arrive.            </p>
             <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
-              Our work focuses on building routines that calm the nervous system, strengthen regulation, and create reliable structure in your day. Step by step, we introduce strategies that are practical, evidence-based, and easy to use. The aim is simple: to help you feel grounded, reduce overwhelm, and sustain well-being in the areas of life that matter most.
+             
             </p>
           </div>
         </section>
@@ -469,11 +468,9 @@ export default function NoesisMethodsPage() {
             {/* Right side narrative */}
             <div style={{ fontSize: "20px", lineHeight: 1.7, textAlign: "left" }}>
               <p>
-                The Noesis Approach blends psychology and behavioral science to support mental health and strengthen daily function. My approach centers on practical tools that improve clarity, stabilize regulation, and sustain steady execution—so you can move through demands with greater consistency and confidence.
-              </p>
+The Noesis Approach draws from psychology and behavioral science to steady the mind and strengthen daily rhythms. It is built around practical tools that bring clarity, regulate energy, and support consistent action—so demands feel less consuming and progress feels more sustainable.              </p>
               <p>
-                Through structured assessments and weekly check-ins, we look at how stress, motivation, and performance patterns show up in your life. From there, we shape clear, manageable strategies that support emotional balance, restore structure, and make follow-through easier.
-              </p>
+Through ongoing conversations and simple tracking, we notice how stress, motivation, and performance patterns shape your days. From there, we build strategies that are direct, realistic, and easy to hold—restoring balance, reinforcing structure, and making follow-through feel natural.              </p>
               <p>We focus on three essentials:</p>
               <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
                 <li>
@@ -487,8 +484,7 @@ export default function NoesisMethodsPage() {
                 </li>
               </ul>
               <p>
-                Clients leave with reliable systems and habits that improve performance, protect health, and raise quality of life.
-              </p>
+Clients leave with systems and habits that support stability, protect well-being, and create reliable momentum in both work and life.              </p>
             </div>
           </div>
         </section>
@@ -517,23 +513,10 @@ export default function NoesisMethodsPage() {
             }}
           >
             <p>
-              Mental health is deeply affected by today’s shifting political,
-              social, and environmental realities. I provide structured behavioral
-              and cognitive support that helps people strengthen clarity,
-              regulation, and execution even when external conditions feel
-              unstable. My work acknowledges the real weight of these pressures
-              and focuses on giving you practical tools to ground yourself and
-              sustain steady function.
+              The pressures of our time reach into daily life, often in ways that disrupt focus, energy, and stability. My work offers structured support that restores rhythm and direction, helping people strengthen composure and carry momentum through uncertainty. Rather than ignore those external realities, I frame them as part of the work itself—conditions to be acknowledged, adapted to, and navigated with steadiness.
             </p>
             <p>
-              Care begins with understanding. Through short, reliable measures and
-              ongoing weekly observations, we track how instability shows up in
-              your life and how it impacts anxiety, depression, or diminished
-              support. From there, I guide you in building personalized strategies
-              that transform emotional strain into creative and generative
-              energy—cultivating habits and systems that stabilize your mind,
-              expand your resilience, and allow clarity and purpose to take root
-              even under pressure.
+              Each process begins with close attention. Through simple measures and regular reflection, we see how stress, fatigue, or disconnection take shape in your routines. From there, we design strategies that convert strain into constructive energy—introducing habits that protect focus, practices that renew resilience, and systems that keep purpose intact even in unsettled environments.
             </p>
           </div>
         </section>
@@ -636,6 +619,7 @@ function Menu({ yvesBlue, ivory }: any) {
             },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
+            { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) =>

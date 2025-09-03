@@ -4,37 +4,42 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 
-
 const sections = {
-  Services: [
+  "Student Services": [
     {
-      title: "1:1 Standalone Session – $90",
+      title: "1:1 Standalone Session – $45",
       description:
-        "1 hr sessions that help you clarify strong emotions and channel deep thinking into clear action. Together we’ll transform emotion into action and action into motivation.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/R2K8FTNDEH928",
+        "A single 60-minute session focused on immediate academic needs—whether preparing for an assignment, organizing study tasks, or clarifying focus. Designed to provide quick clarity and practical strategies in one meeting.",
+      checkoutUrl: "https://www.paypal.com/ncp/payment/GA9C52BCKWCN8",
     },
     {
-      title: " Maintenance (2×/month) + IEP  – $200",
+      title: "Diagnostic + Strategy Session – $120",
       description:
-        "Two 1 hr sessions + a tailored plan that maps how your emotions and thoughts shape performance. You’ll leave with tools that enhance performance and engaged.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/V65JZBVSQJ594",
+        "A 90-minute deep dive to map strengths, challenges, and study habits. You’ll leave with a personalized roadmap, clarity on where to focus, and 2–3 actions you can take immediately.",
+      checkoutUrl: "https://www.paypal.com/ncp/payment/ATJFLE4UVNN7U",
     },
     {
-      title: "3-Session Package – $250",
+      title: "Exam Readiness Intensive – $180",
       description:
-        "Weekly 1 hr + async support. Async support give you space to access distinct tools in the moments when you feel a lack of focus",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/KN9RGNWTMTEWQ",
+        "A 2-hour session to build a personalized exam prep system. Together we’ll break down one test into sections, design recall strategies, and create a clear countdown plan to test day.",
+      checkoutUrl: "https://www.paypal.com/ncp/payment/S6LE4YE5BDQHG",
     },
     {
-      title: "6-Session Package – $400",
+      title: "Executive Function Lab (4 weeks) – $450",
       description:
-        "A structured arc of support designed to help you carry depth into steady progress. Across six sessions, we’ll cultivate stability, reinforce habits that protect motivation, and channel your emotional energy into performance and creative flow.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/KMQK6HTCMY7CQ",
+        "Weekly 1-hour coaching sessions to train study rhythms, focus practices, and accountability systems. Students finish with transferable routines that reduce procrastination and build confidence.",
+      checkoutUrl: "https://www.paypal.com/ncp/payment/GW8GH2PMV6EXQ",
+    },
+    {
+      title: "Academic Resilience Coaching (6–8 weeks) – $800",
+      description:
+        "Biweekly 1-hour coaching designed to strengthen stress regulation, recovery practices, and adaptive persistence. Students gain mental tools that sustain performance across the semester.",
+      checkoutUrl: "https://www.paypal.com/ncp/payment/CYCCP9VRBV6EW",
     },
   ],
 };
 
-export default function ServicesPage() {
+export default function StudentServicesPage() {
   const [showCalendly, setShowCalendly] = useState(false);
   const [currentCheckout, setCurrentCheckout] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -44,10 +49,9 @@ export default function ServicesPage() {
     setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
   }, []);
 
-  // Calendly event listener
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
-      if (e.data.event && e.data.event === "calendly.event_scheduled") {
+      if (e.data && (e.data as any).event === "calendly.event_scheduled") {
         if (currentCheckout) {
           window.location.href = currentCheckout;
         }
@@ -66,34 +70,11 @@ export default function ServicesPage() {
         position: "relative",
         overflow: "hidden",
         zIndex: 0,
+        background: "linear-gradient(135deg, #A67B5B, #FFFFFF)",
       }}
     >
-      {/* Animated Overlay */}
-      <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, #96001830, transparent 70%),
-                       radial-gradient(circle at 80% 40%, #7A6C6130, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF30, transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 4s ease-in-out infinite alternate",
-          zIndex: -1,
-          pointerEvents: "none",
-        }}
-      />
-      <style>{`
-        @keyframes liquidMove {
-          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
-          100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
-        }
-      `}</style>
-
-      {/* Yves Blue Menu */}
       <Menu />
 
-      {/* Headline */}
       <h1
         style={{
           fontSize: "3rem",
@@ -101,35 +82,37 @@ export default function ServicesPage() {
           maxWidth: "72ch",
           margin: "0 auto 3rem",
           lineHeight: 1.2,
-          color: "#333",
+          color: "#0018A8",
           fontWeight: 700,
           letterSpacing: "0.05em",
         }}
       >
-        Choose your plan and begin the work of change.
+        Build confidence in your ability to learn and grow.
       </h1>
 
-      {/* Services Section */}
       {Object.entries(sections).map(([category, items]) => (
         <div key={category}>
           <div
+            className="services-grid"
             style={{
               display: "flex",
               justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "2rem",
+              flexWrap: "nowrap",
+              gap: "1rem",
               paddingBottom: "3rem",
+              overflowX: "auto",
             }}
           >
             {items.map((item, idx) => (
               <div
                 key={idx}
+                className="service-tile"
                 style={{
-                  flex: "0 1 340px",
-                  background: "#FFFFF0cc",
+                  flex: "0 1 220px",
+                  background: "#FFFFFFee",
                   border: "1px solid rgba(0,0,0,0.08)",
                   borderRadius: "16px",
-                  padding: "2rem",
+                  padding: "1.5rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
@@ -137,34 +120,24 @@ export default function ServicesPage() {
                   textAlign: "center",
                   boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  minHeight: "280px",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 12px 28px rgba(0,0,0,0.25)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 18px rgba(0,0,0,0.15)";
+                  minHeight: "240px",
                 }}
               >
                 <h2
                   style={{
-                    fontSize: "1.6rem",
+                    fontSize: "1.3rem",
                     margin: "0 0 1rem 0",
                     fontWeight: 700,
-                    color: "#960018", // Carmine headers
+                    color: "#0018A8",
                   }}
                 >
                   {item.title}
                 </h2>
                 <p
                   style={{
-                    fontSize: "1.05rem",
-                    lineHeight: 1.6,
-                    margin: "0 0 1.5rem 0",
+                    fontSize: "0.95rem",
+                    lineHeight: 1.5,
+                    margin: "0 0 1.2rem 0",
                     color: "#333",
                   }}
                 >
@@ -183,31 +156,19 @@ export default function ServicesPage() {
                     }
                   }}
                   style={{
-                    padding: "1rem 2rem",
-                    borderRadius: "50px",
-                    fontSize: "1.1rem",
+                    padding: "0.8rem 1.6rem",
+                    borderRadius: "40px",
+                    fontSize: "1rem",
                     fontWeight: 700,
                     letterSpacing: "0.05em",
                     fontFamily: "Georgia, 'Times New Roman', serif",
-                    background: "#0018A8", // Solid Yves Blue
+                    background: "#0018A8",
                     color: "#fff",
                     border: "none",
                     cursor: "pointer",
-                    boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
-                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 10px 24px rgba(0,0,0,0.25)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 6px 18px rgba(0,0,0,0.2)";
                   }}
                 >
-                  Lock it in →
+                  Proceed to Booking
                 </button>
               </div>
             ))}
@@ -215,7 +176,6 @@ export default function ServicesPage() {
         </div>
       ))}
 
-      {/* === THE FIRST SESSION SECTION === */}
       <section
         style={{
           textAlign: "center",
@@ -229,7 +189,7 @@ export default function ServicesPage() {
           style={{
             fontSize: "1.8rem",
             fontWeight: 600,
-            color: "#960018",
+            color: "#0018A8",
             marginBottom: "1rem",
             letterSpacing: "0.03em",
           }}
@@ -247,10 +207,10 @@ export default function ServicesPage() {
         >
           In the first free session, you’ll leave with a clearer sense of your
           patterns, practical strategies to ease overwhelm, and a grounded
-          picture of what forward movement can look like for you.
+          picture of what forward movement can look like for you—even if you
+          choose not to continue.
         </p>
 
-        {/* Frosted Booking Button */}
         <button
           onClick={() => {
             if (isMobile) {
@@ -266,7 +226,7 @@ export default function ServicesPage() {
             display: "inline-block",
             padding: "1rem 2rem",
             borderRadius: "12px",
-            background: "rgba(255, 255, 255, 0.25)", // frosted look
+            background: "rgba(255, 255, 255, 0.25)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
             color: "#000",
@@ -276,20 +236,12 @@ export default function ServicesPage() {
             fontFamily: "Georgia, 'Times New Roman', serif",
             border: "none",
             cursor: "pointer",
-            transition: "all 0.3s ease",
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
-          }
         >
           Book Free First Session
         </button>
       </section>
 
-      {/* Calendly Modal */}
       {showCalendly && !isMobile && (
         <div
           style={{
@@ -334,7 +286,7 @@ export default function ServicesPage() {
                 padding: "0.6rem 1.2rem",
                 fontSize: "1rem",
                 fontWeight: 600,
-                background: "#0018A8", // Yves Blue close button
+                background: "#0018A8",
                 color: "#fff",
                 border: "none",
                 borderRadius: "6px",
@@ -346,11 +298,26 @@ export default function ServicesPage() {
           </div>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .services-grid {
+            flex-wrap: wrap !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .service-tile {
+            flex: 1 1 auto !important;
+            width: 100% !important;
+            max-width: 400px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
 
-/* Yves Blue Hamburger Menu */
+/* === Menu Component === */
 function Menu() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -362,17 +329,21 @@ function Menu() {
         gsap.fromTo(
           menuRef.current,
           { y: -10, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.4 }
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
         );
       } else {
-        gsap.to(menuRef.current, { y: -10, opacity: 0, duration: 0.3 });
+        gsap.to(menuRef.current, {
+          y: -10,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
       }
     }
   }, [open]);
 
   return (
     <>
-      {/* Hamburger */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
@@ -396,7 +367,6 @@ function Menu() {
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -407,12 +377,14 @@ function Menu() {
             minWidth: "240px",
             background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             padding: "1.5rem 2rem",
             borderRadius: "14px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+            zIndex: 1000,
             display: "flex",
             flexDirection: "column",
             gap: "1.2rem",
-            zIndex: 1000,
             fontFamily: "Georgia, 'Times New Roman', serif",
           }}
         >

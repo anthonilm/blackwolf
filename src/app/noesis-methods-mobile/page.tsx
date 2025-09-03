@@ -78,12 +78,10 @@ export default function Page() {
         {/* ABOUT */}
         <section style={{ minHeight: "60vh", padding: "2rem 1rem", background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)", fontSize: "1rem", lineHeight: 1.5, color: "#0F1C2E" }}>
           <p>
-            Mental health is deeply affected by today’s shifting political, social, and environmental realities. I provide structured behavioral and cognitive support that helps people strengthen clarity, regulation, and execution even when external conditions feel unstable.
-          </p>
+The pressures of our time reach into daily life, often in ways that disrupt focus, energy, and stability. My work offers structured support that restores rhythm and direction, helping people strengthen composure and carry momentum through uncertainty. Rather than ignore those external realities, I frame them as part of the work itself—conditions to be acknowledged, adapted to, and navigated with steadiness.          </p>
           <br />
           <p>
-            Care begins with understanding. Through short, reliable measures and weekly observations, we track how instability shows up in your life and how it impacts anxiety, depression, or diminished support. From there, I guide you in building personalized strategies that transform emotional strain into creative and generative energy.
-          </p>
+Each process begins with close attention. Through simple measures and regular reflection, we see how stress, fatigue, or disconnection take shape in your routines. From there, we design strategies that convert strain into constructive energy—introducing habits that protect focus, practices that renew resilience, and systems that keep purpose intact even in unsettled environments.          </p>
         </section>
 
         {/* INTRO */}
@@ -139,11 +137,9 @@ export default function Page() {
           {showApproach && (
             <div style={{ marginTop: "2rem", fontSize: "1rem", lineHeight: 1.6 }}>
               <p>
-                The Noesis Approach blends psychology and behavioral science to support mental health and strengthen daily function. My approach centers on practical tools that improve clarity, stabilize regulation, and sustain steady execution—so you can move through demands with greater consistency and confidence.
-              </p>
+The Noesis Approach draws from psychology and behavioral science to steady the mind and strengthen daily rhythms. It is built around practical tools that bring clarity, regulate energy, and support consistent action—so demands feel less consuming and progress feels more sustainable.              </p>
               <p>
-                Through structured assessments and weekly check-ins, we look at how stress, motivation, and performance patterns show up in your life. From there, we shape clear, manageable strategies that support emotional balance, restore structure, and make follow-through easier.
-              </p>
+Through ongoing conversations and simple tracking, we notice how stress, motivation, and performance patterns shape your days. From there, we build strategies that are direct, realistic, and easy to hold—restoring balance, reinforcing structure, and making follow-through feel natural.              </p>
               <p>We focus on three essentials:</p>
               <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
                 <li><strong>Organizational systems</strong> – practical routines that lighten mental load.</li>
@@ -151,8 +147,7 @@ export default function Page() {
                 <li><strong>Cognitive load management</strong> – preventing overwhelm and sustaining clarity.</li>
               </ul>
               <p>
-                Clients leave with reliable systems and habits that improve performance, protect health, and raise quality of life.
-              </p>
+Clients leave with systems and habits that support stability, protect well-being, and create reliable momentum in both work and life.              </p>
             </div>
           )}
         </section>
@@ -282,6 +277,7 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/noesis-methods-mobile", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
+            { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (

@@ -318,6 +318,7 @@ function Menu() {
             { href: "/noesis-methods", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
+            { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (

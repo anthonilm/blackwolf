@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaInstagram, } from "react-icons/fa";
 
 export const HEADER_HEIGHT = 80;
 
@@ -256,6 +256,7 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/noesis-methods", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
+            { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
@@ -395,9 +396,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
           <FaInstagram size={28} color={ivory} />
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter size={28} color={ivory} />
-        </a>
+        
       </div>
     </div>
   );

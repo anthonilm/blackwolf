@@ -219,11 +219,7 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-            I hold an MA in Psychology from the University of Massachusetts
-            (2024) and am a Licensed Integrative Mental Health Coach. I am also
-            pursuing an interdisciplinary PhD in the humanities, where my
-            research deepens the connection between individual identity and
-            environmental consciousness.
+            I hold an MA in Psychology from the University of Massachusetts (2024) and am a Licensed Integrative Mental Health Coach. I bring 6 years of teaching and tutoring experience, and I am also pursuing an interdisciplinary PhD in the humanities, where my research deepens the connection between individual identity and environmental consciousness.
           </p>
         </section>
 
@@ -392,6 +388,7 @@ function Menu() {
             { href: "/noesis-methods", label: "How I Work" },
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
+            { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Resources" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (

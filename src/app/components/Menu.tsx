@@ -106,6 +106,7 @@ export default function Menu() {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/for-students", label: "Resources" },
+            { href: "/student-services", label: "Student Services" }, // NEW PAGE
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link
