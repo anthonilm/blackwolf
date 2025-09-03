@@ -36,6 +36,12 @@ const sections = {
 export default function ServicesPage() {
   const [showCalendly, setShowCalendly] = useState(false);
   const [currentCheckout, setCurrentCheckout] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || "";
+    setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
+  }, []);
 
   // Calendly event listener
   useEffect(() => {
@@ -166,7 +172,14 @@ export default function ServicesPage() {
                 <button
                   onClick={() => {
                     setCurrentCheckout(item.checkoutUrl);
-                    setShowCalendly(true);
+                    if (isMobile) {
+                      window.open(
+                        "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
+                        "_blank"
+                      );
+                    } else {
+                      setShowCalendly(true);
+                    }
                   }}
                   style={{
                     padding: "1rem 2rem",
@@ -239,7 +252,16 @@ export default function ServicesPage() {
 
         {/* Frosted Booking Button */}
         <button
-          onClick={() => setShowCalendly(true)}
+          onClick={() => {
+            if (isMobile) {
+              window.open(
+                "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
+                "_blank"
+              );
+            } else {
+              setShowCalendly(true);
+            }
+          }}
           style={{
             display: "inline-block",
             padding: "1rem 2rem",
@@ -268,7 +290,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Calendly Modal */}
-      {showCalendly && (
+      {showCalendly && !isMobile && (
         <div
           style={{
             position: "fixed",

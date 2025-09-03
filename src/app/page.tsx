@@ -49,7 +49,7 @@ export default function Page() {
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
 
-        /* === MOBILE ONLY (desktop stays untouched) === */
+        /* === MOBILE ONLY === */
         @media (max-width: 768px) {
           .hero-wrapper {
             justify-content: center !important;
@@ -80,8 +80,8 @@ export default function Page() {
             padding: 0.8rem 1.4rem !important;
           }
           .copyright {
-            font-size: 0.7rem !important;
-            padding: 0.6rem !important;
+            font-size: 0.6rem !important;
+            padding: 0.3rem !important;
           }
         }
       `}</style>
@@ -106,7 +106,6 @@ export default function Page() {
         />
       </main>
 
-      {/* Calendly Embed */}
       {showCalendly && (
         <section
           style={{
@@ -163,15 +162,14 @@ export default function Page() {
         </section>
       )}
 
-      {/* Copyright Footer */}
       <footer
         className="copyright"
         style={{
-          background: "rgba(0,0,0,0.6)",
+          background: "rgba(0,0,0,0.2)",
           color: ivory,
           textAlign: "center",
-          padding: "0.8rem",
-          fontSize: "0.8rem",
+          padding: "0.4rem",
+          fontSize: "0.7rem",
           letterSpacing: "0.05em",
           zIndex: 1500,
           position: "relative",
@@ -183,7 +181,6 @@ export default function Page() {
   );
 }
 
-/* Enlarged, Softer Dropdown Menu */
 function Menu({ yvesBlue, ivory }: any) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -209,7 +206,6 @@ function Menu({ yvesBlue, ivory }: any) {
 
   return (
     <>
-      {/* Hamburger Button */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           className="menu-button"
@@ -234,7 +230,6 @@ function Menu({ yvesBlue, ivory }: any) {
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -315,7 +310,6 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         textAlign: "center",
       }}
     >
-      {/* Hero content */}
       <div
         className="hero-wrapper"
         style={{
@@ -326,7 +320,6 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
           marginTop: "80px",
         }}
       >
-        {/* Lines fixed size on desktop, shrink only on mobile via CSS */}
         <div className="hero-lines" style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}>
           <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
           <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
@@ -359,7 +352,6 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         Transforming anxieties into clarity, momentum, and creative flow.
       </p>
 
-      {/* Frosted CTA Button */}
       <div style={{ marginTop: "1.5rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
@@ -391,11 +383,10 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         </button>
       </div>
 
-      {/* Social icons bottom-right */}
       <div
         style={{
           position: "absolute",
-          bottom: 20,
+          bottom: "35px", // moved up ~5mm
           right: 20,
           display: "flex",
           gap: "1rem",

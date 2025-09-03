@@ -39,6 +39,12 @@ const areasIHelpWith = [
 
 export default function AreasPage() {
   const [showCalendly, setShowCalendly] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || "";
+    setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
+  }, []);
 
   return (
     <div
@@ -150,7 +156,16 @@ export default function AreasPage() {
       {/* Calendly Button */}
       <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
         <button
-          onClick={() => setShowCalendly(true)}
+          onClick={() => {
+            if (isMobile) {
+              window.open(
+                "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
+                "_blank"
+              );
+            } else {
+              setShowCalendly(true);
+            }
+          }}
           style={{
             display: "inline-block",
             padding: "1.2rem 2.4rem",
@@ -179,26 +194,59 @@ export default function AreasPage() {
       </div>
 
       {/* Calendly Embed */}
-      {showCalendly && (
+      {showCalendly && !isMobile && (
         <section
           style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
             width: "100%",
-            maxWidth: "960px",
-            margin: "2rem auto",
-            borderRadius: "12px",
-            overflow: "hidden",
-            boxShadow: "0 6px 24px rgba(0, 0, 0, 0.08)",
-            background: "#fff",
+            height: "100%",
+            background: "rgba(0,0,0,0.65)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 2000,
           }}
         >
-          <iframe
-            src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
-            width="100%"
-            height="800"
-            frameBorder="0"
-            scrolling="no"
-            style={{ border: "none" }}
-          />
+          <div
+            style={{
+              width: "90%",
+              maxWidth: "960px",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
+              background: "#fff",
+              position: "relative",
+            }}
+          >
+            <iframe
+              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
+              width="100%"
+              height="800"
+              frameBorder="0"
+              scrolling="no"
+              style={{ border: "none" }}
+            />
+            <button
+              onClick={() => setShowCalendly(false)}
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                padding: "0.6rem 1.2rem",
+                fontSize: "1rem",
+                fontWeight: 600,
+                background: "#0018A8",
+                color: "#fff",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+              }}
+            >
+              Close
+            </button>
+          </div>
         </section>
       )}
     </div>

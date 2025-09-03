@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,6 +10,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function AboutPage() {
   const [showLong, setShowLong] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || "";
+    setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
+  }, []);
 
   const longVersion = [
     `There was a point in my life when I had read and studied everything I could find—philosophy, psychology, religion, history, and countless approaches to self-care and growth, alongside courses, certifications, and degrees that deepened this pursuit. I consumed knowledge obsessively, believing it would deliver a path to a better life. Yet despite all that study, I carried the weight of depression, anxiety, and years of instability. Awareness alone did not move me out of emotional and mental stagnation.`,
@@ -41,7 +47,6 @@ export default function AboutPage() {
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
 
-        /* === Responsive Fixes === */
         @media (max-width: 768px) {
           .about-hero {
             display: flex !important;
@@ -70,11 +75,10 @@ export default function AboutPage() {
         }
       `}</style>
 
-      {/* Menu */}
       <Menu />
 
       <div style={styles.container}>
-        {/* === HERO SECTION === */}
+        {/* HERO SECTION */}
         <section style={styles.hero} className="about-hero">
           <div style={styles.heroImage}>
             <img
@@ -95,15 +99,17 @@ export default function AboutPage() {
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
             <p style={styles.heroDescription}>
-              I help people transform instability, uncertainty, and emotional demands into steady,
-              creative, and generative energy. My approach blends psychology, behavioral science,
-              and integrative mental health practices—grounded in respect for identity and lived
-              reality, and especially attuned to the anxious, the overwhelmed, and the marginalized.
+              I help people transform instability, uncertainty, and emotional
+              demands into steady, creative, and generative energy. My approach
+              blends psychology, behavioral science, and integrative mental
+              health practices—grounded in respect for identity and lived
+              reality, and especially attuned to the anxious, the overwhelmed,
+              and the marginalized.
             </p>
           </div>
         </section>
 
-        {/* Long Version Toggle */}
+        {/* LONG VERSION TOGGLE */}
         <div style={{ margin: "32px 0 24px", textAlign: "center" }}>
           <button
             onClick={() => setShowLong((v) => !v)}
@@ -114,7 +120,7 @@ export default function AboutPage() {
           </button>
         </div>
 
-        {/* Collapsible Long Version */}
+        {/* LONG VERSION COLLAPSIBLE */}
         <div
           style={{
             overflow: "hidden",
@@ -134,35 +140,37 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>WHAT I DO</h2>
           <p style={styles.p}>
-            Many people with strong insight and emotional depth find themselves stalled and anxious—
-            unhealthily circling reflection and falling out of rhythm by allowing emotion to deplete
-            motivation and energy.
+            Many people with strong insight and emotional depth find themselves
+            stalled and anxious— unhealthily circling reflection and falling out
+            of rhythm by allowing emotion to deplete motivation and energy.
           </p>
           <p style={styles.p}>
-            My work is to help people transform their emotional depth into clarity, structure, and
-            forward momentum that sustains creative and generative energy.
+            My work is to help people transform their emotional depth into
+            clarity, structure, and forward momentum that sustains creative and
+            generative energy.
           </p>
           <p style={styles.p}>
-            Each client develops an Individual Engagement Plan (IEP) grounded in three foundations:
+            Each client develops an Individual Engagement Plan (IEP) grounded in
+            three foundations:
           </p>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Organizational Skills:</strong> shaping tasks, planning, and execution into
-              clear, steady rhythms
+              <strong>Organizational Skills:</strong> shaping tasks, planning,
+              and execution into clear, steady rhythms
             </li>
             <li style={styles.li}>
-              <strong>Emotional Regulation:</strong> directing feeling into balanced response rather
-              than depletion
+              <strong>Emotional Regulation:</strong> directing feeling into
+              balanced response rather than depletion
             </li>
             <li style={styles.li}>
-              <strong>Cognitive Load Management:</strong> creating spaciousness for focus by clearing
-              internal and external clutter
+              <strong>Cognitive Load Management:</strong> creating spaciousness
+              for focus by clearing internal and external clutter
             </li>
           </ul>
           <p style={styles.p}>
-            The purpose is to stabilize motivation, expand capacity, and sustain creative energy in
-            service of life’s larger whole. These foundations are held together by two guiding
-            anchors.
+            The purpose is to stabilize motivation, expand capacity, and sustain
+            creative energy in service of life’s larger whole. These foundations
+            are held together by two guiding anchors.
           </p>
         </section>
 
@@ -171,19 +179,21 @@ export default function AboutPage() {
           <h2 style={styles.h2}>ANCHORS OF THE WORK</h2>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Clarity:</strong> the ability to see and organize behavior with precision—
-              understanding what drives action, what creates friction, and what conditions allow
-              energy to move freely.
+              <strong>Clarity:</strong> the ability to see and organize behavior
+              with precision— understanding what drives action, what creates
+              friction, and what conditions allow energy to move freely.
             </li>
             <li style={styles.li}>
-              <strong>Momentum:</strong> the capacity to carry that clarity forward through steady
-              habits and deliberate repetition—turning awareness into action that holds over time.
+              <strong>Momentum:</strong> the capacity to carry that clarity
+              forward through steady habits and deliberate repetition—turning
+              awareness into action that holds over time.
             </li>
           </ul>
           <p style={styles.p}>
-            Together, clarity and momentum form a framework where emotional depth is not depleted but
-            directed, creating stability in daily life and sustaining creative and generative energy
-            in alignment with life’s larger whole.
+            Together, clarity and momentum form a framework where emotional
+            depth is not depleted but directed, creating stability in daily life
+            and sustaining creative and generative energy in alignment with
+            life’s larger whole.
           </p>
         </section>
 
@@ -191,15 +201,17 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>MISSION</h2>
           <p style={styles.p}>
-            I walk the way of the bodhisattva. This work is my way of reducing suffering in the
-            world. My goal is to help those I encounter see freedom in the deepest truths of their
-            own lives and live aligned with their fullest capabilities. The aim is not only personal
-            healing but the cultivation of a prosocial world—where individual stability and
-            creativity ripple outward into stronger families, healthier communities, and more
-            integrated institutions.
+            I walk the way of the bodhisattva. This work is my way of reducing
+            suffering in the world. My goal is to help those I encounter see
+            freedom in the deepest truths of their own lives and live aligned
+            with their fullest capabilities. The aim is not only personal
+            healing but the cultivation of a prosocial world—where individual
+            stability and creativity ripple outward into stronger families,
+            healthier communities, and more integrated institutions.
           </p>
           <p style={styles.p}>
-            This mission comes alive through the concrete work I do with clients every day.
+            This mission comes alive through the concrete work I do with clients
+            every day.
           </p>
         </section>
 
@@ -207,17 +219,27 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-            I hold an MA in Psychology from the University of Massachusetts (2024) and am a Licensed
-            Integrative Mental Health Coach. I am also pursuing an interdisciplinary PhD in the
-            humanities, where my research deepens the connection between individual identity and
+            I hold an MA in Psychology from the University of Massachusetts
+            (2024) and am a Licensed Integrative Mental Health Coach. I am also
+            pursuing an interdisciplinary PhD in the humanities, where my
+            research deepens the connection between individual identity and
             environmental consciousness.
           </p>
         </section>
 
-        {/* === BOOKING BUTTON === */}
+        {/* BOOKING BUTTON */}
         <div style={{ textAlign: "center", marginTop: "3rem" }}>
           <button
-            onClick={() => setShowCalendly(true)}
+            onClick={() => {
+              if (isMobile) {
+                window.open(
+                  "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
+                  "_blank"
+                );
+              } else {
+                setShowCalendly(true);
+              }
+            }}
             style={{
               display: "inline-block",
               padding: "1.2rem 2.4rem",
@@ -245,27 +267,60 @@ export default function AboutPage() {
           </button>
         </div>
 
-        {/* Calendly Embed */}
-        {showCalendly && (
+        {/* CALENDLY EMBED */}
+        {showCalendly && !isMobile && (
           <section
             style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
               width: "100%",
-              maxWidth: "960px",
-              margin: "2rem auto",
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.08)",
-              background: "#fff",
+              height: "100%",
+              background: "rgba(0,0,0,0.65)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 2000,
             }}
           >
-            <iframe
-              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
-              width="100%"
-              height="800"
-              frameBorder="0"
-              scrolling="no"
-              style={{ border: "none" }}
-            />
+            <div
+              style={{
+                width: "90%",
+                maxWidth: "960px",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
+                background: "#fff",
+                position: "relative",
+              }}
+            >
+              <iframe
+                src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
+                width="100%"
+                height="800"
+                frameBorder="0"
+                scrolling="no"
+                style={{ border: "none" }}
+              />
+              <button
+                onClick={() => setShowCalendly(false)}
+                style={{
+                  position: "absolute",
+                  top: "1rem",
+                  right: "1rem",
+                  padding: "0.6rem 1.2rem",
+                  fontSize: "1rem",
+                  fontWeight: 600,
+                  background: "#0018A8",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
+              >
+                Close
+              </button>
+            </div>
           </section>
         )}
 
@@ -275,7 +330,7 @@ export default function AboutPage() {
   );
 }
 
-/* ===== Menu Component ===== */
+/* MENU */
 function Menu() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -360,7 +415,7 @@ function Menu() {
   );
 }
 
-/* ===== Styles ===== */
+/* STYLES */
 const styles: Record<string, React.CSSProperties> = {
   page: {
     position: "relative",
@@ -383,22 +438,15 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
     marginBottom: "4rem",
   },
-  heroImage: {
-    width: "100%",
-  },
-  heroText: {
-    textAlign: "left",
-  },
+  heroImage: { width: "100%" },
+  heroText: { textAlign: "left" },
   heroName: {
     fontSize: "2.5rem",
     fontWeight: 700,
     marginBottom: "0.5rem",
     color: "#0018A8",
   },
-  heroTitle: {
-    fontSize: "1rem",
-    marginBottom: "0.25rem",
-  },
+  heroTitle: { fontSize: "1rem", marginBottom: "0.25rem" },
   heroSubtitle: {
     fontSize: "1.2rem",
     fontStyle: "italic",
@@ -434,30 +482,9 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 12,
     color: "#960018",
   },
-  p: {
-    fontSize: 18,
-    lineHeight: 1.7,
-    marginBottom: 16,
-  },
-  ul: {
-    paddingLeft: 22,
-    margin: "0 0 16px",
-    listStyleType: "disc",
-  },
-  li: {
-    marginBottom: 8,
-    lineHeight: 1.7,
-    fontSize: 18,
-  },
-  section: {
-    marginTop: 48,
-    padding: "24px 0",
-    borderTop: "1px solid rgba(0,0,0,0.08)",
-  },
-  footer: {
-    marginTop: 60,
-    textAlign: "center",
-    fontSize: 14,
-    color: "rgba(0,0,0,0.6)",
-  },
+  p: { fontSize: 18, lineHeight: 1.7, marginBottom: 16 },
+  ul: { paddingLeft: 22, margin: "0 0 16px", listStyleType: "disc" },
+  li: { marginBottom: 8, lineHeight: 1.7, fontSize: 18 },
+  section: { marginTop: 48, padding: "24px 0", borderTop: "1px solid rgba(0,0,0,0.08)" },
+  footer: { marginTop: 60, textAlign: "center", fontSize: 14, color: "rgba(0,0,0,0.6)" },
 };

@@ -8,10 +8,9 @@ export default function ResourcesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const yvesBlue = "#0018A8";
-  const softGreen = "#DDE4D3"; // pale green from your screenshot
+  const softGreen = "#DDE4D3"; // pale green
   const ivory = "#FFFFF0";
 
-  // Human-readable PDF titles
   const newsletters = [
     { title: "Interpolated Subjectivity", href: "/newsletters/2025-04-01-interpolated.pdf" },
     { title: "Disidentification", href: "/newsletters/2025-05-10-disidentification.pdf" },
@@ -32,7 +31,7 @@ export default function ResourcesPage() {
         overflow: "hidden",
       }}
     >
-      {/* Liquid overlay with soft green gradient */}
+      {/* Liquid overlay */}
       <div
         className="liquid-overlay"
         style={{
@@ -51,6 +50,14 @@ export default function ResourcesPage() {
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.95; }
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
+        }
+
+        /* Mobile layout for tiles */
+        @media (max-width: 768px) {
+          .tiles-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
         }
       `}</style>
 
@@ -78,9 +85,10 @@ export default function ResourcesPage() {
 
         {/* Tile grid */}
         <div
+          className="tiles-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)", // fixed 5 per row
+            gridTemplateColumns: "repeat(5, 1fr)", // default desktop
             gap: "2rem",
           }}
         >

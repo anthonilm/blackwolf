@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 export const HEADER_HEIGHT = 80;
 
-export default function NoesisMethodsMobilePage() {
+export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [showPhases, setShowPhases] = useState(false);
@@ -14,7 +14,6 @@ export default function NoesisMethodsMobilePage() {
 
   const taupe = "#7A6C61";
   const yvesBlue = "#0018A8";
-  const carmine = "#960018";
   const ivory = "#F5F0FA"; // soft lavender
 
   useEffect(() => {
@@ -30,7 +29,7 @@ export default function NoesisMethodsMobilePage() {
       style={{
         minHeight: "100vh",
         display: "grid",
-        gridTemplateRows: "auto 1fr auto",
+        gridTemplateRows: "auto 1fr",
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflowX: "hidden",
@@ -98,15 +97,14 @@ export default function NoesisMethodsMobilePage() {
         <section style={{ padding: "2rem 1rem", background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)", fontSize: "1rem", lineHeight: 1.5 }}>
           <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>The Approach</h2>
 
-          {/* Left side tiles always visible */}
           <div style={{ display: "grid", gap: "1rem" }}>
             {[
-              { num: 1, title: "Readiness", desc: "Confidence and steadiness under pressure" },
-              { num: 2, title: "Assessment", desc: "Clarity on the mental and emotional drivers of performance" },
-              { num: 3, title: "Skills", desc: "Practices that stabilize, regulate, and sustain energy" },
-              { num: 4, title: "Plan", desc: "A framework tailored to personal rhythms and needs" },
-              { num: 5, title: "Support", desc: "Ongoing refinements that strengthen alignment over time" },
-              { num: 6, title: "Habits", desc: "Structures that protect well-being and extend creative momentum" },
+              { num: 1, title: "Readiness", desc: "Confidence and steadiness under pressure." },
+              { num: 2, title: "Assessment", desc: "Clarity on the mental and emotional drivers of performance." },
+              { num: 3, title: "Skills", desc: "Practices that stabilize, regulate, and sustain energy." },
+              { num: 4, title: "Plan", desc: "A framework tailored to personal rhythms and needs." },
+              { num: 5, title: "Support", desc: "Ongoing refinements that strengthen alignment over time." },
+              { num: 6, title: "Habits", desc: "Structures that protect well-being and extend creative momentum." },
             ].map((item) => (
               <div key={item.num} style={{ background: "#fff", padding: "1rem", borderRadius: "6px", boxShadow: "0 2px 6px rgba(0,0,0,0.08)", display: "flex", gap: "0.8rem", alignItems: "flex-start" }}>
                 <div style={{ flexShrink: 0, background: yvesBlue, color: "#fff", fontWeight: 600, borderRadius: "50%", width: "28px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.9rem" }}>
@@ -120,7 +118,6 @@ export default function NoesisMethodsMobilePage() {
             ))}
           </div>
 
-          {/* Toggle button */}
           <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <button
               onClick={() => setShowApproach(!showApproach)}
@@ -139,7 +136,6 @@ export default function NoesisMethodsMobilePage() {
             </button>
           </div>
 
-          {/* Right side narrative revealed when expanded */}
           {showApproach && (
             <div style={{ marginTop: "2rem", fontSize: "1rem", lineHeight: 1.6 }}>
               <p>
@@ -161,7 +157,7 @@ export default function NoesisMethodsMobilePage() {
           )}
         </section>
 
-        {/* === PHASES TOGGLE === */}
+        {/* PHASES TOGGLE */}
         <section style={{ minHeight: "30vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "2rem 1rem", textAlign: "center" }}>
           <h2 style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>THERE ARE 4 CORE PHASES WE WILL TRACK</h2>
           <button
@@ -172,7 +168,7 @@ export default function NoesisMethodsMobilePage() {
           </button>
         </section>
 
-        {/* === FULL PHASES CONTENT === */}
+        {/* FULL PHASES CONTENT */}
         {showPhases && (
           <section style={{ display: "grid", gap: "1.5rem", padding: "1rem" }}>
             <article className="panel">
@@ -247,21 +243,6 @@ export default function NoesisMethodsMobilePage() {
           </section>
         )}
       </main>
-
-      {/* COPYRIGHT FOOTER */}
-      <footer
-        style={{
-          padding: "1rem",
-          textAlign: "center",
-          fontSize: "0.85rem",
-          color: taupe,
-          borderTop: `1px solid ${taupe}40`,
-          background: "#fff",
-          zIndex: 5,
-        }}
-      >
-        © {new Date().getFullYear()} Noesis Systems. All rights reserved.
-      </footer>
     </div>
   );
 }

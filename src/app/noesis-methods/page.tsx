@@ -25,7 +25,7 @@ export default function NoesisMethodsPage() {
     const isMobile = /android|iphone|ipad|mobile/i.test(ua);
 
     if (isMobile) {
-      router.replace("/api/export-methods-pdf");
+      router.replace("/noesis-methods-mobile");
     }
   }, [router]);
 
