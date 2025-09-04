@@ -350,7 +350,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
           color: taupe,
         }}
       >
-        Transforming anxieties into clarity, momentum, and creative flow.
+        Transform your anxieties into sustained, creative, prosocial energy.
       </p>
 
       <div style={{ marginTop: "1.5rem" }}>
