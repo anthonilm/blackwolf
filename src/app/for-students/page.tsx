@@ -6,18 +6,63 @@ import gsap from "gsap";
 
 export default function ResourcesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const tilesRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const yvesBlue = "#0018A8";
   const softGreen = "#DDE4D3"; // pale green
   const ivory = "#FFFFF0";
 
   const newsletters = [
-    { title: "Interpolated Subjectivity", href: "/newsletters/2025-04-01-interpolated.pdf" },
-    { title: "Disidentification", href: "/newsletters/2025-05-10-disidentification.pdf" },
-    { title: "Belief Psychology", href: "/newsletters/2025-06-15-belief-psych.pdf" },
-    { title: "Instability Structures", href: "/newsletters/2025-07-20-instability-struct.pdf" },
-    { title: "Solitary Threads", href: "/newsletters/2025-08-01-solitary-thread.pdf" },
+    { 
+      title: "Interpolated Instability", 
+      href: "/newsletters/2025-04-01-interpolated-instability.pdf",
+      summary: "This piece examines how modern life fragments thought and performance, leaving people overwhelmed by incoherent signals and reactive cycles. It offers tools for building structural coherence under pressure, showing how clarity and deliberate rhythm can restore function even in unstable environments. The aim is to help readers convert disorientation into grounded action that sustains energy and forward motion."
+    },
+    { 
+      title: "Disidentification", 
+      href: "/newsletters/2025-05-10-disidentification-architecture.pdf",
+      summary: "This newsletter explores how people become trapped in survival roles and performance-based identities that no longer serve their growth. It presents disidentification as a structural step—releasing outdated adaptations so authentic presence can reemerge. Readers are guided toward reclaiming agency by refusing false scripts and rebuilding coherence from clarity and choice."
+    },
+    { 
+      title: "Belief Psychology", 
+      href: "/newsletters/2025-06-15-belief-psychological-structure.pdf",
+      summary: "Here belief is reframed as the psychological scaffolding that holds identity together, beyond mood or opinion. It shows how the absence of belief leads to fragmentation, indecision, and erosion of trust, while the presence of belief stabilizes agency and direction. The work invites readers to anchor themselves in convictions that transform reflection into sustained, reliable action."
+    },
+    { 
+      title: "Instability Structures", 
+      href: "/newsletters/2025-07-20-instability-structural-disintegration.pdf",
+      summary: "This piece defines instability as structural disintegration—the collapse of coherence across thought, emotion, and behavior. It examines how trauma, cultural pressure, and maladaptive survival strategies erode stability, and how integration can be restored through deliberate practice and relational repair. The purpose is to help readers understand instability not as pathology but as a condition that can be reconstructed into strength."
+    },
+    { 
+      title: "Solitary Thresholds", 
+      href: "/newsletters/2025-08-01-solitary-threshold.pdf",
+      summary: "This essay reframes solo travel as an intentional threshold for re-entry into presence and agency after periods of stasis. It shows how being alone in unfamiliar environments reawakens executive function, emotional regulation, and relational orientation. Readers are encouraged to use solitude as a practice of coherence—transforming aloneness into a generative resource for clarity, momentum, and mental health."
+    },
   ];
+
+  const pastelColors = [
+    { bg: "#FFE5D9", text: "#5A2A27" }, // peach + deep brown
+    { bg: "#E0F7FA", text: "#004D40" }, // aqua + dark teal
+    { bg: "#FFF9C4", text: "#4E342E" }, // pale yellow + coffee
+    { bg: "#EDE7F6", text: "#311B92" }, // lavender + indigo
+    { bg: "#F1F8E9", text: "#1B5E20" }, // light green + forest
+  ];
+
+  useEffect(() => {
+    if (tilesRef.current.length > 0) {
+      gsap.fromTo(
+        tilesRef.current,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+        }
+      );
+    }
+  }, []);
 
   return (
     <div
@@ -52,11 +97,19 @@ export default function ResourcesPage() {
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
 
-        /* Mobile layout for tiles */
+        /* Mobile layout */
         @media (max-width: 768px) {
-          .tiles-grid {
+          .tiles-container {
+            display: grid;
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;
+          }
+          .summary {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
       `}</style>
@@ -80,67 +133,61 @@ export default function ResourcesPage() {
             color: "#111",
           }}
         >
-          Research
+          Newsletters
         </h1>
 
-        {/* Tile grid */}
-        <div
-          className="tiles-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(5, 1fr)", // default desktop
-            gap: "2rem",
-          }}
-        >
-          {newsletters.map((n, idx) => (
-            <div
-              key={idx}
-              style={{
-                height: "340px",
-                background: "rgba(255,255,255,0.2)",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                borderRadius: "16px",
-                padding: "2rem",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                alignItems: "center",
-                textAlign: "center",
-                boxShadow: "0 10px 28px rgba(0,0,0,0.15)",
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: "1.6rem",
-                  fontWeight: 600,
-                  marginBottom: "1rem",
-                  color: "#000",
+        {/* Tile container */}
+        <div className="tiles-container" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {newsletters.map((n, idx) => {
+            const colorSet = pastelColors[idx % pastelColors.length];
+            return (
+              <div
+                key={idx}
+                ref={(el) => {
+                  tilesRef.current[idx] = el;
                 }}
-              >
-                {n.title}
-              </h2>
-              <a
-                href={n.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 style={{
-                  display: "inline-block",
-                  textAlign: "center",
-                  padding: "1rem 1.8rem",
-                  borderRadius: "10px",
-                  background: yvesBlue,
-                  color: "#fff",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                  fontSize: "1.1rem",
-                  letterSpacing: "0.05em",
+                  width: "100%",
+                  padding: "2.5rem 2rem",
+                  borderRadius: "18px",
+                  background: colorSet.bg,
+                  color: colorSet.text,
+                  boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  justifyContent: "space-between",
+                  transition: "transform 0.2s ease",
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
               >
-                Open PDF
-              </a>
-            </div>
-          ))}
+                <h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "1rem" }}>
+                  {n.title}
+                </h2>
+                <p className="summary" style={{ fontSize: "1.15rem", lineHeight: "1.7", marginBottom: "1.5rem" }}>
+                  {n.summary}
+                </p>
+                <a
+                  href={n.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: "0.9rem 1.6rem",
+                    borderRadius: "10px",
+                    background: colorSet.text,
+                    color: colorSet.bg,
+                    textDecoration: "none",
+                    fontWeight: 600,
+                    fontSize: "1.05rem",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  Open PDF
+                </a>
+              </div>
+            );
+          })}
         </div>
       </main>
     </div>
@@ -201,7 +248,8 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Resources" },
+            { href: "/for-students", label: "Newsletters" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link

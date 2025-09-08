@@ -38,7 +38,7 @@ export default function Page() {
                        radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 4s ease-in-out infinite alternate",
+          animation: "liquidMove 3s ease-in-out infinite alternate",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -257,7 +257,8 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Resources" },
+            { href: "/faq", label: "FAQ" },
+            { href: "/for-students", label: "Newsletters" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link

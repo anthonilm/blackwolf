@@ -8,7 +8,7 @@ import gsap from "gsap";
 const sections = {
   Services: [
     {
-      title: "1:1 Standalone Session – $90",
+      title: "1:1 Standalone Session – $80",
       description:
         "1 hr sessions that help you clarify strong emotions and channel deep thinking into clear action. Together we’ll transform emotion into action and action into motivation.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/R2K8FTNDEH928",
@@ -78,7 +78,7 @@ export default function ServicesPage() {
                        radial-gradient(circle at 80% 40%, #7A6C6130, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF30, transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 4s ease-in-out infinite alternate",
+          animation: "liquidMove 10s ease-in-out infinite alternate",
           zIndex: -1,
           pointerEvents: "none",
         }}
@@ -106,7 +106,7 @@ export default function ServicesPage() {
           letterSpacing: "0.05em",
         }}
       >
-        Choose your plan and begin the work of change.
+        Act on your desire to change.
       </h1>
 
       {/* Services Section */}
@@ -207,7 +207,7 @@ export default function ServicesPage() {
                       "0 6px 18px rgba(0,0,0,0.2)";
                   }}
                 >
-                  Lock it in →
+                  Proceed
                 </button>
               </div>
             ))}
@@ -423,7 +423,8 @@ function Menu() {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Resources" },
+            { href: "/for-students", label: "Newsletters" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link

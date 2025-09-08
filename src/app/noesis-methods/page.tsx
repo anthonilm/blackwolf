@@ -249,7 +249,7 @@ export default function NoesisMethodsPage() {
               <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
             </div>
             <h1 style={{ fontSize: "4rem", fontWeight: 700, letterSpacing: "0.08em" }}>
-              THE NOESIS APPROACH
+              THE NOESIS APPROACH ©
             </h1>
           </div>
         </section>
@@ -271,8 +271,7 @@ export default function NoesisMethodsPage() {
               Create the conditions where your challenges become energy for growth.
             </h2>
             <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
-Until our minds are healthy, and our bodies and behaviors reflect that same balance, what does it matter what the world has to offer? Opportunities can pass by unnoticed if we’re unprepared or unable to see them clearly. My role is to help people create the conditions—inside and out—that make those opportunities visible, and to build the confidence to step toward them when they arrive.            </p>
-            <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
+Opportunities don’t become real until the mind is steady and the body follows suit. When anxiety and imbalance cloud perception, even the best chances can slip past unseen. My role is to help people cultivate the conditions—internally and externally—that make opportunities visible, and to build the readiness and confidence to step toward them when they appear.
              
             </p>
           </div>
@@ -488,6 +487,7 @@ Clients leave with systems and habits that support stability, protect well-being
             </div>
           </div>
         </section>
+        
 
         {/* ABOUT SECTION */}
         <section
@@ -513,17 +513,16 @@ Clients leave with systems and habits that support stability, protect well-being
             }}
           >
             <p>
-              The pressures of our time reach into daily life, often in ways that disrupt focus, energy, and stability. My work offers structured support that restores rhythm and direction, helping people strengthen composure and carry momentum through uncertainty. Rather than ignore those external realities, I frame them as part of the work itself—conditions to be acknowledged, adapted to, and navigated with steadiness.
-            </p>
+The world’s pressures reach into daily life, disrupting focus, draining energy, and unsettling stability. My work provides a structured framework that restores rhythm and direction—helping people regain composure and carry momentum through uncertainty. These challenges aren’t treated as distractions from growth but as material for the work itself: conditions to be recognized, adapted to, and navigated with steadiness.            </p>
             <p>
-              Each process begins with close attention. Through simple measures and regular reflection, we see how stress, fatigue, or disconnection take shape in your routines. From there, we design strategies that convert strain into constructive energy—introducing habits that protect focus, practices that renew resilience, and systems that keep purpose intact even in unsettled environments.
-            </p>
+Each process begins with close attention to how anxiety, fatigue, and stress appear in daily routines. From there, we design individualized strategies that turn tension into generative energy. This means building habits that protect focus, practices that renew resilience, and systems that sustain purpose. The aim is always forward movement: converting anxious intensity into patterns of behavior that support creativity, productivity, and a sustained sense of betterment. </p>
           </div>
         </section>
       </main>
     </div>
   );
 }
+
 
 //* Menu */
 function Menu({ yvesBlue, ivory }: any) {
@@ -620,7 +619,8 @@ function Menu({ yvesBlue, ivory }: any) {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Resources" },
+            { href: "/for-students", label: "Newsletters" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact" },
           ].map((link) =>
             link.external ? (
@@ -660,3 +660,4 @@ function Menu({ yvesBlue, ivory }: any) {
     </>
   );
 }
+

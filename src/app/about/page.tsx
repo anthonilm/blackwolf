@@ -36,7 +36,7 @@ export default function AboutPage() {
                        radial-gradient(circle at 80% 40%, #C7C9D540, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 4s ease-in-out infinite alternate",
+          animation: "liquidMove 2s ease-in-out infinite alternate",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -99,13 +99,7 @@ export default function AboutPage() {
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
             <p style={styles.heroDescription}>
-              I help people transform instability, uncertainty, and emotional
-              demands into steady, creative, and generative energy. My approach
-              blends psychology, behavioral science, and integrative mental
-              health practices—grounded in respect for identity and lived
-              reality, and especially attuned to the anxious, the overwhelmed,
-              and the marginalized.
-            </p>
+I help people transform anxiety into action, structure their energy into creativity, and convert reflection into lasting progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, and sustaining the feeling of betterment that comes from creative and generative energies.            </p>
           </div>
         </section>
 
@@ -140,37 +134,28 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>WHAT I DO</h2>
           <p style={styles.p}>
-            Many people with strong insight and emotional depth find themselves
-            stalled and anxious— unhealthily circling reflection and falling out
-            of rhythm by allowing emotion to deplete motivation and energy.
+            Anxiety is my specialty. For many people, anxiety becomes a cycle of reflection without resolution—thinking without moving, circling without creating. Insight and emotional depth are valuable, but when they stall into overthinking, they erode motivation, focus, and energy.
           </p>
           <p style={styles.p}>
-            My work is to help people transform their emotional depth into
-            clarity, structure, and forward momentum that sustains creative and
-            generative energy.
+            My work is to break that cycle. I help people convert anxious energy into action—transforming tension into rhythm, reflection into progress, and emotional intensity into creative, generative output. The aim is not to quiet anxiety by suppressing it, but to redirect it into patterns of behavior that build stability, momentum, and betterment.
           </p>
           <p style={styles.p}>
-            Each client develops an Individual Engagement Plan (IEP) grounded in
+            Each client develops an Individual Engagement Plan (IEP) built on
             three foundations:
           </p>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Organizational Skills:</strong> shaping tasks, planning,
-              and execution into clear, steady rhythms
+              <strong>Organizational Skills:</strong> structuring tasks, planning, and execution into clear rhythms that reduce overwhelm and restore control.
             </li>
             <li style={styles.li}>
-              <strong>Emotional Regulation:</strong> directing feeling into
-              balanced response rather than depletion
+              <strong>Emotional Regulation:</strong> channeling anxious energy into balanced, constructive responses rather than depletion.
             </li>
             <li style={styles.li}>
-              <strong>Cognitive Load Management:</strong> creating spaciousness
-              for focus by clearing internal and external clutter
+              <strong>Cognitive Load Management:</strong> clearing mental and environmental clutter so focus and creativity can flourish.
             </li>
           </ul>
           <p style={styles.p}>
-            The purpose is to stabilize motivation, expand capacity, and sustain
-            creative energy in service of life’s larger whole. These foundations
-            are held together by two guiding anchors.
+            TThe purpose is simple: to stabilize motivation, sharpen focus, and sustain forward momentum. Anxiety becomes a source of energy, not paralysis—a driver of clarity, creativity, and enhanced quality of life.
           </p>
         </section>
 
@@ -179,21 +164,14 @@ export default function AboutPage() {
           <h2 style={styles.h2}>ANCHORS OF THE WORK</h2>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Clarity:</strong> the ability to see and organize behavior
-              with precision— understanding what drives action, what creates
-              friction, and what conditions allow energy to move freely.
+              <strong>Clarity:</strong> the ability to recognize what drives action, what creates friction, and how to design conditions that let energy move freely.
             </li>
             <li style={styles.li}>
-              <strong>Momentum:</strong> the capacity to carry that clarity
-              forward through steady habits and deliberate repetition—turning
-              awareness into action that holds over time.
+              <strong>Momentum:</strong> the discipline of carrying that clarity forward through deliberate repetition and steady habit—turning awareness into engineered progress.
             </li>
           </ul>
           <p style={styles.p}>
-            Together, clarity and momentum form a framework where emotional
-            depth is not depleted but directed, creating stability in daily life
-            and sustaining creative and generative energy in alignment with
-            life’s larger whole.
+            Together, clarity and momentum create a framework where emotional depth is not consumed but redirected—transforming reflection into action and sustaining creative, generative energy that enhances life in tangible ways.
           </p>
         </section>
 
@@ -210,8 +188,7 @@ export default function AboutPage() {
             healthier communities, and more integrated institutions.
           </p>
           <p style={styles.p}>
-            This mission comes alive through the concrete work I do with clients
-            every day.
+            This mission comes alive in the concrete work I do each day: guiding clients to move beyond stasis, equipping them with tools for growth, and helping them transform reflection into deliberate action that improves both their own lives and the lives of those around them.
           </p>
         </section>
 
@@ -389,7 +366,8 @@ function Menu() {
             { href: "/areas", label: "Areas I Help With" },
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Resources" },
+            { href: "/for-students", label: "Newsletters" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link
