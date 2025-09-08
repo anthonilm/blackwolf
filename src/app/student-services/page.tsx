@@ -396,6 +396,7 @@ function Menu() {
             { href: "/services", label: "Services" },
             { href: "/student-services", label: "Student Services" },
             { href: "/for-students", label: "Newsletters" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact" },
           ].map((link) => (
             <Link

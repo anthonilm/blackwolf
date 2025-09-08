@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 
-export const HEADER_HEIGHT = 80;
+import { HEADER_HEIGHT } from "@/lib/constants";
 
 export default function NoesisMethodsPage() {
   const containerRef = useRef<HTMLDivElement>(null);

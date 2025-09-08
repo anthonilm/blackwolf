@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-export const HEADER_HEIGHT = 80;
+import { HEADER_HEIGHT } from "@/lib/constants";
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
