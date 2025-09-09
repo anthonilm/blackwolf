@@ -196,7 +196,7 @@ I help people transform anxiety into action, structure their energy into creativ
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach. With 6 years of teaching experience, I am now pursuing a psychoanalytically focused PhD bridging Environmental Studies and Comparative Literature, where my research examines how cultural narratives and engineered social behaviors transform and inform the ways we relate to our environment.          </p>
+I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach. With 6 years of teaching experience, I am now pursuing a psychoanalytically focused PhD bridging Environmental Studies and Comparative Literature, where my research examines how cultural narratives and engineered social behaviors shape the ways we relate to our environments.          </p>
         </section>
 
         {/* BOOKING BUTTON */}
