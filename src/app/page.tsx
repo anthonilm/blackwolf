@@ -175,7 +175,7 @@ export default function Page() {
           position: "relative",
         }}
       >
-        © {new Date().getFullYear()} Noesis Mental Health Care. All rights reserved.
+        © {new Date().getFullYear()} Noesis Systems LLC. All rights reserved.
       </footer>
     </div>
   );
