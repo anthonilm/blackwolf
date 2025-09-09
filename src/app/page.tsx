@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { FaInstagram, } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 import { HEADER_HEIGHT } from "@/lib/constants";
 
@@ -58,18 +58,18 @@ export default function Page() {
             margin-bottom: 1rem !important;
           }
           .hero-title {
-            font-size: clamp(1rem, 4.2vw, 1.8rem) !important;
+            font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
             letter-spacing: 0.06em !important;
             white-space: nowrap !important;
           }
           .hero-lines div {
             height: clamp(60px, 14vw, 90px) !important;
-            width: clamp(5px, 1vw, 7px) !important;
+            width: clamp(4px, 1vw, 8px) !important;
           }
           .hero-subtitle {
-            font-size: clamp(0.7rem, 3vw, 0.9rem) !important;
+            font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
             letter-spacing: 0.12em !important;
-            line-height: 1.3 !important;
+            line-height: 1.5 !important;
             max-width: 90% !important;
             margin-top: 0.5rem !important;
             white-space: normal !important;
@@ -281,7 +281,7 @@ function Menu({ yvesBlue, ivory }: any) {
   );
 }
 
-function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
+function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
 
@@ -312,49 +312,72 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         textAlign: "center",
       }}
     >
+      {/* Title + vertical lines */}
       <div
         className="hero-wrapper"
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "0.8rem",
-          marginBottom: "2rem",
-          marginTop: "80px",
+          gap: "1rem",
+          marginBottom: "2.5rem",
+          marginTop: "100px",
         }}
       >
-        <div className="hero-lines" style={{ display: "flex", gap: "0.25rem", alignItems: "center" }}>
-          <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
-          <div style={{ width: "8px", height: "120px", backgroundColor: yvesBlue }} />
+        <div
+          className="hero-lines"
+          style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
+        >
+          <div
+            style={{
+              width: "clamp(6px, 1vw, 12px)",
+              height: "clamp(100px, 22vh, 200px)",
+              backgroundColor: yvesBlue,
+            }}
+          />
+          <div
+            style={{
+              width: "clamp(6px, 1vw, 12px)",
+              height: "clamp(100px, 22vh, 200px)",
+              backgroundColor: yvesBlue,
+            }}
+          />
         </div>
         <h1
           ref={titleRef}
           className="hero-title"
           style={{
-            fontSize: "3.2rem",
+            fontSize: "clamp(2rem, 6vw, 5rem)",
             fontWeight: 700,
-            letterSpacing: "0.08em",
+            letterSpacing: "0.1em",
             whiteSpace: "nowrap",
           }}
         >
-          NOESIS Systems
+          NOESIS SYSTEMS
         </h1>
       </div>
-      <p
-        ref={subtitleRef}
-        className="hero-subtitle"
-        style={{
-          fontSize: "1.4rem",
-          textTransform: "uppercase",
-          letterSpacing: "0.2em",
-          lineHeight: 1.6,
-          maxWidth: "700px",
-          color: taupe,
-        }}
-      >
-       Transform Anxiety into Clarity, Creativity, and Momentum with Integrative Mental Health Care.
-      </p>
 
-      <div style={{ marginTop: "1.5rem" }}>
+      {/* Subtitle forced to two lines */}
+    <p
+  ref={subtitleRef}
+  className="hero-subtitle"
+  style={{
+    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+    textTransform: "uppercase",
+    letterSpacing: "0.18em",
+    lineHeight: 1.8,
+    maxWidth: "90%",       // allow it to stretch wide
+    margin: "0 auto",
+    textAlign: "center",
+    whiteSpace: "normal",  // ensures wrapping with <br/>
+    color: taupe,
+  }}
+>
+  TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM<br />
+  WITH INTEGRATIVE MENTAL HEALTH CARE.
+</p>
+
+      {/* CTA Button */}
+      <div style={{ marginTop: "2rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
           className="cta-button"
@@ -366,7 +389,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
             color: "#000",
-            fontSize: "1.3rem",
+            fontSize: "clamp(1rem, 2vw, 1.4rem)",
             fontFamily: "Georgia, serif",
             fontWeight: 600,
             letterSpacing: "0.05em",
@@ -385,19 +408,39 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
         </button>
       </div>
 
+      {/* Name/Title lower left */}
       <div
         style={{
           position: "absolute",
-          bottom: "35px", // moved up ~5mm
+          bottom: "35px",
+          left: "20px",
+          fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
+          letterSpacing: "0.1em",
+          color: taupe,
+          fontFamily: `"Georgia", "Times New Roman", serif`,
+          textAlign: "left",
+        }}
+      >
+        Anthoni Mcelrath, M.A., Licensed Integrative Mental Health Coach.
+      </div>
+
+      {/* Instagram icon lower right */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "35px",
           right: 20,
           display: "flex",
           gap: "1rem",
         }}
       >
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaInstagram size={28} color={ivory} />
         </a>
-        
       </div>
     </div>
   );

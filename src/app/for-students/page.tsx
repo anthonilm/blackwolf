@@ -9,43 +9,47 @@ export default function ResourcesPage() {
   const tilesRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const yvesBlue = "#0018A8";
-  const softGreen = "#DDE4D3"; // pale green
   const ivory = "#FFFFF0";
 
   const newsletters = [
-    { 
-      title: "Interpolated Instability", 
+    {
+      title: "Interpolated Instability",
       href: "/newsletters/2025-04-01-interpolated-instability.pdf",
-      summary: "This piece examines how modern life fragments thought and performance, leaving people overwhelmed by incoherent signals and reactive cycles. It offers tools for building structural coherence under pressure, showing how clarity and deliberate rhythm can restore function even in unstable environments. The aim is to help readers convert disorientation into grounded action that sustains energy and forward motion."
+      summary:
+        "This piece examines how modern life fragments thought and performance, leaving people overwhelmed by incoherent signals and reactive cycles. It offers tools for building structural coherence under pressure, showing how clarity and deliberate rhythm can restore function even in unstable environments. The aim is to help readers convert disorientation into grounded action that sustains energy and forward motion.",
     },
-    { 
-      title: "Disidentification", 
+    {
+      title: "Disidentification",
       href: "/newsletters/2025-05-10-disidentification-architecture.pdf",
-      summary: "This newsletter explores how people become trapped in survival roles and performance-based identities that no longer serve their growth. It presents disidentification as a structural step—releasing outdated adaptations so authentic presence can reemerge. Readers are guided toward reclaiming agency by refusing false scripts and rebuilding coherence from clarity and choice."
+      summary:
+        "This newsletter explores how people become trapped in survival roles and performance-based identities that no longer serve their growth. It presents disidentification as a structural step—releasing outdated adaptations so authentic presence can reemerge. Readers are guided toward reclaiming agency by refusing false scripts and rebuilding coherence from clarity and choice.",
     },
-    { 
-      title: "Belief Psychology", 
+    {
+      title: "Belief Psychology",
       href: "/newsletters/2025-06-15-belief-psychological-structure.pdf",
-      summary: "Here belief is reframed as the psychological scaffolding that holds identity together, beyond mood or opinion. It shows how the absence of belief leads to fragmentation, indecision, and erosion of trust, while the presence of belief stabilizes agency and direction. The work invites readers to anchor themselves in convictions that transform reflection into sustained, reliable action."
+      summary:
+        "Here belief is reframed as the psychological scaffolding that holds identity together, beyond mood or opinion. It shows how the absence of belief leads to fragmentation, indecision, and erosion of trust, while the presence of belief stabilizes agency and direction. The work invites readers to anchor themselves in convictions that transform reflection into sustained, reliable action.",
     },
-    { 
-      title: "Instability Structures", 
+    {
+      title: "Instability Structures",
       href: "/newsletters/2025-07-20-instability-structural-disintegration.pdf",
-      summary: "This piece defines instability as structural disintegration—the collapse of coherence across thought, emotion, and behavior. It examines how trauma, cultural pressure, and maladaptive survival strategies erode stability, and how integration can be restored through deliberate practice and relational repair. The purpose is to help readers understand instability not as pathology but as a condition that can be reconstructed into strength."
+      summary:
+        "This piece defines instability as structural disintegration—the collapse of coherence across thought, emotion, and behavior. It examines how trauma, cultural pressure, and maladaptive survival strategies erode stability, and how integration can be restored through deliberate practice and relational repair. The purpose is to help readers understand instability not as pathology but as a condition that can be reconstructed into strength.",
     },
-    { 
-      title: "Solitary Thresholds", 
+    {
+      title: "Solitary Thresholds",
       href: "/newsletters/2025-08-01-solitary-threshold.pdf",
-      summary: "This essay reframes solo travel as an intentional threshold for re-entry into presence and agency after periods of stasis. It shows how being alone in unfamiliar environments reawakens executive function, emotional regulation, and relational orientation. Readers are encouraged to use solitude as a practice of coherence—transforming aloneness into a generative resource for clarity, momentum, and mental health."
+      summary:
+        "This essay reframes solo travel as an intentional threshold for re-entry into presence and agency after periods of stasis. It shows how being alone in unfamiliar environments reawakens executive function, emotional regulation, and relational orientation. Readers are encouraged to use solitude as a practice of coherence—transforming aloneness into a generative resource for clarity, momentum, and mental health.",
     },
   ];
 
   const pastelColors = [
-    { bg: "#FFE5D9", text: "#5A2A27" }, // peach + deep brown
-    { bg: "#E0F7FA", text: "#004D40" }, // aqua + dark teal
-    { bg: "#FFF9C4", text: "#4E342E" }, // pale yellow + coffee
-    { bg: "#EDE7F6", text: "#311B92" }, // lavender + indigo
-    { bg: "#F1F8E9", text: "#1B5E20" }, // light green + forest
+    { bg: "#FFE5D9", text: "#5A2A27" },
+    { bg: "#E0F7FA", text: "#004D40" },
+    { bg: "#FFF9C4", text: "#4E342E" },
+    { bg: "#EDE7F6", text: "#311B92" },
+    { bg: "#F1F8E9", text: "#1B5E20" },
   ];
 
   useEffect(() => {
@@ -74,26 +78,27 @@ export default function ResourcesPage() {
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflow: "hidden",
+        background: "#0d0d0d", // base smokey black
       }}
     >
-      {/* Liquid overlay */}
+      {/* Smokey animated overlay */}
       <div
         className="liquid-overlay"
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at 20% 20%, ${softGreen}70, transparent 70%),
-                       radial-gradient(circle at 80% 40%, ${ivory}80, transparent 70%),
-                       radial-gradient(circle at 50% 80%, ${softGreen}60, transparent 70%)`,
+          background: `radial-gradient(circle at 20% 20%, rgba(50,50,50,0.5), transparent 70%),
+                       radial-gradient(circle at 80% 40%, rgba(100,100,100,0.4), transparent 70%),
+                       radial-gradient(circle at 50% 80%, rgba(30,30,30,0.6), transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 8s ease-in-out infinite alternate",
+          animation: "liquidMove 12s ease-in-out infinite alternate",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
       <style>{`
         @keyframes liquidMove {
-          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.95; }
+          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
           100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
         }
 
@@ -130,14 +135,21 @@ export default function ResourcesPage() {
             fontWeight: 700,
             textAlign: "left",
             marginBottom: "3rem",
-            color: "#111",
+            color: "#fff", // white title text
           }}
         >
           Newsletters
         </h1>
 
         {/* Tile container */}
-        <div className="tiles-container" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+        <div
+          className="tiles-container"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2rem",
+          }}
+        >
           {newsletters.map((n, idx) => {
             const colorSet = pastelColors[idx % pastelColors.length];
             return (
@@ -152,20 +164,37 @@ export default function ResourcesPage() {
                   borderRadius: "18px",
                   background: colorSet.bg,
                   color: colorSet.text,
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+                  boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "flex-start",
                   justifyContent: "space-between",
                   transition: "transform 0.2s ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-4px)")}
-                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = "translateY(-4px)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "translateY(0)")
+                }
               >
-                <h2 style={{ fontSize: "2rem", fontWeight: 700, marginBottom: "1rem" }}>
+                <h2
+                  style={{
+                    fontSize: "2rem",
+                    fontWeight: 700,
+                    marginBottom: "1rem",
+                  }}
+                >
                   {n.title}
                 </h2>
-                <p className="summary" style={{ fontSize: "1.15rem", lineHeight: "1.7", marginBottom: "1.5rem" }}>
+                <p
+                  className="summary"
+                  style={{
+                    fontSize: "1.15rem",
+                    lineHeight: "1.7",
+                    marginBottom: "1.5rem",
+                  }}
+                >
                   {n.summary}
                 </p>
                 <a
@@ -202,7 +231,11 @@ function Menu({ yvesBlue, ivory }: any) {
   useEffect(() => {
     if (menuRef.current) {
       if (open) {
-        gsap.fromTo(menuRef.current, { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 });
+        gsap.fromTo(
+          menuRef.current,
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4 }
+        );
       } else {
         gsap.to(menuRef.current, { y: -10, opacity: 0, duration: 0.3 });
       }
@@ -214,12 +247,16 @@ function Menu({ yvesBlue, ivory }: any) {
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
-          style={{ background: "transparent", border: "none", cursor: "pointer" }}
+          style={{
+            background: "transparent",
+            border: "none",
+            cursor: "pointer",
+          }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: ivory }} />
+            <span style={{ width: 24, height: 2, background: ivory }} />
+            <span style={{ width: 24, height: 2, background: ivory }} />
           </div>
         </button>
       </div>
@@ -231,8 +268,8 @@ function Menu({ yvesBlue, ivory }: any) {
             top: 70,
             left: 20,
             minWidth: "240px",
-            background: "rgba(223, 245, 225, 0.25)",
-            backdropFilter: "blur(10px)",
+            background: "rgba(20,20,20,0.95)", // dark smokey black
+            backdropFilter: "blur(6px)", // subtle blur for depth
             padding: "1.5rem 2rem",
             borderRadius: "14px",
             display: "flex",
@@ -257,7 +294,7 @@ function Menu({ yvesBlue, ivory }: any) {
               href={link.href}
               onClick={() => setOpen(false)}
               style={{
-                color: yvesBlue,
+                color: ivory,
                 fontWeight: 500,
                 fontSize: "1.1rem",
                 letterSpacing: "0.05em",
