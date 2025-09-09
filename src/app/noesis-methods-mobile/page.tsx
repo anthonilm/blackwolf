@@ -87,15 +87,16 @@ export default function Page() {
             textAlign: "center",
           }}
         >
-          <h1
-            style={{
-              fontSize: "2rem",
-              fontWeight: 700,
-              letterSpacing: "0.08em",
-            }}
-          >
-            THE NOESIS APPROACH ©
-          </h1>
+       <h1
+  style={{
+    fontSize: "2rem",
+    fontWeight: 700,
+    letterSpacing: "0.08em",
+  }}
+>
+  THE NOESIS APPROACH{" "}
+  <span style={{ fontSize: "0.9rem", verticalAlign: "super" }}>©</span>
+</h1>
         </section>
 
         {/* ABOUT */}

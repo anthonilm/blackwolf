@@ -244,14 +244,15 @@ export default function NoesisMethodsPage() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <div style={{ display: "flex", gap: "0.4rem" }}>
-              <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-              <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-            </div>
-            <h1 style={{ fontSize: "4rem", fontWeight: 700, letterSpacing: "0.08em" }}>
-              THE NOESIS APPROACH ©
-            </h1>
-          </div>
+  <div style={{ display: "flex", gap: "0.4rem" }}>
+    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
+    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
+  </div>
+  <h1 style={{ fontSize: "4rem", fontWeight: 700, letterSpacing: "0.08em" }}>
+    THE NOESIS APPROACH{" "}
+    <span style={{ fontSize: "1.2rem", verticalAlign: "super" }}>©</span>
+  </h1>
+</div>
         </section>
 
         {/* INTRO */}
