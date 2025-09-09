@@ -336,7 +336,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
             whiteSpace: "nowrap",
           }}
         >
-          NOESIS MENTAL HEALTH CARE
+          NOESIS Systems
         </h1>
       </div>
       <p
@@ -351,7 +351,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
           color: taupe,
         }}
       >
-        Transform anxiety into clarity, confidence, and momentum..
+       Transform Anxiety into Clarity, Creativity, and Momentum with Integrative Mental Health Care.
       </p>
 
       <div style={{ marginTop: "1.5rem" }}>
