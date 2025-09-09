@@ -381,7 +381,7 @@ function Hero({ taupe, carmine, yvesBlue, ivory, setShowCalendly }: any) {
             (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
           }
         >
-          Book Your First Free 1:1 Session
+          Book Your Free First Session
         </button>
       </div>
 

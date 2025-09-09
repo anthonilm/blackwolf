@@ -189,7 +189,7 @@ export default function AreasPage() {
             (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
           }
         >
-          Book Free First Session
+          Book Your Free First Session
         </button>
       </div>
 
