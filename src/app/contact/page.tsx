@@ -5,7 +5,6 @@ import Link from "next/link";
 import gsap from "gsap";
 
 export default function ContactPage() {
-  const [showCalendly, setShowCalendly] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -108,66 +107,6 @@ export default function ContactPage() {
           </p>
         )}
       </form>
-
-      {/* Free Session Section */}
-      <section
-        style={{
-          textAlign: "center",
-          marginTop: "3rem",
-          maxWidth: "700px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: 600,
-            color: "#960018",
-            marginBottom: "1rem",
-          }}
-        >
-          THE FIRST SESSION
-        </h2>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: 1.7,
-            color: "#333",
-            fontStyle: "italic",
-            marginBottom: "1.5rem",
-          }}
-        >
-          Book your first free session and leave with clarity, strategies for
-          easing overwhelm, and a grounded vision for moving forward.
-        </p>
-        <button
-          onClick={() => setShowCalendly(true)}
-          style={bookButtonStyle}
-        >
-          Book Free First Session
-        </button>
-      </section>
-
-      {showCalendly && (
-        <div style={modalOverlay}>
-          <div style={modalContent}>
-            <iframe
-              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1?embed_domain=localhost:3000&embed_type=Inline"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="yes"
-            />
-            <button
-              onClick={() => setShowCalendly(false)}
-              style={closeButtonStyle}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
@@ -196,56 +135,6 @@ const submitStyle: React.CSSProperties = {
   background: "#0018A8",
   color: "#fff",
   border: "none",
-  cursor: "pointer",
-};
-
-const bookButtonStyle: React.CSSProperties = {
-  display: "inline-block",
-  padding: "1rem 2rem",
-  borderRadius: "12px",
-  background: "rgba(255, 255, 255, 0.25)",
-  backdropFilter: "blur(8px)",
-  WebkitBackdropFilter: "blur(8px)",
-  color: "#000",
-  fontSize: "1.2rem",
-  fontWeight: 600,
-  border: "none",
-  cursor: "pointer",
-};
-
-const modalOverlay: React.CSSProperties = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100vw",
-  height: "100vh",
-  background: "rgba(0,0,0,0.7)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  zIndex: 1000,
-};
-
-const modalContent: React.CSSProperties = {
-  position: "relative",
-  width: "80%",
-  height: "80%",
-  background: "#fff",
-  borderRadius: "12px",
-  overflow: "hidden",
-};
-
-const closeButtonStyle: React.CSSProperties = {
-  position: "absolute",
-  top: "1rem",
-  right: "1rem",
-  padding: "0.6rem 1.2rem",
-  fontSize: "1rem",
-  fontWeight: 600,
-  background: "#0018A8",
-  color: "#fff",
-  border: "none",
-  borderRadius: "6px",
   cursor: "pointer",
 };
 

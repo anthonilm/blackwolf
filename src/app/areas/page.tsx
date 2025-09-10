@@ -101,7 +101,7 @@ export default function AreasPage() {
           color: "#111111",
         }}
       >
-        Transform heavy emotions into clarity, creativity, and momentum.
+       
       </h1>
 
       {/* Areas Section */}

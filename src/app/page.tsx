@@ -357,24 +357,25 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
       </div>
 
       {/* Subtitle forced to two lines */}
-    <p
-  ref={subtitleRef}
-  className="hero-subtitle"
-  style={{
-    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-    textTransform: "uppercase",
-    letterSpacing: "0.18em",
-    lineHeight: 1.8,
-    maxWidth: "90%",       // allow it to stretch wide
-    margin: "0 auto",
-    textAlign: "center",
-    whiteSpace: "normal",  // ensures wrapping with <br/>
-    color: taupe,
-  }}
->
-  TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM<br />
-  WITH INTEGRATIVE MENTAL HEALTH CARE.
-</p>
+      <p
+        ref={subtitleRef}
+        className="hero-subtitle"
+        style={{
+          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+          textTransform: "uppercase",
+          letterSpacing: "0.18em",
+          lineHeight: 1.8,
+          maxWidth: "90%",
+          margin: "0 auto",
+          textAlign: "center",
+          whiteSpace: "normal",
+          color: taupe,
+        }}
+      >
+        TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM
+        <br />
+        WITH INTEGRATIVE MENTAL HEALTH CARE.
+      </p>
 
       {/* CTA Button */}
       <div style={{ marginTop: "2rem" }}>
@@ -408,36 +409,38 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         </button>
       </div>
 
-      {/* Name/Title lower left */}
+      {/* Bottom bar: credentials + Instagram */}
       <div
         style={{
           position: "absolute",
           bottom: "35px",
-          left: "20px",
-          fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
-          letterSpacing: "0.1em",
-          color: taupe,
-          fontFamily: `"Georgia", "Times New Roman", serif`,
-          textAlign: "left",
-        }}
-      >
-        Anthoni Mcelrath, M.A., Licensed Integrative Mental Health Coach.
-      </div>
-
-      {/* Instagram icon lower right */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "35px",
-          right: 20,
+          left: 0,
+          right: 0,
           display: "flex",
-          gap: "1rem",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 20px",
         }}
       >
+        {/* Credentials (unchanged style) */}
+        <div
+          style={{
+            fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
+            letterSpacing: "0.1em",
+            color: taupe,
+            fontFamily: `"Georgia", "Times New Roman", serif`,
+            textAlign: "left",
+          }}
+        >
+          Anthoni Mcelrath, M.A., Licensed Integrative Mental Health Coach.
+        </div>
+
+        {/* Instagram icon */}
         <a
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
+          style={{ marginLeft: "1rem" }}
         >
           <FaInstagram size={28} color={ivory} />
         </a>

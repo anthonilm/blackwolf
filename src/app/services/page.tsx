@@ -10,25 +10,25 @@ const sections = {
     {
       title: "1:1 Standalone Session – $80",
       description:
-        "1 hr sessions that help you clarify strong emotions and channel deep thinking into clear action. Together we’ll transform emotion into action and action into motivation.",
+        "A focused 1-hour session designed to help you clarify strong emotions and turn deep thinking into clear action. We’ll redirect anxious energy into structure and movement—transforming reflection into progress and momentum.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/R2K8FTNDEH928",
     },
     {
       title: " Maintenance (2×/month) + IEP  – $200",
       description:
-        "Two 1 hr sessions + a tailored plan that maps how your emotions and thoughts shape performance. You’ll leave with tools that enhance performance and engaged.",
+        "Two 1-hour sessions per month, plus a personalized Individual Engagement Plan (IEP). This plan maps how your emotions and thoughts shape performance and provides tools for building habits that sustain motivation, sharpen focus, and strengthen emotional resilience.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/V65JZBVSQJ594",
     },
     {
       title: "3-Session Package – $250",
       description:
-        "Weekly 1 hr + async support. Async support give you space to access distinct tools in the moments when you feel a lack of focus",
+        "This three-week package provides a rhythm of weekly 1-hour sessions combined with ongoing asynchronous support. The async support allows you to access strategies in the moments when focus slips, creating a structure that helps anchor anxious energy into steady clarity and momentum between sessions.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/KN9RGNWTMTEWQ",
     },
     {
       title: "6-Session Package – $400",
       description:
-        "A structured arc of support designed to help you carry depth into steady progress. Across six sessions, we’ll cultivate stability, reinforce habits that protect motivation, and channel your emotional energy into performance and creative flow.",
+        "This six-session arc offers a structured progression that cultivates stability and reinforces habits that protect motivation. Across the process we’ll strengthen emotional regulation and cognitive clarity, channeling emotional intensity into creativity, performance, and sustainable momentum. By the end, you will have both tools and patterns in place to carry progress forward with independence.",
       checkoutUrl: "https://www.paypal.com/ncp/payment/KMQK6HTCMY7CQ",
     },
   ],
@@ -78,7 +78,7 @@ export default function ServicesPage() {
                        radial-gradient(circle at 80% 40%, #7A6C6130, transparent 70%),
                        radial-gradient(circle at 50% 80%, #FFFFFF30, transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 10s ease-in-out infinite alternate",
+          animation: "liquidMove 3s ease-in-out infinite alternate",
           zIndex: -1,
           pointerEvents: "none",
         }}
@@ -134,7 +134,7 @@ export default function ServicesPage() {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  textAlign: "center",
+                  textAlign: "left",
                   boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   minHeight: "280px",

@@ -87,7 +87,7 @@ export default function StudentServicesPage() {
           letterSpacing: "0.05em",
         }}
       >
-        Build confidence in your ability to learn and grow.
+        Build confidence in your ability to learn.
       </h1>
 
       {Object.entries(sections).map(([category, items]) => (
@@ -117,7 +117,7 @@ export default function StudentServicesPage() {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
-                  textAlign: "center",
+                  textAlign: "left",
                   boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   minHeight: "240px",
