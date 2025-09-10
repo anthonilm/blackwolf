@@ -19,7 +19,7 @@ export default function FAQPage() {
 
   const faqSections = [
     {
-      title: "Questions About Coaching and Counseling",
+      title: "Questions Mental Health Care Consulting",
       questions: [
         {
           q: "What do I talk about in our first session?",
@@ -65,7 +65,7 @@ export default function FAQPage() {
       ],
     },
     {
-      title: "Questions About Online Coaching",
+      title: "Questions About Online Sessions",
       questions: [
         {
           q: "What is online coaching?",
