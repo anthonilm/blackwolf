@@ -155,7 +155,7 @@ I help people transform anxiety into action, structure their energy into creativ
             </li>
           </ul>
           <p style={styles.p}>
-            TThe purpose is simple: to stabilize motivation, sharpen focus, and sustain forward momentum. Anxiety becomes a source of energy, not paralysis—a driver of clarity, creativity, and enhanced quality of life.
+            The purpose is simple: to stabilize motivation, sharpen focus, and sustain forward momentum. Anxiety becomes a source of energy, not paralysis—a driver of clarity, creativity, and enhanced quality of life.
           </p>
         </section>
 
