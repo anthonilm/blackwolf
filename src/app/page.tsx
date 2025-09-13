@@ -432,7 +432,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
             textAlign: "left",
           }}
         >
-          Anthoni McElrath, M.A., Licensed Integrative Mental Health Coach.
+          Anthoni McElrath, M.A. & Licensed Integrative Mental Health Coach.
         </div>
 
         {/* Instagram icon */}
