@@ -19,7 +19,7 @@ export default function FAQPage() {
 
   const faqSections = [
     {
-      title: "Questions Mental Health Care Consulting",
+      title: "Questions Mental Health Consulting",
       questions: [
         {
           q: "What do I talk about in our first session?",
@@ -30,16 +30,16 @@ export default function FAQPage() {
           a: "Most clients begin weekly or biweekly. Over time, we’ll adjust frequency based on how consistently you’re applying tools and sustaining growth outside of sessions.",
         },
         {
-          q: "How long will I continue coaching and counseling?",
-          a: "This isn’t about endless meetings. It’s about gaining tools you can use to keep growing. Some people work with me for a short, intensive stretch; others stay longer to reinforce new behaviors until they feel fully sustained.",
+          q: "How long will I continue ?",
+          a: "This isn’t about endless meetings. It’s about gaining tools you can use to keep growing. Some people work with me for a short, intensive stretch; others stay longer to reinforce new behaviors until they feel fully sustained. The goal is to get you to a place where you no longer need me.",
         },
         {
           q: "Do you provide in person or virtual services?",
-          a: "Yes. You can choose in-person or online sessions. Both formats are designed to deliver tools and structured strategies you can immediately apply.",
+          a: "Yes. You can choose in-person in Chicago or remote online sessions. Both formats are designed to deliver tools and structured strategies you can immediately apply.",
         },
         {
           q: "What sorts of goals can you help me reach?",
-          a: "I help people transform anxiety into action, structure their energy into creativity, and convert reflection into lasting progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, and sustaining the feeling of betterment that comes from growth.",
+          a: "I help people transform anxiety into action, structure their energy into creativity, and convert reflection into lasting progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, and sustaining the feeling of betterment that comes from growth. Please refer to the Areas I Help With page for more information.",
         },
       ],
     },
@@ -53,11 +53,7 @@ export default function FAQPage() {
         {
           q: "Do you have a sliding scale?",
           a: "Yes. Rates are adjusted to ensure accessibility for those committed to growth, regardless of financial circumstances.",
-        },
-        {
-          q: "Do you provide receipts for reimbursement?",
-          a: "No. Since this work is not medical, reimbursement does not apply. For those approaching with an insurance mindset, I encourage you to consider the sliding scale option.",
-        },
+        }, 
         {
           q: "Do you accept Medicaid or Medicare?",
           a: "No. These services are not covered under government health programs. If you are looking for affordability, my sliding scale provides that pathway.",
@@ -76,12 +72,12 @@ export default function FAQPage() {
           a: "A private space, a steady internet connection, and a willingness to engage actively. You don’t just show up to talk — you’ll be learning and applying actionable tools.",
         },
         {
-          q: "Is online coaching secure?",
+          q: "Are online sessions secure?",
           a: "Yes. Sessions are conducted over confidential, encrypted platforms to ensure privacy and focus.",
         },
         {
           q: "Do you provide coaching through e-mail or texting?",
-          a: "No. My work requires active engagement. While we may use email to share resources or assignments, the coaching sessions themselves are live and interactive.",
+          a: "Yes, under the 3-session and 6-session packages. My work requires active engagement. Texting and email support snot replace interactive live sessions. Email and text are for in-moment resources.",
         },
       ],
     },
