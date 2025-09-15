@@ -19,7 +19,7 @@ export default function FAQPage() {
 
   const faqSections = [
     {
-      title: "Questions Mental Health Consulting",
+      title: "Questions Mental Health Coaching",
       questions: [
         {
           q: "What do I talk about in our first session?",

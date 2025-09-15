@@ -103,7 +103,7 @@ I help people transform anxiety into action, structure their energy into creativ
           </div>
         </section>
 
-        {/* LONG VERSION TOGGLE */}
+        {/* The Path Behind the Work */}
         <div style={{ margin: "32px 0 24px", textAlign: "center" }}>
           <button
             onClick={() => setShowLong((v) => !v)}
@@ -114,7 +114,7 @@ I help people transform anxiety into action, structure their energy into creativ
           </button>
         </div>
 
-        {/* LONG VERSION COLLAPSIBLE */}
+        {/* The Path Behind the Work */}
         <div
           style={{
             overflow: "hidden",
