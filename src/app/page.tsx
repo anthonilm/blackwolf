@@ -374,7 +374,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
       >
         TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM
         <br />
-        WITH INTEGRATIVE MENTAL HEALTH CARE.
+        WITH AN INTEGRATIVE MENTAL HEALTH COACH.
       </p>
 
       {/* CTA Button */}
