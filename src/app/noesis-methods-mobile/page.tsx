@@ -134,7 +134,7 @@ export default function Page() {
           }}
         >
           <h2 style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>
-            Create the conditions where your challenges become energy for growth.
+            Create the conditions you need to achieve and sustain your optimal mental performance.
           </h2>
           <p
             style={{

@@ -269,7 +269,7 @@ export default function NoesisMethodsPage() {
         >
           <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "left" }}>
             <h2 style={{ fontSize: "3.5rem", marginBottom: "1.5rem" }}>
-              Create the conditions where your challenges become energy for growth.
+              Create the conditions you need to achieve and sustain your optimal mental performance.
             </h2>
             <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
 Opportunities don’t become real until the mind is steady and the body follows suit. When anxiety and imbalance cloud perception, even the best chances can slip past unseen. My role is to help people cultivate the conditions—internally and externally—that make opportunities visible, and to build the readiness and confidence to step toward them when they appear.
