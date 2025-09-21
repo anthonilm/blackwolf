@@ -38,6 +38,7 @@ export default function RootLayout({
       <head>
         {/* Viewport for mobile responsiveness */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
