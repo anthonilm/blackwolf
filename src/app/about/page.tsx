@@ -30,19 +30,19 @@ export default function AboutPage() {
     <main className={inter.className} style={styles.page}>
       {/* Animated Background Overlay */}
       <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, #26619C40, transparent 70%),
-                       radial-gradient(circle at 80% 40%, #C7C9D540, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 2s ease-in-out infinite alternate",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
+  className="liquid-overlay"
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: `radial-gradient(circle at 20% 20%, #FFFFF040, transparent 70%),   /* ivory */
+                 radial-gradient(circle at 80% 40%, #5C403340, transparent 70%),   /* walnut */
+                 radial-gradient(circle at 50% 80%, #3C2F2F40, transparent 70%)`,  /* espresso */
+    backgroundSize: "200% 200%",
+    animation: "liquidMove 2s ease-in-out infinite alternate",
+    zIndex: 0,
+    pointerEvents: "none",
+  }}
+/>
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }

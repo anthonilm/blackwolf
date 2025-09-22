@@ -12,10 +12,10 @@ export default function NoesisMethodsPage() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
-  const taupe = "#7A6C61";
-  const yvesBlue = "#0018A8";
-  const carmine = "#960018";
-  const ivory = "#F5F0FA"; // soft lavender
+ const taupe = "#5E4C41";   // darker, earthier taupe
+const yvesBlue = "#001078"; // deeper Yves Blue
+const carmine = "#6E0012";  // darker carmine
+const ivory = "#E0D8EA";    // deeper lavender-ivory
 
   // Redirect mobile users straight to the PDF
   useEffect(() => {
@@ -45,19 +45,19 @@ export default function NoesisMethodsPage() {
       }}
     >
       {/* Liquid overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-                       radial-gradient(circle at 80% 40%, ${ivory}20, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF20, transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 6s ease-in-out infinite alternate",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
+     <div
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: `radial-gradient(circle at 20% 20%, ${yvesBlue}55, transparent 70%),
+                 radial-gradient(circle at 80% 40%, ${ivory}40, transparent 70%),
+                 radial-gradient(circle at 50% 80%, #D9C9E140, transparent 70%)`,
+    backgroundSize: "200% 200%",
+    animation: "liquidMove 6s ease-in-out infinite alternate",
+    zIndex: 0,
+    pointerEvents: "none",
+  }}
+/>
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
@@ -131,7 +131,7 @@ export default function NoesisMethodsPage() {
         .progress {
           height: 2px;
           margin: 16px 2rem 0;
-          background: linear-gradient(90deg, ${carmine} 0 36%, ${yvesBlue} 36% 100%);
+         background: linear-gradient(to bottom, #E0D8EA, #F2F2F2);
           opacity: 0.6;
         }
         .getTitle {

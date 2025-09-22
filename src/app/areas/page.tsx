@@ -59,22 +59,22 @@ export default function AreasPage() {
     >
       {/* Animated Ivory–Olive Gradient Overlay */}
       <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `
-            radial-gradient(circle at 45% 45%, #FFFFF0 0%, transparent 60%),
-            radial-gradient(circle at 55% 55%, #F8F8F0 0%, transparent 70%),
-            radial-gradient(circle at 50% 60%, #A9BA9D80, transparent 75%),
-            radial-gradient(circle at 50% 50%, #B5C9A680, transparent 90%)
-          `,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 8s ease-in-out infinite alternate",
-          zIndex: -1,
-          pointerEvents: "none",
-        }}
-      />
+  className="liquid-overlay"
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: `
+      radial-gradient(circle at 45% 45%, #FFFFF040, transparent 60%),   /* ivory highlight */
+      radial-gradient(circle at 55% 55%, #F8F8F040, transparent 70%),   /* soft neutral */
+      radial-gradient(circle at 50% 60%, #01442180, transparent 75%),   /* evergreen */
+      radial-gradient(circle at 50% 50%, #026B3980, transparent 90%)    /* brighter evergreen accent */
+    `,
+    backgroundSize: "200% 200%",
+    animation: "liquidMove 8s ease-in-out infinite alternate",
+    zIndex: -1,
+    pointerEvents: "none",
+  }}
+/>
       <style>{`
         @keyframes liquidMove {
           0% {
@@ -93,15 +93,18 @@ export default function AreasPage() {
 
       {/* Headline */}
       <h1
-        style={{
-          fontSize: "2.5rem",
-          textAlign: "center",
-          maxWidth: "72ch",
-          margin: "0 auto",
-          lineHeight: 1.2,
-          color: "#111111",
-        }}
-      ></h1>
+  style={{
+    fontSize: "2.5rem",
+    textAlign: "center",
+    maxWidth: "72ch",
+    margin: "0 auto",
+    lineHeight: 1.2,
+    color: "#FFFFFF", // white
+    fontWeight: 700,
+  }}
+>
+  Areas I Help With
+</h1>
 
       {/* Areas Section */}
       <section
@@ -125,7 +128,7 @@ export default function AreasPage() {
             letterSpacing: "0.5px",
           }}
         >
-          Areas I Help With
+          
         </h2>
         <div
           style={{

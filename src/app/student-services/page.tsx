@@ -63,16 +63,16 @@ export default function StudentServicesPage() {
 
   return (
     <main
-      style={{
-        minHeight: "100vh",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        position: "relative",
-        overflow: "hidden",
-        zIndex: 0,
-        background: "linear-gradient(135deg, #A67B5B, #FFFFFF)",
-      }}
-    >
+  style={{
+    minHeight: "100vh",
+    padding: "4rem 2rem",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    position: "relative",
+    overflow: "hidden",
+    zIndex: 0,
+    background: "#A67B5B", // flat mousse color, no gradient
+  }}
+>
       <Menu />
 
       <h1

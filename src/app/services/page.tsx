@@ -57,31 +57,31 @@ export default function ServicesPage() {
   }, [currentCheckout]);
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        position: "relative",
-        overflow: "hidden",
-        zIndex: 0,
-      }}
-    >
+   <main
+  style={{
+    minHeight: "100vh",
+    padding: "4rem 2rem",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    position: "relative",
+    overflow: "hidden",
+    zIndex: 0,
+    color: "#FFFFF0", // ivory text for strong contrast on oxblood
+  }}
+>
+
       {/* Animated Overlay */}
-      <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, #96001830, transparent 70%),
-                       radial-gradient(circle at 80% 40%, #7A6C6130, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF30, transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 3s ease-in-out infinite alternate",
-          zIndex: -1,
-          pointerEvents: "none",
-        }}
-      />
+    <div
+  className="liquid-overlay"
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: "#7B3A3A", // softened oxblood
+    zIndex: -1,
+    pointerEvents: "none",
+  }}
+/>
+
+
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
@@ -94,19 +94,19 @@ export default function ServicesPage() {
 
       {/* Headline */}
       <h1
-        style={{
-          fontSize: "3rem",
-          textAlign: "center",
-          maxWidth: "72ch",
-          margin: "0 auto 3rem",
-          lineHeight: 1.2,
-          color: "#333",
-          fontWeight: 700,
-          letterSpacing: "0.05em",
-        }}
-      >
-        Act on your desire to change.
-      </h1>
+  style={{
+    fontSize: "3rem",
+    textAlign: "center",
+    maxWidth: "72ch",
+    margin: "0 auto 3rem",
+    lineHeight: 1.2,
+    color: "#FFFFFF",   // changed to white
+    fontWeight: 700,
+    letterSpacing: "0.05em",
+  }}
+>
+  Act on your desire to change.
+</h1>
 
       {/* Services Section */}
       {Object.entries(sections).map(([category, items]) => (
@@ -224,30 +224,31 @@ export default function ServicesPage() {
           marginRight: "auto",
         }}
       >
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: 600,
-            color: "#960018",
-            marginBottom: "1rem",
-            letterSpacing: "0.03em",
-          }}
-        >
-          THE FIRST SESSION
-        </h2>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: 1.7,
-            color: "#333",
-            fontStyle: "italic",
-            marginBottom: "1.5rem",
-          }}
-        >
-          In the first free session, you’ll leave with a clearer sense of your
-          patterns, practical strategies to ease overwhelm, and a grounded
-          picture of what forward movement can look like for you.
-        </p>
+       <h2
+  style={{
+    fontSize: "1.8rem",
+    fontWeight: 600,
+    color: "#FFFFFF",   // changed to white
+    marginBottom: "1rem",
+    letterSpacing: "0.03em",
+  }}
+>
+  THE FIRST SESSION
+</h2>
+<p
+  style={{
+    fontSize: "1.1rem",
+    lineHeight: 1.7,
+    color: "#FFFFFF",   // changed to white
+    fontStyle: "italic",
+    marginBottom: "1.5rem",
+  }}
+>
+  In the first free session, you’ll leave with a clearer sense of your
+  patterns, practical strategies to ease overwhelm, and a grounded picture
+  of what forward movement can look like for you.
+</p>
+
 
         {/* Frosted Booking Button */}
         <button

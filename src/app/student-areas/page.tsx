@@ -48,14 +48,15 @@ export default function StudentAreasPage() {
 
   return (
     <div
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        overflow: "hidden",
-      }}
-    >
+  style={{
+    minHeight: "100vh",
+    position: "relative",
+    padding: "4rem 2rem",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    overflow: "hidden",
+    background: "#2E4F3E", // soft evergreen
+  }}
+>
       {/* Animated Overlay */}
       <div
         className="liquid-overlay"
@@ -92,18 +93,18 @@ export default function StudentAreasPage() {
 
       {/* Headline */}
       <h1
-        style={{
-          fontSize: "2.5rem",
-          textAlign: "center",
-          maxWidth: "72ch",
-          margin: "0 auto",
-          lineHeight: 1.2,
-          color: "#960018", // Carmine red
-          fontWeight: 700,
-        }}
-      >
-        Areas I Help Students With
-      </h1>
+  style={{
+    fontSize: "2.5rem",
+    textAlign: "center",
+    maxWidth: "72ch",
+    margin: "0 auto",
+    lineHeight: 1.2,
+    color: "#FFFFFF", // white
+    fontWeight: 700,
+  }}
+>
+  Areas I Help Students With
+</h1>
 
       {/* Areas Grid */}
       <section

@@ -15,6 +15,7 @@ export default function Page() {
   const yvesBlue = "#0018A8";
   const carmine = "#960018";
   const ivory = "#FFFFF0";
+  const saffron = "#F4C430";
 
   return (
     <div
@@ -35,10 +36,11 @@ export default function Page() {
           position: "absolute",
           inset: 0,
           background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-                       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
+             radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
+             radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%),
+             radial-gradient(circle at 50% 100%, ${saffron}40, transparent 70%)`,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 3s ease-in-out infinite alternate",
+          animation: "liquidMove 5s ease-in-out infinite alternate",
           zIndex: 0,
           pointerEvents: "none",
         }}
