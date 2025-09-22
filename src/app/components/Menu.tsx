@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import Link from "next/link"; 
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
@@ -10,6 +10,7 @@ export default function Menu() {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
@@ -47,6 +48,10 @@ export default function Menu() {
   }, [open]);
 
   if (!mounted) return null; // wait until client-side
+
+  const toggleSub = (key: string) => {
+    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
     <>
@@ -96,34 +101,176 @@ export default function Menu() {
             gap: "1.2rem",
           }}
         >
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            {
-              href: isMobile ? "/noesis-methods-mobile" : "/noesis-methods",
-              label: "How I Work",
-            },
-            { href: "/areas", label: "Areas I Help With" },
-            { href: "/services", label: "Services" },
-            { href: "/for-students", label: "Resources" },
-            { href: "/student-services", label: "Student Services" },
-            { href: "/faq", label: "FAQ" }, // ✅ New FAQ link
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+          {/* Static Links */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+              letterSpacing: "0.05em",
+            }}
+          >
+            About
+          </Link>
+
+          {/* Collapsible: Cognitive Performance Coaching */}
+          <div>
+            <div
+              onClick={() => toggleSub("cognitive")}
               style={{
+                cursor: "pointer",
                 color: yvesBlue,
-                fontWeight: 500,
+                fontWeight: 600,
                 fontSize: "1.1rem",
                 letterSpacing: "0.05em",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Cognitive Performance Coaching
+            </div>
+            {subOpen["cognitive"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href={isMobile ? "/noesis-methods-mobile" : "/noesis-methods"}
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  How I Work
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Collapsible: Student Success Systems */}
+          <div>
+            <div
+              onClick={() => toggleSub("student")}
+              style={{
+                cursor: "pointer",
+                color: yvesBlue,
+                fontWeight: 600,
+                fontSize: "1.1rem",
+                letterSpacing: "0.05em",
+              }}
+            >
+              Student Success Systems
+            </div>
+            {subOpen["student"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/student-services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href={isMobile ? "/noesis-methods-mobile" : "/noesis-methods"}
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  How I Work
+                </Link>
+                {/* Future page placeholder */}
+              </div>
+            )}
+          </div>
+
+          {/* Other Static Links */}
+          <Link
+            href="/for-students"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+            }}
+          >
+            Newsletters
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+            }}
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+            }}
+          >
+            Contact
+          </Link>
+          <Link
+            href="/privacy"
+            onClick={() => setOpen(false)}
+            style={{
+              color: yvesBlue,
+              fontWeight: 500,
+              fontSize: "1.1rem",
+            }}
+          >
+            Privacy & Confidentiality
+          </Link>
         </div>
       )}
     </>

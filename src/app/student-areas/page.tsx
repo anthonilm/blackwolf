@@ -1,41 +1,44 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 
-const sections = {
-  Services: [
-    {
-      title: "1:1 Standalone Session – $80",
-      description:
-        "A focused 1-hour session designed to help you clarify strong emotions and turn deep thinking into clear action. We’ll redirect anxious energy into structure and movement—transforming reflection into progress and momentum.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/R2K8FTNDEH928",
-    },
-    {
-      title: " Maintenance (2×/month) + IEP  – $200",
-      description:
-        "Two 1-hour sessions per month, plus a personalized Individual Engagement Plan (IEP). This plan maps how your emotions and thoughts shape performance and provides tools for building habits that sustain motivation, sharpen focus, and strengthen emotional resilience.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/V65JZBVSQJ594",
-    },
-    {
-      title: "3-Session Package – $250",
-      description:
-        "This three-week package provides a rhythm of weekly 1-hour sessions combined with ongoing asynchronous support. The async support allows you to access strategies in the moments when focus slips, creating a structure that helps anchor anxious energy into steady clarity and momentum between sessions.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/KN9RGNWTMTEWQ",
-    },
-    {
-      title: "6-Session Package – $400",
-      description:
-        "This six-session arc offers a structured progression that cultivates stability and reinforces habits that protect motivation. Across the process we’ll strengthen emotional regulation and cognitive clarity, channeling emotional intensity into creativity, performance, and sustainable momentum. By the end, you will have both tools and patterns in place to carry progress forward with independence.",
-      checkoutUrl: "https://www.paypal.com/ncp/payment/KMQK6HTCMY7CQ",
-    },
-  ],
-};
+const studentAreas = [
+  "Exam preparation and test-taking strategies",
+  "Overcoming procrastination with assignments",
+  "Time management for coursework and deadlines",
+  "Improving focus during long study sessions",
+  "Note-taking and information retention",
+  "Organizing research and writing papers",
+  "Managing stress before presentations",
+  "Balancing academic and personal life",
+  "Recovering from poor grades or setbacks",
+  "Staying motivated through the semester",
+  "Handling academic pressure and expectations",
+  "Sleep hygiene for better learning",
+  "Building consistent study habits",
+  "Coping with academic performance anxiety",
+  "Adapting to new school environments",
+  "Managing multiple classes and priorities",
+  "Group project communication and teamwork",
+  "Dealing with perfectionism in studies",
+  "Strengthening working memory and recall",
+  "Sustaining energy during finals",
+  "Reading comprehension and retention",
+  "Reducing digital distractions",
+  "Building confidence in class participation",
+  "Creating effective study schedules",
+  "Balancing extracurriculars with academics",
+  "Recovering focus after burnout",
+  "Planning long-term academic goals",
+  "Managing emotions around grades and feedback",
+  "Transitioning from high school to college",
+  "Developing independent learning skills",
+];
 
-export default function ServicesPage() {
+export default function StudentAreasPage() {
   const [showCalendly, setShowCalendly] = useState(false);
-  const [currentCheckout, setCurrentCheckout] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -43,28 +46,14 @@ export default function ServicesPage() {
     setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
   }, []);
 
-  // Calendly event listener
-  useEffect(() => {
-    function handleMessage(e: MessageEvent) {
-      if (e.data.event && e.data.event === "calendly.event_scheduled") {
-        if (currentCheckout) {
-          window.location.href = currentCheckout;
-        }
-      }
-    }
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
-  }, [currentCheckout]);
-
   return (
-    <main
+    <div
       style={{
         minHeight: "100vh",
+        position: "relative",
         padding: "4rem 2rem",
         fontFamily: "Georgia, 'Times New Roman', serif",
-        position: "relative",
         overflow: "hidden",
-        zIndex: 0,
       }}
     >
       {/* Animated Overlay */}
@@ -73,183 +62,87 @@ export default function ServicesPage() {
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at 20% 20%, #96001830, transparent 70%),
-                       radial-gradient(circle at 80% 40%, #7A6C6130, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF30, transparent 70%)`,
+          background: `
+            radial-gradient(circle at 45% 45%, #F5F0FA 0%, transparent 60%),
+            radial-gradient(circle at 55% 55%, #ffffff 0%, transparent 70%),
+            radial-gradient(circle at 50% 60%, #7A6C6130, transparent 75%),
+            radial-gradient(circle at 50% 50%, #96001820, transparent 90%)
+          `,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 3s ease-in-out infinite alternate",
+          animation: "liquidMove 8s ease-in-out infinite alternate",
           zIndex: -1,
           pointerEvents: "none",
         }}
       />
       <style>{`
         @keyframes liquidMove {
-          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
-          100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
+          0% {
+            background-position: 45% 45%, 55% 55%, 50% 60%, 50% 50%;
+            opacity: 0.9;
+          }
+          100% {
+            background-position: 55% 55%, 45% 45%, 52% 48%, 48% 52%;
+            opacity: 1;
+          }
         }
       `}</style>
 
-      {/* Yves Blue Menu */}
+      {/* Menu */}
       <Menu />
 
       {/* Headline */}
       <h1
         style={{
-          fontSize: "3rem",
+          fontSize: "2.5rem",
           textAlign: "center",
           maxWidth: "72ch",
-          margin: "0 auto 3rem",
+          margin: "0 auto",
           lineHeight: 1.2,
-          color: "#333",
+          color: "#960018", // Carmine red
           fontWeight: 700,
-          letterSpacing: "0.05em",
         }}
       >
-        Act on your desire to change.
+        Areas I Help Students With
       </h1>
 
-      {/* Services Section */}
-      {Object.entries(sections).map(([category, items]) => (
-        <div key={category}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "2rem",
-              paddingBottom: "3rem",
-            }}
-          >
-            {items.map((item, idx) => (
-              <div
-                key={idx}
-                style={{
-                  flex: "0 1 340px",
-                  background: "#FFFFF0cc",
-                  border: "1px solid rgba(0,0,0,0.08)",
-                  borderRadius: "16px",
-                  padding: "2rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "left",
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.15)",
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  minHeight: "280px",
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-6px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 12px 28px rgba(0,0,0,0.25)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 18px rgba(0,0,0,0.15)";
-                }}
-              >
-                <h2
-                  style={{
-                    fontSize: "1.6rem",
-                    margin: "0 0 1rem 0",
-                    fontWeight: 700,
-                    color: "#960018", // Carmine headers
-                  }}
-                >
-                  {item.title}
-                </h2>
-                <p
-                  style={{
-                    fontSize: "1.05rem",
-                    lineHeight: 1.6,
-                    margin: "0 0 1.5rem 0",
-                    color: "#333",
-                  }}
-                >
-                  {item.description}
-                </p>
-                <button
-                  onClick={() => {
-                    setCurrentCheckout(item.checkoutUrl);
-                    if (isMobile) {
-                      window.open(
-                        "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
-                        "_blank"
-                      );
-                    } else {
-                      setShowCalendly(true);
-                    }
-                  }}
-                  style={{
-                    padding: "1rem 2rem",
-                    borderRadius: "50px",
-                    fontSize: "1.1rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.05em",
-                    fontFamily: "Georgia, 'Times New Roman', serif",
-                    background: "#0018A8", // Solid Yves Blue
-                    color: "#fff",
-                    border: "none",
-                    cursor: "pointer",
-                    boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
-                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = "translateY(-3px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 10px 24px rgba(0,0,0,0.25)";
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow =
-                      "0 6px 18px rgba(0,0,0,0.2)";
-                  }}
-                >
-                  Proceed
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      {/* === THE FIRST SESSION SECTION === */}
+      {/* Areas Grid */}
       <section
         style={{
-          textAlign: "center",
-          marginTop: "2rem",
-          maxWidth: "700px",
-          marginLeft: "auto",
-          marginRight: "auto",
+          background: "#ffffffb3",
+          borderRadius: "12px",
+          padding: "2rem",
+          marginTop: "3rem",
+          marginBottom: "4rem",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
         }}
       >
-        <h2
+        <div
           style={{
-            fontSize: "1.8rem",
-            fontWeight: 600,
-            color: "#960018",
-            marginBottom: "1rem",
-            letterSpacing: "0.03em",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "0.75rem 2rem",
           }}
         >
-          THE FIRST SESSION
-        </h2>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: 1.7,
-            color: "#333",
-            fontStyle: "italic",
-            marginBottom: "1.5rem",
-          }}
-        >
-          In the first free session, you’ll leave with a clearer sense of your
-          patterns, practical strategies to ease overwhelm, and a grounded
-          picture of what forward movement can look like for you.
-        </p>
+          {studentAreas.map((area, idx) => (
+            <div
+              key={idx}
+              style={{
+                fontSize: "16pt",
+                color: "#222222",
+                borderBottom: "1px solid rgba(0, 0, 0, 0.08)",
+                paddingBottom: "0.4rem",
+                letterSpacing: "0.2px",
+                lineHeight: 1.6,
+              }}
+            >
+              {area}
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Frosted Booking Button */}
+      {/* Calendly Button */}
+      <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
         <button
           onClick={() => {
             if (isMobile) {
@@ -263,16 +156,16 @@ export default function ServicesPage() {
           }}
           style={{
             display: "inline-block",
-            padding: "1rem 2rem",
-            borderRadius: "12px",
-            background: "rgba(255, 255, 255, 0.25)", // frosted look
+            padding: "1.2rem 2.4rem",
+            borderRadius: "14px",
+            background: "rgba(255, 255, 255, 0.25)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
             color: "#000",
-            fontSize: "1.2rem",
+            fontSize: "1.3rem",
+            fontFamily: "Georgia, serif",
             fontWeight: 600,
             letterSpacing: "0.05em",
-            fontFamily: "Georgia, 'Times New Roman', serif",
             border: "none",
             cursor: "pointer",
             transition: "all 0.3s ease",
@@ -286,46 +179,45 @@ export default function ServicesPage() {
         >
           Book Your Free First Session
         </button>
-      </section>
+      </div>
 
       {/* Calendly Modal */}
       {showCalendly && !isMobile && (
-        <div
+        <section
           style={{
             position: "fixed",
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.7)",
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.65)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 1000,
+            zIndex: 2000,
           }}
         >
           <div
             style={{
-              position: "relative",
-              width: "80%",
-              height: "80%",
-              background: "#fff",
+              width: "90%",
+              maxWidth: "960px",
               borderRadius: "12px",
               overflow: "hidden",
+              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
+              background: "#fff",
+              position: "relative",
             }}
           >
             <iframe
-              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1?embed_domain=localhost:3000&embed_type=Inline"
+              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
               width="100%"
-              height="100%"
+              height="800"
               frameBorder="0"
-              scrolling="yes"
+              scrolling="no"
+              style={{ border: "none" }}
             />
             <button
-              onClick={() => {
-                setShowCalendly(false);
-                setCurrentCheckout(null);
-              }}
+              onClick={() => setShowCalendly(false)}
               style={{
                 position: "absolute",
                 top: "1rem",
@@ -333,7 +225,7 @@ export default function ServicesPage() {
                 padding: "0.6rem 1.2rem",
                 fontSize: "1rem",
                 fontWeight: 600,
-                background: "#0018A8", // Yves Blue close button
+                background: "#0018A8",
                 color: "#fff",
                 border: "none",
                 borderRadius: "6px",
@@ -343,13 +235,13 @@ export default function ServicesPage() {
               Close
             </button>
           </div>
-        </div>
+        </section>
       )}
-    </main>
+    </div>
   );
 }
 
-/* Yves Blue Hamburger Menu (Updated Collapsible) */
+/* Yves Blue Hamburger Menu */
 /* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {
   const yvesBlue = "#0018A8";

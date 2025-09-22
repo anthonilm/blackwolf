@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import gsap from "gsap";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -99,7 +101,8 @@ export default function AboutPage() {
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
             <p style={styles.heroDescription}>
-I help people transform anxiety into action, structure their energy into creativity and generativity, and convert trauma reflection into life enhancing progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, achieving a growth mindset, and sustaining optimum mental performance. </p>
+              I help people transform anxiety into action, structure their energy into creativity and generativity, and convert trauma reflection into life enhancing progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, achieving a growth mindset, and sustaining optimum mental performance.
+            </p>
           </div>
         </section>
 
@@ -196,7 +199,8 @@ I help people transform anxiety into action, structure their energy into creativ
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach, with 6 years of academic advising experience. I am now pursuing a psychoanalytically oriented PhD bridging Environmental Studies and Comparative Literature, where my research interrogates how cultural narratives and engineered social behaviors mediate relations to built and natural environments and participate in the psycho-social formation of distinct identities. </p>
+            I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach, with 6 years of academic advising experience. I am now pursuing a psychoanalytically oriented PhD bridging Environmental Studies and Comparative Literature, where my research interrogates how cultural narratives and engineered social behaviors mediate relations to built and natural environments and participate in the psycho-social formation of distinct identities.
+          </p>
         </section>
 
         {/* BOOKING BUTTON */}
@@ -305,12 +309,17 @@ I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach, wi
 /* MENU */
 function Menu() {
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const yvesBlue = "#0018A8";
   const ivory = "#FFFFF0";
   const hamburgerColor = pathname === "/" ? ivory : yvesBlue;
+
+  const toggleSub = (key: string) => {
+    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   return (
     <>
@@ -358,31 +367,57 @@ function Menu() {
             fontFamily: `"Georgia", "Times New Roman", serif`,
           }}
         >
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
-            { href: "/areas", label: "Areas I Help With" },
-            { href: "/services", label: "Services" },
-            { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Newsletters" },
-            { href: "/faq", label: "FAQ" },
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Home</Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>About</Link>
+
+          {/* Cognitive Performance Coaching */}
+          <div>
+            <div
+              onClick={() => toggleSub("cognitive")}
               style={{
+                cursor: "pointer",
                 color: yvesBlue,
                 fontWeight: 500,
                 fontSize: "1.1rem",
-                letterSpacing: "0.05em",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Cognitive Performance Coaching
+            </div>
+            {subOpen["cognitive"] && (
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Areas I Help With</Link>
+                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Approach</Link>
+              </div>
+            )}
+          </div>
+
+          {/* Student Success Systems */}
+          <div>
+            <div
+              onClick={() => toggleSub("student")}
+              style={{
+                cursor: "pointer",
+                color: yvesBlue,
+                fontWeight: 500,
+                fontSize: "1.1rem",
+              }}
+            >
+              Student Success Systems
+            </div>
+            {subOpen["student"] && (
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Areas I Help With</Link>
+                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Method</Link>
+              </div>
+            )}
+          </div>
+
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Newsletters</Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>FAQ</Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Contact</Link>
+          <Link href="/privacy" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Privacy & Confidentiality</Link>
         </div>
       )}
     </>

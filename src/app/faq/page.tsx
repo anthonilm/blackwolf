@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
 
 export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState<string | null>(null);
@@ -53,7 +54,7 @@ export default function FAQPage() {
         {
           q: "Do you have a sliding scale?",
           a: "Yes. Rates are adjusted to ensure accessibility for those committed to growth, regardless of financial circumstances.",
-        }, 
+        },
         {
           q: "Do you accept Medicaid or Medicare?",
           a: "No. These services are not covered under government health programs. If you are looking for affordability, my sliding scale provides that pathway.",
@@ -93,17 +94,18 @@ export default function FAQPage() {
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflow: "hidden",
+        background: "#F4C430", // saffron base
       }}
     >
-      {/* Liquid overlay (same as homepage) */}
+      {/* Liquid overlay */}
       <div
         className="liquid-overlay"
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-                       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
-                       radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%)`,
+          background: `radial-gradient(circle at 20% 20%, #F4C430cc, transparent 70%),
+                       radial-gradient(circle at 80% 40%, #FFD166cc, transparent 70%),
+                       radial-gradient(circle at 50% 80%, #FFB347aa, transparent 70%)`,
           backgroundSize: "200% 200%",
           animation: "liquidMove 1.5s ease-in-out infinite alternate",
           zIndex: 0,
@@ -117,7 +119,7 @@ export default function FAQPage() {
         }
       `}</style>
 
-      <Menu yvesBlue={yvesBlue} ivory={ivory} />
+      <Menu />
 
       <main style={{ position: "relative", zIndex: 1, padding: "6rem 2rem" }}>
         {faqSections.map((section, sIdx) => (
@@ -217,10 +219,17 @@ export default function FAQPage() {
   );
 }
 
-// === MENU (with FAQ link added) ===
-function Menu({ yvesBlue, ivory }: any) {
+/* ----------------- Menu ----------------- */
+/* Yves Blue Hamburger Menu (Always Yves Blue) */
+function Menu() {
+  const yvesBlue = "#0018A8";
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleSub = (key: string) => {
+    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -243,8 +252,10 @@ function Menu({ yvesBlue, ivory }: any) {
 
   return (
     <>
+      {/* Hamburger Button */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
+          className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
             width: 40,
@@ -259,13 +270,14 @@ function Menu({ yvesBlue, ivory }: any) {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
 
+      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -286,31 +298,147 @@ function Menu({ yvesBlue, ivory }: any) {
             gap: "1.2rem",
           }}
         >
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
-            { href: "/areas", label: "Areas I Help With" },
-            { href: "/services", label: "Services" },
-            { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Newsletters" },
-            { href: "/faq", label: "FAQ" }, // ✅ Added FAQ link
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+          {/* Static */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            About
+          </Link>
+
+          {/* Cognitive Performance Coaching */}
+          <div>
+            <div
+              onClick={() => toggleSub("cognitive")}
               style={{
+                cursor: "pointer",
                 color: yvesBlue,
                 fontWeight: 500,
                 fontSize: "1.1rem",
-                letterSpacing: "0.05em",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Cognitive Performance Coaching
+            </div>
+            {subOpen["cognitive"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/noesis-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Approach
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Student Success Systems */}
+          <div>
+            <div
+              onClick={() => toggleSub("student")}
+              style={{
+                cursor: "pointer",
+                color: yvesBlue,
+                fontWeight: 500,
+                fontSize: "1.1rem",
+              }}
+            >
+              Student Success Systems
+            </div>
+            {subOpen["student"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/student-services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/student-areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/student-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Method
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Other */}
+          <Link
+            href="/for-students"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Newsletters
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Contact
+          </Link>
+          <Link
+            href="/privacy"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Privacy &amp; Confidentiality
+          </Link>
         </div>
       )}
     </>

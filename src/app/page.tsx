@@ -66,13 +66,20 @@ export default function Page() {
             height: clamp(60px, 14vw, 90px) !important;
             width: clamp(4px, 1vw, 8px) !important;
           }
-          .hero-subtitle {
-            font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
-            letter-spacing: 0.12em !important;
-            line-height: 1.5 !important;
-            max-width: 90% !important;
-            margin-top: 0.5rem !important;
-            white-space: normal !important;
+          @media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+    letter-spacing: 0.12em !important;
+    line-height: 1.5 !important;
+    margin-top: 0.5rem !important;
+    text-align: center !important;
+    max-width: 40ch !important;   /* ✅ cap it */
+    min-width: unset !important;  /* ✅ let it shrink */
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+}
+
           }
           .cta-button {
             margin-top: 1rem !important;
@@ -181,9 +188,15 @@ export default function Page() {
   );
 }
 
+/* Yves Blue Hamburger Menu */
 function Menu({ yvesBlue, ivory }: any) {
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleSub = (key: string) => {
+    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -206,6 +219,7 @@ function Menu({ yvesBlue, ivory }: any) {
 
   return (
     <>
+      {/* Hamburger Button */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
           className="menu-button"
@@ -223,13 +237,14 @@ function Menu({ yvesBlue, ivory }: any) {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
 
+      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -250,36 +265,155 @@ function Menu({ yvesBlue, ivory }: any) {
             gap: "1.2rem",
           }}
         >
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
-            { href: "/areas", label: "Areas I Help With" },
-            { href: "/services", label: "Services" },
-            { href: "/student-services", label: "Student Services" },
-            { href: "/faq", label: "FAQ" },
-            { href: "/for-students", label: "Newsletters" },
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+          {/* Static */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            About
+          </Link>
+
+          {/* Cognitive Performance Coaching */}
+          <div>
+            <div
+              onClick={() => toggleSub("cognitive")}
               style={{
+                cursor: "pointer",
                 color: yvesBlue,
                 fontWeight: 500,
                 fontSize: "1.1rem",
-                letterSpacing: "0.05em",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Cognitive Performance Coaching
+            </div>
+            {subOpen["cognitive"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/noesis-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Approach
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Student Success Systems */}
+          <div>
+            <div
+              onClick={() => toggleSub("student")}
+              style={{
+                cursor: "pointer",
+                color: yvesBlue,
+                fontWeight: 500,
+                fontSize: "1.1rem",
+              }}
+            >
+              Student Success Systems
+            </div>
+            {subOpen["student"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/student-services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/student-areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/student-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Method
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Other */}
+          <Link
+            href="/for-students"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Newsletters
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Contact
+          </Link>
+          <Link
+            href="/privacy"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Privacy &amp; Confidentiality
+          </Link>
         </div>
       )}
     </>
   );
 }
+
+
+
 
 function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -356,7 +490,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         </h1>
       </div>
 
-      {/* Subtitle forced to two lines */}
+      {/* Subtitle */}
       <p
         ref={subtitleRef}
         className="hero-subtitle"
@@ -364,20 +498,20 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
           fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
           textTransform: "uppercase",
           letterSpacing: "0.18em",
-          lineHeight: 1.8,
-          maxWidth: "90%",
+          lineHeight: 1.6,
           margin: "0 auto",
           textAlign: "center",
-          whiteSpace: "normal",
           color: taupe,
+          maxWidth: "65ch",         // desktop width cap
+          overflowWrap: "break-word",
+          whiteSpace: "normal",     // allow wrapping
         }}
       >
-        TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM
-        <br />
-        WITH AN INTEGRATIVE MENTAL HEALTH COACH.
+        TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM WITH AN INTEGRATIVE
+        MENTAL HEALTH COACH.
       </p>
 
-      {/* CTA Button */}
+      {/* CTA */}
       <div style={{ marginTop: "2rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
@@ -409,7 +543,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         </button>
       </div>
 
-      {/* Bottom bar: credentials + Instagram */}
+      {/* Bottom */}
       <div
         style={{
           position: "absolute",
@@ -422,7 +556,6 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
           padding: "0 20px",
         }}
       >
-        {/* Credentials (unchanged style) */}
         <div
           style={{
             fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
@@ -435,7 +568,6 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
           Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
         </div>
 
-        {/* Instagram icon */}
         <a
           href="https://instagram.com"
           target="_blank"

@@ -7,7 +7,7 @@ import gsap from "gsap";
 
 import { HEADER_HEIGHT } from "@/lib/constants";
 
-export default function NoesisMethodsPage() {
+export default function StudentMethodsPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -25,7 +25,7 @@ export default function NoesisMethodsPage() {
     const isMobile = /android|iphone|ipad|mobile/i.test(ua);
 
     if (isMobile) {
-      router.replace("/noesis-methods-mobile");
+      router.replace("/student-methods-mobile");
     }
   }, [router]);
 
@@ -34,7 +34,7 @@ export default function NoesisMethodsPage() {
   return (
     <div
       ref={containerRef}
-      className="noesis-methods-page"
+      className="student-methods-page"
       style={{
         height: "100vh",
         display: "grid",
@@ -165,20 +165,17 @@ export default function NoesisMethodsPage() {
           color: ${yvesBlue};
         }
 
-        /* === PRINT OVERRIDES FOR PDF EXPORT === */
         @media print {
-          .noesis-methods-page {
+          .student-methods-page {
             overflow: visible !important;
             height: auto !important;
           }
-
-          .noesis-methods-page .railTrack {
+          .student-methods-page .railTrack {
             display: block !important;
             width: 100% !important;
             overflow: visible !important;
           }
-
-          .noesis-methods-page .panel {
+          .student-methods-page .panel {
             display: block !important;
             width: 100% !important;
             min-height: auto !important;
@@ -186,8 +183,7 @@ export default function NoesisMethodsPage() {
             padding: 2rem 1.5rem !important;
             break-inside: avoid !important;
           }
-
-          .noesis-methods-page .panelRight {
+          .student-methods-page .panelRight {
             position: relative !important;
             top: auto !important;
             right: auto !important;
@@ -195,28 +191,24 @@ export default function NoesisMethodsPage() {
             text-align: center !important;
             margin-top: 1rem !important;
           }
-
-          .noesis-methods-page .phaseBig {
+          .student-methods-page .phaseBig {
             font-size: 2rem !important;
             opacity: 0.5 !important;
             display: block !important;
             text-align: center !important;
             margin-bottom: 1rem !important;
           }
-
-          .noesis-methods-page .progress {
+          .student-methods-page .progress {
             display: none !important;
           }
-
-          .noesis-methods-page section {
+          .student-methods-page section {
             max-width: 100% !important;
             margin: 0 auto !important;
           }
-
-          .noesis-methods-page p,
-          .noesis-methods-page h1,
-          .noesis-methods-page h2,
-          .noesis-methods-page h4 {
+          .student-methods-page p,
+          .student-methods-page h1,
+          .student-methods-page h2,
+          .student-methods-page h4 {
             text-align: left !important;
           }
         }
@@ -233,27 +225,37 @@ export default function NoesisMethodsPage() {
         }}
       >
         {/* HERO */}
-        <section
-          style={{
-            height: "25vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-  <div style={{ display: "flex", gap: "0.4rem" }}>
-    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
+<section
+  style={{
+    height: "25vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+    <div style={{ display: "flex", gap: "0.4rem" }}>
+      <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
+      <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
+    </div>
+    <h1
+      style={{
+        fontSize: "4rem",
+        fontWeight: 700,
+        letterSpacing: "0.08em",
+        display: "flex",
+        alignItems: "center",
+        gap: "0.5rem",
+      }}
+    >
+      STUDENT SUCCESS SYSTEMS
+      <span style={{ fontSize: "1.5rem", verticalAlign: "super", color: yvesBlue }}>©</span>
+    </h1>
   </div>
-  <h1 style={{ fontSize: "4rem", fontWeight: 700, letterSpacing: "0.08em" }}>
-    THE NOESIS APPROACH{" "}
-    <span style={{ fontSize: "1.2rem", verticalAlign: "super" }}>©</span>
-  </h1>
-</div>
-        </section>
+</section>
+
 
         {/* INTRO */}
         <section
@@ -269,11 +271,14 @@ export default function NoesisMethodsPage() {
         >
           <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "left" }}>
             <h2 style={{ fontSize: "3.5rem", marginBottom: "1.5rem" }}>
-              Create the conditions you need to achieve and sustain your optimal mental performance.
+              Empower students to claim control of their learning process.
             </h2>
             <p style={{ fontSize: "25px", lineHeight: 1.7 }}>
-Opportunities don’t become real until the mind is steady and the body follows suit. When anxiety and imbalance cloud perception, even the best chances can slip past unseen. My role is to help people cultivate the conditions—internally and externally—that make opportunities visible, and to build the readiness and confidence to step toward them when they appear.
-             
+              This approach is designed to help students stabilize performance,
+              regulate themselves, and pursue higher goals consistently.
+              It equips them with behavioral models, environmental awareness,
+              and practical strategies that turn stress and confusion into
+              structure and confidence.
             </p>
           </div>
         </section>
@@ -285,42 +290,23 @@ Opportunities don’t become real until the mind is steady and the body follows 
             <article className="panel">
               <div className="panelCols">
                 <div className="panelLeft">
-                  <p className="phaseTag">PHASE 1</p>
-                  <h4 className="panelKicker">Diagnostic &amp; Map</h4>
+                  <p className="phaseTag">STEP 1</p>
+                  <h4 className="panelKicker">Discovery & Map</h4>
                   <p className="panelBody">
-                    In our first step, you’ll get a clear snapshot of where you are right now. A short COM-B intake highlights what’s supporting you and what’s draining you, so we can see the patterns shaping your stress, focus, and follow-through. This session is interactive—you’ll have space to reflect, ask questions, and explore how your thoughts and emotions connect, leaving with language for what’s happening inside and insights to prepare you for the next steps.
+                    Each student begins with a diagnostic session that maps strengths, challenges,
+                    and habits. We look at how stress, environment, and daily rhythms shape learning.
+                    This produces a personalized roadmap that identifies where to focus energy for the
+                    greatest impact.
                   </p>
                   <p className="getTitle">What you’ll get</p>
                   <ul className="getList">
-                    <li>A clear picture of what’s helping and what’s draining you</li>
-                    <li>Priority areas to lighten the mental load</li>
-                    <li>A calm, structured starting point</li>
+                    <li>A clear snapshot of current learning patterns</li>
+                    <li>Identification of stressors and strengths</li>
+                    <li>A tailored roadmap for next steps</li>
                   </ul>
                 </div>
                 <div className="panelRight" aria-hidden="true">
-                  <span className="phaseBig">PHASE 1</span>
-                </div>
-              </div>
-            </article>
-
-            {/* Phase 1.5 */}
-            <article className="panel">
-              <div className="panelCols">
-                <div className="panelLeft">
-                  <p className="phaseTag">PHASE 1.5</p>
-                  <h4 className="panelKicker">Audit Week</h4>
-                  <p className="panelBody">
-                    After the first session, you’ll track real-life patterns—sleep, energy, mood, actions, and disruptions—so we can see how your daily rhythms connect to your mental load. In this step, we review your COM-B results, talk through your goals, and decide which IEP track feels right for you. This is the moment you choose what habits and actions you want to change in order to find clarity, relief, and forward momentum. By the end of the week, you’ll have a clear view of what drives your effectiveness and a decision-ready plan for what comes next
-                  </p>
-                  <p className="getTitle">What you’ll get</p>
-                  <ul className="getList">
-                    <li>A snapshot of your current rhythms</li>
-                    <li>Clarity on what’s fueling fatigue or calm</li>
-                    <li>Simple cues for where to focus first</li>
-                  </ul>
-                </div>
-                <div className="panelRight" aria-hidden="true">
-                  <span className="phaseBig">PHASE 1.5</span>
+                  <span className="phaseBig">STEP 1</span>
                 </div>
               </div>
             </article>
@@ -329,20 +315,23 @@ Opportunities don’t become real until the mind is steady and the body follows 
             <article className="panel">
               <div className="panelCols">
                 <div className="panelLeft">
-                  <p className="phaseTag">PHASE 2</p>
-                  <h4 className="panelKicker">IEP &amp; Track</h4>
+                  <p className="phaseTag">STEP 2</p>
+                  <h4 className="panelKicker">Skill Foundations</h4>
                   <p className="panelBody">
-                    The IEP provides a structured plan based on your assessment results and goals. Six tracks are available: Stabilization First restores daily routines and reduces overwhelm. Emotional Processing focuses on how environment and stressors affect mood, helping you identify triggers and build healthier responses. Motivation Rebuild reconnects you with values and direction when drive feels low. Capability Expansion develops attention, memory, and executive function. Environmental Alignment ensures your surroundings reinforce progress. Identity Integration reduces inner conflict by aligning roles and behavior. Each track offers targeted tools that support mental health and establish consistent patterns for steady function and sustainable performance.
+                    Students begin building practical skill sets—executive function routines,
+                    focus practices, and study rhythms. They learn behavioral modeling,
+                    discover their optimal learning environments, and establish confidence
+                    in their ability to adapt and succeed.
                   </p>
                   <p className="getTitle">What you’ll get</p>
                   <ul className="getList">
-                    <li>A tailored, low-friction plan that feels doable</li>
-                    <li>Environmental tweaks that make life feel lighter</li>
-                    <li>A realistic pace to rebuild confidence and control</li>
+                    <li>Transferable study and focus strategies</li>
+                    <li>Behavioral awareness and self-regulation</li>
+                    <li>Early wins that boost confidence</li>
                   </ul>
                 </div>
                 <div className="panelRight" aria-hidden="true">
-                  <span className="phaseBig">PHASE 2</span>
+                  <span className="phaseBig">STEP 2</span>
                 </div>
               </div>
             </article>
@@ -351,20 +340,23 @@ Opportunities don’t become real until the mind is steady and the body follows 
             <article className="panel">
               <div className="panelCols">
                 <div className="panelLeft">
-                  <p className="phaseTag">PHASE 3</p>
-                  <h4 className="panelKicker">Activation</h4>
+                  <p className="phaseTag">STEP 3</p>
+                  <h4 className="panelKicker">Resilience & Persistence</h4>
                   <p className="panelBody">
-                    Weekly cycles introduce small, focused changes to habits, time use, and daily patterns. Each adjustment is designed to support emotional regulation, lighten mental load, and make progress feel manageable. We track a few key signals that confirm stability, build reliability, and keep momentum visible.
+                    Through ongoing coaching, students practice stress regulation,
+                    recovery habits, and persistence strategies. This builds resilience,
+                    helping them maintain focus and momentum across weeks and semesters,
+                    even when conditions are unstable.
                   </p>
                   <p className="getTitle">What you’ll get</p>
                   <ul className="getList">
-                    <li>Gentle weekly steps that fit your capacity</li>
-                    <li>Quick wins to boost confidence and stability</li>
-                    <li>Tracking that shows progress, even on hard days</li>
+                    <li>Stress recovery and regulation practices</li>
+                    <li>Adaptive strategies for setbacks</li>
+                    <li>Confidence in long-term sustainability</li>
                   </ul>
                 </div>
                 <div className="panelRight" aria-hidden="true">
-                  <span className="phaseBig">PHASE 3</span>
+                  <span className="phaseBig">STEP 3</span>
                 </div>
               </div>
             </article>
@@ -373,20 +365,23 @@ Opportunities don’t become real until the mind is steady and the body follows 
             <article className="panel">
               <div className="panelCols">
                 <div className="panelLeft">
-                  <p className="phaseTag">PHASE 4</p>
-                  <h4 className="panelKicker">Outcomes</h4>
+                  <p className="phaseTag">STEP 4</p>
+                  <h4 className="panelKicker">Outcomes & Lifelong Tools</h4>
                   <p className="panelBody">
-                    By this stage, the process has reoriented your mind and routines toward your most effective mental and cognitive functioning. You’ll have patterns, behaviors, and tools that are tailored to your identity, context, and conditions.
+                    By the end of the process, students carry durable systems they can apply
+                    in any environment. They leave with transferrable routines, emotional
+                    steadiness, and confidence in their ability to manage demands across
+                    academics and life.
                   </p>
                   <p className="getTitle">What you’ll get</p>
                   <ul className="getList">
-                    <li>A clear sense of what’s working and why</li>
-                    <li>Tools and systems designed around you that protect mental and emotional energy while supporting optimal functione</li>
-                    <li>A forward plan that feels safe and achievable</li>
+                    <li>Durable habits and cognitive routines</li>
+                    <li>Tools to stabilize performance across contexts</li>
+                    <li>A sense of confidence and control in learning</li>
                   </ul>
                 </div>
                 <div className="panelRight" aria-hidden="true">
-                  <span className="phaseBig">PHASE 4</span>
+                  <span className="phaseBig">STEP 4</span>
                 </div>
               </div>
             </article>
@@ -419,12 +414,12 @@ Opportunities don’t become real until the mind is steady and the body follows 
             <div style={{ display: "grid", gap: "1.25rem" }}>
               <h2 style={{ fontSize: "1.8rem", fontWeight: 600 }}>The Approach</h2>
               {[
-                { num: 1, title: "Performance Readiness", desc: "Build confidence and resilience to handle high-pressure and daily challenges." },
-                { num: 2, title: "Targeted Assessment", desc: "Identify the emotional and mental factors affecting clarity, focus, and execution." },
-                { num: 3, title: "Evidence-Based Skills", desc: "Learn strategies that strengthen stability under real-world demands." },
-                { num: 4, title: "Personalized Plan", desc: "Create coping systems tailored to your unique needs." },
-                { num: 5, title: "Ongoing Support", desc: "Weekly guidance and refinements to keep progress steady." },
-                { num: 6, title: "Habit Fortification", desc: "Protect mental well-being and prevent burnout." },
+                { num: 1, title: "Behavioral Modeling", desc: "Guide students to recognize how their habits and emotional regulation affect learning." },
+                { num: 2, title: "Learning-Environment Discovery", desc: "Help students identify conditions where they perform best and reproduce them." },
+                { num: 3, title: "Confidence & Control", desc: "Build belief in their ability to adapt and excel regardless of environment." },
+                { num: 4, title: "Practical Skill Development", desc: "Teach usable, transferable skills like study rhythms, recall strategies, and focus practices." },
+                { num: 5, title: "Resilience Coaching", desc: "Strengthen persistence through stress regulation and recovery practices." },
+                { num: 6, title: "Accountability Systems", desc: "Support routines that reduce procrastination and build momentum." },
               ].map((item) => (
                 <div
                   key={item.num}
@@ -468,27 +463,45 @@ Opportunities don’t become real until the mind is steady and the body follows 
             {/* Right side narrative */}
             <div style={{ fontSize: "20px", lineHeight: 1.7, textAlign: "left" }}>
               <p>
-The Noesis Approach draws from psychology and behavioral science to steady the mind and strengthen daily rhythms. It is built around practical tools that bring clarity, regulate energy, and support consistent action—so demands feel less consuming and progress feels more sustainable.              </p>
+                Student Success Systems are designed to empower learners by
+                equipping them with internal tools that transcend classroom
+                structures. The goal is not remediation, but confidence and
+                independence in learning.
+              </p>
               <p>
-Through ongoing conversations and simple tracking, we notice how stress, motivation, and performance patterns shape your days. From there, we build strategies that are direct, realistic, and easy to hold—restoring balance, reinforcing structure, and making follow-through feel natural.              </p>
-              <p>We focus on three essentials:</p>
+                This approach respects school systems and therapy boundaries
+                while providing students with strategies they can apply
+                immediately. Whether dealing with stress, underperformance,
+                or exam anxiety, the work reinforces clarity, resilience,
+                and self-direction.
+              </p>
+              <p>We focus on four essentials:</p>
               <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
                 <li>
-                  <strong>Organizational systems</strong> – practical routines that lighten mental load.
+                  <strong>Executive function</strong> – structuring time and
+                  tasks into manageable rhythms.
                 </li>
                 <li>
-                  <strong>Emotional regulation</strong> – composure and focus under pressure.
+                  <strong>Stress regulation</strong> – calming protocols that
+                  restore composure during demands.
                 </li>
                 <li>
-                  <strong>Cognitive load management</strong> – preventing overwhelm and sustaining clarity.
+                  <strong>Study systems</strong> – repeatable methods that
+                  support recall and confidence under pressure.
+                </li>
+                <li>
+                  <strong>Adaptive persistence</strong> – habits that sustain
+                  progress through setbacks.
                 </li>
               </ul>
               <p>
-Clients leave with systems and habits that support stability, protect well-being, and create reliable momentum in both work and life.              </p>
+                Students leave with skills and systems that not only improve
+                academic performance but also strengthen lifelong cognitive
+                resilience.
+              </p>
             </div>
           </div>
         </section>
-        
 
         {/* ABOUT SECTION */}
         <section
@@ -514,9 +527,21 @@ Clients leave with systems and habits that support stability, protect well-being
             }}
           >
             <p>
-The world’s pressures reach into daily life, disrupting focus, draining energy, and unsettling stability. My work provides a structured framework that restores rhythm and direction—helping people regain composure and carry momentum through uncertainty. These challenges aren’t treated as distractions from growth but as material for the work itself: conditions to be recognized, adapted to, and navigated with steadiness.            </p>
+              Students today face pressure from academics, family expectations,
+              and unpredictable environments. These conditions can overwhelm
+              focus, drain energy, and lead to underperformance. Student Success
+              Systems provide a structured framework that restores rhythm,
+              direction, and confidence.
+            </p>
             <p>
-Each process begins with close attention to how anxiety, fatigue, and stress appear in daily routines. From there, we design individualized strategies that turn tension into generative energy. This means building habits that protect focus, practices that renew resilience, and systems that sustain purpose. The aim is always forward movement: converting anxious intensity into patterns of behavior that support creativity, productivity, and a sustained sense of betterment. </p>
+              Each process begins by identifying how stress, fatigue, and
+              distractions affect daily learning routines. From there,
+              strategies are built to turn tension into usable energy.
+              Students learn to organize, regulate, and adapt—building
+              habits that protect focus and resilience. The goal is always
+              forward momentum: helping students convert challenges into
+              behaviors that sustain growth across school and life.
+            </p>
           </div>
         </section>
       </main>
@@ -524,9 +549,7 @@ Each process begins with close attention to how anxiety, fatigue, and stress app
   );
 }
 
-
-//* Menu */
-//* Menu */
+// === Menu Component (same visuals) ===
 /* Yves Blue Hamburger Menu */
 /* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {

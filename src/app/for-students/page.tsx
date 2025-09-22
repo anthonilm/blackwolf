@@ -8,9 +8,6 @@ export default function ResourcesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const tilesRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const yvesBlue = "#0018A8";
-  const ivory = "#FFFFF0";
-
   const newsletters = [
     {
       title: "Interpolated Instability",
@@ -68,34 +65,33 @@ export default function ResourcesPage() {
     }
   }, []);
 
-  return (
+return (
+  <div
+    ref={containerRef}
+    style={{
+      minHeight: "100vh",
+      display: "grid",
+      gridTemplateRows: "auto 1fr",
+      fontFamily: `"Georgia", "Times New Roman", serif`,
+      position: "relative",
+      overflow: "hidden",
+      background: "#fff", // ✅ solid white background
+    }}
+  >
+    {/* Smokey animated overlay (kept for structure but made transparent) */}
     <div
-      ref={containerRef}
+      className="liquid-overlay"
       style={{
-        minHeight: "100vh",
-        display: "grid",
-        gridTemplateRows: "auto 1fr",
-        fontFamily: `"Georgia", "Times New Roman", serif`,
-        position: "relative",
-        overflow: "hidden",
-        background: "#0d0d0d", // base smokey black
+        position: "absolute",
+        inset: 0,
+        background: "transparent", // ✅ no gradients
+        backgroundSize: "200% 200%",
+        animation: "liquidMove 12s ease-in-out infinite alternate",
+        zIndex: 0,
+        pointerEvents: "none",
       }}
-    >
-      {/* Smokey animated overlay */}
-      <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, rgba(50,50,50,0.5), transparent 70%),
-                       radial-gradient(circle at 80% 40%, rgba(100,100,100,0.4), transparent 70%),
-                       radial-gradient(circle at 50% 80%, rgba(30,30,30,0.6), transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 12s ease-in-out infinite alternate",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
+    />
+
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
@@ -120,7 +116,7 @@ export default function ResourcesPage() {
       `}</style>
 
       {/* Menu */}
-      <Menu yvesBlue={yvesBlue} ivory={ivory} />
+      <Menu />
 
       <main
         style={{
@@ -223,10 +219,22 @@ export default function ResourcesPage() {
   );
 }
 
-/* Shared Menu */
-function Menu({ yvesBlue, ivory }: any) {
+/* Yves Blue Hamburger Menu — collapsible */
+/* Yves Blue Hamburger Menu */
+/* ------------------------------------------------------------------ */
+/* Menu Component — Hamburger always Yves Blue                        */
+/* ------------------------------------------------------------------ */
+
+/* Yves Blue Hamburger Menu (Always Yves Blue) */
+function Menu() {
+  const yvesBlue = "#0018A8";
   const [open, setOpen] = useState(false);
+  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleSub = (key: string) => {
+    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -234,32 +242,47 @@ function Menu({ yvesBlue, ivory }: any) {
         gsap.fromTo(
           menuRef.current,
           { y: -10, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.4 }
+          { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
         );
       } else {
-        gsap.to(menuRef.current, { y: -10, opacity: 0, duration: 0.3 });
+        gsap.to(menuRef.current, {
+          y: -10,
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.in",
+        });
       }
     }
   }, [open]);
 
   return (
     <>
+      {/* Hamburger Button */}
       <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
         <button
+          className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
+            width: 40,
+            height: 40,
             background: "transparent",
-            border: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             cursor: "pointer",
+            border: "none",
+            padding: 0,
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
+
+      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -268,41 +291,159 @@ function Menu({ yvesBlue, ivory }: any) {
             top: 70,
             left: 20,
             minWidth: "240px",
-            background: "rgba(20,20,20,0.95)", // dark smokey black
-            backdropFilter: "blur(6px)", // subtle blur for depth
+            background: "rgba(223, 245, 225, 0.25)",
+            backdropFilter: "blur(10px)",
+            WebkitBackdropFilter: "blur(10px)",
             padding: "1.5rem 2rem",
             borderRadius: "14px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+            zIndex: 1000,
             display: "flex",
             flexDirection: "column",
             gap: "1.2rem",
-            zIndex: 1000,
           }}
         >
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About" },
-            { href: "/noesis-methods", label: "How I Work" },
-            { href: "/areas", label: "Areas I Help With" },
-            { href: "/services", label: "Services" },
-            { href: "/student-services", label: "Student Services" },
-            { href: "/for-students", label: "Newsletters" },
-            { href: "/faq", label: "FAQ" },
-            { href: "/contact", label: "Contact" },
-          ].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
+          {/* Static */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            About
+          </Link>
+
+          {/* Cognitive Performance Coaching */}
+          <div>
+            <div
+              onClick={() => toggleSub("cognitive")}
               style={{
-                color: ivory,
+                cursor: "pointer",
+                color: yvesBlue,
                 fontWeight: 500,
                 fontSize: "1.1rem",
-                letterSpacing: "0.05em",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              Cognitive Performance Coaching
+            </div>
+            {subOpen["cognitive"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/noesis-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Approach
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Student Success Systems */}
+          <div>
+            <div
+              onClick={() => toggleSub("student")}
+              style={{
+                cursor: "pointer",
+                color: yvesBlue,
+                fontWeight: 500,
+                fontSize: "1.1rem",
+              }}
+            >
+              Student Success Systems
+            </div>
+            {subOpen["student"] && (
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/student-services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/student-areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Areas I Help With
+                </Link>
+                <Link
+                  href="/student-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Method
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Other */}
+          <Link
+            href="/for-students"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Newsletters
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Contact
+          </Link>
+          <Link
+            href="/privacy"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Privacy &amp; Confidentiality
+          </Link>
         </div>
       )}
     </>

@@ -4,8 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-import { HEADER_HEIGHT } from "@/lib/constants";
-
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
@@ -14,7 +12,7 @@ export default function Page() {
 
   const taupe = "#7A6C61";
   const yvesBlue = "#0018A8";
-  const ivory = "#F5F0FA"; // soft lavender
+  const ivory = "#F5F0FA";
 
   useEffect(() => {
     setMounted(true);
@@ -25,7 +23,7 @@ export default function Page() {
   return (
     <div
       ref={containerRef}
-      className="noesis-methods-page"
+      className="student-methods-page"
       style={{
         minHeight: "100vh",
         display: "grid",
@@ -65,17 +63,9 @@ export default function Page() {
         .getList li::before { content: "✔"; position: absolute; left: 0; top: 0.05em; font-size: 0.9em; color: ${yvesBlue}; }
       `}</style>
 
-      <Menu />
+      <Menu/>
 
-      <main
-        style={{
-          position: "relative",
-          zIndex: 1,
-          width: "100%",
-          overflowX: "hidden",
-          overflowY: "auto",
-        }}
-      >
+      <main style={{ position: "relative", zIndex: 1 }}>
         {/* HERO */}
         <section
           style={{
@@ -87,64 +77,65 @@ export default function Page() {
             textAlign: "center",
           }}
         >
-       <h1
-  style={{
-    fontSize: "2rem",
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-  }}
->
-  THE NOESIS APPROACH{" "}
-  <span style={{ fontSize: "0.9rem", verticalAlign: "super" }}>©</span>
-</h1>
+          <h1
+            style={{
+              fontSize: "1.5rem",
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+            }}
+          >
+            STUDENT SUCCESS SYSTEMS{" "}
+            <span style={{ fontSize: "0.9rem", verticalAlign: "super" }}>©</span>
+          </h1>
         </section>
 
-        {/* ABOUT */}
+        {/* ABOUT (student context) */}
         <section
           style={{
-            minHeight: "60vh",
+            minHeight: "50vh",
             padding: "2rem 1rem",
             background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)",
             fontSize: "1rem",
-            lineHeight: 1.5,
+            lineHeight: 1.6,
             color: "#0F1C2E",
           }}
         >
           <p>
-            The world’s pressures reach into daily life, disrupting focus, draining energy, and unsettling stability. My work provides a structured framework that restores rhythm and direction—helping people regain composure and carry momentum through uncertainty. These challenges aren’t treated as distractions from growth but as material for the work itself: conditions to be recognized, adapted to, and navigated with steadiness.
+            School environments create unique pressures—assignments pile up,
+            exams demand peak focus, and energy fluctuates across weeks and
+            semesters. This process is designed to restore rhythm and direction
+            so students can manage their workload without burning out.
           </p>
           <br />
           <p>
-            Each process begins with close attention to how anxiety, fatigue, and stress appear in daily routines. From there, we design individualized strategies that turn tension into generative energy. This means building habits that protect focus, practices that renew resilience, and systems that sustain purpose. The aim is always forward movement: converting anxious intensity into patterns of behavior that support creativity, productivity, and a sustained sense of betterment.
+            Each student begins by observing how stress, fatigue, and motivation
+            affect their daily learning. From there, we build strategies that
+            turn pressure into productive energy—habits that protect focus,
+            routines that reduce overwhelm, and systems that sustain performance
+            through exams, projects, and transitions.
           </p>
         </section>
 
         {/* INTRO */}
         <section
           style={{
-            minHeight: "30vh",
+            minHeight: "25vh",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             padding: "2rem 1rem",
-            background: "linear-gradient(to bottom, #FFFFFF, #F5F0FA)",
-            color: "#0F1C2E",
             textAlign: "left",
           }}
         >
-          <h2 style={{ fontSize: "1.75rem", marginBottom: "1rem" }}>
-            Create the conditions you need to achieve and sustain your optimal mental performance.
+          <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
+            Create the conditions you need to succeed in school and beyond.
           </h2>
-          <p
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.6,
-              maxWidth: "700px",
-              margin: "0 auto",
-            }}
-          >
-            Opportunities don’t become real until the mind is steady and the body follows suit. When anxiety and imbalance cloud perception, even the best chances can slip past unseen. My role is to help people cultivate the conditions—internally and externally—that make opportunities visible, and to build the readiness and confidence to step toward them when they appear.
+          <p style={{ fontSize: "1rem", lineHeight: 1.6, maxWidth: "680px" }}>
+            When stress and disorganization cloud thinking, opportunities to
+            learn and excel slip by. Student Success Systems make those
+            opportunities visible and achievable, building confidence and
+            readiness to take action when it matters most.
           </p>
         </section>
 
@@ -153,22 +144,20 @@ export default function Page() {
           style={{
             padding: "2rem 1rem",
             background: "linear-gradient(to bottom, #F5F0FA, #FFFFFF)",
-            fontSize: "1rem",
-            lineHeight: 1.5,
           }}
         >
-          <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>
-            The Approach
+          <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>
+            The Student Approach
           </h2>
 
           <div style={{ display: "grid", gap: "1rem" }}>
             {[
-              { num: 1, title: "Readiness", desc: "Confidence and steadiness under pressure." },
-              { num: 2, title: "Assessment", desc: "Clarity on the mental and emotional drivers of performance." },
-              { num: 3, title: "Skills", desc: "Practices that stabilize, regulate, and sustain energy." },
-              { num: 4, title: "Plan", desc: "A framework tailored to personal rhythms and needs." },
-              { num: 5, title: "Support", desc: "Ongoing refinements that strengthen alignment over time." },
-              { num: 6, title: "Habits", desc: "Structures that protect well-being and extend creative momentum." },
+              { num: 1, title: "Readiness", desc: "Confidence and composure for exams, assignments, and deadlines." },
+              { num: 2, title: "Assessment", desc: "Identifying strengths, gaps, and patterns in focus and study habits." },
+              { num: 3, title: "Skills", desc: "Evidence-based methods for concentration, memory, and resilience." },
+              { num: 4, title: "Plan", desc: "A structured roadmap tailored to learning goals and daily rhythms." },
+              { num: 5, title: "Support", desc: "Ongoing check-ins to reinforce consistency and growth." },
+              { num: 6, title: "Habits", desc: "Protective routines that sustain academic energy and reduce burnout." },
             ].map((item) => (
               <div
                 key={item.num}
@@ -213,55 +202,48 @@ export default function Page() {
             <button
               onClick={() => setShowApproach(!showApproach)}
               style={{
-                fontSize: "1.1rem",
+                fontSize: "1rem",
                 fontWeight: 500,
                 color: yvesBlue,
                 border: `2px solid ${yvesBlue}`,
                 borderRadius: "6px",
                 padding: "0.6rem 1.2rem",
                 background: "transparent",
-                cursor: "pointer",
               }}
             >
-              {showApproach ? "Hide Full Approach" : "See Full Approach"}
+              {showApproach ? "Hide Details" : "See Full Approach"}
             </button>
           </div>
 
           {showApproach && (
-            <div style={{ marginTop: "2rem", fontSize: "1rem", lineHeight: 1.6 }}>
+            <div style={{ marginTop: "1.5rem", fontSize: "1rem", lineHeight: 1.6 }}>
               <p>
-                The Noesis Approach draws from psychology and behavioral science
-                to steady the mind and strengthen daily rhythms. It is built
-                around practical tools that bring clarity, regulate energy, and
-                support consistent action—so demands feel less consuming and
-                progress feels more sustainable.
+                Student Success Systems draw from psychology and education
+                science to steady the mind, simplify tasks, and strengthen
+                learning rhythms. The aim is always progress that feels doable,
+                sustainable, and confidence-building.
               </p>
               <p>
-                Through ongoing conversations and simple tracking, we notice how
-                stress, motivation, and performance patterns shape your days.
-                From there, we build strategies that are direct, realistic, and
-                easy to hold—restoring balance, reinforcing structure, and making
-                follow-through feel natural.
+                Together we track stressors, build study systems, and design
+                realistic strategies for exams, projects, and long-term goals.
               </p>
-              <p>We focus on three essentials:</p>
               <ul style={{ marginTop: "0.5rem", paddingLeft: "1.2rem" }}>
                 <li>
-                  <strong>Organizational systems</strong> – practical routines
-                  that lighten mental load.
+                  <strong>Study systems</strong> – practical routines that
+                  lighten cognitive load.
                 </li>
                 <li>
-                  <strong>Emotional regulation</strong> – composure and focus
-                  under pressure.
+                  <strong>Emotional regulation</strong> – steady focus under
+                  academic pressure.
                 </li>
                 <li>
-                  <strong>Cognitive load management</strong> – preventing
-                  overwhelm and sustaining clarity.
+                  <strong>Performance habits</strong> – tools to sustain energy
+                  and momentum across the semester.
                 </li>
               </ul>
               <p>
-                Clients leave with systems and habits that support stability,
-                protect well-being, and create reliable momentum in both work and
-                life.
+                Students leave with systems and skills that reduce stress,
+                protect well-being, and support consistent performance.
               </p>
             </div>
           )}
@@ -270,7 +252,7 @@ export default function Page() {
         {/* PHASES TOGGLE */}
         <section
           style={{
-            minHeight: "30vh",
+            minHeight: "25vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -279,20 +261,19 @@ export default function Page() {
             textAlign: "center",
           }}
         >
-          <h2 style={{ fontSize: "1.5rem", marginBottom: "2rem" }}>
-            THERE ARE 4 CORE PHASES WE WILL TRACK
+          <h2 style={{ fontSize: "1.4rem", marginBottom: "1rem" }}>
+            The 4 Core Phases
           </h2>
           <button
             onClick={() => setShowPhases(!showPhases)}
             style={{
-              fontSize: "1.25rem",
+              fontSize: "1rem",
               fontWeight: 500,
               color: yvesBlue,
               border: `2px solid ${yvesBlue}`,
               borderRadius: "6px",
-              padding: "0.8rem 1.4rem",
+              padding: "0.6rem 1.2rem",
               background: "transparent",
-              cursor: "pointer",
             }}
           >
             {showPhases ? "Hide Phases" : "See the 4 Phases"}
@@ -304,22 +285,17 @@ export default function Page() {
           <section style={{ display: "grid", gap: "1.5rem", padding: "1rem" }}>
             <article className="panel">
               <p className="phaseTag">PHASE 1</p>
-              <h4 className="panelKicker">Diagnostic &amp; Map</h4>
+              <h4 className="panelKicker">Diagnostic & Map</h4>
               <p className="panelBody">
-                In our first step, you’ll get a clear snapshot of where you are
-                right now. A short COM-B intake highlights what’s supporting you
-                and what’s draining you, so we can see the patterns shaping your
-                stress, focus, and follow-through. This session is
-                interactive—you’ll have space to reflect, ask questions, and
-                explore how your thoughts and emotions connect, leaving with
-                language for what’s happening inside and insights to prepare you
-                for the next steps.
+                A short intake helps us see what supports you and what drains
+                you. Together we map study habits, energy levels, and emotional
+                triggers, leaving you with clear language and insights for what’s
+                happening and where to focus.
               </p>
-              <p className="getTitle">What you’ll get</p>
               <ul className="getList">
-                <li>A clear picture of what’s helping and what’s draining you</li>
-                <li>Priority areas to lighten the mental load</li>
-                <li>A calm, structured starting point</li>
+                <li>A picture of what’s helping and what’s holding you back</li>
+                <li>Priority areas to reduce stress</li>
+                <li>A structured starting point</li>
               </ul>
             </article>
 
@@ -327,47 +303,32 @@ export default function Page() {
               <p className="phaseTag">PHASE 1.5</p>
               <h4 className="panelKicker">Audit Week</h4>
               <p className="panelBody">
-                After the first session, you’ll track real-life patterns—sleep,
-                energy, mood, actions, and disruptions—so we can see how your
-                daily rhythms connect to your mental load. In this step, we
-                review your COM-B results, talk through your goals, and decide
-                which IEP track feels right for you. This is the moment you
-                choose what habits and actions you want to change in order to
-                find clarity, relief, and forward momentum. By the end of the
-                week, you’ll have a clear view of what drives your effectiveness
-                and a decision-ready plan for what comes next.
+                You’ll track real study-life rhythms—sleep, focus, mood, and
+                distractions—so we can see how they connect to your mental load.
+                We’ll review results, talk goals, and choose the right track for
+                you.
               </p>
-              <p className="getTitle">What you’ll get</p>
               <ul className="getList">
-                <li>A snapshot of your current rhythms</li>
-                <li>Clarity on what’s fueling fatigue or calm</li>
-                <li>Simple cues for where to focus first</li>
+                <li>Snapshot of current learning rhythms</li>
+                <li>Clarity on what drives fatigue or focus</li>
+                <li>Simple cues for where to start</li>
               </ul>
             </article>
 
             <article className="panel">
               <p className="phaseTag">PHASE 2</p>
-              <h4 className="panelKicker">IEP &amp; Track</h4>
+              <h4 className="panelKicker">IEP & Track</h4>
               <p className="panelBody">
-                The IEP provides a structured plan based on your assessment
-                results and goals. Six tracks are available: Stabilization First
-                restores daily routines and reduces overwhelm. Emotional
-                Processing focuses on how environment and stressors affect mood,
-                helping you identify triggers and build healthier responses.
-                Motivation Rebuild reconnects you with values and direction when
-                drive feels low. Capability Expansion develops attention, memory,
-                and executive function. Environmental Alignment ensures your
-                surroundings reinforce progress. Identity Integration reduces
-                inner conflict by aligning roles and behavior. Each track offers
-                targeted tools that support mental health and establish
-                consistent patterns for steady function and sustainable
-                performance.
+                An Individual Engagement Plan tailored to your goals and
+                assessment. Tracks range from Stabilization (restoring routines)
+                to Motivation, Cognitive Skills, Environmental Alignment, and
+                more. Each one provides focused tools for academic resilience and
+                progress.
               </p>
-              <p className="getTitle">What you’ll get</p>
               <ul className="getList">
-                <li>A tailored, low-friction plan that feels doable</li>
-                <li>Environmental tweaks that make life feel lighter</li>
-                <li>A realistic pace to rebuild confidence and control</li>
+                <li>A roadmap that feels achievable</li>
+                <li>Study-environment tweaks to ease learning</li>
+                <li>Steps paced for confidence and momentum</li>
               </ul>
             </article>
 
@@ -375,17 +336,14 @@ export default function Page() {
               <p className="phaseTag">PHASE 3</p>
               <h4 className="panelKicker">Activation</h4>
               <p className="panelBody">
-                Weekly cycles introduce small, focused changes to habits, time
-                use, and daily patterns. Each adjustment is designed to support
-                emotional regulation, lighten mental load, and make progress feel
-                manageable. We track a few key signals that confirm stability,
-                build reliability, and keep momentum visible.
+                Weekly steps focus on adjusting habits, study strategies, and
+                self-regulation. Small wins build confidence, while tracking key
+                signals keeps momentum visible.
               </p>
-              <p className="getTitle">What you’ll get</p>
               <ul className="getList">
-                <li>Gentle weekly steps that fit your capacity</li>
-                <li>Quick wins to boost confidence and stability</li>
-                <li>Tracking that shows progress, even on hard days</li>
+                <li>Manageable weekly adjustments</li>
+                <li>Quick wins that reinforce motivation</li>
+                <li>Tracking progress, even on hard weeks</li>
               </ul>
             </article>
 
@@ -393,19 +351,14 @@ export default function Page() {
               <p className="phaseTag">PHASE 4</p>
               <h4 className="panelKicker">Outcomes</h4>
               <p className="panelBody">
-                By this stage, the process has reoriented your mind and routines
-                toward your most effective mental and cognitive functioning.
-                You’ll have patterns, behaviors, and tools that are tailored to
-                your identity, context, and conditions.
+                By this stage, students have structures and habits that match
+                their learning style, sustain focus, and protect well-being for
+                consistent achievement.
               </p>
-              <p className="getTitle">What you’ll get</p>
               <ul className="getList">
-                <li>A clear sense of what’s working and why</li>
-                <li>
-                  Tools and systems designed around you that protect mental and
-                  emotional energy while supporting optimal function
-                </li>
-                <li>A forward plan that feels safe and achievable</li>
+                <li>Confidence in your learning process</li>
+                <li>Protective systems for mental and emotional energy</li>
+                <li>A plan for ongoing academic growth</li>
               </ul>
             </article>
           </section>
@@ -416,7 +369,7 @@ export default function Page() {
 }
 
 /* Menu */
-//* Menu */
+/* Yves Blue Hamburger Menu */
 /* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {
   const yvesBlue = "#0018A8";

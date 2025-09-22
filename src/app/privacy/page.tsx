@@ -3,49 +3,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import gsap from "gsap";
-import { usePathname } from "next/navigation";
 
-const areasIHelpWith = [
-  "Burnout and occupational stress",
-  "Indecision and cognitive overload",
-  "Overwhelm and boundary setting",
-  "Performance anxiety",
-  "Attention and concentration support",
-  "Procrastination and avoidance cycles",
-  "Stress and coping skills",
-  "Mental stamina and cognitive fatigue",
-  "Sleep and circadian health",
-  "Resilience and post-stress growth",
-  "Fatigue and energy regulation",
-  "Adjustment to change",
-  "Role transitions and identity shifts",
-  "Leadership stress and imposter feelings",
-  "Communication under pressure",
-  "Conflict resolution and repair",
-  "Cognitive flexibility and problem-solving",
-  "Motivation and task initiation",
-  "Recovery after setbacks",
-  "Overcommitment and people-pleasing patterns",
-  "Public-performance anxiety",
-  "Emotion regulation and distress tolerance",
-  "Values-aligned decision making",
-  "Executive functioning and planning",
-  "Sustaining motivation",
-  "Cognitive load management",
-  "Work–life boundaries and balance",
-  "Processing criticism and feedback",
-  "Sustainable high performance",
-  "Habit change and maintenance",
-];
-
-export default function AreasPage() {
-  const [showCalendly, setShowCalendly] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const ua = navigator.userAgent || navigator.vendor || "";
-    setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
-  }, []);
+export default function PrivacyPage() {
+  const [expanded, setExpanded] = useState(false);
+  const yvesBlue = "#0018A8";
 
   return (
     <div
@@ -55,35 +16,36 @@ export default function AreasPage() {
         padding: "4rem 2rem",
         fontFamily: "Georgia, 'Times New Roman', serif",
         overflow: "hidden",
+        background: "#fff", // ✅ solid white background
       }}
     >
-      {/* Animated Ivory–Olive Gradient Overlay */}
+      {/* Gradient Background */}
       <div
         className="liquid-overlay"
         style={{
           position: "absolute",
           inset: 0,
           background: `
-            radial-gradient(circle at 45% 45%, #FFFFF0 0%, transparent 60%),
-            radial-gradient(circle at 55% 55%, #F8F8F0 0%, transparent 70%),
-            radial-gradient(circle at 50% 60%, #A9BA9D80, transparent 75%),
-            radial-gradient(circle at 50% 50%, #B5C9A680, transparent 90%)
+            radial-gradient(circle at 45% 45%, #F5F0FA 0%, transparent 60%),
+            radial-gradient(circle at 55% 55%, #E8E8FF 0%, transparent 70%),
+            radial-gradient(circle at 50% 60%, #0018A810, transparent 75%),
+            radial-gradient(circle at 50% 50%, #0018A820, transparent 90%)
           `,
           backgroundSize: "200% 200%",
-          animation: "liquidMove 8s ease-in-out infinite alternate",
+          animation: "liquidMove 1s ease-in-out infinite alternate",
           zIndex: -1,
-          pointerEvents: "none",
         }}
       />
       <style>{`
         @keyframes liquidMove {
-          0% {
-            background-position: 45% 45%, 55% 55%, 50% 60%, 50% 50%;
-            opacity: 0.9;
-          }
-          100% {
-            background-position: 55% 55%, 45% 45%, 52% 48%, 48% 52%;
-            opacity: 1;
+          0% { background-position: 45% 45%, 55% 55%, 50% 60%, 50% 50%; opacity: 0.9; }
+          100% { background-position: 55% 55%, 45% 45%, 52% 48%, 48% 52%; opacity: 1; }
+        }
+
+        /* Hide headers on mobile */
+        @media (max-width: 768px) {
+          .privacy-headers {
+            display: none !important;
           }
         }
       `}</style>
@@ -91,168 +53,146 @@ export default function AreasPage() {
       {/* Menu */}
       <Menu />
 
-      {/* Headline */}
-      <h1
-        style={{
-          fontSize: "2.5rem",
-          textAlign: "center",
-          maxWidth: "72ch",
-          margin: "0 auto",
-          lineHeight: 1.2,
-          color: "#111111",
-        }}
-      ></h1>
-
-      {/* Areas Section */}
+      {/* Top Headers */}
       <section
+        className="privacy-headers"
         style={{
-          background: "#ffffffb3",
-          borderRadius: "12px",
-          padding: "2rem",
-          marginTop: "4rem",
-          marginBottom: "4rem",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          marginBottom: "3rem",
+          flexWrap: "wrap",
+          gap: "2rem",
         }}
       >
-        <h2
-          style={{
-            fontSize: "2.5rem",
-            fontFamily: "Georgia, serif",
-            color: "#111111",
-            textAlign: "center",
-            marginBottom: "2rem",
-            fontWeight: 500,
-            letterSpacing: "0.5px",
-          }}
-        >
-          Areas I Help With
-        </h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: "0.75rem 2rem",
-          }}
-        >
-          {areasIHelpWith.map((area, idx) => (
-            <div
-              key={idx}
-              style={{
-                fontSize: "16pt",
-                color: "#222222",
-                borderBottom: "1px solid rgba(0, 0, 0, 0.08)",
-                paddingBottom: "0.4rem",
-                letterSpacing: "0.2px",
-                lineHeight: 1.6,
-              }}
-            >
-              {area}
-            </div>
-          ))}
+        <div style={{ textAlign: "center" }}>
+          <h2
+            style={{
+              color: yvesBlue,
+              fontSize: "1.5rem",
+              marginBottom: "0.3rem",
+            }}
+          >
+            HIPAA Policies & Procedures
+          </h2>
+          <p style={{ color: yvesBlue, fontSize: "1rem" }}>
+            Protecting health information with federal standards
+          </p>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <h2
+            style={{
+              color: yvesBlue,
+              fontSize: "1.5rem",
+              marginBottom: "0.3rem",
+            }}
+          >
+            Client Consent & Agreement
+          </h2>
+          <p style={{ color: yvesBlue, fontSize: "1rem" }}>
+            Clear expectations, rights, and responsibilities
+          </p>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <h2
+            style={{
+              color: yvesBlue,
+              fontSize: "1.5rem",
+              marginBottom: "0.3rem",
+            }}
+          >
+            Confidentiality & Privacy Practices
+          </h2>
+          <p style={{ color: yvesBlue, fontSize: "1rem" }}>
+            Safeguarding trust across student and general services
+          </p>
         </div>
       </section>
 
-      {/* Calendly Button */}
-      <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-        <button
-          onClick={() => {
-            if (isMobile) {
-              window.open(
-                "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
-                "_blank"
-              );
-            } else {
-              setShowCalendly(true);
-            }
-          }}
+      {/* Intro */}
+      <section
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          marginBottom: "2.5rem",
+        }}
+      >
+        <p
           style={{
-            display: "inline-block",
-            padding: "1.2rem 2.4rem",
-            borderRadius: "14px",
-            background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            color: "#000",
-            fontSize: "1.3rem",
-            fontFamily: "Georgia, serif",
-            fontWeight: 600,
-            letterSpacing: "0.05em",
-            border: "none",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
+            fontWeight: 700,
+            fontSize: "1.2rem",
+            color: yvesBlue,
+            lineHeight: 1.6,
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
-          }
         >
-          Book Your Free First Session
-        </button>
-      </div>
+          Noesis Systems LLC is committed to strict confidentiality and
+          HIPAA-compliant care. We protect personal health information, ensure
+          clear agreements, and maintain transparent practices across both
+          student services and general client care.
+        </p>
+      </section>
 
-      {/* Calendly Embed */}
-      {showCalendly && !isMobile && (
-        <section
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.65)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 2000,
-          }}
-        >
-          <div
-            style={{
-              width: "90%",
-              maxWidth: "960px",
-              borderRadius: "12px",
-              overflow: "hidden",
-              boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
-              background: "#fff",
-              position: "relative",
-            }}
-          >
-            <iframe
-              src="https://calendly.com/tmcelrath26/noesis-consulting-1-1"
-              width="100%"
-              height="800"
-              frameBorder="0"
-              scrolling="no"
-              style={{ border: "none" }}
-            />
-            <button
-              onClick={() => setShowCalendly(false)}
-              style={{
-                position: "absolute",
-                top: "1rem",
-                right: "1rem",
-                padding: "0.6rem 1.2rem",
-                fontSize: "1rem",
-                fontWeight: 600,
-                background: "#0018A8",
-                color: "#fff",
-                border: "none",
-                borderRadius: "6px",
-                cursor: "pointer",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </section>
-      )}
+      {/* Main Content */}
+      <section
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          color: yvesBlue,
+          fontSize: "1rem",
+          lineHeight: 1.8,
+          display: "grid",
+          gap: "1.5rem",
+          textAlign: "left",
+        }}
+      >
+        <p>
+          All client information shared with Noesis Systems LLC is confidential
+          and safeguarded in compliance with the Health Insurance Portability
+          and Accountability Act (HIPAA). This includes digital records, session
+          notes, and any identifying details. Access is strictly limited to
+          authorized providers and systems. Confidentiality has important
+          limits: if there is risk of imminent harm to self or others, disclosure
+          of child or elder abuse, or a legal obligation, Noesis Systems LLC may
+          be required to share information with appropriate authorities. These
+          exceptions align with federal and state laws and are always handled
+          with the highest sensitivity and professional care.
+        </p>
+
+        <p>
+          Students and general clients alike have the right to understand their
+          records, request access, and clarify how information is used in the
+          coaching or consulting process. Written consent is obtained before
+          sharing any details with third parties such as schools, families, or
+          referring professionals.
+        </p>
+
+        <p>
+          Clients are encouraged to review the Client Consent & Agreement
+          document, which outlines rights, responsibilities, and the scope of
+          services. Students receive additional protections regarding academic
+          records and communications, ensuring that mental health support
+          remains separate from academic evaluations.
+        </p>
+
+        <p>
+          Noesis Systems LLC also provides clear boundaries for communication
+          outside sessions. Email and messaging are available for scheduling and
+          practical updates but are not substitutes for coaching or therapeutic
+          dialogue. Crisis needs must be directed to emergency services or
+          crisis hotlines.
+        </p>
+
+        <p>
+          By choosing to work with Noesis Systems LLC, clients affirm their
+          understanding of these policies and their commitment to an environment
+          of mutual trust, respect, and confidentiality.
+        </p>
+      </section>
     </div>
   );
 }
 
-/* Menu */
+/* Yves Blue Hamburger Menu */
 /* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {
   const yvesBlue = "#0018A8";
