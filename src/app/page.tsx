@@ -427,7 +427,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
   useEffect(() => {
     if (titleRef.current && subtitleRef.current) {
      gsap.to([titleRef.current, subtitleRef.current], {
-  y: 150,            // very large vertical travel
+  y: 50,            // very large vertical travel
   duration: 6,       // keep it smooth
   ease: "sine.inOut",
   repeat: -1,
