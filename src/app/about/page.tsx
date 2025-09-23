@@ -99,7 +99,7 @@ export default function AboutPage() {
             <h2 style={styles.heroTitle}>
               M.A., Licensed Integrative Mental Health Coach
             </h2>
-            <h3 style={styles.heroSubtitle}>Founder & Consultant</h3>
+            <h3 style={styles.heroSubtitle}>Founder & Mental Health Coach</h3>
             <p style={styles.heroDescription}>
               I help people transform anxiety into action, structure their energy into creativity and generativity, and convert trauma reflection into life enhancing progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, achieving a growth mindset, and sustaining optimum mental performance.
             </p>

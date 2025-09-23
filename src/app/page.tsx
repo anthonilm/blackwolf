@@ -513,8 +513,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
     whiteSpace: "normal",
   }}
 >
-  TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM WITH AN INTEGRATIVE
-  MENTAL HEALTH COACH.
+  Transform your anxieties into creative and generative energy.
 </p>
 
       {/* CTA */}
