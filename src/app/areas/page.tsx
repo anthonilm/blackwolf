@@ -104,7 +104,7 @@ export default function AreasPage() {
     fontWeight: 700,
   }}
 >
-Development Pathways
+ Transformation Pathways
 </h1>
 
       {/* Areas Section */}
@@ -393,7 +393,7 @@ function Menu() {
                   onClick={() => setOpen(false)}
                   style={{ color: yvesBlue, fontSize: "1rem" }}
                 >
-                  Areas I Help With
+                   Transformation Pathways
                 </Link>
                 <Link
                   href="/noesis-methods"
@@ -441,7 +441,7 @@ function Menu() {
                   onClick={() => setOpen(false)}
                   style={{ color: yvesBlue, fontSize: "1rem" }}
                 >
-                  Areas I Help With
+                   Transformation Pathways
                 </Link>
                 <Link
                   href="/student-methods"

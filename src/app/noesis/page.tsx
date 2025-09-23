@@ -177,7 +177,7 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
             {subOpen["cognitive"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Areas I Help With</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
                 <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Approach</Link>
               </div>
             )}
@@ -199,7 +199,7 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
             {subOpen["student"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Areas I Help With</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
                 <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Method</Link>
               </div>
             )}

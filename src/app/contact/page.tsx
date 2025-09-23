@@ -276,7 +276,7 @@ function Menu() {
                   onClick={() => setOpen(false)}
                   style={{ color: yvesBlue, fontSize: "1rem" }}
                 >
-                  Areas I Help With
+                  Transformation Pathways
                 </Link>
                 <Link
                   href="/noesis-methods"
@@ -324,7 +324,7 @@ function Menu() {
                   onClick={() => setOpen(false)}
                   style={{ color: yvesBlue, fontSize: "1rem" }}
                 >
-                  Areas I Help With
+                   Transformation Pathways
                 </Link>
                 <Link
                   href="/student-methods"
