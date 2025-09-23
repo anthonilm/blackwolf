@@ -18,33 +18,34 @@ export default function Page() {
   const saffron = "#F4C430";
 
   return (
-    <div
-      ref={containerRef}
-      style={{
-        height: "100vh",
-        display: "grid",
-        gridTemplateRows: "auto 1fr auto",
-        fontFamily: `"Georgia", "Times New Roman", serif`,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
+   <div
+  ref={containerRef}
+  style={{
+    height: "100vh",
+    display: "grid",
+    gridTemplateRows: "auto 1fr auto",
+    fontFamily: `"Georgia", "Times New Roman", serif`,
+    position: "relative",
+    overflow: "hidden",
+    background: "#014D4E", // Deep Teal solid background
+  }}
+>
       {/* Liquid overlay */}
       <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-             radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
-             radial-gradient(circle at 50% 80%, #FFFFFF40, transparent 70%),
-             radial-gradient(circle at 50% 100%, ${saffron}40, transparent 70%)`,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 5s ease-in-out infinite alternate",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
+  className="liquid-overlay"
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
+       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
+       radial-gradient(circle at 50% 80%, ${taupe}40, transparent 70%),
+       radial-gradient(circle at 50% 100%, ${saffron}40, transparent 70%)`,
+    backgroundSize: "200% 200%",
+    animation: "liquidMove 12s ease-in-out infinite alternate",
+    zIndex: 0,
+    pointerEvents: "none",
+  }}
+/>
       <style>{`
         @keyframes liquidMove {
           0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
@@ -222,29 +223,29 @@ function Menu({ yvesBlue, ivory }: any) {
   return (
     <>
       {/* Hamburger Button */}
-      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
-        <button
-          className="menu-button"
-          onClick={() => setOpen(!open)}
-          style={{
-            width: 40,
-            height: 40,
-            background: "transparent",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            border: "none",
-            padding: 0,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-          </div>
-        </button>
-      </div>
+   <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
+  <button
+    className="menu-button"
+    onClick={() => setOpen(!open)}
+    style={{
+      width: 40,
+      height: 40,
+      background: "transparent",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      border: "none",
+      padding: 0,
+    }}
+  >
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
+      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
+      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
+    </div>
+  </button>
+</div>
 
       {/* Dropdown Menu */}
       {open && (
@@ -282,6 +283,14 @@ function Menu({ yvesBlue, ivory }: any) {
           >
             About
           </Link>
+
+          <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -385,7 +394,7 @@ function Menu({ yvesBlue, ivory }: any) {
             onClick={() => setOpen(false)}
             style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
           >
-            Newsletters
+            Insights
           </Link>
           <Link
             href="/faq"
@@ -401,13 +410,7 @@ function Menu({ yvesBlue, ivory }: any) {
           >
             Contact
           </Link>
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Privacy &amp; Confidentiality
-          </Link>
+          
         </div>
       )}
     </>
@@ -459,59 +462,60 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
           marginTop: "100px",
         }}
       >
-        <div
-          className="hero-lines"
-          style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
-        >
-          <div
-            style={{
-              width: "clamp(6px, 1vw, 12px)",
-              height: "clamp(100px, 22vh, 200px)",
-              backgroundColor: yvesBlue,
-            }}
-          />
-          <div
-            style={{
-              width: "clamp(6px, 1vw, 12px)",
-              height: "clamp(100px, 22vh, 200px)",
-              backgroundColor: yvesBlue,
-            }}
-          />
-        </div>
-        <h1
-          ref={titleRef}
-          className="hero-title"
-          style={{
-            fontSize: "clamp(2rem, 6vw, 5rem)",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            whiteSpace: "nowrap",
-          }}
-        >
-          NOESIS SYSTEMS
-        </h1>
+     <div
+  className="hero-lines"
+  style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
+>
+  <div
+    style={{
+      width: "clamp(6px, 1vw, 12px)",
+      height: "clamp(100px, 22vh, 200px)",
+      backgroundColor: "#FFFFFF", // White line
+    }}
+  />
+  <div
+    style={{
+      width: "clamp(6px, 1vw, 12px)",
+      height: "clamp(100px, 22vh, 200px)",
+      backgroundColor: "#FFFFFF", // White line
+    }}
+  />
+</div>
+       <h1
+  ref={titleRef}
+  className="hero-title"
+  style={{
+    fontSize: "clamp(2rem, 6vw, 5rem)",
+    fontWeight: 700,
+    letterSpacing: "0.1em",
+    whiteSpace: "nowrap",
+    color: "#FFFFFF", // White text
+  }}
+>
+  NOESIS SYSTEMS
+</h1>
       </div>
 
       {/* Subtitle */}
-      <p
-        ref={subtitleRef}
-        className="hero-subtitle"
-        style={{
-          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-          textTransform: "uppercase",
-          letterSpacing: "0.18em",
-          lineHeight: 1.6,
-          margin: "0 auto",
-          textAlign: "center",
-          color: taupe,
-          maxWidth: "65ch",         // desktop width cap
-          overflowWrap: "break-word",
-          whiteSpace: "normal",     // allow wrapping
-        }}
-      >
-        TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM WITH AN INTEGRATIVE
-        MENTAL HEALTH COACH.
-      </p>
+     <p
+  ref={subtitleRef}
+  className="hero-subtitle"
+  style={{
+    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+    textTransform: "uppercase",
+    letterSpacing: "0.18em",
+    lineHeight: 1.6,
+    margin: "0 auto",
+    textAlign: "center",
+    color: "#FFFFFF",   // White text
+    maxWidth: "65ch",
+    overflowWrap: "break-word",
+    whiteSpace: "normal",
+  }}
+>
+  TRANSFORM ANXIETY INTO CLARITY, CREATIVITY, AND MOMENTUM WITH AN INTEGRATIVE
+  MENTAL HEALTH COACH.
+</p>
 
       {/* CTA */}
       <div style={{ marginTop: "2rem" }}>
@@ -559,16 +563,16 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         }}
       >
         <div
-          style={{
-            fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
-            letterSpacing: "0.1em",
-            color: taupe,
-            fontFamily: `"Georgia", "Times New Roman", serif`,
-            textAlign: "left",
-          }}
-        >
-          Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
-        </div>
+  style={{
+    fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
+    letterSpacing: "0.1em",
+    color: "#FFFFFF",  // White text
+    fontFamily: `"Georgia", "Times New Roman", serif`,
+    textAlign: "left",
+  }}
+>
+  Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
+</div>
 
         <a
           href="https://instagram.com"

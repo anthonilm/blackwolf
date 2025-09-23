@@ -54,7 +54,7 @@ export default function StudentAreasPage() {
     padding: "4rem 2rem",
     fontFamily: "Georgia, 'Times New Roman', serif",
     overflow: "hidden",
-    background: "#2E4F3E", // soft evergreen
+    background: "#014D4E", // Deep Teal
   }}
 >
       {/* Animated Overlay */}
@@ -103,7 +103,7 @@ export default function StudentAreasPage() {
     fontWeight: 700,
   }}
 >
-  Areas I Help Students With
+  Development Pathways
 </h1>
 
       {/* Areas Grid */}
@@ -243,7 +243,6 @@ export default function StudentAreasPage() {
 }
 
 /* Yves Blue Hamburger Menu */
-/* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {
   const yvesBlue = "#0018A8";
   const [open, setOpen] = useState(false);
@@ -336,6 +335,13 @@ function Menu() {
           >
             About
           </Link>
+                <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -439,7 +445,7 @@ function Menu() {
             onClick={() => setOpen(false)}
             style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
           >
-            Newsletters
+            Insights
           </Link>
           <Link
             href="/faq"
@@ -455,13 +461,7 @@ function Menu() {
           >
             Contact
           </Link>
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Privacy &amp; Confidentiality
-          </Link>
+        
         </div>
       )}
     </>

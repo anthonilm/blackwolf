@@ -57,30 +57,28 @@ export default function ServicesPage() {
   }, [currentCheckout]);
 
   return (
-   <main
-  style={{
-    minHeight: "100vh",
-    padding: "4rem 2rem",
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    position: "relative",
-    overflow: "hidden",
-    zIndex: 0,
-    color: "#FFFFF0", // ivory text for strong contrast on oxblood
-  }}
->
-
-      {/* Animated Overlay */}
-    <div
-  className="liquid-overlay"
-  style={{
-    position: "absolute",
-    inset: 0,
-    background: "#7B3A3A", // softened oxblood
-    zIndex: -1,
-    pointerEvents: "none",
-  }}
-/>
-
+    <main
+      style={{
+        minHeight: "100vh",
+        padding: "4rem 2rem",
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        position: "relative",
+        overflow: "hidden",
+        zIndex: 0,
+        color: "#FFFFF0", // ivory text
+      }}
+    >
+      {/* Background Overlay */}
+      <div
+        className="liquid-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "#F4C430", // saffron background
+          zIndex: -1,
+          pointerEvents: "none",
+        }}
+      />
 
       <style>{`
         @keyframes liquidMove {
@@ -94,35 +92,38 @@ export default function ServicesPage() {
 
       {/* Headline */}
       <h1
-  style={{
-    fontSize: "3rem",
-    textAlign: "center",
-    maxWidth: "72ch",
-    margin: "0 auto 3rem",
-    lineHeight: 1.2,
-    color: "#FFFFFF",   // changed to white
-    fontWeight: 700,
-    letterSpacing: "0.05em",
-  }}
->
-  Act on your desire to change.
-</h1>
+        style={{
+          fontSize: "3rem",
+          textAlign: "center",
+          maxWidth: "72ch",
+          margin: "0 auto 3rem",
+          lineHeight: 1.2,
+          color: "#0018A8", // Yves Blue
+          fontWeight: 700,
+          letterSpacing: "0.05em",
+        }}
+      >
+        This is how you move from stuck to thriving.
+      </h1>
 
       {/* Services Section */}
       {Object.entries(sections).map(([category, items]) => (
         <div key={category}>
           <div
+            className="services-grid"
             style={{
               display: "flex",
               justifyContent: "center",
-              flexWrap: "wrap",
+              flexWrap: "nowrap", // force single row
               gap: "2rem",
               paddingBottom: "3rem",
+              overflowX: "auto", // allow horizontal scroll if overflow
             }}
           >
             {items.map((item, idx) => (
               <div
                 key={idx}
+                className="service-tile"
                 style={{
                   flex: "0 1 340px",
                   background: "#FFFFF0cc",
@@ -224,31 +225,30 @@ export default function ServicesPage() {
           marginRight: "auto",
         }}
       >
-       <h2
-  style={{
-    fontSize: "1.8rem",
-    fontWeight: 600,
-    color: "#FFFFFF",   // changed to white
-    marginBottom: "1rem",
-    letterSpacing: "0.03em",
-  }}
->
-  THE FIRST SESSION
-</h2>
-<p
-  style={{
-    fontSize: "1.1rem",
-    lineHeight: 1.7,
-    color: "#FFFFFF",   // changed to white
-    fontStyle: "italic",
-    marginBottom: "1.5rem",
-  }}
->
-  In the first free session, you’ll leave with a clearer sense of your
-  patterns, practical strategies to ease overwhelm, and a grounded picture
-  of what forward movement can look like for you.
-</p>
-
+        <h2
+          style={{
+            fontSize: "1.8rem",
+            fontWeight: 600,
+            color: "#0018A8", // Yves Blue
+            marginBottom: "1rem",
+            letterSpacing: "0.03em",
+          }}
+        >
+          THE FIRST SESSION
+        </h2>
+        <p
+          style={{
+            fontSize: "1.1rem",
+            lineHeight: 1.7,
+            color: "#000000", // Black
+            fontStyle: "italic",
+            marginBottom: "1.5rem",
+          }}
+        >
+          In the first free session, you’ll leave with a clearer sense of your
+          patterns, practical strategies to ease overwhelm, and a grounded
+          picture of what forward movement can look like for you.
+        </p>
 
         {/* Frosted Booking Button */}
         <button
@@ -346,6 +346,21 @@ export default function ServicesPage() {
           </div>
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .services-grid {
+            flex-wrap: wrap !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .service-tile {
+            flex: 1 1 auto !important;
+            width: 100% !important;
+            max-width: 400px !important;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -444,6 +459,13 @@ function Menu() {
           >
             About
           </Link>
+                <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -547,7 +569,7 @@ function Menu() {
             onClick={() => setOpen(false)}
             style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
           >
-            Newsletters
+            Insights
           </Link>
           <Link
             href="/faq"
@@ -563,13 +585,7 @@ function Menu() {
           >
             Contact
           </Link>
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Privacy &amp; Confidentiality
-          </Link>
+          
         </div>
       )}
     </>

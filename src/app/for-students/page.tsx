@@ -146,73 +146,75 @@ return (
             gap: "2rem",
           }}
         >
-          {newsletters.map((n, idx) => {
-            const colorSet = pastelColors[idx % pastelColors.length];
-            return (
-              <div
-                key={idx}
-                ref={(el) => {
-                  tilesRef.current[idx] = el;
-                }}
-                style={{
-                  width: "100%",
-                  padding: "2.5rem 2rem",
-                  borderRadius: "18px",
-                  background: colorSet.bg,
-                  color: colorSet.text,
-                  boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  justifyContent: "space-between",
-                  transition: "transform 0.2s ease",
-                }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.transform = "translateY(-4px)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.transform = "translateY(0)")
-                }
-              >
-                <h2
-                  style={{
-                    fontSize: "2rem",
-                    fontWeight: 700,
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {n.title}
-                </h2>
-                <p
-                  className="summary"
-                  style={{
-                    fontSize: "1.15rem",
-                    lineHeight: "1.7",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {n.summary}
-                </p>
-                <a
-                  href={n.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    padding: "0.9rem 1.6rem",
-                    borderRadius: "10px",
-                    background: colorSet.text,
-                    color: colorSet.bg,
-                    textDecoration: "none",
-                    fontWeight: 600,
-                    fontSize: "1.05rem",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  Open PDF
-                </a>
-              </div>
-            );
-          })}
+        {newsletters.map((n, idx) => {
+  return (
+    <div
+  key={idx}
+  ref={(el) => {
+    tilesRef.current[idx] = el;
+  }}
+  style={{
+    width: "100%",
+    padding: "2.5rem 2rem",
+    borderRadius: "18px",
+    background: "#014D4E",   // ✅ Deep Teal background
+    color: "#FFFFFF",        // ✅ White text
+    boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    transition: "transform 0.2s ease",
+  }}
+  onMouseEnter={(e) =>
+    (e.currentTarget.style.transform = "translateY(-4px)")
+  }
+  onMouseLeave={(e) =>
+    (e.currentTarget.style.transform = "translateY(0)")
+  }
+>
+  <h2
+    style={{
+      fontSize: "2rem",
+      fontWeight: 700,
+      marginBottom: "1rem",
+      color: "#FFFFFF", // ✅ Force white heading
+    }}
+  >
+    {n.title}
+  </h2>
+  <p
+    className="summary"
+    style={{
+      fontSize: "1.15rem",
+      lineHeight: "1.7",
+      marginBottom: "1.5rem",
+      color: "#FFFFFF", // ✅ Force white text
+    }}
+  >
+    {n.summary}
+  </p>
+  <a
+    href={n.href}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      padding: "0.9rem 1.6rem",
+      borderRadius: "10px",
+      background: "#FFFFFF",   // ✅ White button
+      color: "#014D4E",        // ✅ Deep Teal text for contrast
+      textDecoration: "none",
+      fontWeight: 600,
+      fontSize: "1.05rem",
+      letterSpacing: "0.04em",
+    }}
+  >
+    Open PDF
+  </a>
+</div>
+
+  );
+})}
         </div>
       </main>
     </div>
@@ -318,6 +320,13 @@ function Menu() {
           >
             About
           </Link>
+                <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -421,7 +430,7 @@ function Menu() {
             onClick={() => setOpen(false)}
             style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
           >
-            Newsletters
+            Insights
           </Link>
           <Link
             href="/faq"
@@ -437,13 +446,7 @@ function Menu() {
           >
             Contact
           </Link>
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Privacy &amp; Confidentiality
-          </Link>
+          
         </div>
       )}
     </>

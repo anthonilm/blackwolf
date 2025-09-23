@@ -47,34 +47,35 @@ export default function AreasPage() {
     setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
   }, []);
 
-  return (
+   return (
     <div
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        overflow: "hidden",
-      }}
-    >
-      {/* Animated Ivory–Olive Gradient Overlay */}
-      <div
-  className="liquid-overlay"
   style={{
-    position: "absolute",
-    inset: 0,
-    background: `
-      radial-gradient(circle at 45% 45%, #FFFFF040, transparent 60%),   /* ivory highlight */
-      radial-gradient(circle at 55% 55%, #F8F8F040, transparent 70%),   /* soft neutral */
-      radial-gradient(circle at 50% 60%, #01442180, transparent 75%),   /* evergreen */
-      radial-gradient(circle at 50% 50%, #026B3980, transparent 90%)    /* brighter evergreen accent */
-    `,
-    backgroundSize: "200% 200%",
-    animation: "liquidMove 8s ease-in-out infinite alternate",
-    zIndex: -1,
-    pointerEvents: "none",
+    minHeight: "100vh",
+    position: "relative",
+    padding: "4rem 2rem",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    overflow: "hidden",
+    background: "#014D4E", // Deep Teal
   }}
-/>
+>
+      {/* Animated Overlay */}
+      <div
+        className="liquid-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `
+            radial-gradient(circle at 45% 45%, #F5F0FA 0%, transparent 60%),
+            radial-gradient(circle at 55% 55%, #ffffff 0%, transparent 70%),
+            radial-gradient(circle at 50% 60%, #7A6C6130, transparent 75%),
+            radial-gradient(circle at 50% 50%, #96001820, transparent 90%)
+          `,
+          backgroundSize: "200% 200%",
+          animation: "liquidMove 8s ease-in-out infinite alternate",
+          zIndex: -1,
+          pointerEvents: "none",
+        }}
+      />
       <style>{`
         @keyframes liquidMove {
           0% {
@@ -103,7 +104,7 @@ export default function AreasPage() {
     fontWeight: 700,
   }}
 >
-  Areas I Help With
+Development Pathways
 </h1>
 
       {/* Areas Section */}
@@ -349,6 +350,13 @@ function Menu() {
           >
             About
           </Link>
+                <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -452,7 +460,7 @@ function Menu() {
             onClick={() => setOpen(false)}
             style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
           >
-            Newsletters
+          Insights
           </Link>
           <Link
             href="/faq"
@@ -468,13 +476,7 @@ function Menu() {
           >
             Contact
           </Link>
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Privacy &amp; Confidentiality
-          </Link>
+         
         </div>
       )}
     </>

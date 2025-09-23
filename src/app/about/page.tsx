@@ -369,6 +369,13 @@ function Menu() {
         >
           <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>About</Link>
+                <Link
+  href="/noesis"
+  onClick={() => setOpen(false)}
+  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+>
+  What Does Noesis Mean?
+</Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -414,10 +421,10 @@ function Menu() {
             )}
           </div>
 
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Newsletters</Link>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Insights</Link>
           <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>FAQ</Link>
           <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Contact</Link>
-          <Link href="/privacy" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Privacy & Confidentiality</Link>
+          
         </div>
       )}
     </>
