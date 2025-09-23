@@ -426,13 +426,13 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
 
   useEffect(() => {
     if (titleRef.current && subtitleRef.current) {
-      gsap.to([titleRef.current, subtitleRef.current], {
-        y: -10,
-        duration: 4,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-      });
+     gsap.to([titleRef.current, subtitleRef.current], {
+  y: 150,            // very large vertical travel
+  duration: 6,       // keep it smooth
+  ease: "sine.inOut",
+  repeat: -1,
+  yoyo: true,
+});
     }
   }, []);
 
