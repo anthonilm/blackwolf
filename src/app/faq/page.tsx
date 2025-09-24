@@ -94,7 +94,7 @@ export default function FAQPage() {
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(to bottom, forestgreen, lavender)", // Forest Green → Lavender
+        background: "forestgreen", // Forest Green → Lavender
       }}
     >
       <Menu />
