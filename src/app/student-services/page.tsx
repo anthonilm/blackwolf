@@ -187,71 +187,79 @@ export default function StudentServicesPage() {
         </div>
       ))}
 
-      <section
-        style={{
-          textAlign: "center",
-          marginTop: "2rem",
-          maxWidth: "700px",
-          marginLeft: "auto",
-          marginRight: "auto",
-        }}
-      >
-        <h2
-          style={{
-            fontSize: "1.8rem",
-            fontWeight: 600,
-            color: "#0018A8",
-            marginBottom: "1rem",
-            letterSpacing: "0.03em",
-          }}
-        >
-          THE FIRST SESSION
-        </h2>
-        <p
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: 1.7,
-            color: "#333",
-            fontStyle: "italic",
-            marginBottom: "1.5rem",
-          }}
-        >
-          In the first free session, you’ll leave with a clearer sense of your
-          patterns, practical strategies to ease overwhelm, and a grounded
-          picture of what forward movement can look like for you—even if you
-          choose not to continue.
-        </p>
+      {/* === THE FIRST SESSION SECTION === */}
+<section
+  style={{
+    textAlign: "center",
+    marginTop: "2rem",
+    maxWidth: "700px",
+    marginLeft: "auto",
+    marginRight: "auto",
+  }}
+>
+  <h2
+    style={{
+      fontSize: "1.8rem",
+      fontWeight: 600,
+      color: "#FFFFFF", // White
+      marginBottom: "1rem",
+      letterSpacing: "0.03em",
+    }}
+  >
+    THE FIRST SESSION
+  </h2>
+  <p
+    style={{
+      fontSize: "1.1rem",
+      lineHeight: 1.7,
+      color: "#FFFFFF", // White
+      fontStyle: "italic",
+      marginBottom: "1.5rem",
+    }}
+  >
+    In the first free session, you’ll leave with a clearer sense of your
+    patterns, practical strategies to ease overwhelm, and a grounded
+    picture of what forward movement can look like for you.
+  </p>
 
-        <button
-          onClick={() => {
-            if (isMobile) {
-              window.open(
-                "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
-                "_blank"
-              );
-            } else {
-              setShowCalendly(true);
-            }
-          }}
-          style={{
-            display: "inline-block",
-            padding: "1rem 2rem",
-            borderRadius: "12px",
-            background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            color: "#000",
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            letterSpacing: "0.05em",
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Book Free First Session
-        </button>
-      </section>
+  {/* Frosted Booking Button */}
+  <button
+    onClick={() => {
+      if (isMobile) {
+        window.open(
+          "https://calendly.com/tmcelrath26/noesis-consulting-1-1",
+          "_blank"
+        );
+      } else {
+        setShowCalendly(true);
+      }
+    }}
+    style={{
+      display: "inline-block",
+      padding: "1rem 2rem",
+      borderRadius: "12px",
+      background: "rgba(255, 255, 255, 0.25)", // frosted look
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
+      color: "#FFFFFF", // White
+      fontSize: "1.2rem",
+      fontWeight: 600,
+      letterSpacing: "0.05em",
+      fontFamily: "Georgia, 'Times New Roman', serif",
+      border: "none",
+      cursor: "pointer",
+      transition: "all 0.3s ease",
+    }}
+    onMouseOver={(e) =>
+      (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
+    }
+    onMouseOut={(e) =>
+      (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
+    }
+  >
+    Book Your Free First Session
+  </button>
+</section>
 
       {showCalendly && !isMobile && (
         <div
