@@ -91,8 +91,8 @@ export default function AboutPage() {
               energy into creativity and generativity, and convert trauma
               reflection into life enhancing progress. Goals may include
               improving focus, building consistent habits, strengthening
-              emotional intelligence, boosting performance, achieving a growth
-              mindset, and sustaining optimum mental performance.
+              emotional intelligence, achieving a growth
+              mindset, and tools for sustaining optimum mental performance under unstable conditions.
             </p>
           </div>
         </section>
