@@ -399,7 +399,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           whiteSpace: "normal",
         }}
       >
-        Transform your anxieties into creative and generative energy.
+        Transform your anxities into creative and generative energy with an Integrative Mental Health Coach.
       </p>
 
       <div style={{ marginTop: "2rem" }}>
