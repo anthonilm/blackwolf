@@ -35,6 +35,36 @@ export default function AboutPage() {
     >
       <Menu />
 
+      {/* Mobile stacking restore */}
+      <style>{`
+        @media (max-width: 768px) {
+          .about-hero {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+            text-align: center !important;
+          }
+          .about-hero img {
+            max-width: 320px;
+            margin: 0 auto;
+            border-radius: 12px;
+          }
+          .about-hero h1 {
+            font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+          }
+          .about-hero h2 {
+            font-size: clamp(1rem, 4vw, 1.25rem) !important;
+          }
+          .about-hero h3 {
+            font-size: clamp(1.1rem, 4vw, 1.3rem) !important;
+          }
+          .about-hero p {
+            font-size: clamp(1rem, 3.5vw, 1.2rem) !important;
+            line-height: 1.6 !important;
+          }
+        }
+      `}</style>
+
       <div style={styles.container}>
         {/* HERO SECTION */}
         <section style={styles.hero} className="about-hero">
@@ -66,6 +96,7 @@ export default function AboutPage() {
             </p>
           </div>
         </section>
+
         {/* The Path Behind the Work */}
         <div style={{ margin: "32px 0 24px", textAlign: "center" }}>
           <button
@@ -159,7 +190,6 @@ export default function AboutPage() {
             in tangible ways.
           </p>
         </section>
-
         {/* MISSION */}
         <section style={styles.section}>
           <h2 style={styles.h2}>MISSION</h2>
@@ -234,6 +264,7 @@ export default function AboutPage() {
           </button>
         </div>
 
+        {/* CALENDLY EMBED */}
         {showCalendly && !isMobile && (
           <section
             style={{
@@ -255,7 +286,7 @@ export default function AboutPage() {
                 maxWidth: "960px",
                 borderRadius: "12px",
                 overflow: "hidden",
-                boxShadow: "0 6px 24px rgba(0,0,0,0.2)",
+                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
                 background: "#fff",
                 position: "relative",
               }}
@@ -422,7 +453,12 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
     overflow: "hidden",
   },
-  container: { maxWidth: 1100, width: "100%", position: "relative", zIndex: 1 },
+  container: {
+    maxWidth: 1100,
+    width: "100%",
+    position: "relative",
+    zIndex: 1,
+  },
   hero: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
@@ -432,21 +468,60 @@ const styles: Record<string, React.CSSProperties> = {
   },
   heroImage: { width: "100%" },
   heroText: { textAlign: "left" },
-  heroName: { fontSize: "2.5rem", fontWeight: 700, marginBottom: "0.5rem", color: "#0018A8" },
+  heroName: {
+    fontSize: "2.5rem",
+    fontWeight: 700,
+    marginBottom: "0.5rem",
+    color: "#0018A8",
+  },
   heroTitle: { fontSize: "1rem", marginBottom: "0.25rem" },
-  heroSubtitle: { fontSize: "1.2rem", fontStyle: "italic", marginBottom: "1rem" },
-  heroDescription: { fontSize: "1.1rem", lineHeight: 1.6, color: "#333", maxWidth: "50ch" },
+  heroSubtitle: {
+    fontSize: "1.2rem",
+    fontStyle: "italic",
+    marginBottom: "1rem",
+  },
+  heroDescription: {
+    fontSize: "1.1rem",
+    lineHeight: 1.6,
+    color: "#333",
+    maxWidth: "50ch",
+  },
   longBtn: {
-    appearance: "none", display: "inline-block", padding: "12px 22px", borderRadius: 12,
-    background: "#960018", color: "#fff", border: "none", textTransform: "uppercase",
-    letterSpacing: "0.06em", fontWeight: 600, fontSize: 15,
-    fontFamily: "Georgia, 'Times New Roman', serif", cursor: "pointer",
+    appearance: "none",
+    display: "inline-block",
+    padding: "12px 22px",
+    borderRadius: 12,
+    background: "#960018",
+    color: "#fff",
+    border: "none",
+    textTransform: "uppercase",
+    letterSpacing: "0.06em",
+    fontWeight: 600,
+    fontSize: 15,
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    cursor: "pointer",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
   },
-  h2: { fontSize: 16, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12, color: "#960018" },
+  h2: {
+    fontSize: 16,
+    fontWeight: 700,
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+    marginBottom: 12,
+    color: "#960018",
+  },
   p: { fontSize: 18, lineHeight: 1.7, marginBottom: 16 },
   ul: { paddingLeft: 22, margin: "0 0 16px", listStyleType: "disc" },
   li: { marginBottom: 8, lineHeight: 1.7, fontSize: 18 },
-  section: { marginTop: 48, padding: "24px 0", borderTop: "1px solid rgba(0,0,0,0.08)" },
-  footer: { marginTop: 60, textAlign: "center", fontSize: 14, color: "rgba(0,0,0,0.6)" },
+  section: {
+    marginTop: 48,
+    padding: "24px 0",
+    borderTop: "1px solid rgba(0,0,0,0.08)",
+  },
+  footer: {
+    marginTop: 60,
+    textAlign: "center",
+    fontSize: 14,
+    color: "rgba(0,0,0,0.6)",
+  },
 };

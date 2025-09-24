@@ -196,10 +196,13 @@ export default function FAQPage() {
 }
 
 /* ----------------- Menu ----------------- */
-function Menu({ ivory = "#FFFFFF" }: any) {
+/* Hamburger Menu */
+function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const yvesBlue = "#0018A8";
 
   const toggleSub = (key: string) => {
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -226,14 +229,13 @@ function Menu({ ivory = "#FFFFFF" }: any) {
 
   return (
     <>
-      {/* Hamburger Button */}
-      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
+      <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
           className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -243,23 +245,22 @@ function Menu({ ivory = "#FFFFFF" }: any) {
             padding: 0,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
-            <span style={{ width: 24, height: 2, background: ivory }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
           style={{
             position: "fixed",
-            top: 70,
-            left: 20,
-            minWidth: "240px",
+            top: 60,
+            left: 8,
+            minWidth: "260px",
             background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
@@ -272,34 +273,42 @@ function Menu({ ivory = "#FFFFFF" }: any) {
             gap: "1.2rem",
           }}
         >
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: ivory }}>Home</Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: ivory }}>About</Link>
-          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: ivory }}>What Does Noesis Mean?</Link>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
+
           <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: ivory }}>Cognitive Performance Coaching</div>
+            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
+              Cognitive Performance Coaching
+            </div>
             {subOpen["cognitive"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: ivory }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: ivory }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: ivory }}>The Noesis Approach</Link>
+                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
               </div>
             )}
           </div>
+
           <div>
-            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: ivory }}>Student Success Systems</div>
+            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>
+              Student Success Systems
+            </div>
             {subOpen["student"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: ivory }}>Services</Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: ivory }}>Transformation Pathways</Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: ivory }}>The Noesis Method</Link>
+                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Method</Link>
               </div>
             )}
           </div>
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: ivory }}>Insights</Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: ivory }}>FAQ</Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: ivory }}>Contact</Link>
+
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Insights</Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>FAQ</Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Contact</Link>
         </div>
       )}
     </>
   );
 }
+

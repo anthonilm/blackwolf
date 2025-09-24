@@ -242,12 +242,13 @@ export default function StudentAreasPage() {
   );
 }
 
-/* Yves Blue Hamburger Menu */
+/* Hamburger Menu */
 function Menu() {
-  const yvesBlue = "#0018A8";
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const yvesBlue = "#0018A8";
 
   const toggleSub = (key: string) => {
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -274,14 +275,13 @@ function Menu() {
 
   return (
     <>
-      {/* Hamburger Button */}
-      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
+      <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
           className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
-            width: 40,
-            height: 40,
+            width: 50,
+            height: 50,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -291,23 +291,22 @@ function Menu() {
             padding: 0,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
-            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
           style={{
             position: "fixed",
-            top: 70,
-            left: 20,
-            minWidth: "240px",
+            top: 60,
+            left: 8,
+            minWidth: "260px",
             background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
@@ -320,150 +319,42 @@ function Menu() {
             gap: "1.2rem",
           }}
         >
-          {/* Static */}
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            About
-          </Link>
-                <Link
-  href="/noesis"
-  onClick={() => setOpen(false)}
-  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
->
-  What Does Noesis Mean?
-</Link>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
 
-          {/* Cognitive Performance Coaching */}
           <div>
-            <div
-              onClick={() => toggleSub("cognitive")}
-              style={{
-                cursor: "pointer",
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-              }}
-            >
+            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
               Cognitive Performance Coaching
             </div>
             {subOpen["cognitive"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link
-                  href="/services"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/areas"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                   Transformation Pathways
-                </Link>
-                <Link
-                  href="/noesis-methods"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  The Noesis Approach
-                </Link>
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
               </div>
             )}
           </div>
 
-          {/* Student Success Systems */}
           <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{
-                cursor: "pointer",
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-              }}
-            >
+            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>
               Student Success Systems
             </div>
             {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link
-                  href="/student-services"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/student-areas"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                   Transformation Pathways
-                </Link>
-                <Link
-                  href="/student-methods"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  The Noesis Method
-                </Link>
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Method</Link>
               </div>
             )}
           </div>
 
-          {/* Other */}
-          <Link
-            href="/for-students"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Insights
-          </Link>
-          <Link
-            href="/faq"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            FAQ
-          </Link>
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Contact
-          </Link>
-        
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Insights</Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>FAQ</Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Contact</Link>
         </div>
       )}
     </>
   );
 }
+

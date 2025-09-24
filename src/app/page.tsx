@@ -12,15 +12,14 @@ export default function Page() {
   const [showCalendly, setShowCalendly] = useState(false);
 
   const ivory = "#FFFFF0";
-  const deepTeal = "#014D4E";
   const lavender = "#C8A2C8";
   const carmine = "#960018";
 
   return (
     <div
       ref={containerRef}
+      className="hero-fullheight"
       style={{
-        height: "100vh",
         display: "grid",
         gridTemplateRows: "auto 1fr auto",
         fontFamily: `"Georgia", "Times New Roman", serif`,
@@ -28,24 +27,46 @@ export default function Page() {
         overflow: "hidden",
       }}
     >
-      {/* === Full-Page Animated Gradient === */}
-      <div
-  style={{
-    position: "absolute",
-    inset: 0,
-    background: `linear-gradient(-45deg, ${ivory}, ${deepTeal}, forestgreen, ${ivory})`,
-    backgroundSize: "400% 400%",
-    animation: "gradientShift 18s ease-in-out infinite",
-    zIndex: 0,
-    pointerEvents: "none",
-  }}
-/>
+      {/* === Full-Page Animated Gradient (fixed across mobile + desktop) === */}
+      <div className="gradient-bg" />
 
       <style>{`
         @keyframes gradientShift {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
+        }
+
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* dynamic viewport height with fallback */
+        .gradient-bg,
+        .hero-fullheight {
+          height: 100dvh;
+          height: -webkit-fill-available;
+        }
+
+        .gradient-bg {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          background: linear-gradient(
+            -45deg,
+            ${ivory},
+            #E6E6FA,
+            #4CAF50,
+            #E6E6FA,
+            ${ivory}
+          );
+          background-size: 400% 400%;
+          animation: gradientShift 18s ease-in-out infinite;
+          z-index: 0;
+          pointer-events: none;
+          background-attachment: fixed;
         }
 
         /* === MOBILE ONLY === */
@@ -87,8 +108,7 @@ export default function Page() {
           }
         }
       `}</style>
-
-      <Menu ivory={ivory} />
+      <Menu  />
 
       <main
         className="stage"
@@ -175,13 +195,13 @@ export default function Page() {
     </div>
   );
 }
-
 /* Hamburger Menu */
-function Menu({ ivory }: any) {
+function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  
+
+  const yvesBlue = "#0018A8";
 
   const toggleSub = (key: string) => {
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -208,13 +228,13 @@ function Menu({ ivory }: any) {
 
   return (
     <>
-      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
+      <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
           className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
-            width: 60,
-            height: 60,
+            width: 50,
+            height: 50,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -224,10 +244,10 @@ function Menu({ ivory }: any) {
             padding: 0,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ width: 24, height: 2, background: "#FFFFFF" }} />
-            <span style={{ width: 24, height: 2, background: "#FFFFFF" }} />
-            <span style={{ width: 24, height: 2, background: "#FFFFFF" }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+            <span style={{ width: 22, height: 2, background: yvesBlue }} />
           </div>
         </button>
       </div>
@@ -237,97 +257,71 @@ function Menu({ ivory }: any) {
           ref={menuRef}
           style={{
             position: "fixed",
-            top: 70,
-            left: 20,
-            minWidth: "300px",
+            top: 60,
+            left: 8,
+            minWidth: "260px",
             background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
-            padding: "2rem 2.5rem",
+            padding: "1.5rem 2rem",
             borderRadius: "14px",
             boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
             zIndex: 1000,
             display: "flex",
             flexDirection: "column",
-            gap: "1.5rem",
+            gap: "1.2rem",
           }}
         >
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: ivory }}>Home</Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: ivory }}>About</Link>
-          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: ivory }}>What Does Noesis Mean?</Link>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
 
           <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: ivory }}>
+            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
               Cognitive Performance Coaching
             </div>
             {subOpen["cognitive"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: ivory }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: ivory }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: ivory }}>The Noesis Approach</Link>
+                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
               </div>
             )}
           </div>
 
           <div>
-            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: ivory }}>
+            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>
               Student Success Systems
             </div>
             {subOpen["student"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: ivory }}>Services</Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: ivory }}>Transformation Pathways</Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: ivory }}>The Noesis Method</Link>
+                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Method</Link>
               </div>
             )}
           </div>
 
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: ivory }}>Insights</Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: ivory }}>FAQ</Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: ivory }}>Contact</Link>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Insights</Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>FAQ</Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Contact</Link>
         </div>
       )}
     </>
   );
 }
 
+
 /* Hero with corrected bounding-box breathing */
 function Hero({ ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (titleRef.current && lineRef.current) {
-      const title = titleRef.current;
-      const line = lineRef.current;
-
-      requestAnimationFrame(() => {
-        const lineBox = line.getBoundingClientRect();
-        const titleBox = title.getBoundingClientRect();
-
-        const lineHeight = lineBox.height;
-        const titleHeight = titleBox.height;
-
-        // Travel distance = 25% of the full possible range
-        const travel = (lineHeight - titleHeight) * 0.25;
-
-        gsap.fromTo(
-          title,
-          { y: 0 },
-          {
-            y: travel,
-            duration: 6,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
-          }
-        );
-      });
-    }
-  }, []);
+  // NOESIS SYSTEMS title is now static (no GSAP rise/fall)
 
   return (
     <div
+      className="hero-fullheight"
       style={{
         flex: 1,
         display: "flex",
@@ -336,7 +330,6 @@ function Hero({ ivory, setShowCalendly }: any) {
         justifyContent: "center",
         padding: "2rem 4rem",
         position: "relative",
-        height: "100vh",
         textAlign: "center",
       }}
     >
@@ -401,8 +394,7 @@ function Hero({ ivory, setShowCalendly }: any) {
   }}
 >
   Transform your anxieties<br />
-  into creative and generative energy<br />
-  with an Integrative Mental Health Coach.
+  into creative and generative energy.
 </p>
 
       <div style={{ marginTop: "2rem" }}>
@@ -451,7 +443,7 @@ function Hero({ ivory, setShowCalendly }: any) {
             textAlign: "left",
           }}
         >
-          Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
+         
         </div>
 
         <a
@@ -460,7 +452,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           rel="noopener noreferrer"
           style={{ marginLeft: "1rem" }}
         >
-          <FaInstagram size={28} color={ivory} />
+          
         </a>
       </div>
     </div>
