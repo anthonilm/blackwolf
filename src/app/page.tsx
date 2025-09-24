@@ -181,6 +181,7 @@ function Menu({ ivory }: any) {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+  
 
   const toggleSub = (key: string) => {
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -212,8 +213,8 @@ function Menu({ ivory }: any) {
           className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
-            width: 40,
-            height: 40,
+            width: 60,
+            height: 60,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -238,17 +239,17 @@ function Menu({ ivory }: any) {
             position: "fixed",
             top: 70,
             left: 20,
-            minWidth: "240px",
+            minWidth: "300px",
             background: "rgba(223, 245, 225, 0.25)",
             backdropFilter: "blur(10px)",
             WebkitBackdropFilter: "blur(10px)",
-            padding: "1.5rem 2rem",
+            padding: "2rem 2.5rem",
             borderRadius: "14px",
             boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
             zIndex: 1000,
             display: "flex",
             flexDirection: "column",
-            gap: "1.2rem",
+            gap: "1.5rem",
           }}
         >
           <Link href="/" onClick={() => setOpen(false)} style={{ color: ivory }}>Home</Link>
