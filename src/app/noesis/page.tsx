@@ -35,20 +35,20 @@ export default function NoesisPage() {
           fontSize: "1.1rem",
         }}
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          viewport={{ once: true }}
-         style={{
+      <motion.h1
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}    // ✅ show on page load
+  transition={{ duration: 0.6 }}
+  style={{
     fontSize: "2.5rem",
     fontWeight: "700",
     marginBottom: "2rem",
-    color: "#F4C430", // ✅ Soft Saffron
+    color: "#F4C430",
   }}
 >
-          What Does <em>Noesis</em> Mean?
-        </motion.h1>
+  What Does <em>Noesis</em> Mean?
+</motion.h1>
+
 
         {/* Sections go here */}
         <EssaySections />
@@ -247,7 +247,7 @@ const subheadingStyle = {
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.2 }}
         viewport={{ once: false, amount: 0.4 }}
         style={sectionStyle}
       >

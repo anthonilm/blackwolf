@@ -41,7 +41,7 @@ export default function Page() {
        radial-gradient(circle at 50% 80%, ${taupe}40, transparent 70%),
        radial-gradient(circle at 50% 100%, ${saffron}40, transparent 70%)`,
     backgroundSize: "200% 200%",
-    animation: "liquidMove 12s ease-in-out infinite alternate",
+    animation: "liquidMove 8s ease-in-out infinite alternate",
     zIndex: 0,
     pointerEvents: "none",
   }}
@@ -427,7 +427,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
   useEffect(() => {
     if (titleRef.current && subtitleRef.current) {
      gsap.to([titleRef.current, subtitleRef.current], {
-  y: 50,            // very large vertical travel
+  y: 15,            // very large vertical travel
   duration: 6,       // keep it smooth
   ease: "sine.inOut",
   repeat: -1,
@@ -470,14 +470,14 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
     style={{
       width: "clamp(6px, 1vw, 12px)",
       height: "clamp(100px, 22vh, 200px)",
-      backgroundColor: "#FFFFFF", // White line
+      backgroundColor: ivory
     }}
   />
   <div
     style={{
       width: "clamp(6px, 1vw, 12px)",
       height: "clamp(100px, 22vh, 200px)",
-      backgroundColor: "#FFFFFF", // White line
+      backgroundColor: ivory
     }}
   />
 </div>
@@ -489,7 +489,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
     fontWeight: 700,
     letterSpacing: "0.1em",
     whiteSpace: "nowrap",
-    color: "#FFFFFF", // White text
+    color: ivory
   }}
 >
   NOESIS SYSTEMS
@@ -507,7 +507,7 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
     lineHeight: 1.6,
     margin: "0 auto",
     textAlign: "center",
-    color: "#FFFFFF",   // White text
+    color: ivory,  // White text
     maxWidth: "65ch",
     overflowWrap: "break-word",
     whiteSpace: "normal",
