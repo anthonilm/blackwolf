@@ -89,7 +89,7 @@ export default function AboutPage() {
             <p style={styles.heroDescription}>
               I help people transform anxiety into action, structure their
               energy into creativity and generativity, and convert trauma
-              reflection into life enhancing progress. Goals may include
+              reflection into life enhancing progress. Outcomes include
               improving focus, building consistent habits, strengthening
               emotional intelligence, achieving a growth
               mindset, and developing tools for sustaining optimum mental performance under unstable conditions.

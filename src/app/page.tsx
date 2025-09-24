@@ -378,24 +378,23 @@ function Hero({ ivory, setShowCalendly }: any) {
         </h1>
       </div>
 
-      <p
-        className="hero-subtitle"
-        style={{
-          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-          textTransform: "uppercase",
-          letterSpacing: "0.18em",
-          lineHeight: 1.6,
-          margin: "0 auto",
-          textAlign: "center",
-          color: ivory,
-          maxWidth: "65ch",
-          overflowWrap: "break-word",
-          whiteSpace: "normal",
-        }}
-      >
-        Transform your anxieties<br />
-        into creative and generative energy.
-      </p>
+ <p
+  className="hero-subtitle"
+  style={{
+    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+    textTransform: "uppercase",
+    letterSpacing: "0.18em",
+    lineHeight: 1.6,
+    margin: "0 auto",
+    textAlign: "center",
+    color: ivory,
+    whiteSpace: "nowrap",   // single line
+    overflow: "visible",    // allow full render
+    maxWidth: "none",       // prevent clipping
+  }}
+>
+  Overcome your anxieties through a balance of logic and creativity.
+</p>
 
       <div style={{ marginTop: "2rem" }}>
         <button
