@@ -9,16 +9,16 @@ export default function NoesisPage() {
   const yvesBlue = "#0018A8";
 
   return (
-   <div
-  style={{
-    minHeight: "100vh",
-    position: "relative",
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    background: "#36454F",   // ✅ Charcoal background
-    color: "#FFFFFF",        // ✅ White text for readability
-    overflowX: "hidden",
-  }}
->
+    <div
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        background: "#36454F", // ✅ Charcoal background
+        color: "#FFFFFF", // ✅ White text for readability
+        overflowX: "hidden",
+      }}
+    >
       {/* Scroll Progress */}
       <ScrollProgress />
 
@@ -35,20 +35,16 @@ export default function NoesisPage() {
           fontSize: "1.1rem",
         }}
       >
-      <motion.h1
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}    // ✅ show on page load
-  transition={{ duration: 0.6 }}
-  style={{
-    fontSize: "2.5rem",
-    fontWeight: "700",
-    marginBottom: "2rem",
-    color: "#F4C430",
-  }}
->
-  What Does <em>Noesis</em> Mean?
-</motion.h1>
-
+        <h1
+          style={{
+            fontSize: "2.5rem",
+            fontWeight: "700",
+            marginBottom: "2rem",
+            color: "#F4C430",
+          }}
+        >
+          What Does <em>Noesis</em> Mean?
+        </h1>
 
         {/* Sections go here */}
         <EssaySections />
@@ -78,7 +74,6 @@ function ScrollProgress() {
 }
 
 /* === Menu === */
-/* Full Yves Blue Hamburger Menu */
 function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
@@ -126,12 +121,11 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
             padding: 0,
           }}
         >
-         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-  <span style={{ width: 24, height: 2, background: yvesBlue }} />
-  <span style={{ width: 24, height: 2, background: yvesBlue }} />
-  <span style={{ width: 24, height: 2, background: yvesBlue }} />
-</div>
-
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+          </div>
         </button>
       </div>
 
@@ -156,10 +150,27 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
             gap: "1.2rem",
           }}
         >
-          {/* Static */}
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Home</Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>About</Link>
-          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>What Does Noesis Mean?</Link>
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            About
+          </Link>
+          <Link
+            href="/noesis"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            What Does Noesis Mean?
+          </Link>
 
           {/* Cognitive Performance Coaching */}
           <div>
@@ -175,14 +186,39 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
               Cognitive Performance Coaching
             </div>
             {subOpen["cognitive"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Approach</Link>
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Transformation Pathways
+                </Link>
+                <Link
+                  href="/noesis-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Approach
+                </Link>
               </div>
             )}
           </div>
-
           {/* Student Success Systems */}
           <div>
             <div
@@ -197,19 +233,61 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
               Student Success Systems
             </div>
             {subOpen["student"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Method</Link>
+              <div
+                style={{
+                  marginLeft: "1rem",
+                  marginTop: "0.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.8rem",
+                }}
+              >
+                <Link
+                  href="/student-services"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/student-areas"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  Transformation Pathways
+                </Link>
+                <Link
+                  href="/student-methods"
+                  onClick={() => setOpen(false)}
+                  style={{ color: yvesBlue, fontSize: "1rem" }}
+                >
+                  The Noesis Method
+                </Link>
               </div>
             )}
           </div>
 
-          {/* Other */}
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Insights</Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>FAQ</Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Contact</Link>
-         
+          <Link
+            href="/for-students"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Insights
+          </Link>
+          <Link
+            href="/faq"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            FAQ
+          </Link>
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
+          >
+            Contact
+          </Link>
         </div>
       )}
     </>
@@ -218,39 +296,28 @@ function Menu({ yvesBlue = "#0018A8", ivory = "#FFFFF0" }: any) {
 
 /* === Essay Sections === */
 function EssaySections() {
-  const sectionStyle = {
-    marginBottom: "4rem",
+  const sectionStyle = { marginBottom: "4rem" };
+
+  const headingStyle = {
+    fontSize: "1.8rem",
+    fontWeight: "700",
+    marginBottom: "1rem",
+    color: "#F4C430",
   };
 
- const headingStyle = {
-  fontSize: "1.8rem",
-  fontWeight: "700",
-  marginBottom: "1rem",
-  color: "#F4C430", // ✅ Soft Saffron
-};
-
-const subheadingStyle = {
-  fontSize: "1.4rem",
-  fontWeight: "600",
-  marginBottom: "0.8rem",
-  color: "#F4C430", // ✅ Soft Saffron
-};
-
-
-  const paragraphStyle = {
-    marginBottom: "1.5rem",
+  const subheadingStyle = {
+    fontSize: "1.4rem",
+    fontWeight: "600",
+    marginBottom: "0.8rem",
+    color: "#F4C430",
   };
+
+  const paragraphStyle = { marginBottom: "1.5rem" };
 
   return (
     <>
       {/* Intro */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.2 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <p style={paragraphStyle}>
           The word <em>Noesis</em> carries a depth of meaning that stretches across
           history, philosophy, and lived human experience. It is more than a term
@@ -265,16 +332,10 @@ const subheadingStyle = {
           integrate them into something that guides life forward? These questions
           animate both the ancient origins of the term and its modern relevance.
         </p>
-      </motion.section>
+      </section>
 
       {/* Origins */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>The Origins of Noesis</h2>
         <h3 style={subheadingStyle}>The Ancient Greek Roots</h3>
         <p style={paragraphStyle}>
@@ -299,7 +360,6 @@ const subheadingStyle = {
           Where other forms of knowledge dealt with contingencies, Noesis dealt with
           what could not be otherwise.
         </p>
-
         <h3 style={subheadingStyle}>Later Philosophical Uses</h3>
         <p style={paragraphStyle}>
           Centuries later, the German philosopher Edmund Husserl, founder of
@@ -315,16 +375,10 @@ const subheadingStyle = {
           to say that humans are not passive receivers of information but active
           participants in shaping how reality appears to them.
         </p>
-      </motion.section>
+      </section>
 
       {/* Noesis in Practice */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>Noesis in Practice</h2>
         <h3 style={subheadingStyle}>From Philosophy to Daily Life</h3>
         <p style={paragraphStyle}>
@@ -346,7 +400,6 @@ const subheadingStyle = {
           sustainable progress. It is the bridge between inner clarity and outer
           momentum.
         </p>
-
         <h3 style={subheadingStyle}>Creative and Generative Thinking</h3>
         <p style={paragraphStyle}>
           In practice, Noesis means creative and generative thinking patterns.
@@ -360,165 +413,82 @@ const subheadingStyle = {
           act of knowing but an act of creating: shaping raw awareness into form,
           and form into movement.
         </p>
-      </motion.section>
-      {/* The Five Words of Noesis */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      </section>
+
+      {/* Five Words */}
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>The Five Words of Noesis</h2>
         <p style={paragraphStyle}>
           To make Noesis tangible, we distill it into five guiding words:
         </p>
         <p style={paragraphStyle}>
           <strong>1. Structured</strong> — Growth requires a framework. Without
-          structure, insight dissipates into scattered thoughts. Structure provides
-          rhythm, boundaries, and continuity. It is the scaffolding that holds
-          insight long enough to be shaped into action.
+          structure, insight dissipates into scattered thoughts.
         </p>
         <p style={paragraphStyle}>
           <strong>2. Insight</strong> — Change begins with awareness. Insight is the
-          spark of clarity that reveals possibilities otherwise hidden. It is the
-          moment when a vague unease becomes a precise understanding, when noise
-          becomes signal.
+          spark of clarity that reveals possibilities otherwise hidden.
         </p>
         <p style={paragraphStyle}>
-          <strong>3. Guiding</strong> — Knowledge is directional. Without
-          orientation, it drifts. To guide is to point knowledge toward a goal,
-          aligning it with values and purpose. Guidance turns insight into a
-          compass, not a collection of facts.
+          <strong>3. Guiding</strong> — Knowledge is directional. Guidance turns
+          insight into a compass.
         </p>
         <p style={paragraphStyle}>
           <strong>4. Purposeful</strong> — Action is hollow unless it connects to
-          meaning. Purposefulness ensures that behavior is not random but resonates
-          with one’s deepest motivations and commitments. It binds action to
-          intention.
+          meaning.
         </p>
         <p style={paragraphStyle}>
-          <strong>5. Action</strong> — Insight only matters if lived out. Action is
-          the final step that completes the cycle of Noesis: thought turning into
-          life, reflection manifesting as forward motion.
+          <strong>5. Action</strong> — Insight only matters if lived out.
         </p>
-        <p style={paragraphStyle}>
-          Together, these five words describe Noesis not as a static definition but
-          as a process of transformation.
-        </p>
-      </motion.section>
+      </section>
 
       {/* Pause and Reflect */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>Pause and Reflect</h2>
-        <p style={paragraphStyle}>
-          Noesis is not merely a concept—it is an invitation. To engage with it is
-          to slow down and notice where your own cycles of thought either empower or
-          trap you.
-        </p>
-        <p style={paragraphStyle}>Pause for a moment as you read:</p>
         <ul style={{ marginLeft: "1.5rem", marginBottom: "1.5rem" }}>
-          <li>Where in your life do you notice cycles of overthinking or hesitation?</li>
-          <li>What insight have you had recently that you have not yet acted upon?</li>
-          <li>
-            How could structured reflection move you closer to clarity and
-            momentum?
-          </li>
-          <li>What does it mean, for you, to act purposefully?</li>
+          <li>Where in your life do you notice cycles of overthinking?</li>
+          <li>What insight have you had recently not yet acted upon?</li>
+          <li>How could structured reflection move you forward?</li>
         </ul>
-        <p style={paragraphStyle}>
-          These are not abstract questions. They are openings—small but powerful
-          acts of Noesis. They represent the bridge between knowing and doing,
-          between clarity and life lived fully.
-        </p>
-      </motion.section>
+      </section>
 
       {/* Why It Matters */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4
-         }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>Why It Matters</h2>
         <p style={paragraphStyle}>
-          We live in a time saturated with distraction, acceleration, and pressure
-          to perform. Many feel overwhelmed by information yet under-equipped with
-          clarity. This paradox—the more we know, the less we act—is precisely where
-          Noesis becomes vital.
+          We live in a time saturated with distraction and pressure. Many feel
+          overwhelmed by information yet under-equipped with clarity.
         </p>
         <p style={paragraphStyle}>
-          Noesis matters because it restores balance. It reminds us that thought is
-          not complete until it guides action, and knowledge is not sufficient until
-          it becomes lived experience. It challenges us to move beyond passive
-          reflection and into structured, purposeful transformation.
+          Noesis restores balance. It reminds us thought is not complete until it
+          guides action.
         </p>
-        <p style={paragraphStyle}>
-          At <strong>Noesis Systems</strong>, this is the heartbeat of our work:
-        </p>
-        <ul style={{ marginLeft: "1.5rem", marginBottom: "1.5rem" }}>
-          <li>Helping individuals transform anxiety into clarity.</li>
-          <li>Building sustainable habits that hold under pressure.</li>
-          <li>
-            Generating the momentum necessary to achieve meaningful progress.
-          </li>
-        </ul>
-        <p style={paragraphStyle}>
-          Noesis offers a counterweight to the noise of the world—a way of thinking
-          and acting that brings coherence, resilience, and direction.
-        </p>
-      </motion.section>
+      </section>
 
       {/* Conclusion */}
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: false, amount: 0.4 }}
-        style={sectionStyle}
-      >
+      <section style={sectionStyle}>
         <h2 style={headingStyle}>Conclusion: The Living Meaning of Noesis</h2>
         <p style={paragraphStyle}>
           Defining <em>Noesis</em> is not about reducing it to a single sentence but
-          about recognizing its role as a living principle. From the ancient Greek
-          philosophers who saw it as the highest form of knowledge, to modern
-          thinkers who see it as the act of consciousness itself, Noesis has always
-          pointed to a deeper truth: clarity is transformative when it is embodied.
+          about recognizing its role as a living principle.
         </p>
         <p style={paragraphStyle}>
           For you, the reader, the question is not only “What does Noesis mean?” but
-          “How will Noesis live in me?” Will insight remain an idea, or will it
-          become action? Will reflection stay abstract, or will it guide your next
-          step?
+          “How will Noesis live in me?”
         </p>
-        <p style={paragraphStyle}>
-          In every moment of hesitation, in every cycle of overthinking, Noesis
-          offers a path forward: structure, insight, guidance, purpose, and action.
-          It is both definition and invitation—an ancient word with timeless
-          relevance, and a living process that continues to shape lives today.
-        </p>
-            {/* Footer */}
-      <footer
-  style={{
-    background: "rgba(0,0,0,0.05)",
-    color: "#FFFFFF",   // ✅ White text
-    textAlign: "center",
-    padding: "1rem",
-    fontSize: "0.85rem",
-    marginTop: "4rem",
-  }}
->
-  © 2025 Anthoni McElrath, Noesis Systems LLC. All rights reserved.
-</footer>
-      </motion.section>
+        <footer
+          style={{
+            background: "rgba(0,0,0,0.05)",
+            color: "#FFFFFF",
+            textAlign: "center",
+            padding: "1rem",
+            fontSize: "0.85rem",
+            marginTop: "4rem",
+          }}
+        >
+          © 2025 Anthoni McElrath, Noesis Systems LLC. All rights reserved.
+        </footer>
+      </section>
     </>
   );
 }

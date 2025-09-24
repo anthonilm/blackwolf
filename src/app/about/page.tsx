@@ -6,7 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function AboutPage() {
@@ -27,56 +26,13 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className={inter.className} style={styles.page}>
-      {/* Animated Background Overlay */}
-      <div
-  className="liquid-overlay"
-  style={{
-    position: "absolute",
-    inset: 0,
-    background: `radial-gradient(circle at 20% 20%, #FFFFF040, transparent 70%),   /* ivory */
-                 radial-gradient(circle at 80% 40%, #5C403340, transparent 70%),   /* walnut */
-                 radial-gradient(circle at 50% 80%, #3C2F2F40, transparent 70%)`,  /* espresso */
-    backgroundSize: "200% 200%",
-    animation: "liquidMove 2s ease-in-out infinite alternate",
-    zIndex: 0,
-    pointerEvents: "none",
-  }}
-/>
-      <style>{`
-        @keyframes liquidMove {
-          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
-          100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-          .about-hero {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-            text-align: center !important;
-          }
-          .about-hero img {
-            max-width: 320px;
-            margin: 0 auto;
-            border-radius: 12px;
-          }
-          .about-hero h1 {
-            font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
-          }
-          .about-hero h2 {
-            font-size: clamp(1rem, 4vw, 1.25rem) !important;
-          }
-          .about-hero h3 {
-            font-size: clamp(1.1rem, 4vw, 1.3rem) !important;
-          }
-          .about-hero p {
-            font-size: clamp(1rem, 3.5vw, 1.2rem) !important;
-            line-height: 1.6 !important;
-          }
-        }
-      `}</style>
-
+    <main
+      className={inter.className}
+      style={{
+        ...styles.page,
+        background: "linear-gradient(to bottom, #90EE90, lavender)", // light forest green → lavender
+      }}
+    >
       <Menu />
 
       <div style={styles.container}>
@@ -101,11 +57,15 @@ export default function AboutPage() {
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Mental Health Coach</h3>
             <p style={styles.heroDescription}>
-              I help people transform anxiety into action, structure their energy into creativity and generativity, and convert trauma reflection into life enhancing progress. Goals may include improving focus, building consistent habits, strengthening emotional intelligence, boosting performance, achieving a growth mindset, and sustaining optimum mental performance.
+              I help people transform anxiety into action, structure their
+              energy into creativity and generativity, and convert trauma
+              reflection into life enhancing progress. Goals may include
+              improving focus, building consistent habits, strengthening
+              emotional intelligence, boosting performance, achieving a growth
+              mindset, and sustaining optimum mental performance.
             </p>
           </div>
         </section>
-
         {/* The Path Behind the Work */}
         <div style={{ margin: "32px 0 24px", textAlign: "center" }}>
           <button
@@ -117,7 +77,6 @@ export default function AboutPage() {
           </button>
         </div>
 
-        {/* The Path Behind the Work */}
         <div
           style={{
             overflow: "hidden",
@@ -137,10 +96,19 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>WHAT I DO</h2>
           <p style={styles.p}>
-            Anxiety is my specialty. For many people, anxiety becomes a cycle of reflection without resolution—thinking without moving, circling without creating. Insight and emotional depth are valuable, but when they stall into overthinking, they erode motivation, focus, and energy.
+            Anxiety is my specialty. For many people, anxiety becomes a cycle of
+            reflection without resolution—thinking without moving, circling
+            without creating. Insight and emotional depth are valuable, but when
+            they stall into overthinking, they erode motivation, focus, and
+            energy.
           </p>
           <p style={styles.p}>
-            My work is to break that cycle. I help people convert anxious energy into action—transforming tension into rhythm, reflection into progress, and emotional intensity into creative, generative output. The aim is not to quiet anxiety by suppressing it, but to redirect it into patterns of behavior that build stability, momentum, and betterment.
+            My work is to break that cycle. I help people convert anxious energy
+            into action—transforming tension into rhythm, reflection into
+            progress, and emotional intensity into creative, generative output.
+            The aim is not to quiet anxiety by suppressing it, but to redirect
+            it into patterns of behavior that build stability, momentum, and
+            betterment.
           </p>
           <p style={styles.p}>
             Each client develops an Individual Engagement Plan (IEP) built on
@@ -148,17 +116,24 @@ export default function AboutPage() {
           </p>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Organizational Skills:</strong> structuring tasks, planning, and execution into clear rhythms that reduce overwhelm and restore control.
+              <strong>Organizational Skills:</strong> structuring tasks,
+              planning, and execution into clear rhythms that reduce overwhelm
+              and restore control.
             </li>
             <li style={styles.li}>
-              <strong>Emotional Regulation:</strong> channeling anxious energy into balanced, constructive responses rather than depletion.
+              <strong>Emotional Regulation:</strong> channeling anxious energy
+              into balanced, constructive responses rather than depletion.
             </li>
             <li style={styles.li}>
-              <strong>Cognitive Load Management:</strong> clearing mental and environmental clutter so focus and creativity can flourish.
+              <strong>Cognitive Load Management:</strong> clearing mental and
+              environmental clutter so focus and creativity can flourish.
             </li>
           </ul>
           <p style={styles.p}>
-            The purpose is simple: to stabilize motivation, sharpen focus, and sustain forward momentum. Anxiety becomes a source of energy, not paralysis—a driver of clarity, creativity, and enhanced quality of life.
+            The purpose is simple: to stabilize motivation, sharpen focus, and
+            sustain forward momentum. Anxiety becomes a source of energy, not
+            paralysis—a driver of clarity, creativity, and enhanced quality of
+            life.
           </p>
         </section>
 
@@ -167,14 +142,21 @@ export default function AboutPage() {
           <h2 style={styles.h2}>ANCHORS OF THE WORK</h2>
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <strong>Clarity:</strong> the ability to recognize what drives action, what creates friction, and how to design conditions that let energy move freely.
+              <strong>Clarity:</strong> the ability to recognize what drives
+              action, what creates friction, and how to design conditions that
+              let energy move freely.
             </li>
             <li style={styles.li}>
-              <strong>Momentum:</strong> the discipline of carrying that clarity forward through deliberate repetition and steady habit—turning awareness into engineered progress.
+              <strong>Momentum:</strong> the discipline of carrying that clarity
+              forward through deliberate repetition and steady habit—turning
+              awareness into engineered progress.
             </li>
           </ul>
           <p style={styles.p}>
-            Together, clarity and momentum create a framework where emotional depth is not consumed but redirected—transforming reflection into action and sustaining creative, generative energy that enhances life in tangible ways.
+            Together, clarity and momentum create a framework where emotional
+            depth is not consumed but redirected—transforming reflection into
+            action and sustaining creative, generative energy that enhances life
+            in tangible ways.
           </p>
         </section>
 
@@ -191,7 +173,10 @@ export default function AboutPage() {
             healthier communities, and more integrated institutions.
           </p>
           <p style={styles.p}>
-            This mission comes alive in the concrete work I do each day: guiding clients to move beyond stasis, equipping them with tools for growth, and helping them transform reflection into deliberate action that improves both their own lives and the lives of those around them.
+            This mission comes alive in the concrete work I do each day: guiding
+            clients to move beyond stasis, equipping them with tools for growth,
+            and helping them transform reflection into deliberate action that
+            improves both their own lives and the lives of those around them.
           </p>
         </section>
 
@@ -199,7 +184,13 @@ export default function AboutPage() {
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-            I hold an MA in Psychology and am a Licensed Integrative Mental Health Coach, with 6 years of academic advising experience. I am now pursuing a psychoanalytically oriented PhD bridging Environmental Studies and Comparative Literature, where my research interrogates how cultural narratives and engineered social behaviors mediate relations to built and natural environments and participate in the psycho-social formation of distinct identities.
+            I hold an MA in Psychology and am a Licensed Integrative Mental
+            Health Coach, with 6 years of academic advising experience. I am now
+            pursuing a psychoanalytically oriented PhD bridging Environmental
+            Studies and Comparative Literature, where my research interrogates
+            how cultural narratives and engineered social behaviors mediate
+            relations to built and natural environments and participate in the
+            psycho-social formation of distinct identities.
           </p>
         </section>
 
@@ -243,7 +234,6 @@ export default function AboutPage() {
           </button>
         </div>
 
-        {/* CALENDLY EMBED */}
         {showCalendly && !isMobile && (
           <section
             style={{
@@ -265,7 +255,7 @@ export default function AboutPage() {
                 maxWidth: "960px",
                 borderRadius: "12px",
                 overflow: "hidden",
-                boxShadow: "0 6px 24px rgba(0, 0, 0, 0.2)",
+                boxShadow: "0 6px 24px rgba(0,0,0,0.2)",
                 background: "#fff",
                 position: "relative",
               }}
@@ -306,7 +296,7 @@ export default function AboutPage() {
   );
 }
 
-/* MENU */
+/* ---------------- MENU ---------------- */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
@@ -369,15 +359,8 @@ function Menu() {
         >
           <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>About</Link>
-                <Link
-  href="/noesis"
-  onClick={() => setOpen(false)}
-  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
->
-  What Does Noesis Mean?
-</Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>What Does Noesis Mean?</Link>
 
-          {/* Cognitive Performance Coaching */}
           <div>
             <div
               onClick={() => toggleSub("cognitive")}
@@ -393,13 +376,12 @@ function Menu() {
             {subOpen["cognitive"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Transformation Pathways</Link>
                 <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Approach</Link>
               </div>
             )}
           </div>
 
-          {/* Student Success Systems */}
           <div>
             <div
               onClick={() => toggleSub("student")}
@@ -415,7 +397,7 @@ function Menu() {
             {subOpen["student"] && (
               <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}> Transformation Pathways</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>Transformation Pathways</Link>
                 <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontSize: "1rem" }}>The Noesis Method</Link>
               </div>
             )}
@@ -424,14 +406,13 @@ function Menu() {
           <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Insights</Link>
           <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>FAQ</Link>
           <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}>Contact</Link>
-          
         </div>
       )}
     </>
   );
 }
 
-/* STYLES */
+/* ---------------- STYLES ---------------- */
 const styles: Record<string, React.CSSProperties> = {
   page: {
     position: "relative",
@@ -441,12 +422,7 @@ const styles: Record<string, React.CSSProperties> = {
     justifyContent: "center",
     overflow: "hidden",
   },
-  container: {
-    maxWidth: 1100,
-    width: "100%",
-    position: "relative",
-    zIndex: 1,
-  },
+  container: { maxWidth: 1100, width: "100%", position: "relative", zIndex: 1 },
   hero: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
@@ -456,48 +432,18 @@ const styles: Record<string, React.CSSProperties> = {
   },
   heroImage: { width: "100%" },
   heroText: { textAlign: "left" },
-  heroName: {
-    fontSize: "2.5rem",
-    fontWeight: 700,
-    marginBottom: "0.5rem",
-    color: "#0018A8",
-  },
+  heroName: { fontSize: "2.5rem", fontWeight: 700, marginBottom: "0.5rem", color: "#0018A8" },
   heroTitle: { fontSize: "1rem", marginBottom: "0.25rem" },
-  heroSubtitle: {
-    fontSize: "1.2rem",
-    fontStyle: "italic",
-    marginBottom: "1rem",
-  },
-  heroDescription: {
-    fontSize: "1.1rem",
-    lineHeight: 1.6,
-    color: "#333",
-    maxWidth: "50ch",
-  },
+  heroSubtitle: { fontSize: "1.2rem", fontStyle: "italic", marginBottom: "1rem" },
+  heroDescription: { fontSize: "1.1rem", lineHeight: 1.6, color: "#333", maxWidth: "50ch" },
   longBtn: {
-    appearance: "none",
-    display: "inline-block",
-    padding: "12px 22px",
-    borderRadius: 12,
-    background: "#960018",
-    color: "#fff",
-    border: "none",
-    textTransform: "uppercase",
-    letterSpacing: "0.06em",
-    fontWeight: 600,
-    fontSize: 15,
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    cursor: "pointer",
+    appearance: "none", display: "inline-block", padding: "12px 22px", borderRadius: 12,
+    background: "#960018", color: "#fff", border: "none", textTransform: "uppercase",
+    letterSpacing: "0.06em", fontWeight: 600, fontSize: 15,
+    fontFamily: "Georgia, 'Times New Roman', serif", cursor: "pointer",
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
   },
-  h2: {
-    fontSize: 16,
-    fontWeight: 700,
-    letterSpacing: "0.08em",
-    textTransform: "uppercase",
-    marginBottom: 12,
-    color: "#960018",
-  },
+  h2: { fontSize: 16, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12, color: "#960018" },
   p: { fontSize: 18, lineHeight: 1.7, marginBottom: 16 },
   ul: { paddingLeft: 22, margin: "0 0 16px", listStyleType: "disc" },
   li: { marginBottom: 8, lineHeight: 1.7, fontSize: 18 },

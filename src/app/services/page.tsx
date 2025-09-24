@@ -57,28 +57,28 @@ export default function ServicesPage() {
   }, [currentCheckout]);
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        position: "relative",
-        overflow: "hidden",
-        zIndex: 0,
-        color: "#FFFFF0", // ivory text
-      }}
-    >
-      {/* Background Overlay */}
-      <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "#F4C430", // saffron background
-          zIndex: -1,
-          pointerEvents: "none",
-        }}
-      />
+   <main
+  style={{
+    minHeight: "100vh",
+    padding: "4rem 2rem",
+    fontFamily: "Georgia, 'Times New Roman', serif",
+    position: "relative",
+    overflow: "hidden",
+    zIndex: 0,
+    color: "#FFFFF0", // ivory text
+  }}
+>
+  {/* Background Overlay */}
+  <div
+    className="liquid-overlay"
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "linear-gradient(to bottom, #F4C43040, #014D4E)", // saffron → deep teal
+      zIndex: -1,
+      pointerEvents: "none",
+    }}
+  />
 
       <style>{`
         @keyframes liquidMove {

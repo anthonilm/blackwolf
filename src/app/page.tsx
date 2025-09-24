@@ -11,54 +11,33 @@ export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showCalendly, setShowCalendly] = useState(false);
 
-  const taupe = "#7A6C61";
-  const yvesBlue = "#0018A8";
-  const carmine = "#960018";
   const ivory = "#FFFFF0";
   const saffron = "#F4C430";
+  const deepTeal = "#014D4E";
+  const carmine = "#960018";
 
   return (
-   <div
-  ref={containerRef}
-  style={{
-    height: "100vh",
-    display: "grid",
-    gridTemplateRows: "auto 1fr auto",
-    fontFamily: `"Georgia", "Times New Roman", serif`,
-    position: "relative",
-    overflow: "hidden",
-    background: "#014D4E", // Deep Teal solid background
-  }}
->
-      {/* Liquid overlay */}
-      <div
-  className="liquid-overlay"
-  style={{
-    position: "absolute",
-    inset: 0,
-    background: `radial-gradient(circle at 20% 20%, ${yvesBlue}30, transparent 70%),
-       radial-gradient(circle at 80% 40%, ${carmine}30, transparent 70%),
-       radial-gradient(circle at 50% 80%, ${taupe}40, transparent 70%),
-       radial-gradient(circle at 50% 100%, ${saffron}40, transparent 70%)`,
-    backgroundSize: "200% 200%",
-    animation: "liquidMove 8s ease-in-out infinite alternate",
-    zIndex: 0,
-    pointerEvents: "none",
-  }}
-/>
+    <div
+      ref={containerRef}
+      style={{
+        height: "100vh",
+        display: "grid",
+        gridTemplateRows: "auto 1fr auto",
+        fontFamily: `"Georgia", "Times New Roman", serif`,
+        position: "relative",
+        overflow: "hidden",
+        background: `linear-gradient(to bottom, ${saffron}40, ${deepTeal})`,
+      }}
+    >
       <style>{`
-        @keyframes liquidMove {
-          0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.9; }
-          100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
-        }
-
         /* === MOBILE ONLY === */
         @media (max-width: 768px) {
           .hero-wrapper {
             justify-content: center !important;
             align-items: center !important;
             gap: 0.5rem !important;
-            margin-bottom: 1rem !important;
+            margin-top: 0 !important;
+            margin-bottom: 0.5rem !important;
           }
           .hero-title {
             font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
@@ -69,25 +48,20 @@ export default function Page() {
             height: clamp(60px, 14vw, 90px) !important;
             width: clamp(4px, 1vw, 8px) !important;
           }
-          @media (max-width: 768px) {
-  .hero-subtitle {
-    font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
-    letter-spacing: 0.12em !important;
-    line-height: 1.5 !important;
-    margin-top: 0.5rem !important;
-    text-align: center !important;
-    max-width: 40ch !important;   /* ✅ cap it */
-    min-width: unset !important;  /* ✅ let it shrink */
-    white-space: normal !important;
-    overflow-wrap: break-word !important;
-  }
-}
-
+          .hero-subtitle {
+            font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
+            letter-spacing: 0.12em !important;
+            line-height: 1.5 !important;
+            margin-top: 0.5rem !important;
+            text-align: center !important;
+            max-width: 40ch !important;
+            white-space: normal !important;
+            overflow-wrap: break-word !important;
           }
           .cta-button {
             margin-top: 1rem !important;
             font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
-            padding: 0.8rem 1.4rem !important;
+            padding: 0.6rem 1rem !important; /* 75% shrink */
           }
           .copyright {
             font-size: 0.6rem !important;
@@ -96,7 +70,7 @@ export default function Page() {
         }
       `}</style>
 
-      <Menu yvesBlue={yvesBlue} ivory={ivory} />
+      <Menu ivory={ivory} />
 
       <main
         className="stage"
@@ -107,13 +81,7 @@ export default function Page() {
           overflow: "hidden",
         }}
       >
-        <Hero
-          taupe={taupe}
-          carmine={carmine}
-          yvesBlue={yvesBlue}
-          ivory={ivory}
-          setShowCalendly={setShowCalendly}
-        />
+        <Hero ivory={ivory} setShowCalendly={setShowCalendly} />
       </main>
 
       {showCalendly && (
@@ -159,7 +127,7 @@ export default function Page() {
                 padding: "0.6rem 1.2rem",
                 fontSize: "1rem",
                 fontWeight: 600,
-                background: yvesBlue,
+                background: carmine,
                 color: "#fff",
                 border: "none",
                 borderRadius: "6px",
@@ -191,8 +159,9 @@ export default function Page() {
   );
 }
 
-/* Yves Blue Hamburger Menu */
-function Menu({ yvesBlue, ivory }: any) {
+/* Hamburger Menu */
+function Menu({ ivory }: any) {
+  const yvesBlue = "#0018A8";
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
@@ -222,32 +191,30 @@ function Menu({ yvesBlue, ivory }: any) {
 
   return (
     <>
-      {/* Hamburger Button */}
-   <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
-  <button
-    className="menu-button"
-    onClick={() => setOpen(!open)}
-    style={{
-      width: 40,
-      height: 40,
-      background: "transparent",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      border: "none",
-      padding: 0,
-    }}
-  >
-    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
-      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
-      <span style={{ width: 24, height: 2, background: "#FFFFFF" }} /> {/* White */}
-    </div>
-  </button>
-</div>
+      <div style={{ position: "fixed", top: 20, left: 20, zIndex: 1100 }}>
+        <button
+          className="menu-button"
+          onClick={() => setOpen(!open)}
+          style={{
+            width: 40,
+            height: 40,
+            background: "transparent",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            border: "none",
+            padding: 0,
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+            <span style={{ width: 24, height: 2, background: yvesBlue }} />
+          </div>
+        </button>
+      </div>
 
-      {/* Dropdown Menu */}
       {open && (
         <div
           ref={menuRef}
@@ -268,149 +235,39 @@ function Menu({ yvesBlue, ivory }: any) {
             gap: "1.2rem",
           }}
         >
-          {/* Static */}
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            About
-          </Link>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
 
-          <Link
-  href="/noesis"
-  onClick={() => setOpen(false)}
-  style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
->
-  What Does Noesis Mean?
-</Link>
-
-          {/* Cognitive Performance Coaching */}
           <div>
-            <div
-              onClick={() => toggleSub("cognitive")}
-              style={{
-                cursor: "pointer",
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-              }}
-            >
+            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
               Cognitive Performance Coaching
             </div>
             {subOpen["cognitive"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link
-                  href="/services"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/areas"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                   Transformation Pathways
-                </Link>
-                <Link
-                  href="/noesis-methods"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  The Noesis Approach
-                </Link>
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
               </div>
             )}
           </div>
 
-          {/* Student Success Systems */}
           <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{
-                cursor: "pointer",
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-              }}
-            >
+            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>
               Student Success Systems
             </div>
             {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link
-                  href="/student-services"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/student-areas"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                   Transformation Pathways
-                </Link>
-                <Link
-                  href="/student-methods"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  The Noesis Method
-                </Link>
+              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
+                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
+                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Method</Link>
               </div>
             )}
           </div>
 
-          {/* Other */}
-          <Link
-            href="/for-students"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Insights
-          </Link>
-          <Link
-            href="/faq"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            FAQ
-          </Link>
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            style={{ color: yvesBlue, fontWeight: 500, fontSize: "1.1rem" }}
-          >
-            Contact
-          </Link>
-          
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Insights</Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>FAQ</Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Contact</Link>
         </div>
       )}
     </>
@@ -418,21 +275,38 @@ function Menu({ yvesBlue, ivory }: any) {
 }
 
 
-
-
-function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
+/* Hero with corrected bounding-box breathing */
+function Hero({ ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (titleRef.current && subtitleRef.current) {
-     gsap.to([titleRef.current, subtitleRef.current], {
-  y: 15,            // very large vertical travel
-  duration: 6,       // keep it smooth
-  ease: "sine.inOut",
-  repeat: -1,
-  yoyo: true,
-});
+    if (titleRef.current && lineRef.current) {
+      const title = titleRef.current;
+      const line = lineRef.current;
+
+      requestAnimationFrame(() => {
+        const lineBox = line.getBoundingClientRect();
+        const titleBox = title.getBoundingClientRect();
+
+        const lineHeight = lineBox.height;
+        const titleHeight = titleBox.height;
+
+        // Travel distance = 25% of the full possible range
+        const travel = (lineHeight - titleHeight) * 0.25;
+
+        gsap.fromTo(
+          title,
+          { y: 0 },
+          {
+            y: travel,
+            duration: 6,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+          }
+        );
+      });
     }
   }, []);
 
@@ -445,13 +319,11 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem 4rem",
-        color: "#333",
         position: "relative",
         height: "100vh",
         textAlign: "center",
       }}
     >
-      {/* Title + vertical lines */}
       <div
         className="hero-wrapper"
         style={{
@@ -462,74 +334,72 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
           marginTop: "100px",
         }}
       >
-     <div
-  className="hero-lines"
-  style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
->
-  <div
-    style={{
-      width: "clamp(6px, 1vw, 12px)",
-      height: "clamp(100px, 22vh, 200px)",
-      backgroundColor: ivory
-    }}
-  />
-  <div
-    style={{
-      width: "clamp(6px, 1vw, 12px)",
-      height: "clamp(100px, 22vh, 200px)",
-      backgroundColor: ivory
-    }}
-  />
-</div>
-       <h1
-  ref={titleRef}
-  className="hero-title"
-  style={{
-    fontSize: "clamp(2rem, 6vw, 5rem)",
-    fontWeight: 700,
-    letterSpacing: "0.1em",
-    whiteSpace: "nowrap",
-    color: ivory
-  }}
->
-  NOESIS SYSTEMS
-</h1>
+        <div
+          className="hero-lines"
+          style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
+        >
+          <div
+            ref={lineRef}
+            style={{
+              width: "clamp(6px, 1vw, 12px)",
+              height: "clamp(100px, 22vh, 200px)",
+              backgroundColor: ivory,
+            }}
+          />
+          <div
+            style={{
+              width: "clamp(6px, 1vw, 12px)",
+              height: "clamp(100px, 22vh, 200px)",
+              backgroundColor: ivory,
+            }}
+          />
+        </div>
+        <h1
+          ref={titleRef}
+          className="hero-title"
+          style={{
+            fontSize: "clamp(2rem, 6vw, 5rem)",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            whiteSpace: "nowrap",
+            color: ivory,
+          }}
+        >
+          NOESIS SYSTEMS
+        </h1>
       </div>
 
-      {/* Subtitle */}
-     <p
-  ref={subtitleRef}
-  className="hero-subtitle"
-  style={{
-    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-    textTransform: "uppercase",
-    letterSpacing: "0.18em",
-    lineHeight: 1.6,
-    margin: "0 auto",
-    textAlign: "center",
-    color: ivory,  // White text
-    maxWidth: "65ch",
-    overflowWrap: "break-word",
-    whiteSpace: "normal",
-  }}
->
-  Transform your anxieties into creative and generative energy.
-</p>
+      <p
+        className="hero-subtitle"
+        style={{
+          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+          textTransform: "uppercase",
+          letterSpacing: "0.18em",
+          lineHeight: 1.6,
+          margin: "0 auto",
+          textAlign: "center",
+          color: ivory,
+          maxWidth: "65ch",
+          overflowWrap: "break-word",
+          whiteSpace: "normal",
+        }}
+      >
+        Transform your anxieties into creative and generative energy.
+      </p>
 
-      {/* CTA */}
       <div style={{ marginTop: "2rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
           className="cta-button"
           style={{
             display: "inline-block",
-            padding: "1.2rem 2.4rem",
+            padding: "0.9rem 1.6rem",
             borderRadius: "14px",
             background: "rgba(255, 255, 255, 0.25)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
             color: "#000",
-            fontSize: "clamp(1rem, 2vw, 1.4rem)",
+            fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
             fontFamily: "Georgia, serif",
             fontWeight: 600,
             letterSpacing: "0.05em",
@@ -537,18 +407,11 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
             cursor: "pointer",
             transition: "all 0.3s ease",
           }}
-          onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
-          }
-          onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
-          }
         >
           Book Your Free First Session
         </button>
       </div>
 
-      {/* Bottom */}
       <div
         style={{
           position: "absolute",
@@ -562,16 +425,16 @@ function Hero({ taupe, yvesBlue, ivory, setShowCalendly }: any) {
         }}
       >
         <div
-  style={{
-    fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
-    letterSpacing: "0.1em",
-    color: "#FFFFFF",  // White text
-    fontFamily: `"Georgia", "Times New Roman", serif`,
-    textAlign: "left",
-  }}
->
-  Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
-</div>
+          style={{
+            fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
+            letterSpacing: "0.1em",
+            color: "#FFFFFF",
+            fontFamily: `"Georgia", "Times New Roman", serif`,
+            textAlign: "left",
+          }}
+        >
+          Anthoni McElrath, M.A. & License in Integrative Mental Health Care.
+        </div>
 
         <a
           href="https://instagram.com"
