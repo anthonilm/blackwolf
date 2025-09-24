@@ -46,6 +46,7 @@ export default function Page() {
         /* dynamic viewport height with fallback */
         .gradient-bg,
         .hero-fullheight {
+          min-height: 100vh;
           height: 100dvh;
           height: -webkit-fill-available;
         }
@@ -195,6 +196,7 @@ export default function Page() {
     </div>
   );
 }
+
 /* Hamburger Menu */
 function Menu() {
   const [open, setOpen] = useState(false);
@@ -317,8 +319,6 @@ function Hero({ ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
-  // NOESIS SYSTEMS title is now static (no GSAP rise/fall)
-
   return (
     <div
       className="hero-fullheight"
@@ -379,23 +379,23 @@ function Hero({ ivory, setShowCalendly }: any) {
       </div>
 
       <p
-  className="hero-subtitle"
-  style={{
-    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-    textTransform: "uppercase",
-    letterSpacing: "0.18em",
-    lineHeight: 1.6,
-    margin: "0 auto",
-    textAlign: "center",
-    color: ivory,
-    maxWidth: "65ch",
-    overflowWrap: "break-word",
-    whiteSpace: "normal",
-  }}
->
-  Transform your anxieties<br />
-  into creative and generative energy.
-</p>
+        className="hero-subtitle"
+        style={{
+          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+          textTransform: "uppercase",
+          letterSpacing: "0.18em",
+          lineHeight: 1.6,
+          margin: "0 auto",
+          textAlign: "center",
+          color: ivory,
+          maxWidth: "65ch",
+          overflowWrap: "break-word",
+          whiteSpace: "normal",
+        }}
+      >
+        Transform your anxieties<br />
+        into creative and generative energy.
+      </p>
 
       <div style={{ marginTop: "2rem" }}>
         <button
@@ -443,7 +443,6 @@ function Hero({ ivory, setShowCalendly }: any) {
             textAlign: "left",
           }}
         >
-         
         </div>
 
         <a
@@ -452,7 +451,6 @@ function Hero({ ivory, setShowCalendly }: any) {
           rel="noopener noreferrer"
           style={{ marginLeft: "1rem" }}
         >
-          
         </a>
       </div>
     </div>
