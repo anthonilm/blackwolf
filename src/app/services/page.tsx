@@ -103,7 +103,7 @@ export default function ServicesPage() {
           letterSpacing: "0.05em",
         }}
       >
-        This is how you move from stuck to thriving.
+        Enhance your life. Cultivate prosperity.
       </h1>
 
       {/* Services Section */}

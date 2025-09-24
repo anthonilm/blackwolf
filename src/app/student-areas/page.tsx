@@ -46,17 +46,17 @@ export default function StudentAreasPage() {
     setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
   }, []);
 
-  return (
+ return (
     <div
-  style={{
-    minHeight: "100vh",
-    position: "relative",
-    padding: "4rem 2rem",
-    fontFamily: "Georgia, 'Times New Roman', serif",
-    overflow: "hidden",
-    background: "#014D4E", // Deep Teal
-  }}
->
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        padding: "4rem 2rem",
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        overflow: "hidden",
+        background: "#A8D5D7", // lighter teal background
+      }}
+    >
       {/* Animated Overlay */}
       <div
         className="liquid-overlay"
@@ -64,10 +64,10 @@ export default function StudentAreasPage() {
           position: "absolute",
           inset: 0,
           background: `
-            radial-gradient(circle at 45% 45%, #F5F0FA 0%, transparent 60%),
-            radial-gradient(circle at 55% 55%, #ffffff 0%, transparent 70%),
+            radial-gradient(circle at 45% 45%, #F5F0FA80 0%, transparent 60%),
+            radial-gradient(circle at 55% 55%, #FFFFFF80 0%, transparent 70%),
             radial-gradient(circle at 50% 60%, #7A6C6130, transparent 75%),
-            radial-gradient(circle at 50% 50%, #96001820, transparent 90%)
+            radial-gradient(circle at 50% 50%, #96001815, transparent 90%)
           `,
           backgroundSize: "200% 200%",
           animation: "liquidMove 8s ease-in-out infinite alternate",
