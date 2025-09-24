@@ -92,7 +92,7 @@ export default function AboutPage() {
               reflection into life enhancing progress. Goals may include
               improving focus, building consistent habits, strengthening
               emotional intelligence, achieving a growth
-              mindset, and tools for sustaining optimum mental performance under unstable conditions.
+              mindset, and developing tools for sustaining optimum mental performance under unstable conditions.
             </p>
           </div>
         </section>
