@@ -54,10 +54,10 @@ export default function Page() {
     inset: 0;
     width: 100%;
     background: linear-gradient(
-      -45deg,
+      -30deg,
       ${ivory},
       #E6E6FA,       /* lavender */
-      #89ad93ff,       /* sea-glass green */
+      
       #014d4e,       /* deep teal */
       #E6E6FA,
       ${ivory}
@@ -114,10 +114,10 @@ export default function Page() {
     /* === MOBILE GRADIENT OVERRIDE === */
     .gradient-bg {
       background: linear-gradient(
-        -75deg,
+        -60deg,
         ${ivory},
         #E6E6FA,       /* lavender */
-        #89ad93ff,       /* sea-glass green */
+      
         #014d4e,       /* deep teal */
         #E6E6FA,
         ${ivory}
