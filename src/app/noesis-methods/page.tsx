@@ -77,6 +77,53 @@ const ivory = "#E0D8EA";    // deeper lavender-ivory
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
         }
+          /* === Horizontal scroll discoverability === */
+
+/* Add edge fades to hint more content */
+.rail {
+  position: relative; /* for ::before and ::after positioning */
+}
+.rail::before,
+.rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  pointer-events: none;
+  z-index: 5;
+}
+.rail::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0.95), transparent);
+}
+.rail::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255,255,255,0.95), transparent);
+}
+
+/* Peek of next panel */
+.railTrack {
+  grid-auto-columns: 90vw !important; /* was 100vw */
+  gap: 1rem !important;
+  padding-right: 1rem; /* avoids last panel cut-off */
+}
+
+/* Optional scroll hint arrow */
+.scrollHint {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: ${yvesBlue};
+  animation: bounceX 1.5s infinite;
+  z-index: 10;
+}
+@keyframes bounceX {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
         .panel {
           position: relative;
           scroll-snap-align: start;
@@ -112,6 +159,11 @@ const ivory = "#E0D8EA";    // deeper lavender-ivory
           color: #0F1C2E;
           max-width: 70ch;
         }
+          .panelBody {
+  font-size: 16pt !important;   /* smaller, more readable */
+  line-height: 1.55 !important; /* slightly tighter */
+}
+
         .panelRight {
           position: absolute;
           top: 50%;
@@ -164,6 +216,28 @@ const ivory = "#E0D8EA";    // deeper lavender-ivory
           font-size: 1em;
           color: ${yvesBlue};
         }
+          /* === TABLET TUNING (iPad Safari) === */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .panel {
+    min-height: 65vh !important;   /* shorter panels */
+    padding: 2.5rem 1.5rem !important;
+  }
+  .panelBody {
+    font-size: 14pt !important;    /* shrink body text */
+    line-height: 1.5 !important;
+  }
+  .panelKicker {
+    font-size: 1.2rem !important;  /* shrink section headings */
+  }
+  .phaseBig {
+    font-size: clamp(28px, 5vw, 60px) !important; /* scale phase labels down */
+    opacity: 0.5 !important;      /* reduce visual weight */
+  }
+  .getList li {
+    font-size: 14pt !important;   /* shrink list items proportionally */
+  }
+}
+
 
         /* === PRINT OVERRIDES FOR PDF EXPORT === */
         @media print {
@@ -244,10 +318,6 @@ const ivory = "#E0D8EA";    // deeper lavender-ivory
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-  <div style={{ display: "flex", gap: "0.4rem" }}>
-    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-    <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-  </div>
   <h1 style={{ fontSize: "4rem", fontWeight: 700, letterSpacing: "0.08em" }}>
     THE NOESIS APPROACH{" "}
     <span style={{ fontSize: "1.2rem", verticalAlign: "super" }}>©</span>
@@ -391,6 +461,7 @@ Opportunities don’t become real until the mind is steady and the body follows 
               </div>
             </article>
           </div>
+          <span className="scrollHint" aria-hidden="true">➔</span>
           <div className="progress" aria-hidden="true" />
         </section>
 
@@ -608,19 +679,15 @@ function Menu() {
           <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
           <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
-
-          <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
-              Cognitive Performance Coaching
-            </div>
-            {subOpen["cognitive"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
-              </div>
-            )}
-          </div>
+<Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Transformation Pathways
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  The Noesis Approach
+</Link>
 
           <div>
             <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>

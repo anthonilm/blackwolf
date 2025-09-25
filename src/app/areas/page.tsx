@@ -357,54 +357,15 @@ function Menu() {
 >
   What Does Noesis Mean?
 </Link>
-
-          {/* Cognitive Performance Coaching */}
-          <div>
-            <div
-              onClick={() => toggleSub("cognitive")}
-              style={{
-                cursor: "pointer",
-                color: yvesBlue,
-                fontWeight: 500,
-                fontSize: "1.1rem",
-              }}
-            >
-              Cognitive Performance Coaching
-            </div>
-            {subOpen["cognitive"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link
-                  href="/services"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/areas"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                   Transformation Pathways
-                </Link>
-                <Link
-                  href="/noesis-methods"
-                  onClick={() => setOpen(false)}
-                  style={{ color: yvesBlue, fontSize: "1rem" }}
-                >
-                  The Noesis Approach
-                </Link>
-              </div>
-            )}
-          </div>
+<Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Transformation Pathways
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  The Noesis Approach
+</Link>
 
           {/* Student Success Systems */}
           <div>

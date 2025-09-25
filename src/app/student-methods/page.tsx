@@ -77,56 +77,73 @@ export default function StudentMethodsPage() {
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
         }
-        .panel {
-          position: relative;
-          scroll-snap-align: start;
-          padding: 4rem 2rem;
-          min-height: 80vh;
-          background: linear-gradient(180deg, #fff, #fff0);
-        }
-        @media (min-width: 1024px) {
-          .panel {
-            display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-            gap: 2rem;
-            align-items: center;
-            text-align: left;
-          }
-        }
-        .panelLeft { max-width: 720px; margin: 0 auto; }
-        .phaseTag {
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          font-size: 12px;
-          color: ${taupe};
-        }
-        .panelKicker {
-          font-weight: 600;
-          font-size: 1.5rem;
-          margin: 4px 0 8px 0;
-          color: ${yvesBlue};
-        }
-        .panelBody {
-          font-size: 20pt;
-          line-height: 1.65;
-          color: #0F1C2E;
-          max-width: 70ch;
-        }
-        .panelRight {
-          position: absolute;
-          top: 50%;
-          right: 2rem;
-          transform: translateY(-50%);
-          pointer-events: none;
-          text-align: right;
-        }
-        .phaseBig {
-          font-family: Georgia, serif;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          font-size: clamp(42px, 8vw, 112px);
-          color: ${taupe};
-          white-space: nowrap;
+       .panel {
+  position: relative;
+  scroll-snap-align: start;
+  padding: 4rem 2rem;
+  min-height: 80vh;
+  background: linear-gradient(180deg, #fff, #fff0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.panelCols {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.panelBody {
+  font-size: 16pt;       /* restored body size */
+  line-height: 1.65;
+  color: #0F1C2E;
+  max-width: 70ch;
+}
+
+.getList li {
+  position: relative;
+  padding-left: 28px;
+  line-height: 1.5;
+  font-size: 16pt;       /* restored list size */
+  color: #0F1C2E;
+}
+
+.panelRight {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.phaseBig {
+  font-family: Georgia, serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(42px, 8vw, 112px);
+  color: ${taupe};
+  white-space: nowrap;
+  opacity: 0.2;
+}
+
+/* On large screens, STEP moves to side */
+@media (min-width: 1024px) {
+  .panelCols {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .panelRight {
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .phaseBig {
+    opacity: 0.4;
+  }
+}
+
         }
         .progress {
           height: 2px;
@@ -236,10 +253,6 @@ export default function StudentMethodsPage() {
   }}
 >
   <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-    <div style={{ display: "flex", gap: "0.4rem" }}>
-      <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-      <div style={{ width: "10px", height: "60px", backgroundColor: yvesBlue }} />
-    </div>
     <h1
       style={{
         fontSize: "4rem",
@@ -631,19 +644,15 @@ function Menu() {
           <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
           <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
-
-          <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
-              Cognitive Performance Coaching
-            </div>
-            {subOpen["cognitive"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
-              </div>
-            )}
-          </div>
+<Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Transformation Pathways
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  The Noesis Approach
+</Link>
 
           <div>
             <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>

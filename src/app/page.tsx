@@ -29,8 +29,7 @@ export default function Page() {
     >
       {/* === Full-Page Animated Gradient (fixed across mobile + desktop) === */}
       <div className="gradient-bg" />
-
-  <style>{`
+<style>{`
   @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -51,40 +50,24 @@ export default function Page() {
   }
 
   .gradient-bg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  background: linear-gradient(
-    -45deg,
-    ${ivory},
-    #E6E6FA,       /* lavender */
-    #4CAF50,       /* green */
-    #014d4e,       /* deep teal */
-    #E6E6FA,
-    ${ivory}
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 25s ease-in-out infinite;
-  z-index: 0;
-  pointer-events: none;
-  background-attachment: fixed;
-}
-
-/* === MOBILE ONLY === */
-@media (max-width: 768px) {
-  .gradient-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
     background: linear-gradient(
       -45deg,
       ${ivory},
       #E6E6FA,       /* lavender */
+      #89ad93ff,       /* sea-glass green */
       #014d4e,       /* deep teal */
       #E6E6FA,
       ${ivory}
     );
     background-size: 400% 400%;
+    animation: gradientShift 40s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+    background-attachment: fixed;
   }
-}
-
 
   /* === MOBILE ONLY === */
   @media (max-width: 768px) {
@@ -127,8 +110,126 @@ export default function Page() {
       font-size: 0.6rem !important;
       padding: 0.3rem !important;
     }
+
+    /* === MOBILE GRADIENT OVERRIDE === */
+    .gradient-bg {
+      background: linear-gradient(
+        -75deg,
+        ${ivory},
+        #E6E6FA,       /* lavender */
+        #89ad93ff,       /* sea-glass green */
+        #014d4e,       /* deep teal */
+        #E6E6FA,
+        ${ivory}
+      );
+      background-size: 400% 400%;
+    }
+  }
+
+  /* === ADDITIONS === */
+
+  /* Fix Safari text auto-zoom */
+  html { -webkit-text-size-adjust: 100%; }
+
+  /* === TABLET ONLY (iPad Safari + similar widths) === */
+  @media (min-width: 768px) and (max-width: 1180px) {
+    .hero-title {
+      white-space: normal !important;   /* allow wrapping */
+      text-wrap: balance !important;
+      font-size: clamp(1.6rem, 4vw, 3rem) !important;
+      line-height: 1.15 !important;
+      max-width: 92vw !important;
+      margin: 0 auto !important;
+      text-align: center !important;
+    }
+
+    .hero-lines div {
+      height: clamp(80px, 14vh, 140px) !important;
+      width: clamp(4px, 0.6vw, 8px) !important;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
+      line-height: 1.4 !important;
+      max-width: 40ch !important;
+      margin: 0.5rem auto 0 auto !important;
+      text-align: center !important;
+      text-wrap: balance !important;
+    }
+  }
+
+  /* === DESKTOP SUBTITLE FIX === */
+  @media (min-width: 1181px) {
+    .hero-subtitle {
+      max-width: 42ch !important;
+      margin: 0.5rem auto 0 auto !important;
+      text-align: center !important;
+      text-wrap: balance !important;
+      line-height: 1.4 !important;
+    }
+      /* === MOBILE ONLY === */
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: clamp(0.75rem, 2.8vw, 1rem) !important;
+    letter-spacing: 0.1em !important;
+    line-height: 1.4 !important;
+    margin-top: 0.5rem !important;
+    text-align: center !important;
+
+    white-space: nowrap !important;
+    text-wrap: unset !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* === TABLET ONLY === */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
+    line-height: 1.4 !important;
+    margin: 0.5rem auto 0 auto !important;
+    text-align: center !important;
+
+    white-space: nowrap !important;
+    text-wrap: unset !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+}
+
+/* === DESKTOP === */
+@media (min-width: 1181px) {
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.2vw, 1.6rem) !important;
+    line-height: 1.4 !important;
+    margin: 0.5rem auto 0 auto !important;
+    text-align: center !important;
+
+    white-space: nowrap !important;
+    text-wrap: unset !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+}
+  /* === TABLET ONLY === */
+@media (min-width: 768px) and (max-width: 1180px) {
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
+    line-height: 1.4 !important;
+    margin: 0.5rem auto 0 auto !important;
+    text-align: center !important;
+
+    white-space: nowrap !important;   /* lock single line */
+    text-wrap: unset !important;      /* disable balanced wrapping */
+    max-width: none !important;       /* remove width limits */
+    overflow: visible !important;     /* show full text */
+  }
+}
+
   }
 `}</style>
+
 
       <Menu  />
 
@@ -298,19 +399,17 @@ function Menu() {
           <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
           <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  Transformation Pathways
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+  The Noesis Approach
+</Link>
 
-          <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: yvesBlue }}>
-              Cognitive Performance Coaching
-            </div>
-            {subOpen["cognitive"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Approach</Link>
-              </div>
-            )}
-          </div>
+      
 
           <div>
             <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>

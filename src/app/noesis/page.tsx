@@ -154,19 +154,15 @@ function Menu() {
           <Link href="/" onClick={() => setOpen(false)} style={{ color: white }}>Home</Link>
           <Link href="/about" onClick={() => setOpen(false)} style={{ color: white }}>About</Link>
           <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: white }}>What Does Noesis Mean?</Link>
-
-          <div>
-            <div onClick={() => toggleSub("cognitive")} style={{ cursor: "pointer", color: white }}>
-              Cognitive Performance Coaching
-            </div>
-            {subOpen["cognitive"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/services" onClick={() => setOpen(false)} style={{ color: white }}>Services</Link>
-                <Link href="/areas" onClick={() => setOpen(false)} style={{ color: white }}>Transformation Pathways</Link>
-                <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: white }}>The Noesis Approach</Link>
-              </div>
-            )}
-          </div>
+<Link href="/services" onClick={() => setOpen(false)} style={{ color: white }}>
+  Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: white }}>
+  Transformation Pathways
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: white }}>
+  The Noesis Approach
+</Link>
 
           <div>
             <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: white }}>
