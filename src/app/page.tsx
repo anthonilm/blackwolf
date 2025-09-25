@@ -30,85 +30,106 @@ export default function Page() {
       {/* === Full-Page Animated Gradient (fixed across mobile + desktop) === */}
       <div className="gradient-bg" />
 
-      <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
+  <style>{`
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-        html, body {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-        }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-        /* dynamic viewport height with fallback */
-        .gradient-bg,
-        .hero-fullheight {
-          min-height: 100vh;
-          height: 100dvh;
-          height: -webkit-fill-available;
-        }
+  .gradient-bg,
+  .hero-fullheight {
+    min-height: 100vh;
+    height: 100dvh;
+    height: -webkit-fill-available;
+  }
 
-        .gradient-bg {
-          position: fixed;
-          inset: 0;
-          width: 100%;
-          background: linear-gradient(
-            -45deg,
-            ${ivory},
-            #E6E6FA,
-            #4CAF50,
-            #E6E6FA,
-            ${ivory}
-          );
-          background-size: 400% 400%;
-          animation: gradientShift 18s ease-in-out infinite;
-          z-index: 0;
-          pointer-events: none;
-          background-attachment: fixed;
-        }
+  .gradient-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  background: linear-gradient(
+    -45deg,
+    ${ivory},
+    #E6E6FA,       /* lavender */
+    #4CAF50,       /* green */
+    #014d4e,       /* deep teal */
+    #E6E6FA,
+    ${ivory}
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease-in-out infinite;
+  z-index: 0;
+  pointer-events: none;
+  background-attachment: fixed;
+}
 
-        /* === MOBILE ONLY === */
-        @media (max-width: 768px) {
-          .hero-wrapper {
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 0.5rem !important;
-            margin-top: 0 !important;
-            margin-bottom: 0.5rem !important;
-          }
-          .hero-title {
-            font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
-            letter-spacing: 0.06em !important;
-            white-space: nowrap !important;
-          }
-          .hero-lines div {
-            height: clamp(60px, 14vw, 90px) !important;
-            width: clamp(4px, 1vw, 8px) !important;
-          }
-          .hero-subtitle {
-            font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
-            letter-spacing: 0.12em !important;
-            line-height: 1.5 !important;
-            margin-top: 0.5rem !important;
-            text-align: center !important;
-            max-width: 40ch !important;
-            white-space: normal !important;
-            overflow-wrap: break-word !important;
-          }
-          .cta-button {
-            margin-top: 1rem !important;
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
-            padding: 0.6rem 1rem !important; /* 75% shrink */
-          }
-          .copyright {
-            font-size: 0.6rem !important;
-            padding: 0.3rem !important;
-          }
-        }
-      `}</style>
+/* === MOBILE ONLY === */
+@media (max-width: 768px) {
+  .gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      ${ivory},
+      #E6E6FA,       /* lavender */
+      #014d4e,       /* deep teal */
+      #E6E6FA,
+      ${ivory}
+    );
+    background-size: 400% 400%;
+  }
+}
+
+
+  /* === MOBILE ONLY === */
+  @media (max-width: 768px) {
+    .hero-wrapper {
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      margin-top: 0 !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .hero-title {
+      font-size: clamp(1rem, 3.5vw, 1.8rem) !important;
+      letter-spacing: 0.04em !important;
+      white-space: nowrap !important;   /* force single line */
+      max-width: 95vw !important;       /* fit viewport */
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .hero-lines div {
+      height: clamp(60px, 14vw, 90px) !important;
+      width: clamp(4px, 1vw, 8px) !important;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.75rem, 2.8vw, 1rem) !important;
+      letter-spacing: 0.1em !important;
+      line-height: 1.4 !important;
+      margin-top: 0.5rem !important;
+      text-align: center !important;
+      white-space: normal !important;   /* allow wrapping */
+      text-wrap: balance !important;
+      hyphens: auto !important;
+      max-width: 32ch !important;       /* keeps text readable */
+    }
+    .cta-button {
+      margin-top: 1rem !important;
+      font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
+      padding: 0.6rem 1rem !important;
+    }
+    .copyright {
+      font-size: 0.6rem !important;
+      padding: 0.3rem !important;
+    }
+  }
+`}</style>
+
       <Menu  />
 
       <main
@@ -374,7 +395,7 @@ function Hero({ ivory, setShowCalendly }: any) {
             color: ivory,
           }}
         >
-          NOESIS SYSTEMS
+          NOESIS MENTAL HEALTH CARE
         </h1>
       </div>
 
@@ -393,7 +414,7 @@ function Hero({ ivory, setShowCalendly }: any) {
     maxWidth: "none",       // prevent clipping
   }}
 >
-  Overcome your anxieties through a balance of logic and creativity.
+  When thoughts collide and emotions swell, here is calm.
 </p>
 
       <div style={{ marginTop: "2rem" }}>
