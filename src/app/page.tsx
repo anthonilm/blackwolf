@@ -114,7 +114,7 @@ export default function Page() {
     /* === MOBILE GRADIENT OVERRIDE === */
     .gradient-bg {
       background: linear-gradient(
-        -60deg,
+        -65deg,
         ${ivory},
         #E6E6FA,       /* lavender */
       
