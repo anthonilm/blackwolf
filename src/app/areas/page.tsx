@@ -47,17 +47,19 @@ export default function AreasPage() {
     setIsMobile(/android|iphone|ipad|mobile/i.test(ua));
   }, []);
 
-   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        position: "relative",
-        padding: "4rem 2rem",
-        fontFamily: "Georgia, 'Times New Roman', serif",
-        overflow: "hidden",
-        background: "#A8D5D7", // lighter teal background
-      }}
-    >
+return (
+  <div
+    style={{
+      minHeight: "100vh",
+      position: "relative",
+      padding: "4rem 2rem",
+      fontFamily: "Georgia, 'Times New Roman', serif",
+      overflow: "hidden",
+      background: "linear-gradient(to bottom, #0E4D92, #FFFFF0)", // Baltic blue to ivory
+    }}
+  >
+
+
       {/* Animated Overlay */}
       <div
         className="liquid-overlay"
@@ -263,6 +265,7 @@ function Menu() {
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const yvesBlue = "#0018A8";
+  const ivory = "#FFFFF0";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -288,29 +291,29 @@ function Menu() {
 
   return (
     <>
-      {/* Yves Blue Hamburger */}
+      {/* Ivory Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
-        <button
-          onClick={() => setOpen(!open)}
-          style={{
-            width: 50,
-            height: 50,
-            background: "transparent",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            border: "none",
-            padding: 0,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-          </div>
-        </button>
-      </div>
+  <button
+    onClick={() => setOpen(!open)}
+    style={{
+      width: 70, // increased
+      height: 70, // increased
+      background: "transparent",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      border: "none",
+      padding: 0,
+    }}
+  >
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+    </div>
+  </button>
+</div>
 
       {/* Lead-optimized menu */}
       {open && (
@@ -416,4 +419,3 @@ function Menu() {
     </>
   );
 }
-

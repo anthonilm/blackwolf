@@ -1,253 +1,48 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaInstagram } from "react-icons/fa";
 
-import { HEADER_HEIGHT } from "@/lib/constants";
-
 export default function Page() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [showCalendly, setShowCalendly] = useState(false);
-
   const ivory = "#FFFFF0";
-  const lavender = "#C8A2C8";
   const carmine = "#960018";
+  const yvesBlue = "#0018A8";
 
   return (
     <div
-      ref={containerRef}
-      className="hero-fullheight"
       style={{
-        display: "grid",
-        gridTemplateRows: "auto 1fr auto",
-        fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
+        height: "100vh",
+        width: "100vw",
         overflow: "hidden",
+        fontFamily: `"Georgia", "Times New Roman", serif`,
       }}
     >
-      {/* === Full-Page Animated Gradient (fixed across mobile + desktop) === */}
-      <div className="gradient-bg" />
-      
-<style>{`
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .gradient-bg,
-  .hero-fullheight {
-    min-height: 100vh;
-    height: 100dvh;
-    height: -webkit-fill-available;
-  }
-
-  .gradient-bg {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    background: linear-gradient(
-      -30deg,
-      ${ivory},
-      #E6E6FA,       /* lavender */
-      
-      #014d4e,       /* deep teal */
-      #E6E6FA,
-      ${ivory}
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 40s ease-in-out infinite;
-    z-index: 0;
-    pointer-events: none;
-    background-attachment: fixed;
-  }
-
-  /* === MOBILE ONLY === */
-  @media (max-width: 768px) {
-    .hero-wrapper {
-      justify-content: center !important;
-      align-items: center !important;
-      gap: 0.5rem !important;
-      margin-top: 0 !important;
-      margin-bottom: 0.5rem !important;
-    }
-    .hero-title {
-      font-size: clamp(1rem, 3.5vw, 1.8rem) !important;
-      letter-spacing: 0.04em !important;
-      white-space: nowrap !important;   /* force single line */
-      max-width: 95vw !important;       /* fit viewport */
-      overflow: hidden !important;
-      text-overflow: ellipsis !important;
-    }
-    .hero-lines div {
-      height: clamp(60px, 14vw, 90px) !important;
-      width: clamp(4px, 1vw, 8px) !important;
-    }
-    .hero-subtitle {
-      font-size: clamp(0.75rem, 2.8vw, 1rem) !important;
-      letter-spacing: 0.1em !important;
-      line-height: 1.4 !important;
-      margin-top: 0.5rem !important;
-      text-align: center !important;
-      white-space: normal !important;   /* allow wrapping */
-      text-wrap: balance !important;
-      hyphens: auto !important;
-      max-width: 32ch !important;       /* keeps text readable */
-    }
-    .cta-button {
-      margin-top: 1rem !important;
-      font-size: clamp(0.9rem, 3.5vw, 1.1rem) !important;
-      padding: 0.6rem 1rem !important;
-    }
-    .copyright {
-      font-size: 0.6rem !important;
-      padding: 0.3rem !important;
-    }
-
-    /* === MOBILE GRADIENT OVERRIDE === */
-    .gradient-bg {
-      background: linear-gradient(
-        -65deg,
-        ${ivory},
-        #E6E6FA,       /* lavender */
-      
-        #014d4e,       /* deep teal */
-        #E6E6FA,
-        ${ivory}
-      );
-      background-size: 400% 400%;
-    }
-  }
-
-  /* === ADDITIONS === */
-
-  /* Fix Safari text auto-zoom */
-  html { -webkit-text-size-adjust: 100%; }
-
-  /* === TABLET ONLY (iPad Safari + similar widths) === */
-  @media (min-width: 768px) and (max-width: 1180px) {
-    .hero-title {
-      white-space: normal !important;   /* allow wrapping */
-      text-wrap: balance !important;
-      font-size: clamp(1.6rem, 4vw, 3rem) !important;
-      line-height: 1.15 !important;
-      max-width: 92vw !important;
-      margin: 0 auto !important;
-      text-align: center !important;
-    }
-
-    .hero-lines div {
-      height: clamp(80px, 14vh, 140px) !important;
-      width: clamp(4px, 0.6vw, 8px) !important;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
-      line-height: 1.4 !important;
-      max-width: 40ch !important;
-      margin: 0.5rem auto 0 auto !important;
-      text-align: center !important;
-      text-wrap: balance !important;
-    }
-  }
-
-  /* === DESKTOP SUBTITLE FIX === */
-  @media (min-width: 1181px) {
-    .hero-subtitle {
-      max-width: 42ch !important;
-      margin: 0.5rem auto 0 auto !important;
-      text-align: center !important;
-      text-wrap: balance !important;
-      line-height: 1.4 !important;
-    }
-      /* === MOBILE ONLY === */
-@media (max-width: 768px) {
-  .hero-subtitle {
-    font-size: clamp(0.75rem, 2.8vw, 1rem) !important;
-    letter-spacing: 0.1em !important;
-    line-height: 1.4 !important;
-    margin-top: 0.5rem !important;
-    text-align: center !important;
-
-    white-space: nowrap !important;
-    text-wrap: unset !important;
-    max-width: none !important;
-    overflow: visible !important;
-  }
-}
-
-/* === TABLET ONLY === */
-@media (min-width: 768px) and (max-width: 1180px) {
-  .hero-subtitle {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
-    line-height: 1.4 !important;
-    margin: 0.5rem auto 0 auto !important;
-    text-align: center !important;
-
-    white-space: nowrap !important;
-    text-wrap: unset !important;
-    max-width: none !important;
-    overflow: visible !important;
-  }
-}
-
-/* === DESKTOP === */
-@media (min-width: 1181px) {
-  .hero-subtitle {
-    font-size: clamp(1rem, 2.2vw, 1.6rem) !important;
-    line-height: 1.4 !important;
-    margin: 0.5rem auto 0 auto !important;
-    text-align: center !important;
-
-    white-space: nowrap !important;
-    text-wrap: unset !important;
-    max-width: none !important;
-    overflow: visible !important;
-  }
-}
-  /* === TABLET ONLY === */
-@media (min-width: 768px) and (max-width: 1180px) {
-  .hero-subtitle {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem) !important;
-    line-height: 1.4 !important;
-    margin: 0.5rem auto 0 auto !important;
-    text-align: center !important;
-
-    white-space: nowrap !important;   /* lock single line */
-    text-wrap: unset !important;      /* disable balanced wrapping */
-    max-width: none !important;       /* remove width limits */
-    overflow: visible !important;     /* show full text */
-  }
-}
-
-  }
-`}</style>
-
-      <Menu  />
-
-      <main
-        className="stage"
+      {/* Full Heavenly Background */}
+      <Image
+        src="/image.png"
+        alt="Heavenly background"
+        fill
+        priority
+        quality={100}
         style={{
-          position: "relative",
-          zIndex: 1,
-          height: "100%",
-          overflow: "hidden",
+          objectFit: "cover",
+          zIndex: 0,
         }}
-      >
-        <Hero ivory={ivory} setShowCalendly={setShowCalendly} />
-      </main>
+      />
+
+      <Menu />
+
+      <Hero ivory={ivory} setShowCalendly={setShowCalendly} />
+
       {showCalendly && (
         <section
           style={{
-            position: "absolute",
+            position: "fixed",
             top: 0,
             left: 0,
             width: "100%",
@@ -299,32 +94,17 @@ export default function Page() {
           </div>
         </section>
       )}
-
-      <footer
-        className="copyright"
-        style={{
-          background: "rgba(0,0,0,0.2)",
-          color: ivory,
-          textAlign: "center",
-          padding: "0.4rem",
-          fontSize: "0.7rem",
-          letterSpacing: "0.05em",
-          zIndex: 1500,
-          position: "relative",
-        }}
-      >
-        © {new Date().getFullYear()} Noesis Systems LLC. All rights reserved.
-      </footer>
     </div>
   );
 }
 
-/* Hamburger Menu */
+/* Enlarged Ivory Hamburger Menu */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const yvesBlue = "#0018A8";
+  const ivory = "#FFFFF0";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -350,13 +130,12 @@ function Menu() {
 
   return (
     <>
-      {/* Yves Blue Hamburger */}
-      <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
+      <div style={{ position: "fixed", top: 10, left: 12, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
           style={{
-            width: 50,
-            height: 50,
+            width: 70,
+            height: 70,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -366,26 +145,25 @@ function Menu() {
             padding: 0,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
+            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
+            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
           </div>
         </button>
       </div>
 
-      {/* Lead-optimized menu */}
       {open && (
         <div
           ref={menuRef}
           style={{
             position: "fixed",
-            top: 60,
-            left: 8,
+            top: 80,
+            left: 12,
             minWidth: "260px",
-            background: "rgba(255,255,255,0.15)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
+            background: "rgba(255,255,240,0.98)", // Ivory background
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
             padding: "1.5rem 2rem",
             borderRadius: "14px",
             boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
@@ -412,7 +190,7 @@ function Menu() {
             style={{
               width: "100%",
               height: "1px",
-              background: "rgba(255,255,255,0.25)",
+              background: "rgba(0,0,0,0.15)",
               marginBottom: "1rem",
             }}
           />
@@ -433,7 +211,6 @@ function Menu() {
             About Anthoni
           </Link>
 
-          {/* Student Success Systems */}
           <div>
             <div
               onClick={() => toggleSub("student")}
@@ -479,41 +256,34 @@ function Menu() {
   );
 }
 
-/* Hero with corrected bounding-box breathing */
+/* Hero Section (entire page) */
 function Hero({ ivory, setShowCalendly }: any) {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
-      className="hero-fullheight"
       style={{
-        flex: 1,
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem 4rem",
-        position: "relative",
         textAlign: "center",
       }}
     >
       <div
-        className="hero-wrapper"
         style={{
           display: "flex",
           alignItems: "center",
           gap: "1rem",
           marginBottom: "2.5rem",
-          marginTop: "100px",
         }}
       >
-        <div
-          className="hero-lines"
-          style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}
-        >
+        <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
           <div
-            ref={lineRef}
             style={{
               width: "clamp(6px, 1vw, 12px)",
               height: "clamp(100px, 22vh, 200px)",
@@ -530,7 +300,6 @@ function Hero({ ivory, setShowCalendly }: any) {
         </div>
         <h1
           ref={titleRef}
-          className="hero-title"
           style={{
             fontSize: "clamp(2rem, 6vw, 5rem)",
             fontWeight: 700,
@@ -543,28 +312,24 @@ function Hero({ ivory, setShowCalendly }: any) {
         </h1>
       </div>
 
- <p
-  className="hero-subtitle"
-  style={{
-    fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-    textTransform: "uppercase",
-    letterSpacing: "0.18em",
-    lineHeight: 1.6,
-    margin: "0 auto",
-    textAlign: "center",
-    color: ivory,
-    whiteSpace: "nowrap",   // single line
-    overflow: "visible",    // allow full render
-    maxWidth: "none",       // prevent clipping
-  }}
->
-  Transform anxiety into creative and generative clarity.
-</p>
+      <p
+        style={{
+          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
+          textTransform: "uppercase",
+          letterSpacing: "0.18em",
+          lineHeight: 1.6,
+          margin: "0 auto",
+          textAlign: "center",
+          color: ivory,
+          whiteSpace: "nowrap",
+        }}
+      >
+        Transform anxiety into creative and generative clarity.
+      </p>
 
       <div style={{ marginTop: "2rem" }}>
         <button
           onClick={() => setShowCalendly(true)}
-          className="cta-button"
           style={{
             display: "inline-block",
             padding: "0.9rem 1.6rem",
@@ -583,43 +348,37 @@ function Hero({ ivory, setShowCalendly }: any) {
           }}
         >
           Book Your Free Consultation
-
         </button>
       </div>
+
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: "absolute",
+          bottom: "35px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <FaInstagram size={22} color="#FFFFFF" style={{ opacity: 0.85 }} />
+      </a>
 
       <div
         style={{
           position: "absolute",
-          bottom: "35px",
+          bottom: "10px",
           left: 0,
           right: 0,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 20px",
+          color: ivory,
+          fontSize: "0.7rem",
+          letterSpacing: "0.05em",
+          textAlign: "center",
         }}
       >
-        <div
-          style={{
-            fontSize: "clamp(0.7rem, 1.2vw, 1rem)",
-            letterSpacing: "0.1em",
-            color: "#FFFFFF",
-            fontFamily: `"Georgia", "Times New Roman", serif`,
-            textAlign: "left",
-          }}
-        >
-        </div>
-
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ marginLeft: "1rem" }}
-        >
-        </a>
+        © {new Date().getFullYear()} Noesis Systems LLC. All rights reserved.
       </div>
     </div>
   );
 }
-
-

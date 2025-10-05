@@ -83,9 +83,9 @@ export default function AboutPage() {
           <div style={styles.heroText}>
             <h1 style={styles.heroName}>Anthoni McElrath</h1>
             <h2 style={styles.heroTitle}>
-              M.A., Licensed Integrative Mental Health Coach
+              M.A., Licensed Integrative Mental Health Specialist
             </h2>
-            <h3 style={styles.heroSubtitle}>Founder & Mental Health Coach</h3>
+            <h3 style={styles.heroSubtitle}>Founder & Coach</h3>
             <p style={styles.heroDescription}>
               I help people transform anxiety into action, structure their
               energy into creativity and generativity, and convert trauma
@@ -328,11 +328,13 @@ export default function AboutPage() {
 }
 
 /* ---------------- MENU ---------------- */
+/* Yves Blue Hamburger Menu (Always Yves Blue) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
   const yvesBlue = "#0018A8";
+  const ivory = "#FFFFF0";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -358,52 +360,54 @@ function Menu() {
 
   return (
     <>
-      {/* Yves Blue Hamburger */}
+      {/* Ivory Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
-        <button
-          onClick={() => setOpen(!open)}
-          style={{
-            width: 50,
-            height: 50,
-            background: "transparent",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            border: "none",
-            padding: 0,
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-          </div>
-        </button>
-      </div>
+  <button
+    onClick={() => setOpen(!open)}
+    style={{
+      width: 70, // increased
+      height: 70, // increased
+      background: "transparent",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      border: "none",
+      padding: 0,
+    }}
+  >
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+    </div>
+  </button>
+</div>
 
       {/* Lead-optimized menu */}
       {open && (
-        <div
-          ref={menuRef}
-          style={{
-            position: "fixed",
-            top: 60,
-            left: 8,
-            minWidth: "260px",
-            background: "rgba(255,255,255,0.15)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            padding: "1.5rem 2rem",
-            borderRadius: "14px",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
-            zIndex: 1000,
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.2rem",
-            alignItems: "center",
-          }}
-        >
+      <div
+  ref={menuRef}
+  style={{
+    position: "fixed",
+    top: 60,
+    left: 8,
+    minWidth: "260px",
+    background: "rgba(255,255,255,0.15)",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    padding: "1.5rem 2rem",
+    borderRadius: "14px",
+    boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+    zIndex: 1000,
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.2rem",
+    alignItems: "center",
+    fontFamily: "Georgia, 'Times New Roman', serif", // restore menu font
+  }}
+>
+
           <h3
             style={{
               color: yvesBlue,
@@ -486,6 +490,7 @@ function Menu() {
     </>
   );
 }
+
 
 
 /* ---------------- STYLES ---------------- */

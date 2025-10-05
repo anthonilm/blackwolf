@@ -634,8 +634,8 @@ function Menu() {
         <button
           onClick={() => setOpen(!open)}
           style={{
-            width: 50,
-            height: 50,
+            width: 70,
+            height: 70,
             background: "transparent",
             display: "flex",
             alignItems: "center",
@@ -645,10 +645,10 @@ function Menu() {
             padding: 0,
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
-            <span style={{ width: 22, height: 2, background: yvesBlue }} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <span style={{ width: 36, height: 4, background: yvesBlue }} />
+            <span style={{ width: 36, height: 4, background: yvesBlue }} />
+            <span style={{ width: 36, height: 4, background: yvesBlue }} />
           </div>
         </button>
       </div>
