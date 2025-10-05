@@ -10,7 +10,6 @@ export default function Page() {
   const [showCalendly, setShowCalendly] = useState(false);
   const ivory = "#FFFFF0";
   const carmine = "#960018";
-  const yvesBlue = "#0018A8";
 
   return (
     <div
@@ -22,7 +21,6 @@ export default function Page() {
         fontFamily: `"Georgia", "Times New Roman", serif`,
       }}
     >
-      {/* Full Heavenly Background */}
       <Image
         src="/image.png"
         alt="Heavenly background"
@@ -98,7 +96,7 @@ export default function Page() {
   );
 }
 
-/* Enlarged Ivory Hamburger Menu */
+/* Menu – text unchanged */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
@@ -161,7 +159,7 @@ function Menu() {
             top: 80,
             left: 12,
             minWidth: "260px",
-            background: "rgba(255,255,240,0.98)", // Ivory background
+            background: "rgba(255,255,240,0.98)",
             backdropFilter: "blur(6px)",
             WebkitBackdropFilter: "blur(6px)",
             padding: "1.5rem 2rem",
@@ -256,10 +254,8 @@ function Menu() {
   );
 }
 
-/* Hero Section (entire page) */
+/* Hero Section – fully responsive */
 function Hero({ ivory, setShowCalendly }: any) {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
   return (
     <div
       style={{
@@ -270,86 +266,54 @@ function Hero({ ivory, setShowCalendly }: any) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "2rem 4rem",
+        padding: "1.5rem",
         textAlign: "center",
       }}
     >
-      <div
+      <h1
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "1rem",
-          marginBottom: "2.5rem",
+          fontSize: "clamp(1.6rem, 6vw, 4rem)",
+          fontWeight: 700,
+          letterSpacing: "0.08em",
+          color: ivory,
+          lineHeight: 1.2,
+          marginBottom: "1.2rem",
+          wordBreak: "break-word",
         }}
       >
-        <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
-          <div
-            style={{
-              width: "clamp(6px, 1vw, 12px)",
-              height: "clamp(100px, 22vh, 200px)",
-              backgroundColor: ivory,
-            }}
-          />
-          <div
-            style={{
-              width: "clamp(6px, 1vw, 12px)",
-              height: "clamp(100px, 22vh, 200px)",
-              backgroundColor: ivory,
-            }}
-          />
-        </div>
-        <h1
-          ref={titleRef}
-          style={{
-            fontSize: "clamp(2rem, 6vw, 5rem)",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            whiteSpace: "nowrap",
-            color: ivory,
-          }}
-        >
-          NOESIS MENTAL HEALTH CARE
-        </h1>
-      </div>
+        NOESIS MENTAL HEALTH CARE
+      </h1>
 
       <p
         style={{
-          fontSize: "clamp(1rem, 2.2vw, 1.6rem)",
-          textTransform: "uppercase",
-          letterSpacing: "0.18em",
-          lineHeight: 1.6,
-          margin: "0 auto",
-          textAlign: "center",
+          fontSize: "clamp(0.9rem, 3.5vw, 1.3rem)",
+          letterSpacing: "0.12em",
+          lineHeight: 1.5,
+          margin: "0 auto 1.8rem",
           color: ivory,
-          whiteSpace: "nowrap",
+          maxWidth: "90%",
         }}
       >
         Transform anxiety into creative and generative clarity.
       </p>
 
-      <div style={{ marginTop: "2rem" }}>
-        <button
-          onClick={() => setShowCalendly(true)}
-          style={{
-            display: "inline-block",
-            padding: "0.9rem 1.6rem",
-            borderRadius: "14px",
-            background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
-            color: "#000",
-            fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
-            fontFamily: "Georgia, serif",
-            fontWeight: 600,
-            letterSpacing: "0.05em",
-            border: "none",
-            cursor: "pointer",
-            transition: "all 0.3s ease",
-          }}
-        >
-          Book Your Free Consultation
-        </button>
-      </div>
+      <button
+        onClick={() => setShowCalendly(true)}
+        style={{
+          padding: "0.8rem 1.4rem",
+          borderRadius: "12px",
+          background: "rgba(255,255,255,0.25)",
+          backdropFilter: "blur(8px)",
+          color: "#000",
+          fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
+          fontWeight: 600,
+          border: "none",
+          cursor: "pointer",
+          transition: "0.3s",
+        }}
+      >
+        Book Your Free Consultation
+      </button>
 
       <a
         href="https://instagram.com"
@@ -357,7 +321,7 @@ function Hero({ ivory, setShowCalendly }: any) {
         rel="noopener noreferrer"
         style={{
           position: "absolute",
-          bottom: "35px",
+          bottom: "48px",
           left: "50%",
           transform: "translateX(-50%)",
         }}
@@ -368,13 +332,14 @@ function Hero({ ivory, setShowCalendly }: any) {
       <div
         style={{
           position: "absolute",
-          bottom: "10px",
+          bottom: "16px",
           left: 0,
           right: 0,
           color: ivory,
           fontSize: "0.7rem",
-          letterSpacing: "0.05em",
+          letterSpacing: "0.04em",
           textAlign: "center",
+          opacity: 0.9,
         }}
       >
         © {new Date().getFullYear()} Noesis Systems LLC. All rights reserved.
