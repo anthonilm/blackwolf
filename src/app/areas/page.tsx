@@ -55,9 +55,7 @@ return (
       padding: "4rem 2rem",
       fontFamily: "Georgia, 'Times New Roman', serif",
       overflow: "hidden",
-      background: "#3B2F2F", // espresso
-
-
+      background: "#1F0E0C", // Conac background
     }}
   >
     <style>{`

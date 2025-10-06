@@ -25,15 +25,16 @@ export default function AboutPage() {
     `This practice is the translation of that understanding. I help people stabilize themselves within unstable social, political, and environmental conditions, and develop habits that channel their depth—insight, reflection, even anxiety—into steady momentum and creative capacity. It is from this grounding that the mission of my work becomes clear.`,
   ];
 
-  return (
-   <main
-  className={inter.className}
-  style={{
-    ...styles.page,
-    background: "#B2AC88", // sage background
-    color: "#3B2F2F", // mocha text
-  }}
->
+return (
+  <main
+    className={inter.className}
+    style={{
+      ...styles.page,
+      background: "#53525C", // new background
+      color: "#FFFFFF", // white text
+    }}
+  >
+
       <Menu />
 
       {/* Mobile stacking restore */}
@@ -327,8 +328,6 @@ export default function AboutPage() {
 }
 
 /* ---------------- MENU ---------------- */
-/* Yves Blue Hamburger Menu (Always Yves Blue) */
-/* Mocha Hamburger Menu (Updated to Match Previous Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
@@ -376,9 +375,9 @@ function Menu() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: "#FFFFFF", borderRadius: 2 }} />
+<span style={{ width: 36, height: 4, background: "#FFFFFF", borderRadius: 2 }} />
+<span style={{ width: 36, height: 4, background: "#FFFFFF", borderRadius: 2 }} />
           </div>
         </button>
       </div>
@@ -459,20 +458,16 @@ function Menu() {
 );
 }
 
-
-
-
-
-//* ---------------- STYLES ---------------- */
+/* ---------------- STYLES ---------------- */
 const styles: Record<string, React.CSSProperties> = {
   page: {
     position: "relative",
-    color: "#3B2F2F", // mocha text
+    color: "#FFFFFF", // white text
     padding: "60px 20px 80px",
     display: "flex",
     justifyContent: "center",
     overflow: "hidden",
-    background: "#B2AC88", // sage background
+    background: "#53525C",
   },
   container: {
     maxWidth: 1100,
@@ -489,31 +484,32 @@ const styles: Record<string, React.CSSProperties> = {
   },
   heroImage: { width: "100%" },
   heroText: { textAlign: "left" },
-  heroName: {
-    fontSize: "2.5rem",
+     heroName: {
+    fontSize: "2.6rem",
     fontWeight: 700,
     marginBottom: "0.5rem",
-    color: "#0018A8",
+    color: "#9DC183", // sage for section titles
   },
-  heroTitle: { fontSize: "1rem", marginBottom: "0.25rem" },
+  heroTitle: { fontSize: "1rem", marginBottom: "0.25rem", color: "#FFFFFF" },
   heroSubtitle: {
     fontSize: "1.2rem",
     fontStyle: "italic",
     marginBottom: "1rem",
+    color: "#FFFFFF",
   },
   heroDescription: {
     fontSize: "1.1rem",
     lineHeight: 1.6,
-    color: "#3B2F2F",
+    color: "#FFFFFF",
     maxWidth: "50ch",
-    fontWeight: 500, // half bold
+    fontWeight: 500,
   },
   longBtn: {
     appearance: "none",
     display: "inline-block",
     padding: "12px 22px",
     borderRadius: 12,
-    background: "#960018",
+    background: "#B57EDC", // lavender replaces carmine
     color: "#fff",
     border: "none",
     textTransform: "uppercase",
@@ -525,18 +521,18 @@ const styles: Record<string, React.CSSProperties> = {
     boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
   },
   h2: {
-    fontSize: 16,
+    fontSize: 20, // same enlarged size
     fontWeight: 700,
     letterSpacing: "0.08em",
     textTransform: "uppercase",
     marginBottom: 12,
-    color: "#960018",
+    color: "#9DC183", // sage for section titles
   },
   p: {
     fontSize: 20,
     lineHeight: 1.75,
     marginBottom: 18,
-    color: "#3B2F2F",
+    color: "#FFFFFF",
     fontWeight: 500,
   },
   ul: { paddingLeft: 22, margin: "0 0 16px", listStyleType: "disc" },
@@ -544,19 +540,18 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 8,
     lineHeight: 1.7,
     fontSize: 20,
-    color: "#3B2F2F",
+    color: "#FFFFFF",
     fontWeight: 500,
   },
   section: {
     marginTop: 48,
     padding: "24px 0",
-    borderTop: "1px solid rgba(0,0,0,0.08)",
+    borderTop: "1px solid rgba(255,255,255,0.2)",
   },
   footer: {
     marginTop: 60,
     textAlign: "center",
     fontSize: 14,
-    color: "rgba(0,0,0,0.6)",
+    color: "rgba(255,255,255,0.6)",
   },
 };
-
