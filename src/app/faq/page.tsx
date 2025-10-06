@@ -92,7 +92,7 @@ export default function FAQPage() {
         fontFamily: `"Georgia", "Times New Roman", serif`,
         position: "relative",
         overflow: "hidden",
-        background: "forestgreen", // Forest Green → Lavender
+        background: "linear-gradient(135deg, #e8f0e3 0%, #faf7f2 100%)",
       }}
     >
       <Menu />
@@ -197,16 +197,15 @@ export default function FAQPage() {
 
 /* ----------------- Menu ----------------- */
 /* Hamburger Menu */
+/* Mocha Hamburger Menu (Updated to Match Previous Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
+  const mocha = "#3B2F2F";
 
-  const yvesBlue = "#0018A8";
-
-  const toggleSub = (key: string) => {
+  const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
 
   useEffect(() => {
     if (menuRef.current) {
@@ -229,9 +228,9 @@ function Menu() {
 
   return (
     <>
+      {/* Mocha Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
-          className="menu-button"
           onClick={() => setOpen(!open)}
           style={{
             width: 70,
@@ -246,13 +245,14 @@ function Menu() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
           </div>
         </button>
       </div>
 
+      {/* Lead-optimized menu */}
       {open && (
         <div
           ref={menuRef}
@@ -261,9 +261,9 @@ function Menu() {
             top: 60,
             left: 8,
             minWidth: "260px",
-            background: "rgba(223, 245, 225, 0.25)",
-            backdropFilter: "blur(10px)",
-            WebkitBackdropFilter: "blur(10px)",
+            background: "rgba(255,255,240,0.95)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
             padding: "1.5rem 2rem",
             borderRadius: "14px",
             boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
@@ -271,40 +271,58 @@ function Menu() {
             display: "flex",
             flexDirection: "column",
             gap: "1.2rem",
+            alignItems: "center",
           }}
         >
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Home</Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>About</Link>
-          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>What Does Noesis Mean?</Link>
-<Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-  Services
-</Link>
-<Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-  Transformation Pathways
-</Link>
-<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-  The Noesis Approach
-</Link>
+          <h3
+            style={{
+              color: mocha,
+              fontSize: "1.4rem",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              marginBottom: "0.8rem",
+            }}
+          >
+            Noesis Systems LLC
+          </h3>
 
-          <div>
-            <div onClick={() => toggleSub("student")} style={{ cursor: "pointer", color: yvesBlue }}>
-              Student Success Systems
-            </div>
-            {subOpen["student"] && (
-              <div style={{ marginLeft: "1rem", marginTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Services</Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Transformation Pathways</Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>The Noesis Method</Link>
-              </div>
-            )}
-          </div>
+          <div
+            style={{
+              width: "100%",
+              height: "1px",
+              background: "rgba(0,0,0,0.15)",
+              marginBottom: "1rem",
+            }}
+          />
 
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Insights</Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>FAQ</Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>Contact</Link>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Home
+          </Link>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Mental Health Services
+          </Link>
+          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Areas I Help You Overcome
+          </Link>
+          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            The Noesis Approach
+          </Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            About Anthoni
+          </Link>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Insights
+          </Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            FAQ
+          </Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Contact
+          </Link>
         </div>
       )}
     </>
   );
 }
+
 

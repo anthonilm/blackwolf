@@ -27,11 +27,11 @@ export default function AboutPage() {
 
   return (
     <main
-      className={inter.className}
-      style={{
-        ...styles.page,
-        background: "linear-gradient(to bottom,#6CB4B0, lavender)", // light forest green → lavender
-      }}
+     className={inter.className}
+style={{
+  ...styles.page,
+  background: "linear-gradient(to bottom, #2E7D7A 0%, #E6E0F8 100%)", // softened teal → soft lavender
+}}
     >
       <Menu />
 
@@ -215,12 +215,10 @@ export default function AboutPage() {
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
             I hold an MA in Psychology and am a Licensed Integrative Mental
-            Health Coach, with 6 years of academic advising experience. I am now
-            pursuing a psychoanalytically oriented PhD bridging Environmental
-            Studies and Comparative Literature, where my research interrogates
+            Health Coach, I am now pursuing a PhD where my research interrogates
             how cultural narratives and engineered social behaviors mediate
-            relations to built and natural environments and participate in the
-            psycho-social formation of distinct identities.
+            relations  and participate in the
+            psycho-social formation of identity.
           </p>
         </section>
 
@@ -329,12 +327,12 @@ export default function AboutPage() {
 
 /* ---------------- MENU ---------------- */
 /* Yves Blue Hamburger Menu (Always Yves Blue) */
+/* Mocha Hamburger Menu (Updated to Match Previous Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  const yvesBlue = "#0018A8";
-  const ivory = "#FFFFF0";
+  const mocha = "#3B2F2F";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -360,57 +358,55 @@ function Menu() {
 
   return (
     <>
-      {/* Ivory Hamburger */}
+      {/* Mocha Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
-  <button
-    onClick={() => setOpen(!open)}
-    style={{
-      width: 70, // increased
-      height: 70, // increased
-      background: "transparent",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      border: "none",
-      padding: 0,
-    }}
-  >
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-    </div>
-  </button>
-</div>
+        <button
+          onClick={() => setOpen(!open)}
+          style={{
+            width: 70,
+            height: 70,
+            background: "transparent",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            border: "none",
+            padding: 0,
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+          </div>
+        </button>
+      </div>
 
       {/* Lead-optimized menu */}
       {open && (
-      <div
-  ref={menuRef}
-  style={{
-    position: "fixed",
-    top: 60,
-    left: 8,
-    minWidth: "260px",
-    background: "rgba(255,255,255,0.15)",
-    backdropFilter: "blur(12px)",
-    WebkitBackdropFilter: "blur(12px)",
-    padding: "1.5rem 2rem",
-    borderRadius: "14px",
-    boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
-    zIndex: 1000,
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.2rem",
-    alignItems: "center",
-    fontFamily: "Georgia, 'Times New Roman', serif", // restore menu font
-  }}
->
-
+        <div
+          ref={menuRef}
+          style={{
+            position: "fixed",
+            top: 60,
+            left: 8,
+            minWidth: "260px",
+            background: "rgba(255,255,240,0.95)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            padding: "1.5rem 2rem",
+            borderRadius: "14px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
+            zIndex: 1000,
+            display: "flex",
+            flexDirection: "column",
+            gap: "1.2rem",
+            alignItems: "center",
+          }}
+        >
           <h3
             style={{
-              color: yvesBlue,
+              color: mocha,
               fontSize: "1.4rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -424,65 +420,33 @@ function Menu() {
             style={{
               width: "100%",
               height: "1px",
-              background: "rgba(255,255,255,0.25)",
+              background: "rgba(0,0,0,0.15)",
               marginBottom: "1rem",
             }}
           />
 
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Home
           </Link>
-          <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Mental Health Services
           </Link>
-          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Transformation Pathways
+          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Areas I Help You Overcome
           </Link>
-          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
             The Noesis Approach
           </Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
             About Anthoni
           </Link>
-
-          {/* Student Success Systems */}
-          <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{ cursor: "pointer", color: yvesBlue }}
-            >
-              Student Success Systems
-            </div>
-            {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Services
-                </Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Transformation Pathways
-                </Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  The Noesis Method
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Insights
           </Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
             FAQ
           </Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Contact
           </Link>
         </div>
@@ -490,6 +454,7 @@ function Menu() {
     </>
   );
 }
+
 
 
 

@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaInstagram } from "react-icons/fa";
 
 export default function Page() {
   const [showCalendly, setShowCalendly] = useState(false);
+  const mocha = "#3B2F2F"; // Mocha tone
   const ivory = "#FFFFF0";
   const carmine = "#960018";
 
@@ -19,23 +19,31 @@ export default function Page() {
         width: "100vw",
         overflow: "hidden",
         fontFamily: `"Georgia", "Times New Roman", serif`,
+        color: mocha,
       }}
     >
-      <Image
-        src="/image.png"
-        alt="Heavenly background"
-        fill
-        priority
-        quality={100}
+      {/* Background Overlay */}
+      <div
+        className="liquid-overlay"
         style={{
-          objectFit: "cover",
-          zIndex: 0,
+          position: "absolute",
+          inset: 0,
+          backgroundImage: "url('/home.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          backgroundAttachment: "fixed",
+          zIndex: -1,
+          pointerEvents: "none",
+          transform: "none",
+          imageRendering: "auto",
+          WebkitTransform: "translateZ(0)",
         }}
       />
 
-      <Menu />
+      <Menu mocha={mocha} />
 
-      <Hero ivory={ivory} setShowCalendly={setShowCalendly} />
+      <Hero mocha={mocha} setShowCalendly={setShowCalendly} />
 
       {showCalendly && (
         <section
@@ -96,16 +104,10 @@ export default function Page() {
   );
 }
 
-/* Menu – text unchanged */
-function Menu() {
+/* Menu with Mocha */
+function Menu({ mocha }: any) {
   const [open, setOpen] = useState(false);
-  const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  const yvesBlue = "#0018A8";
-  const ivory = "#FFFFF0";
-
-  const toggleSub = (key: string) =>
-    setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
 
   useEffect(() => {
     if (menuRef.current) {
@@ -144,9 +146,9 @@ function Menu() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
-            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
-            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
-            <span style={{ width: 32, height: 3, background: ivory, borderRadius: 2 }} />
+            <span style={{ width: 32, height: 3, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 32, height: 3, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 32, height: 3, background: mocha, borderRadius: 2 }} />
           </div>
         </button>
       </div>
@@ -159,7 +161,7 @@ function Menu() {
             top: 80,
             left: 12,
             minWidth: "260px",
-            background: "rgba(255,255,240,0.98)",
+            background: "rgba(255,255,240,0.95)",
             backdropFilter: "blur(6px)",
             WebkitBackdropFilter: "blur(6px)",
             padding: "1.5rem 2rem",
@@ -174,7 +176,7 @@ function Menu() {
         >
           <h3
             style={{
-              color: yvesBlue,
+              color: mocha,
               fontSize: "1.4rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -193,69 +195,28 @@ function Menu() {
             }}
           />
 
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Home
-          </Link>
-          <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Mental Health Services
-          </Link>
-          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Transformation Pathways
-          </Link>
-          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            The Noesis Approach
-          </Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            About Anthoni
-          </Link>
-
-          <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{ cursor: "pointer", color: yvesBlue }}
-            >
-              Student Success Systems
-            </div>
-            {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Services
-                </Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Transformation Pathways
-                </Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  The Noesis Method
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Insights
-          </Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            FAQ
-          </Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Contact
-          </Link>
+          {[
+            { href: "/", label: "Home" },
+            { href: "/services", label: "Mental Health Services" },
+            { href: "/areas", label: "Areas I Help You Overcome" },
+            { href: "/noesis-methods", label: "The Noesis Approach" },
+            { href: "/about", label: "About Anthoni" },
+            { href: "/for-students", label: "Insights" },
+            { href: "/faq", label: "FAQ" },
+            { href: "/contact", label: "Contact" },
+          ].map(({ href, label }) => (
+            <Link key={href} href={href} onClick={() => setOpen(false)} style={{ color: mocha }}>
+              {label}
+            </Link>
+          ))}
         </div>
       )}
     </>
   );
 }
 
-/* Hero Section – fully responsive */
-function Hero({ ivory, setShowCalendly }: any) {
+/* Hero with Mocha Text */
+function Hero({ mocha, setShowCalendly }: any) {
   return (
     <div
       style={{
@@ -275,7 +236,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           fontSize: "clamp(1.6rem, 6vw, 4rem)",
           fontWeight: 700,
           letterSpacing: "0.08em",
-          color: ivory,
+          color: mocha,
           lineHeight: 1.2,
           marginBottom: "1.2rem",
           wordBreak: "break-word",
@@ -290,7 +251,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           letterSpacing: "0.12em",
           lineHeight: 1.5,
           margin: "0 auto 1.8rem",
-          color: ivory,
+          color: mocha,
           maxWidth: "90%",
         }}
       >
@@ -304,7 +265,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           borderRadius: "12px",
           background: "rgba(255,255,255,0.25)",
           backdropFilter: "blur(8px)",
-          color: "#000",
+          color: mocha,
           fontSize: "clamp(0.9rem, 2.5vw, 1.1rem)",
           fontWeight: 600,
           border: "none",
@@ -326,7 +287,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           transform: "translateX(-50%)",
         }}
       >
-        <FaInstagram size={22} color="#FFFFFF" style={{ opacity: 0.85 }} />
+        <FaInstagram size={22} color={mocha} style={{ opacity: 0.85 }} />
       </a>
 
       <div
@@ -335,7 +296,7 @@ function Hero({ ivory, setShowCalendly }: any) {
           bottom: "16px",
           left: 0,
           right: 0,
-          color: ivory,
+          color: mocha,
           fontSize: "0.7rem",
           letterSpacing: "0.04em",
           textAlign: "center",

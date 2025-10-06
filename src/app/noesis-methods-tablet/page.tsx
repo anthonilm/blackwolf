@@ -518,7 +518,7 @@ function Menu() {
             Services
           </Link>
           <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Transformation Pathways
+            Areas I Help You Overcome
           </Link>
           <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
             The Noesis Approach

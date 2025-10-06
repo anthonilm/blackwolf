@@ -68,17 +68,63 @@ export default function ServicesPage() {
     color: "#FFFFF0", // ivory text
   }}
 >
-  {/* Background Overlay */}
-  <div
-    className="liquid-overlay"
-    style={{
-      position: "absolute",
-      inset: 0,
-      background: "linear-gradient(to bottom, #F4C43040, #014D4E)", // saffron → deep teal
-      zIndex: -1,
-      pointerEvents: "none",
-    }}
-  />
+{/* Background Overlay */}
+<div
+  className="liquid-overlay"
+  style={{
+    position: "absolute",
+    inset: 0,
+    background: `
+      linear-gradient(to bottom, rgba(245, 245, 240, 0.7), rgba(190, 231, 223, 0.65)),
+      radial-gradient(circle at 40% 30%, rgba(255, 255, 250, 0.6) 0%, transparent 55%),
+      radial-gradient(circle at 70% 80%, rgba(180, 220, 210, 0.5) 0%, transparent 70%)
+    `,
+    backgroundBlendMode: "screen, overlay, normal",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+    backgroundAttachment: "fixed",
+    zIndex: -1,
+    pointerEvents: "none",
+    transform: "none",
+    imageRendering: "auto",
+    backdropFilter: "blur(14px) saturate(1.3)",
+    WebkitBackdropFilter: "blur(14px) saturate(1.3)",
+  }}
+/>
+
+
+<style>{`
+  @keyframes liquidMove {
+    0% { background-position: 0% 0%, 100% 50%, 50% 100%; opacity: 0.85; }
+    100% { background-position: 100% 100%, 0% 50%, 50% 0%; opacity: 1; }
+  }
+
+  /* Portrait mode correction for mobile */
+  @media screen and (max-width: 768px) and (orientation: portrait) {
+    .liquid-overlay {
+      background-image: url('/image9.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      background-attachment: scroll;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+
+  /* Landscape correction for small devices */
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    .liquid-overlay {
+      background-image: url('/image9.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: scroll;
+      transform: rotate(0deg) scale(1.1);
+    }
+  }
+`}</style>
+
 
       <style>{`
         @keyframes liquidMove {
@@ -91,20 +137,7 @@ export default function ServicesPage() {
       <Menu />
 
       {/* Headline */}
-      <h1
-        style={{
-          fontSize: "3rem",
-          textAlign: "center",
-          maxWidth: "72ch",
-          margin: "0 auto 3rem",
-          lineHeight: 1.2,
-          color: "#0018A8", // Yves Blue
-          fontWeight: 700,
-          letterSpacing: "0.05em",
-        }}
-      >
-        Enhance your life. Cultivate prosperity.
-      </h1>
+ 
 
       {/* Services Section */}
       {Object.entries(sections).map(([category, items]) => (
@@ -215,7 +248,7 @@ export default function ServicesPage() {
         </div>
       ))}
 
-     {/* === THE FIRST SESSION SECTION === */}
+{/* === THE FIRST SESSION SECTION === */}
 <section
   style={{
     textAlign: "center",
@@ -229,7 +262,7 @@ export default function ServicesPage() {
     style={{
       fontSize: "1.8rem",
       fontWeight: 600,
-      color: "#FFFFFF", // White
+      color: "#3C280D", // Mocha
       marginBottom: "1rem",
       letterSpacing: "0.03em",
     }}
@@ -240,7 +273,7 @@ export default function ServicesPage() {
     style={{
       fontSize: "1.1rem",
       lineHeight: 1.7,
-      color: "#FFFFFF", // White
+      color: "#3C280D", // Mocha
       fontStyle: "italic",
       marginBottom: "1.5rem",
     }}
@@ -266,10 +299,10 @@ export default function ServicesPage() {
       display: "inline-block",
       padding: "1rem 2rem",
       borderRadius: "12px",
-      background: "rgba(255, 255, 255, 0.25)", // frosted look
+      background: "rgba(255, 255, 255, 0.25)",
       backdropFilter: "blur(8px)",
       WebkitBackdropFilter: "blur(8px)",
-      color: "#FFFFFF", // White
+      color: "#3C280D", // Mocha
       fontSize: "1.2rem",
       fontWeight: 600,
       letterSpacing: "0.05em",
@@ -367,12 +400,12 @@ export default function ServicesPage() {
 }
 
 /* Yves Blue Hamburger Menu (Updated Collapsible) */
-/* Hamburger Menu */
+/* Mocha Hamburger Menu (Updated to Match Previous Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  const yvesBlue = "#0018A8";
+  const mocha = "#3B2F2F";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -398,8 +431,8 @@ function Menu() {
 
   return (
     <>
-      {/* Yves Blue Hamburger */}
-       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
+      {/* Mocha Hamburger */}
+      <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
           style={{
@@ -415,9 +448,9 @@ function Menu() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
-            <span style={{ width: 36, height: 4, background: yvesBlue }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
           </div>
         </button>
       </div>
@@ -431,7 +464,7 @@ function Menu() {
             top: 60,
             left: 8,
             minWidth: "260px",
-            background: "rgba(255,255,255,0.15)",
+            background: "rgba(255,255,240,0.95)",
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
             padding: "1.5rem 2rem",
@@ -446,7 +479,7 @@ function Menu() {
         >
           <h3
             style={{
-              color: yvesBlue,
+              color: mocha,
               fontSize: "1.4rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -460,65 +493,33 @@ function Menu() {
             style={{
               width: "100%",
               height: "1px",
-              background: "rgba(255,255,255,0.25)",
+              background: "rgba(0,0,0,0.15)",
               marginBottom: "1rem",
             }}
           />
 
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Home
           </Link>
-          <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Mental Health Services
           </Link>
-          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Transformation Pathways
+          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Areas I Help You Overcome
           </Link>
-          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
             The Noesis Approach
           </Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
             About Anthoni
           </Link>
-
-          {/* Student Success Systems */}
-          <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{ cursor: "pointer", color: yvesBlue }}
-            >
-              Student Success Systems
-            </div>
-            {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Services
-                </Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Transformation Pathways
-                </Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  The Noesis Method
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Insights
           </Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
             FAQ
           </Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Contact
           </Link>
         </div>

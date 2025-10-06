@@ -55,69 +55,66 @@ return (
       padding: "4rem 2rem",
       fontFamily: "Georgia, 'Times New Roman', serif",
       overflow: "hidden",
-      background: "linear-gradient(to bottom, #0E4D92, #FFFFF0)", // Baltic blue to ivory
+      background: "linear-gradient(to bottom right, #C97B5A 1000%, #D8BFAA 70%, #E6DCC3 40%, #F8F4EC 300%)", // terracotta → sand → ivory
     }}
   >
+    {/* Abstract Warp & Distort Overlay */}
+    <div
+      className="liquid-overlay"
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: `
+          radial-gradient(circle at 30% 40%, rgba(201, 123, 90, 0.35) 0%, transparent 60%),
+          radial-gradient(circle at 70% 60%, rgba(168, 124, 97, 0.25) 0%, transparent 70%),
+          radial-gradient(circle at 50% 50%, rgba(214, 178, 145, 0.2) 0%, transparent 85%)
+        `,
+        mixBlendMode: "overlay",
+        backgroundSize: "220% 220%",
+        animation: "warpFlow 14s ease-in-out infinite alternate",
+        zIndex: -1,
+        pointerEvents: "none",
+        transform: "translateZ(0)", // smooth GPU rendering
+        filter: "blur(20px) contrast(1.05)",
+        backdropFilter: "blur(10px) saturate(1.1)",
+        WebkitBackdropFilter: "blur(10px) saturate(1.1)",
+      }}
+    />
 
-
-      {/* Animated Overlay */}
-      <div
-        className="liquid-overlay"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `
-            radial-gradient(circle at 45% 45%, #F5F0FA80 0%, transparent 60%),
-            radial-gradient(circle at 55% 55%, #FFFFFF80 0%, transparent 70%),
-            radial-gradient(circle at 50% 60%, #7A6C6130, transparent 75%),
-            radial-gradient(circle at 50% 50%, #96001815, transparent 90%)
-          `,
-          backgroundSize: "200% 200%",
-          animation: "liquidMove 8s ease-in-out infinite alternate",
-          zIndex: -1,
-          pointerEvents: "none",
-        }}
-      />
-      <style>{`
-        @keyframes liquidMove {
-          0% {
-            background-position: 45% 45%, 55% 55%, 50% 60%, 50% 50%;
-            opacity: 0.9;
-          }
-          100% {
-            background-position: 55% 55%, 45% 45%, 52% 48%, 48% 52%;
-            opacity: 1;
-          }
+    <style>{`
+      @keyframes warpFlow {
+        0% {
+          transform: scale(1.02) skew(0deg, 0deg);
+          background-position: 25% 25%, 75% 75%, 50% 50%;
+          opacity: 0.9;
         }
-      `}</style>
+        50% {
+          transform: scale(1.05) skew(2deg, -2deg);
+          background-position: 60% 40%, 40% 80%, 55% 45%;
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.02) skew(-2deg, 1deg);
+          background-position: 30% 60%, 70% 30%, 45% 55%;
+          opacity: 0.95;
+        }
+      }
+    `}</style>
+
+
 
       {/* Menu */}
       <Menu />
 
-      {/* Headline */}
-      <h1
-  style={{
-    fontSize: "2.5rem",
-    textAlign: "center",
-    maxWidth: "72ch",
-    margin: "0 auto",
-    lineHeight: 1.2,
-    color: "#FFFFFF", // white
-    fontWeight: 700,
-  }}
->
- AREAS I HELP WITH 
-</h1>
-
       {/* Areas Section */}
       <section
         style={{
-          background: "#ffffffb3",
+          background: "#FFFFFF",
           borderRadius: "12px",
           padding: "2rem",
           marginTop: "4rem",
           marginBottom: "4rem",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         }}
       >
         <h2
@@ -130,9 +127,7 @@ return (
             fontWeight: 500,
             letterSpacing: "0.5px",
           }}
-        >
-          
-        </h2>
+        ></h2>
         <div
           style={{
             display: "grid",
@@ -175,23 +170,21 @@ return (
             display: "inline-block",
             padding: "1.2rem 2.4rem",
             borderRadius: "14px",
-            background: "rgba(255, 255, 255, 0.25)",
-            backdropFilter: "blur(8px)",
-            WebkitBackdropFilter: "blur(8px)",
+            background: "#FFFFFF",
             color: "#000",
             fontSize: "1.3rem",
             fontFamily: "Georgia, serif",
             fontWeight: 600,
             letterSpacing: "0.05em",
-            border: "none",
+            border: "1px solid rgba(0, 0, 0, 0.15)",
             cursor: "pointer",
             transition: "all 0.3s ease",
           }}
           onMouseOver={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.45)")
+            (e.currentTarget.style.background = "#F5F5F5")
           }
           onMouseOut={(e) =>
-            (e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)")
+            (e.currentTarget.style.background = "#FFFFFF")
           }
         >
           Book Your Free First Session
@@ -259,13 +252,12 @@ return (
 }
 
 /* Menu */
-/* Yves Blue Hamburger Menu (Always Yves Blue) */
+/* Mocha Hamburger Menu (Updated to Match Previous Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  const yvesBlue = "#0018A8";
-  const ivory = "#FFFFF0";
+  const mocha = "#3B2F2F";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -291,29 +283,29 @@ function Menu() {
 
   return (
     <>
-      {/* Ivory Hamburger */}
+      {/* Mocha Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
-  <button
-    onClick={() => setOpen(!open)}
-    style={{
-      width: 70, // increased
-      height: 70, // increased
-      background: "transparent",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer",
-      border: "none",
-      padding: 0,
-    }}
-  >
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-      <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
-    </div>
-  </button>
-</div>
+        <button
+          onClick={() => setOpen(!open)}
+          style={{
+            width: 70,
+            height: 70,
+            background: "transparent",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            border: "none",
+            padding: 0,
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+          </div>
+        </button>
+      </div>
 
       {/* Lead-optimized menu */}
       {open && (
@@ -324,7 +316,7 @@ function Menu() {
             top: 60,
             left: 8,
             minWidth: "260px",
-            background: "rgba(255,255,255,0.15)",
+            background: "rgba(255,255,240,0.95)",
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
             padding: "1.5rem 2rem",
@@ -339,7 +331,7 @@ function Menu() {
         >
           <h3
             style={{
-              color: yvesBlue,
+              color: mocha,
               fontSize: "1.4rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -353,65 +345,33 @@ function Menu() {
             style={{
               width: "100%",
               height: "1px",
-              background: "rgba(255,255,255,0.25)",
+              background: "rgba(0,0,0,0.15)",
               marginBottom: "1rem",
             }}
           />
 
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Home
           </Link>
-          <Link href="/services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Mental Health Services
           </Link>
-          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-            Transformation Pathways
+          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
+            Areas I Help You Overcome
           </Link>
-          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
             The Noesis Approach
           </Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
             About Anthoni
           </Link>
-
-          {/* Student Success Systems */}
-          <div>
-            <div
-              onClick={() => toggleSub("student")}
-              style={{ cursor: "pointer", color: yvesBlue }}
-            >
-              Student Success Systems
-            </div>
-            {subOpen["student"] && (
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  marginTop: "0.5rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "0.8rem",
-                }}
-              >
-                <Link href="/student-services" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Services
-                </Link>
-                <Link href="/student-areas" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  Transformation Pathways
-                </Link>
-                <Link href="/student-methods" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
-                  The Noesis Method
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Insights
           </Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
             FAQ
           </Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: yvesBlue }}>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
             Contact
           </Link>
         </div>
@@ -419,3 +379,4 @@ function Menu() {
     </>
   );
 }
+
