@@ -515,33 +515,37 @@ function Menu() {
             }}
           />
 
-          <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            Home
-          </Link>
-          <Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            Mental Health Services
-          </Link>
-          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            Areas I Help You Overcome
-          </Link>
-          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            The Noesis Approach
-          </Link>
-          <Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            About Anthoni
-          </Link>
-          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            Insights
-          </Link>
-          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            FAQ
-          </Link>
-          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
-            Contact
-          </Link>
-        </div>
-      )}
-    </>
-  );
+        <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  Home
+</Link>
+<Link href="/noesis" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  What Does Noesis Mean?
+</Link>
+<Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  Mental Health Services
+</Link>
+<Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  Areas I Help You Overcome
+</Link>
+<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  The Noesis Approach
+</Link>
+<Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  About Anthoni
+</Link>
+<Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  Insights
+</Link>
+<Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  FAQ
+</Link>
+<Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
+  Contact
+</Link>
+</div>
+)}
+</>
+);
 }
+
 

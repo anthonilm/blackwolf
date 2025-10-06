@@ -195,25 +195,32 @@ function Menu({ mocha }: any) {
             }}
           />
 
-          {[
-            { href: "/", label: "Home" },
-            { href: "/services", label: "Mental Health Services" },
-            { href: "/areas", label: "Areas I Help You Overcome" },
-            { href: "/noesis-methods", label: "The Noesis Approach" },
-            { href: "/about", label: "About Anthoni" },
-            { href: "/for-students", label: "Insights" },
-            { href: "/faq", label: "FAQ" },
-            { href: "/contact", label: "Contact" },
-          ].map(({ href, label }) => (
-            <Link key={href} href={href} onClick={() => setOpen(false)} style={{ color: mocha }}>
-              {label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </>
-  );
+         {[
+  { href: "/", label: "Home" },
+  { href: "/noesis", label: "What Does Noesis Mean?" },
+  { href: "/services", label: "Mental Health Services" },
+  { href: "/areas", label: "Areas I Help You Overcome" },
+  { href: "/noesis-methods", label: "The Noesis Approach" },
+  { href: "/about", label: "About Anthoni" },
+  { href: "/for-students", label: "Insights" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
+].map(({ href, label }) => (
+  <Link
+    key={href}
+    href={href}
+    onClick={() => setOpen(false)}
+    style={{ color: mocha }}
+  >
+    {label}
+  </Link>
+))}
+</div>
+)}
+</>
+);
 }
+
 
 /* Hero with Mocha Text */
 function Hero({ mocha, setShowCalendly }: any) {
