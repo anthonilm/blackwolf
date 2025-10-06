@@ -26,13 +26,14 @@ export default function AboutPage() {
   ];
 
   return (
-    <main
-     className={inter.className}
-style={{
-  ...styles.page,
-  background: "linear-gradient(to bottom, #2E7D7A 0%, #E6E0F8 100%)", // softened teal → soft lavender
-}}
-    >
+   <main
+  className={inter.className}
+  style={{
+    ...styles.page,
+    background: "#B2AC88", // sage background
+    color: "#3B2F2F", // mocha text
+  }}
+>
       <Menu />
 
       {/* Mobile stacking restore */}
@@ -462,15 +463,16 @@ function Menu() {
 
 
 
-/* ---------------- STYLES ---------------- */
+//* ---------------- STYLES ---------------- */
 const styles: Record<string, React.CSSProperties> = {
   page: {
     position: "relative",
-    color: "#333",
+    color: "#3B2F2F", // mocha text
     padding: "60px 20px 80px",
     display: "flex",
     justifyContent: "center",
     overflow: "hidden",
+    background: "#B2AC88", // sage background
   },
   container: {
     maxWidth: 1100,
@@ -502,8 +504,9 @@ const styles: Record<string, React.CSSProperties> = {
   heroDescription: {
     fontSize: "1.1rem",
     lineHeight: 1.6,
-    color: "#333",
+    color: "#3B2F2F",
     maxWidth: "50ch",
+    fontWeight: 500, // half bold
   },
   longBtn: {
     appearance: "none",
@@ -529,9 +532,21 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 12,
     color: "#960018",
   },
-  p: { fontSize: 18, lineHeight: 1.7, marginBottom: 16 },
+  p: {
+    fontSize: 20,
+    lineHeight: 1.75,
+    marginBottom: 18,
+    color: "#3B2F2F",
+    fontWeight: 500,
+  },
   ul: { paddingLeft: 22, margin: "0 0 16px", listStyleType: "disc" },
-  li: { marginBottom: 8, lineHeight: 1.7, fontSize: 18 },
+  li: {
+    marginBottom: 8,
+    lineHeight: 1.7,
+    fontSize: 20,
+    color: "#3B2F2F",
+    fontWeight: 500,
+  },
   section: {
     marginTop: 48,
     padding: "24px 0",
@@ -544,3 +559,4 @@ const styles: Record<string, React.CSSProperties> = {
     color: "rgba(0,0,0,0.6)",
   },
 };
+
