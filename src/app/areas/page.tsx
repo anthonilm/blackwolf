@@ -55,32 +55,11 @@ return (
       padding: "4rem 2rem",
       fontFamily: "Georgia, 'Times New Roman', serif",
       overflow: "hidden",
-      background: "linear-gradient(to bottom right, #C97B5A 1000%, #D8BFAA 70%, #E6DCC3 40%, #F8F4EC 300%)", // terracotta → sand → ivory
+      background: "#3B2F2F", // espresso
+
+
     }}
   >
-    {/* Abstract Warp & Distort Overlay */}
-    <div
-      className="liquid-overlay"
-      style={{
-        position: "absolute",
-        inset: 0,
-        background: `
-          radial-gradient(circle at 30% 40%, rgba(201, 123, 90, 0.35) 0%, transparent 60%),
-          radial-gradient(circle at 70% 60%, rgba(168, 124, 97, 0.25) 0%, transparent 70%),
-          radial-gradient(circle at 50% 50%, rgba(214, 178, 145, 0.2) 0%, transparent 85%)
-        `,
-        mixBlendMode: "overlay",
-        backgroundSize: "220% 220%",
-        animation: "warpFlow 14s ease-in-out infinite alternate",
-        zIndex: -1,
-        pointerEvents: "none",
-        transform: "translateZ(0)", // smooth GPU rendering
-        filter: "blur(20px) contrast(1.05)",
-        backdropFilter: "blur(10px) saturate(1.1)",
-        WebkitBackdropFilter: "blur(10px) saturate(1.1)",
-      }}
-    />
-
     <style>{`
       @keyframes warpFlow {
         0% {
@@ -252,12 +231,13 @@ return (
 }
 
 /* Menu */
-/* Mocha Hamburger Menu (Updated to Match Previous Version) */
+/* Ivory Hamburger Menu (Updated from Mocha Version) */
 function Menu() {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<{ [key: string]: boolean }>({});
   const menuRef = useRef<HTMLDivElement>(null);
-  const mocha = "#3B2F2F";
+  const ivory = "#FFFFF0";
+  const espresso = "#3B2F2F";
 
   const toggleSub = (key: string) =>
     setSubOpen((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -283,7 +263,7 @@ function Menu() {
 
   return (
     <>
-      {/* Mocha Hamburger */}
+      {/* Ivory Hamburger */}
       <div style={{ position: "fixed", top: 8, left: 8, zIndex: 1100 }}>
         <button
           onClick={() => setOpen(!open)}
@@ -300,9 +280,9 @@ function Menu() {
           }}
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
-            <span style={{ width: 36, height: 4, background: mocha, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
+            <span style={{ width: 36, height: 4, background: ivory, borderRadius: 2 }} />
           </div>
         </button>
       </div>
@@ -331,7 +311,7 @@ function Menu() {
         >
           <h3
             style={{
-              color: mocha,
+              color: espresso,
               fontSize: "1.4rem",
               fontWeight: 600,
               letterSpacing: "0.08em",
@@ -350,37 +330,38 @@ function Menu() {
             }}
           />
 
-        <Link href="/" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  Home
-</Link>
-<Link href="/noesis" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  What Does Noesis Mean?
-</Link>
-<Link href="/services" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  Mental Health Services
-</Link>
-<Link href="/areas" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  Areas I Help You Overcome
-</Link>
-<Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  The Noesis Approach
-</Link>
-<Link href="/about" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  About Anthoni
-</Link>
-<Link href="/for-students" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  Insights
-</Link>
-<Link href="/faq" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  FAQ
-</Link>
-<Link href="/contact" onClick={() => setOpen(false)} style={{ color: mocha }}>
-  Contact
-</Link>
-</div>
-)}
-</>
-);
+          <Link href="/" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            Home
+          </Link>
+          <Link href="/noesis" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            What Does Noesis Mean?
+          </Link>
+          <Link href="/services" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            Mental Health Services
+          </Link>
+          <Link href="/areas" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            Areas I Help You Overcome
+          </Link>
+          <Link href="/noesis-methods" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            The Noesis Approach
+          </Link>
+          <Link href="/about" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            About Anthoni
+          </Link>
+          <Link href="/for-students" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            Insights
+          </Link>
+          <Link href="/faq" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            FAQ
+          </Link>
+          <Link href="/contact" onClick={() => setOpen(false)} style={{ color: espresso }}>
+            Contact
+          </Link>
+        </div>
+      )}
+    </>
+  );
 }
+
 
 
