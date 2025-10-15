@@ -85,7 +85,7 @@ return (
           <div style={styles.heroText}>
             <h1 style={styles.heroName}>Anthoni McElrath</h1>
             <h2 style={styles.heroTitle}>
-              M.A., Licensed Integrative Mental Health Specialist
+              M.A., PhD, Licensed Integrative Mental Health Specialist
             </h2>
             <h3 style={styles.heroSubtitle}>Founder & Coach</h3>
             <p style={styles.heroDescription}>
@@ -216,8 +216,7 @@ return (
         <section style={styles.section}>
           <h2 style={styles.h2}>RESEARCH AND CREDENTIALS</h2>
           <p style={styles.p}>
-            I hold an MA in Psychology and am a Licensed Integrative Mental
-            Health Coach, I am now pursuing a PhD where my research interrogates
+            I hold an MA in Psychology, and a LMHC. I am now pursuing a PhD where my research interrogates
             how cultural narratives and engineered social behaviors mediate
             relations  and participate in the
             psycho-social formation of identity.
